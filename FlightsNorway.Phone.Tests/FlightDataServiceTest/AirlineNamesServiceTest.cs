@@ -10,13 +10,13 @@ namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
     [TestClass]
     public class AirlineNamesServiceTest : SilverlightTest
     {
-        [TestMethod, Asynchronous, Timeout(5000)]
-        public void Should_return_a_dictionary_containing_airline_names()
+        [TestMethod, Asynchronous, Timeout(5000), Tag("webservice")]
+        public void Should_be_able_to_get_airline_names()
         {
             IObservable<Airline> airlines = service.GetAirlines();
 
             bool foundSas = false;
-            airlines.Subscribe(a => { if (a.Code == "SK") foundSas = true; });
+            airlines.Subscribe(airline => { if (airline.Code == "SK") foundSas = true; });
 
             EnqueueConditional(() => foundSas);
             EnqueueTestComplete();

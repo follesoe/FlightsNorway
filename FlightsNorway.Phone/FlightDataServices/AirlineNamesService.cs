@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
-using System.Net;
 using System.Xml;
 using System.Xml.Linq;
-
+using System.Linq;
 using System.Collections.Generic;
 
 namespace FlightsNorway.Phone.FlightDataServices
@@ -19,13 +17,10 @@ namespace FlightsNorway.Phone.FlightDataServices
 
         public IObservable<Airline> GetAirlines()
         {
-            return (from request in Observable.Return(CreateWebRequest(_serviceUrl))
-                    from response in Observable.FromAsyncPattern<WebResponse>(request.BeginGetResponse, request.EndGetResponse)()
-                    from item in GetAirlines(XmlReader.Create(response.GetResponseStream())).ToObservable()
-                    select item).ObserveOnDispatcher();                            
+            return WebRequestFactory.GetData(_serviceUrl, ParseAirlineXml);
         }
 
-        private static IEnumerable<Airline> GetAirlines(XmlReader reader)
+        private static IEnumerable<Airline> ParseAirlineXml(XmlReader reader)
         {
             var xml = XDocument.Load(reader);
 
@@ -35,14 +30,7 @@ namespace FlightsNorway.Phone.FlightDataServices
                               {
                                   Code = airline.Attribute("code").Value,
                                   Name = airline.Attribute("name").Value
-                              };           
-        }
-
-        private static WebRequest CreateWebRequest(Uri uri)
-        {
-            var result = (HttpWebRequest) WebRequest.Create(uri);
-            result.AllowReadStreamBuffering = false;
-            return result;
+                              };
         }
     }
 }

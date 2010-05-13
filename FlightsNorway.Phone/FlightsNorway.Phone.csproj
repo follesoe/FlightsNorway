@@ -66,6 +66,11 @@
     </Compile>
     <Compile Include="FlightDataServices\Airline.cs" />
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />
+    <Compile Include="FlightDataServices\Airport.cs" />
+    <Compile Include="FlightDataServices\AirportNamesService.cs" />
+    <Compile Include="FlightDataServices\FlightStatus.cs" />
+    <Compile Include="FlightDataServices\FlightStatusesService.cs" />
+    <Compile Include="FlightDataServices\WebRequestFactory.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
