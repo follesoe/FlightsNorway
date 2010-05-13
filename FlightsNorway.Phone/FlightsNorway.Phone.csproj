@@ -68,8 +68,12 @@
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />
     <Compile Include="FlightDataServices\Airport.cs" />
     <Compile Include="FlightDataServices\AirportNamesService.cs" />
+    <Compile Include="FlightDataServices\Direction.cs" />
+    <Compile Include="FlightDataServices\Flight.cs" />
+    <Compile Include="FlightDataServices\FlightArea.cs" />
     <Compile Include="FlightDataServices\FlightStatus.cs" />
     <Compile Include="FlightDataServices\FlightStatusesService.cs" />
+    <Compile Include="FlightDataServices\FlightsService.cs" />
     <Compile Include="FlightDataServices\WebRequestFactory.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
