@@ -64,6 +64,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IEnumerableExtesnions.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />
     <Compile Include="Model\AirlineDictionary.cs" />

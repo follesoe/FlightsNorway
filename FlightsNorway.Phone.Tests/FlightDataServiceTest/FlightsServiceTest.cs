@@ -13,35 +13,24 @@ namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
     [TestClass]
     public class FlightsServiceTest : SilverlightTest
     {
-        [TestMethod, Asynchronous, Timeout(10000), Tag("webservice")]
+        [TestMethod, Asynchronous, Timeout(1000), Tag("webservice")]
         public void Can_get_flights_from_Lakselv_airport()
         {
-            var flightsList = new List<Flight>();
-            
-            EnqueueConditional(() => airlines.Count > 0 && airports.Count > 0);
-            EnqueueCallback(() => service.GetFlightsFrom(new Airport {Code = "LKL"}).Subscribe(flightsList.AddRange));
+            var flightsList = new List<Flight>();            
+            EnqueueCallback(() => service.GetFlightsFrom(new Airport {Code = "TRD"}).Subscribe(flightsList.AddRange));
             EnqueueConditional(() => flightsList.Count() > 0);
+            EnqueueCallback(() => Assert.IsTrue(service.Airports.Count > 0));
+            EnqueueCallback(() => Assert.IsTrue(service.Airlines.Count > 0));
+            EnqueueCallback(() => Assert.IsTrue(service.Statuses.Count > 0));
             EnqueueTestComplete();
         }
 
         [TestInitialize]
         public void Setup()
         {
-            statuses = new StatusDictionary();
-            airports = new AirportDictionary();
-            airlines = new AirlineDictionary();
-            service = new FlightsService(airlines, airports, statuses);
-
-            var airportService = new AirportNamesService();
-            airportService.GetAirports().Subscribe(airportsEnum => { foreach (var airport in airportsEnum) airports.Add(airport); });
-
-            var airlineService = new AirlineNamesService();
-            airlineService.GetAirlines().Subscribe(airlinesEnum => {  foreach(var airline in airlinesEnum) airlines.Add(airline);});
+            service = new FlightsService();
         }
 
         private FlightsService service;
-        private AirportDictionary airports;
-        private AirlineDictionary airlines;
-        private StatusDictionary statuses;
     }
 }

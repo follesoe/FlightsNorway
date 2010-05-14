@@ -3,6 +3,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Collections.Generic;
+
 using FlightsNorway.Phone.Model;
 
 namespace FlightsNorway.Phone.FlightDataServices
@@ -13,32 +14,42 @@ namespace FlightsNorway.Phone.FlightDataServices
         private readonly string _direction;
         private readonly string _lastUpdate;
 
-        private readonly AirlineDictionary _airlines;
-        private readonly AirportDictionary _airports;
-        private readonly StatusDictionary _statuses;
-
-        public FlightsService(AirlineDictionary airlines, AirportDictionary airports, StatusDictionary statuses)
+        public AirlineDictionary Airlines { get; private set; }
+        public AirportDictionary Airports { get; private set; }
+        public StatusDictionary Statuses { get; private set; }
+        
+        public FlightsService()
         {
-            _airlines = airlines;
-            _airports = airports;
-            _statuses = statuses;
+            Airlines = new AirlineDictionary();
+            Airports = new AirportDictionary();
+            Statuses = new StatusDictionary();
 
             _serviceUrl = "http://flydata.avinor.no/XmlFeed.asp?TimeFrom={0}&TimeTo={1}&airport={2}";
             _lastUpdate = "&lastUpdate=2009-03-10T15:03:00";
             _direction = "&direction={0}";
-        }     
+        }
 
         public IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport)
-        {            
+        {
+            var airports = new AirportNamesService().GetAirports();
+            var airlines = new AirlineNamesService().GetAirlines();
+            var statuses = new StatusService().GetStautses();
+            
             string url = string.Format(_serviceUrl, 1, 7, fromAirport.Code);
-            return GetFlightsFrom(url);
+            return from o in
+                       Observable.ForkJoin(
+                           Observable.Start(() => airports.Subscribe(a => Airports.AddRange(a))),
+                           Observable.Start(() => airlines.Subscribe(a => Airlines.AddRange(a))),
+                           Observable.Start(() => statuses.Subscribe(s => Statuses.AddRange(s))))
+                   from flight in GetFlightsFrom(url)
+                   select flight;
         }
 
         private IObservable<IEnumerable<Flight>> GetFlightsFrom(string url)
         {
             return WebRequestFactory.GetData(new Uri(url), ParseFlightsXml);
         }
-        
+    
         private IEnumerable<Flight> ParseFlightsXml(XmlReader reader)
         {
             var xml = XDocument.Load(reader);
@@ -48,8 +59,8 @@ namespace FlightsNorway.Phone.FlightDataServices
                    from flight in flights.Elements("flight")
                    select new Flight
                               {
-                                  Airline = _airlines[flight.ElementValueOrEmpty("airline")],
-                                  Airport = _airports[flight.ElementValueOrEmpty("airport")],
+                                  Airline = Airlines[flight.ElementValueOrEmpty("airline")],
+                                  Airport = Airports[flight.ElementValueOrEmpty("airport")],
                                   Status = ReadStatus(flight.Element("status")),
                                   UniqueId = flight.AttributeValueOrEmpty("uniqueID"),
                                   Gate = flight.ElementValueOrEmpty("gate"),
@@ -64,7 +75,7 @@ namespace FlightsNorway.Phone.FlightDataServices
             if(element == null) return FlightStatus.Empty;
 
             var flightStatus = new FlightStatus();
-            flightStatus.Status = _statuses[element.AttributeValueOrEmpty("code")];
+            flightStatus.Status = Statuses[element.AttributeValueOrEmpty("code")];
             flightStatus.StatusTime = element.AttributeAsDateTime("time");            
             return flightStatus;
         }
