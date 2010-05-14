@@ -1,5 +1,4 @@
-﻿using FlightsNorway.Phone.FlightDataServices;
-
+﻿using FlightsNorway.Phone.Model;
 using NUnit.Framework;
 
 namespace FlightsNorway.Phone.UnitTests

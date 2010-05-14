@@ -1,7 +1,8 @@
 ﻿using System;
-
+using System.Linq;
+using System.Collections.Generic;
 using FlightsNorway.Phone.FlightDataServices;
-
+using FlightsNorway.Phone.Model;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,12 +14,9 @@ namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
         [TestMethod, Asynchronous, Timeout(5000), Tag("webservice")]
         public void Should_be_able_to_get_airline_names()
         {
-            IObservable<Airline> airlines = service.GetAirlines();
-
-            bool foundSas = false;
-            airlines.Subscribe(airline => { if (airline.Code == "SK") foundSas = true; });
-
-            EnqueueConditional(() => foundSas);
+            var airlineList = new List<Airline>();
+            service.GetAirlines().Subscribe(airlineList.AddRange);
+            EnqueueConditional(() => airlineList.Count > 0);
             EnqueueTestComplete();
         }
 

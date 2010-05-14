@@ -3,30 +3,31 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Linq;
+using FlightsNorway.Phone.Model;
 
 namespace FlightsNorway.Phone.FlightDataServices
 {
-    public class FlightStatusesService
+    public class StatusService
     {
         private readonly Uri _serviceUri;
 
-        public FlightStatusesService()
+        public StatusService()
         {
             _serviceUri = new Uri("http://flydata.avinor.no/flightStatuses.asp");
         }
 
-        public IObservable<FlightStatus> GetStautses()
+        public IObservable<IEnumerable<Status>> GetStautses()
         {
             return WebRequestFactory.GetData(_serviceUri, ParseStatusXml);
         }
 
-        private static IEnumerable<FlightStatus> ParseStatusXml(XmlReader reader)
+        private static IEnumerable<Status> ParseStatusXml(XmlReader reader)
         {
             var xml = XDocument.Load(reader);
 
-            return from airlineNames in xml.Elements("flightStatuses")
-                   from status in airlineNames.Elements("flightStatus")
-                   select new FlightStatus
+            return from flightStatuses in xml.Elements("flightStatuses")
+                   from status in flightStatuses.Elements("flightStatus")
+                   select new Status
                               {
                                   Code = status.Attribute("code").Value,
                                   StatusTextEnglish = status.Attribute("statusTextEn").Value,

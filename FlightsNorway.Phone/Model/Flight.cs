@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlightsNorway.Phone.FlightDataServices
+namespace FlightsNorway.Phone.Model
 {
     public class Flight
     {

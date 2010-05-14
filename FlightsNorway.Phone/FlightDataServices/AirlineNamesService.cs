@@ -3,6 +3,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
+using FlightsNorway.Phone.Model;
 
 namespace FlightsNorway.Phone.FlightDataServices
 {
@@ -13,9 +14,9 @@ namespace FlightsNorway.Phone.FlightDataServices
         public AirlineNamesService()
         {
             _serviceUrl = new Uri("http://flydata.avinor.no/airlineNames.asp");
-        }
+        }        
 
-        public IObservable<Airline> GetAirlines()
+        public IObservable<IEnumerable<Airline>> GetAirlines()
         {
             return WebRequestFactory.GetData(_serviceUrl, ParseAirlineXml);
         }

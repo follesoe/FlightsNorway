@@ -1,4 +1,4 @@
-﻿namespace FlightsNorway.Phone.FlightDataServices
+﻿namespace FlightsNorway.Phone.Model
 {
     public enum FlightArea
     {

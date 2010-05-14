@@ -1,6 +1,6 @@
-﻿namespace FlightsNorway.Phone.FlightDataServices
+﻿namespace FlightsNorway.Phone.Model
 {
-    public class FlightStatus
+    public class Status
     {
         public string Code { get; set; }
         public string StatusTextEnglish { get; set;}

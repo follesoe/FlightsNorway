@@ -1,4 +1,4 @@
-﻿namespace FlightsNorway.Phone.FlightDataServices
+﻿namespace FlightsNorway.Phone.Model
 {
     public class Airport
     {
@@ -13,7 +13,7 @@
                 return airport.Code.Equals(Code) &&
                        airport.Name.Equals(Name);
             }
-            else return base.Equals(obj);
+            return base.Equals(obj);
         }
 
         public override int GetHashCode()
