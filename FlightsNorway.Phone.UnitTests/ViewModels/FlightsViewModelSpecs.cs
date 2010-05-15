@@ -9,7 +9,11 @@ namespace FlightsNorway.Phone.UnitTests.ViewModels
     [TestFixture]
     public class FlightsViewModelSpecs
     {
-
+        [Test]
+        public void Loads_flights_for_airport_when_airport_is_selected()
+        {
+            
+        }
 
         [SetUp]
         public void Setup()
@@ -18,5 +22,6 @@ namespace FlightsNorway.Phone.UnitTests.ViewModels
         }
 
         private FlightsViewModel viewModel;
+
     }
 }

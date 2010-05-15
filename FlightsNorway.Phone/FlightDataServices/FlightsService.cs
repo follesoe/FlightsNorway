@@ -8,7 +8,7 @@ using FlightsNorway.Phone.Model;
 
 namespace FlightsNorway.Phone.FlightDataServices
 {
-    public class GetFlights
+    public class FlightsService : IGetFlights
     {
         private readonly string _serviceUrl;
         private readonly string _direction;
@@ -22,7 +22,7 @@ namespace FlightsNorway.Phone.FlightDataServices
 
         private bool airlinesLoaded, airportsLoaded, statusesLoaded;
 
-        public GetFlights()
+        public FlightsService()
         {
             Airlines = new AirlineDictionary();
             Airports = new AirportDictionary();
