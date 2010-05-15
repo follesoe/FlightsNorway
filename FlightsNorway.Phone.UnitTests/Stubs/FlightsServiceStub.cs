@@ -17,6 +17,7 @@ namespace FlightsNorway.Phone.UnitTests.Stubs
 
         public IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport)
         {
+            var flight = new Subject<IEnumerable<Flight>>();
             return null;
         }
     }

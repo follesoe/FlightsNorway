@@ -43,9 +43,9 @@ namespace FlightsNorway.Phone.FlightDataServices
             string url = string.Format(_serviceUrl, 1, 7, fromAirport.Code);
 
             var flights = from isDone in whenReferenceDataLoaded
-                          where isDone != null
-                          from flight in GetFlightsFrom(url)
-                          select flight;
+                            where isDone != null
+                            from flight in GetFlightsFrom(url)
+                            select flight;
 
             LoadReferenceData();
 
