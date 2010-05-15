@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
-using FlightsNorway.Phone.FlightDataServices;
+
 using FlightsNorway.Phone.Model;
+using FlightsNorway.Phone.FlightDataServices;
+
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
 {
-    //[TestClass]
+    [TestClass]
     public class AirlineNamesServiceTest : SilverlightTest
     {
         [TestMethod, Asynchronous, Timeout(5000), Tag("webservice")]

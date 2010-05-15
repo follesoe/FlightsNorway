@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
 {
-    //[TestClass]
+    [TestClass]
     public class AirportNamesServiceTest : SilverlightTest
     {
         [TestMethod, Asynchronous, Timeout(5000), Tag("webservice")]

@@ -28,9 +28,9 @@ namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
         [TestInitialize]
         public void Setup()
         {
-            service = new FlightsService();
+            service = new GetFlights();
         }
 
-        private FlightsService service;
+        private GetFlights service;
     }
 }
