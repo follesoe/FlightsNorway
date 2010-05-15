@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.WP7">
+      <HintPath>..\lib\MVVM Light WP7 (v3)\GalaSoft.MvvmLight.WP7.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Navigation" />
     <Reference Include="System.Observable" />
@@ -64,6 +67,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FlightDataServices\FlightsService2.cs" />
     <Compile Include="IEnumerableExtesnions.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />

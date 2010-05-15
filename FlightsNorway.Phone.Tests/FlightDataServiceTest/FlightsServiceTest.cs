@@ -13,7 +13,7 @@ namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
     [TestClass]
     public class FlightsServiceTest : SilverlightTest
     {
-        [TestMethod, Asynchronous, Timeout(1000), Tag("webservice")]
+        [TestMethod, Asynchronous, Timeout(100000), Tag("webservice")]
         public void Can_get_flights_from_Lakselv_airport()
         {
             var flightsList = new List<Flight>();            
