@@ -89,6 +89,7 @@
     <Compile Include="Tags.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
     <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />
+    <Compile Include="ViewModels\ViewModelLocatorSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
