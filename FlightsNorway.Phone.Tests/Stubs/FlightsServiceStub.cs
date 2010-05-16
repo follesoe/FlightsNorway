@@ -18,6 +18,11 @@ namespace FlightsNorway.Phone.Tests.Stubs
         public bool GetFlightsFromWasCalled;
         public Airport FromAirport;
 
+        public FlightsServiceStub()
+        {
+            FlightsToReturn = new List<Flight>();
+        }
+
         public IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport)
         {
             FromAirport = fromAirport;

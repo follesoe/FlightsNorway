@@ -1,9 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Collections.Generic;
 
-using FlightsNorway.Phone.FlightDataServices;
 using FlightsNorway.Phone.Model;
+using FlightsNorway.Phone.FlightDataServices;
+
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 
@@ -14,12 +16,18 @@ namespace FlightsNorway.Phone.ViewModels
         private readonly IGetFlights _flightsService;
         private Airport _selectedAirport;
 
+        public ObservableCollection<Flight> Arrivals { get; private set; }
+        public ObservableCollection<Flight> Departures { get; private set; }
+
         public FlightsViewModel(): this(new FlightsService())
         {            
         }
 
         public FlightsViewModel(IGetFlights flightsService)
         {
+            Arrivals = new ObservableCollection<Flight>();
+            Departures = new ObservableCollection<Flight>();
+
             _flightsService = flightsService;
             Messenger.Default.Register<AirportSelectedMessage>(this, OnAirportSelected);
         }
@@ -34,7 +42,17 @@ namespace FlightsNorway.Phone.ViewModels
 
         private void LoadFlights(IEnumerable<Flight> flights)
         {
-            System.Diagnostics.Debug.WriteLine(flights);
+            foreach(var flight in flights)
+            {
+                if(flight.Direction == Direction.Arrival)
+                {
+                    Arrivals.Add(flight);
+                }
+                else
+                {
+                    Departures.Add(flight);
+                }
+            }
         }
     }
 }
