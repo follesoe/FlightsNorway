@@ -36,17 +36,18 @@ namespace FlightsNorway.Phone.FlightDataServices
             var statuses = new StatusService().GetStautses();
 
 
-            var referenceData = airports.ForkJoin(airlines, (allAirports, allAirlines) =>
-                                                                 {
-                                                                     Airports.AddRange(allAirports);
-                                                                     Airlines.AddRange(allAirlines);
-                                                                     return new Unit();
-                                                                 })
-                                         .ForkJoin(statuses, (nothing, allStatuses) =>
-                                                                 {
-                                                                     Statuses.AddRange(allStatuses);
-                                                                     return new Unit();
-                                                                 });
+            var referenceData = airports
+                .ForkJoin(airlines, (allAirports, allAirlines) =>
+                                    {
+                                        Airports.AddRange(allAirports);
+                                        Airlines.AddRange(allAirlines);
+                                        return new Unit();
+                                    })
+                .ForkJoin(statuses, (nothing, allStatuses) =>
+                                    {
+                                        Statuses.AddRange(allStatuses);
+                                        return new Unit();
+                                    });
 
             string url = string.Format(_serviceUrl, 1, 7, fromAirport.Code);
 
