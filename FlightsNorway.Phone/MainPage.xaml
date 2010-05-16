@@ -19,8 +19,8 @@
 
         <!--TitleGrid is the name of the application and page title-->
         <Grid x:Name="TitleGrid" Grid.Row="0">
-            <TextBlock Text="MY APPLICATION" x:Name="textBlockPageTitle" Style="{StaticResource PhoneTextPageTitle1Style}"/>
-            <TextBlock Text="page title" x:Name="textBlockListTitle" Style="{StaticResource PhoneTextPageTitle2Style}"/>
+            <TextBlock Text="FLYTIDER" x:Name="textBlockPageTitle" Style="{StaticResource PhoneTextPageTitle1Style}"/>
+            <TextBlock Text="Velg flyplass" x:Name="textBlockListTitle" Style="{StaticResource PhoneTextPageTitle2Style}"/>
         </Grid>
 
         <!--ContentGrid is empty. Place new content here-->

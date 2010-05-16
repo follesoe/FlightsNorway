@@ -7,5 +7,6 @@ namespace FlightsNorway.Phone.FlightDataServices
     public interface IGetAirports
     {
         IObservable<IEnumerable<Airport>> GetAirports();
+        IEnumerable<Airport> GetNorwegianAirports();
     }
 }

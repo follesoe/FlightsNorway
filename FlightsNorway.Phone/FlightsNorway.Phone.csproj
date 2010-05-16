@@ -81,6 +81,7 @@
     <Compile Include="Model\Flight.cs" />
     <Compile Include="Model\FlightArea.cs" />
     <Compile Include="Model\FlightStatus.cs" />
+    <Compile Include="Model\NearestAirport.cs" />
     <Compile Include="Model\Status.cs" />
     <Compile Include="FlightDataServices\StatusService.cs" />
     <Compile Include="FlightDataServices\WebRequestFactory.cs" />

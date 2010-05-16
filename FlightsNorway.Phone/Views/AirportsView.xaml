@@ -12,7 +12,7 @@
     </UserControl.DataContext>
     
     <Grid x:Name="LayoutRoot" Background="White">
-        <ListBox ItemsSource="{Binding Path=Airports}">
+        <ListBox ItemsSource="{Binding Path=Airports}" DisplayMemberPath="Name">
             
         </ListBox>
     </Grid>
