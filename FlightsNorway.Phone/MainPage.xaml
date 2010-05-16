@@ -30,13 +30,13 @@
                     
                     <phone:PivotPage PageTitle="annkomst">
                         <phone:PivotPage.Content>
-                            <TextBlock>Her kommer annkomster...</TextBlock>
+                            <views:ArrivalsView />
                         </phone:PivotPage.Content>
                     </phone:PivotPage>
 
                     <phone:PivotPage PageTitle="avgang">
                         <phone:PivotPage.Content>
-                            <TextBlock>Her kommer avganger...</TextBlock>
+                            <views:DeparturesView />
                         </phone:PivotPage.Content>
                     </phone:PivotPage>
 

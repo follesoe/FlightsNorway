@@ -72,6 +72,7 @@ namespace FlightsNorway.Phone.FlightDataServices
                    from flight in flights.Elements("flight")
                    select new Flight
                    {
+                       FlightId = flight.ElementValueOrEmpty("flight_id"),
                        Airline = Airlines[flight.ElementValueOrEmpty("airline")],
                        Airport = Airports[flight.ElementValueOrEmpty("airport")],
                        FlightStatus = ReadStatus(flight.Element("status")),

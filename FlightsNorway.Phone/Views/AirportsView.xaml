@@ -11,8 +11,8 @@
     <UserControl.DataContext>
         <Binding Path="AirportsViewModel" Source="{StaticResource ViewModelLocator}" />
     </UserControl.DataContext>
-    
-    <Grid x:Name="LayoutRoot" Background="White">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />

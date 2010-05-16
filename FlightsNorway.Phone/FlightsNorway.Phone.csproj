@@ -101,6 +101,12 @@
     <Compile Include="Views\AirportsView.xaml.cs">
       <DependentUpon>AirportsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ArrivalsView.xaml.cs">
+      <DependentUpon>ArrivalsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeparturesView.xaml.cs">
+      <DependentUpon>DeparturesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XmlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +119,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AirportsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ArrivalsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeparturesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,11 +16,10 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.ViewModel)]
         public void Loads_flights_when_airport_is_selected()
         {           
-            var airport = new Airport("LKL", "Lakselv");
-            Messenger.Default.Send(new AirportSelectedMessage(airport));
+            Messenger.Default.Send(new AirportSelectedMessage(lakselvAirport));
             
             EnqueueConditional(() => flightsService.GetFlightsFromWasCalled);
-            EnqueueCallback(() => Assert.AreEqual(airport, flightsService.FromAirport));
+            EnqueueCallback(() => Assert.AreEqual(lakselvAirport, flightsService.FromAirport));
             EnqueueTestComplete();
         }
 
@@ -33,8 +32,7 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             Flight flight = FlightBuilder.Create.Flight("SK123").Arriving();
             flightsService.FlightsToReturn.Add(flight);
 
-            var airport = new Airport("LKL", "Lakselv");
-            Messenger.Default.Send(new AirportSelectedMessage(airport));
+            Messenger.Default.Send(new AirportSelectedMessage(lakselvAirport));
 
             EnqueueConditional(() => collectionChanged);                        
             EnqueueCallback(() => Assert.AreEqual(0, viewModel.Departures.Count));
@@ -52,8 +50,7 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             Flight flight = FlightBuilder.Create.Flight("SK123").Departing();
             flightsService.FlightsToReturn.Add(flight);
 
-            var airport = new Airport("LKL", "Lakselv");
-            Messenger.Default.Send(new AirportSelectedMessage(airport));
+            Messenger.Default.Send(new AirportSelectedMessage(lakselvAirport));
 
             EnqueueConditional(() => collectionChanged);
             EnqueueCallback(() => Assert.AreEqual(0, viewModel.Arrivals.Count));
@@ -62,13 +59,33 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             EnqueueTestComplete();
         }
 
+        [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.ViewModel)]
+        public void Clears_the_lists_if_a_new_airport_is_selected()
+        {
+            Flight flight = FlightBuilder.Create.Flight("SK123").Departing();
+            flightsService.FlightsToReturn.Add(flight);
+
+            Messenger.Default.Send(new AirportSelectedMessage(lakselvAirport));
+
+            EnqueueCallback(() => Messenger.Default.Send(new AirportSelectedMessage(lakselvAirport)));
+            EnqueueConditional(() => viewModel.Departures.Count > 0);
+            EnqueueCallback(() => flightsService.FlightsToReturn.Clear());
+            EnqueueCallback(() => Messenger.Default.Send(new AirportSelectedMessage(trondheimAirport)));
+            EnqueueCallback(() => Assert.AreEqual(0, viewModel.Departures.Count));
+            EnqueueTestComplete();
+        }
+
         [TestInitialize]
         public void Setup()
         {
+            lakselvAirport = new Airport("LKL", "Lakselv");
+            trondheimAirport = new Airport("TRD", "Trondheim");
             flightsService = new FlightsServiceStub();
             viewModel = new FlightsViewModel(flightsService);
         }
 
+        private Airport lakselvAirport;
+        private Airport trondheimAirport;
         private FlightsServiceStub flightsService;
         private FlightsViewModel viewModel;
     }

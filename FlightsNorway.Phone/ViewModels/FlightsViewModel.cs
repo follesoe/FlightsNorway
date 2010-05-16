@@ -36,6 +36,9 @@ namespace FlightsNorway.Phone.ViewModels
         {
             if (_selectedAirport == message.Content) return;
 
+            Arrivals.Clear();
+            Departures.Clear();
+
             _selectedAirport = message.Content;
             _flightsService.GetFlightsFrom(_selectedAirport).Subscribe(LoadFlights);
         }
