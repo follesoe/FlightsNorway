@@ -16,18 +16,23 @@ namespace FlightsNorway.Phone.Model
         public string Gate { get; set; }
         public string Belt { get; set; }
 
+        public Flight()
+        {
+            Airline = new Airline();
+            Airport = new Airport();
+            FlightStatus = new FlightStatus();            
+        }
+
         public override string ToString()
         {
             if(Direction == Direction.Depature)
             {
                 return string.Format("{0} {1:HH:mm} {2} {3} {4}", FlightId, ScheduledTime, Gate, Airport.Name, FlightStatus.Status.StatusTextNorwegian);
             }
-            else
-            {
-                return string.Format("{0} {1:HH:mm} {2} {3} {4} {5:HH:mm}",                     
-                                FlightId, ScheduledTime, Belt, Airport.Name,
-                                FlightStatus.Status.StatusTextNorwegian, FlightStatus.StatusTime);
-            }            
+
+            return string.Format("{0} {1:HH:mm} {2} {3} {4} {5:HH:mm}",                     
+                                 FlightId, ScheduledTime, Belt, Airport.Name,
+                                 FlightStatus.Status.StatusTextNorwegian, FlightStatus.StatusTime);
         }
     }
 }

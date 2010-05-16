@@ -9,6 +9,11 @@ namespace FlightsNorway.Phone.Model
 
         public static FlightStatus Empty { get; private set; }
 
+        public FlightStatus()
+        {
+            Status = new Status();
+        }
+
         static FlightStatus()
         {
             Empty = new FlightStatus();

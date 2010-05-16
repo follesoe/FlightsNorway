@@ -68,12 +68,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DesignTimeBootstrapperAttribute.cs" />
     <Compile Include="FlightDataServices\FlightsService.cs" />
     <Compile Include="FlightDataServices\IGetAirports.cs" />
     <Compile Include="FlightDataServices\IGetFlights.cs" />
     <Compile Include="IEnumerableExtesnions.cs" />
     <Compile Include="IGetCurrentLocation.cs" />
     <Compile Include="LocationService.cs" />
+    <Compile Include="MicroContainer.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />
     <Compile Include="Model\AirlineDictionary.cs" />

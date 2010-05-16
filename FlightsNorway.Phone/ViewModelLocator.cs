@@ -4,17 +4,23 @@ namespace FlightsNorway.Phone
 {
     public class ViewModelLocator
     {
-        private AirportsViewModel _airportsViewModel;
-        private FlightsViewModel _flightsViewModel;
+        private readonly MicroContainer _container;
 
         public AirportsViewModel AirportsViewModel
         {
-            get { return _airportsViewModel ?? (_airportsViewModel = new AirportsViewModel()); }
+            get { return _container.Resolve<AirportsViewModel>(); }
         }
 
         public FlightsViewModel FlightsViewModel
         {
-            get { return _flightsViewModel ?? (_flightsViewModel = new FlightsViewModel()); }
+            get { return _container.Resolve<FlightsViewModel>(); }
+        }
+
+        public ViewModelLocator()
+        {
+            _container = new MicroContainer();
+            _container.RegisterInstance(new AirportsViewModel());
+            _container.RegisterInstance(new FlightsViewModel());
         }
     }
 }
