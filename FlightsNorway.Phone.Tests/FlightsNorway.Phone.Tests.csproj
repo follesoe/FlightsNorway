@@ -78,6 +78,10 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AirlineDictionaryTest.cs" />
+    <Compile Include="Model\AirportDictionaryTest.cs" />
+    <Compile Include="Model\AirportTest.cs" />
+    <Compile Include="Model\FlightSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stubs\AirportNamesServiceStub.cs" />
     <Compile Include="Stubs\FlightsServiceStub.cs" />

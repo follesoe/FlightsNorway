@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
 {
     [TestClass]
-    public class FlightsServiceTest : SilverlightTest
+    public class FlightsServiceSpec : SilverlightTest
     {
         [TestMethod, Asynchronous, Timeout(10000), Tag(Tags.WebService)]
         public void Can_get_flights_from_Lakselv_airport()
@@ -35,7 +35,7 @@ namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
             {
                 Assert.IsNotNull(flight.Airline);
                 Assert.IsNotNull(flight.Airport);
-                Assert.IsNotNull(flight.Status);
+                Assert.IsNotNull(flight.FlightStatus);
             }
         }
 

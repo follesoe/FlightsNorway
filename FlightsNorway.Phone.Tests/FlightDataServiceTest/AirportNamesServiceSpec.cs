@@ -12,7 +12,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
 {
     [TestClass]
-    public class AirportNamesServiceTest : SilverlightTest
+    public class AirportNamesServiceSpec : SilverlightTest
     {
         [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.WebService)]
         public void Should_be_able_to_get_airport_names()

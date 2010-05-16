@@ -74,7 +74,7 @@ namespace FlightsNorway.Phone.FlightDataServices
                    {
                        Airline = Airlines[flight.ElementValueOrEmpty("airline")],
                        Airport = Airports[flight.ElementValueOrEmpty("airport")],
-                       Status = ReadStatus(flight.Element("status")),
+                       FlightStatus = ReadStatus(flight.Element("status")),
                        UniqueId = flight.AttributeValueOrEmpty("uniqueID"),
                        Gate = flight.ElementValueOrEmpty("gate"),
                        Direction = ConvertToDirection(flight.Element("arr_dep")),
