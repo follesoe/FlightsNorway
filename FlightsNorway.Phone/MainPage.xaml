@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:FlightsNorway.Phone.Views"
+    xmlns:phone="clr-namespace:SmartyPantsPivotLibrary;assembly=SmartyPantsPivotLibrary"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -19,13 +20,34 @@
 
         <!--TitleGrid is the name of the application and page title-->
         <Grid x:Name="TitleGrid" Grid.Row="0">
-            <TextBlock Text="FLYTIDER" x:Name="textBlockPageTitle" Style="{StaticResource PhoneTextPageTitle1Style}"/>
-            <TextBlock Text="Velg flyplass" x:Name="textBlockListTitle" Style="{StaticResource PhoneTextPageTitle2Style}"/>
+            <TextBlock Text="FLYTIDER" x:Name="textBlockPageTitle" Style="{StaticResource PhoneTextPageTitle1Style}"/>            
         </Grid>
 
         <!--ContentGrid is empty. Place new content here-->
         <Grid x:Name="ContentGrid" Grid.Row="1">
-            <views:AirportsView />
+            <phone:PivotControl x:Name="_mainPivot">
+                <phone:PivotControl.PivotPages>
+                    
+                    <phone:PivotPage PageTitle="annkomst">
+                        <phone:PivotPage.Content>
+                            <TextBlock>Her kommer annkomster...</TextBlock>
+                        </phone:PivotPage.Content>
+                    </phone:PivotPage>
+
+                    <phone:PivotPage PageTitle="avgang">
+                        <phone:PivotPage.Content>
+                            <TextBlock>Her kommer avganger...</TextBlock>
+                        </phone:PivotPage.Content>
+                    </phone:PivotPage>
+
+                    <phone:PivotPage PageTitle="velg flyplass">
+                        <phone:PivotPage.Content>
+                            <views:AirportsView />
+                        </phone:PivotPage.Content>
+                    </phone:PivotPage>
+
+                </phone:PivotControl.PivotPages>
+            </phone:PivotControl>
         </Grid>
     </Grid>
     

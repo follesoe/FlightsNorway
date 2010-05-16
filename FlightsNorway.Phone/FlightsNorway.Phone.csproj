@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Navigation" />
+    <Reference Include="System.Device.Location" />
     <Reference Include="System.Observable" />
     <Reference Include="System.Reactive" />
     <Reference Include="System.Windows" />
@@ -71,6 +72,8 @@
     <Compile Include="FlightDataServices\IGetAirports.cs" />
     <Compile Include="FlightDataServices\IGetFlights.cs" />
     <Compile Include="IEnumerableExtesnions.cs" />
+    <Compile Include="IGetCurrentLocation.cs" />
+    <Compile Include="LocationService.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />
     <Compile Include="Model\AirlineDictionary.cs" />
@@ -92,6 +95,7 @@
     <Compile Include="ObservableCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModels\AirportSelectedMessage.cs" />
     <Compile Include="ViewModels\AirportsViewModel.cs" />
     <Compile Include="ViewModels\FlightsViewModel.cs" />
     <Compile Include="Views\AirportsView.xaml.cs">
@@ -124,6 +128,12 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SmartyPantsPivotLibrary\SmartyPantsPivotLibrary.csproj">
+      <Project>{4588418F-8873-4C98-931D-2C04133C0531}</Project>
+      <Name>SmartyPantsPivotLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="SmartyPantsPivotLibrary.PivotControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="800" d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}"
+          CacheMode="BitmapCache">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />                
+        </Grid.RowDefinitions>
+        
+        <!-- the horizontal stack panel which displays available pivot sections -->
+        <Grid x:Name="PivotTitleStackPanelContainer"
+              Grid.Row="0">
+            <StackPanel x:Name="PivotTitleStackPanel" 
+                        Orientation="Horizontal"
+                        CacheMode="BitmapCache">
+                <StackPanel.RenderTransform>
+                    <CompositeTransform TranslateX="0"/>
+                </StackPanel.RenderTransform>
+                <!-- this is where sections will be displayed-->
+                <!--<TextBlock x:Name="textBlockListTitle"
+                       Text="section1"  
+                       Style="{StaticResource PhoneTextTitle1Style}"/>-->
+            </StackPanel>
+        </Grid>
+        
+        <!-- the main content area where pivot pages will be displayed-->
+        <Grid x:Name="PivotSectionDisplayGrid" 
+              Grid.Row="1">
+            <Grid.RenderTransform>
+                <CompositeTransform TranslateX="0"/>
+            </Grid.RenderTransform>
+        </Grid>
+
+    </Grid>
+</UserControl>

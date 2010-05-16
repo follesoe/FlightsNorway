@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Linq;
 
 using FlightsNorway.Phone.FlightDataServices;
 
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace FlightsNorway.Phone.ViewModels
 {

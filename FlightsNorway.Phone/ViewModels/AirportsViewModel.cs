@@ -1,15 +1,19 @@
-﻿using System.Collections.ObjectModel;
-
-using GalaSoft.MvvmLight;
+﻿using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.FlightDataServices;
+
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace FlightsNorway.Phone.ViewModels
 {
     public class AirportsViewModel : ViewModelBase
     {
         public ObservableCollection<Airport> Airports { get; private set; }
+        public ICommand SaveCommand { get; private set; }
 
         private Airport _selectedAirport;
 
@@ -20,8 +24,8 @@ namespace FlightsNorway.Phone.ViewModels
             {
                 if (_selectedAirport == value) return;
                 
-                RaisePropertyChanged("SelectedAirport", _selectedAirport, value, true);
-                _selectedAirport = value;                
+                _selectedAirport = value;               
+                RaisePropertyChanged("SelectedAirport");                 
             }
         }
 
@@ -35,6 +39,13 @@ namespace FlightsNorway.Phone.ViewModels
             Airports = new ObservableCollection<Airport>();
             Airports.Add(new NearestAirport());
             Airports.AddRange(airportsService.GetNorwegianAirports());
+
+            SaveCommand = new RelayCommand(OnSave);
         }      
+
+        private void OnSave()
+        {
+            Messenger.Default.Send(new AirportSelectedMessage(SelectedAirport));
+        }
     }
 }
