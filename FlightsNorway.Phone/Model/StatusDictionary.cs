@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FlightsNorway.Phone.Extensions;
 
 namespace FlightsNorway.Phone.Model
 {

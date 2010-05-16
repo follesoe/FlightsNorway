@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using System.Collections.ObjectModel;
-
+using FlightsNorway.Phone.Extensions;
 using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.FlightDataServices;
 

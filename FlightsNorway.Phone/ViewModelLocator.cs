@@ -1,4 +1,7 @@
-﻿using FlightsNorway.Phone.ViewModels;
+﻿using FlightsNorway.Phone.Model;
+using FlightsNorway.Phone.ViewModels;
+
+using GalaSoft.MvvmLight;
 
 namespace FlightsNorway.Phone
 {
@@ -19,8 +22,18 @@ namespace FlightsNorway.Phone
         public ViewModelLocator()
         {
             _container = new MicroContainer();
-            _container.RegisterInstance(new AirportsViewModel());
-            _container.RegisterInstance(new FlightsViewModel());
+
+            if(ViewModelBase.IsInDesignModeStatic)
+            {
+                _container.RegisterInstance(new AirportsViewModel());
+                _container.RegisterInstance(new FlightsViewModel(new DesignTimeFlightsService()));
+                _container.Resolve<FlightsViewModel>().SelectedAirport = new Airport("LKL", "Lakselv");
+            }
+            else
+            {
+                _container.RegisterInstance(new AirportsViewModel());
+                _container.RegisterInstance(new FlightsViewModel());                    
+            }            
         }
     }
 }

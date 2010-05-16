@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace FlightsNorway.Phone
+namespace FlightsNorway.Phone.Extensions
 {
     public static class ObservableCollectionExtensions
     {

@@ -16,10 +16,14 @@ namespace FlightsNorway.Phone.Model
         public string Gate { get; set; }
         public string Belt { get; set; }
 
-        public Flight()
+        public Flight() : this(new Airline(), new Airport())
         {
-            Airline = new Airline();
-            Airport = new Airport();
+        }
+
+        public Flight(Airline airline, Airport airport)
+        {
+            Airline = airline;
+            Airport = airport;
             FlightStatus = new FlightStatus();            
         }
 

@@ -13,7 +13,20 @@ namespace FlightsNorway.Phone.ViewModels
     public class FlightsViewModel : ViewModelBase
     {
         private readonly IGetFlights _flightsService;
+
         private Airport _selectedAirport;
+
+        public Airport SelectedAirport
+        {
+            get { return _selectedAirport; }
+            set
+            {
+                if (_selectedAirport == value) return;
+
+                _selectedAirport = value;
+                AirportSelected(_selectedAirport);
+            }
+        }
 
         public ObservableCollection<Flight> Arrivals { get; private set; }
         public ObservableCollection<Flight> Departures { get; private set; }
@@ -33,13 +46,15 @@ namespace FlightsNorway.Phone.ViewModels
 
         private void OnAirportSelected(AirportSelectedMessage message)
         {
-            if (_selectedAirport == message.Content) return;
+            SelectedAirport = message.Content;            
+        }
 
+        public void AirportSelected(Airport airport)
+        {
             Arrivals.Clear();
             Departures.Clear();
 
-            _selectedAirport = message.Content;
-            _flightsService.GetFlightsFrom(_selectedAirport).Subscribe(LoadFlights);
+            _flightsService.GetFlightsFrom(_selectedAirport).Subscribe(LoadFlights);            
         }
 
         private void LoadFlights(IEnumerable<Flight> flights)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Linq;
 
-namespace FlightsNorway.Phone
+namespace FlightsNorway.Phone.Extensions
 {
     public static class XmlExtensions
     {

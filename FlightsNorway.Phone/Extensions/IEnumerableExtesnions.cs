@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FlightsNorway.Phone
+namespace FlightsNorway.Phone.Extensions
 {
     public static class IEnumerableExtesnions
     {
