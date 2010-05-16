@@ -17,11 +17,7 @@ namespace FlightsNorway.Phone.FlightDataServices
         public AirlineDictionary Airlines { get; private set; }
         public AirportDictionary Airports { get; private set; }
         public StatusDictionary Statuses { get; private set; }
-
-        private static event EventHandler ReferenceDataLoaded;
-
-        private bool airlinesLoaded, airportsLoaded, statusesLoaded;
-
+        
         public FlightsService()
         {
             Airlines = new AirlineDictionary();
@@ -34,42 +30,31 @@ namespace FlightsNorway.Phone.FlightDataServices
         }
 
         public IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport)
-        {            
-            var whenReferenceDataLoaded = Observable.FromEvent(
-                                            (EventHandler<EventArgs> ev) => new EventHandler(ev),
-                                                ev => ReferenceDataLoaded += ev,
-                                                ev => ReferenceDataLoaded -= ev);
-
-            string url = string.Format(_serviceUrl, 1, 7, fromAirport.Code);
-
-            var flights = from isDone in whenReferenceDataLoaded
-                            where isDone != null
-                            from flight in GetFlightsFrom(url)
-                            select flight;
-
-            LoadReferenceData();
-
-            return flights;
-        }       
-
-        private void LoadReferenceData()
         {
             var airports = new AirportNamesService().GetAirports();
             var airlines = new AirlineNamesService().GetAirlines();
             var statuses = new StatusService().GetStautses();
 
-            airports.Subscribe(a => Airports.AddRange(a), () => { airportsLoaded = true; OnReferenceDataLoaded(); });
-            airlines.Subscribe(a => Airlines.AddRange(a), () => { airlinesLoaded = true; OnReferenceDataLoaded(); });
-            statuses.Subscribe(s => Statuses.AddRange(s), () => { statusesLoaded = true; OnReferenceDataLoaded(); });
-        }
 
-        private void OnReferenceDataLoaded()
-        {
-            if(airportsLoaded && airlinesLoaded && statusesLoaded)
-            {
-                if (ReferenceDataLoaded != null)
-                    ReferenceDataLoaded(this, EventArgs.Empty);
-            }
+            var referenceData = airports.ForkJoin(airlines, (allAirports, allAirlines) =>
+                                                                 {
+                                                                     Airports.AddRange(allAirports);
+                                                                     Airlines.AddRange(allAirlines);
+                                                                     return new Unit();
+                                                                 })
+                                         .ForkJoin(statuses, (nothing, allStatuses) =>
+                                                                 {
+                                                                     Statuses.AddRange(allStatuses);
+                                                                     return new Unit();
+                                                                 });
+
+            string url = string.Format(_serviceUrl, 1, 7, fromAirport.Code);
+
+            var flights = from data in referenceData
+                          from flight in GetFlightsFrom(url)
+                          select flight;
+          
+            return flights;
         }
 
         private IObservable<IEnumerable<Flight>> GetFlightsFrom(string url)

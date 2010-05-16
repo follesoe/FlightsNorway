@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using FlightsNorway.Phone.FlightDataServices;
 using FlightsNorway.Phone.Model;

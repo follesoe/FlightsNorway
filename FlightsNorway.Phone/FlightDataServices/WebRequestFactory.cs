@@ -9,6 +9,7 @@ namespace FlightsNorway.Phone.FlightDataServices
     {       
         public static IObservable<T> GetData<T>(Uri uri, Func<XmlReader, T> generator)
         {
+            System.Diagnostics.Debug.WriteLine(uri);
             return (from request in Observable.Return(CreateWebRequest(uri))
                     from response in Observable.FromAsyncPattern<WebResponse>(request.BeginGetResponse, request.EndGetResponse)()
                     select generator(XmlReader.Create(response.GetResponseStream()))).ObserveOnDispatcher();
