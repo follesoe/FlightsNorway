@@ -93,6 +93,9 @@
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\AirportsViewModel.cs" />
     <Compile Include="ViewModels\FlightsViewModel.cs" />
+    <Compile Include="Views\AirportsView.xaml.cs">
+      <DependentUpon>AirportsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XmlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AirportsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

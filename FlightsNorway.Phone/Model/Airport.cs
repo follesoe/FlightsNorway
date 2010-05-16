@@ -5,6 +5,21 @@
         public string Code { get; set; }
         public string Name { get; set; }
 
+        public Airport()
+        {                       
+        }
+
+        public Airport(string code, string name)
+        {
+            Code = code;
+            Name = name;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} - {1}", Code, Name);
+        }
+
         public override bool Equals(object obj)
         {
             var airport = obj as Airport;

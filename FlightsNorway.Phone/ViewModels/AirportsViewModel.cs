@@ -21,5 +21,7 @@ namespace FlightsNorway.Phone.ViewModels
             airportsService.GetAirports().SubscribeOnDispatcher()
                                          .Subscribe(airports => Airports.AddRange(airports));
         }
+
+        
     }
 }

@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     xmlns:mpc="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:local="clr-namespace:FlightsNorway.Phone"
     xmlns:phoneNavigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Navigation">
     
     <!--RootFrame points to and loads the first page of your application-->
@@ -13,6 +14,9 @@
 
     <!-- Resources for following the Windows Phone design guidelines -->
     <Application.Resources>
+        <local:ViewModelLocator x:Key="ViewModelLocator" />
+        
+        
         <!--************ THEME RESOURCES ************-->
         <!-- Color Resources -->
         <Color x:Key="PhoneBackgroundColor">#FF1F1F1F</Color>

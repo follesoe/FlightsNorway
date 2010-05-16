@@ -4,9 +4,9 @@ namespace FlightsNorway.Phone
 {
     public class ViewModelLocator
     {
-        public FlightsViewModel FlightsViewModel
+        public AirportsViewModel AirportsViewModel
         {
-            get { return new FlightsViewModel(); }
+            get { return new AirportsViewModel(); }
         }
     }
 }
