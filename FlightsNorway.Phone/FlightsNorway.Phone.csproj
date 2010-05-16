@@ -68,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="FlightDataServices\FlightsService.cs" />
+    <Compile Include="FlightDataServices\IGetAirports.cs" />
     <Compile Include="FlightDataServices\IGetFlights.cs" />
     <Compile Include="IEnumerableExtesnions.cs" />
     <Compile Include="Model\Airline.cs" />
@@ -87,8 +88,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\StatusDictionary.cs" />
+    <Compile Include="ObservableCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModels\AirportsViewModel.cs" />
     <Compile Include="ViewModels\FlightsViewModel.cs" />
     <Compile Include="XmlExtensions.cs" />
   </ItemGroup>

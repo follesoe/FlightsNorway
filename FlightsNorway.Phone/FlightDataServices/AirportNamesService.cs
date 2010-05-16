@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Xml;
 using System.Xml.Linq;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+
 using FlightsNorway.Phone.Model;
 
 namespace FlightsNorway.Phone.FlightDataServices
 {
-    public class AirportNamesService
+    public class AirportNamesService : IGetAirports
     {
         private readonly Uri _serviceUrl;
 
