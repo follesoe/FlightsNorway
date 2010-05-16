@@ -15,8 +15,14 @@ namespace FlightsNorway.Phone.Tests.Stubs
 
         public List<Flight> FlightsToReturn { get; set; }
 
+        public bool GetFlightsFromWasCalled;
+        public Airport FromAirport;
+
         public IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport)
         {
+            FromAirport = fromAirport;
+            GetFlightsFromWasCalled = true;
+
             var allFlights = new List<IEnumerable<Flight>> { FlightsToReturn };
             return allFlights.ToObservable();
         }

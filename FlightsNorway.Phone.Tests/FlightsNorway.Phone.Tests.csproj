@@ -83,6 +83,7 @@
     <Compile Include="Stubs\FlightsServiceStub.cs" />
     <Compile Include="Tags.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
+    <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
