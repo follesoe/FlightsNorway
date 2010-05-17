@@ -32,6 +32,21 @@ namespace FlightsNorway.Phone.Tests.Services
             objectStore.Load<Airport>("selected_airport");
         }
 
+        [TestMethod, Tag(Tags.Services)]
+        public void Can_verify_that_an_object_do_not_exists()
+        {
+            Assert.IsFalse(objectStore.FileExists("some_file"));
+        }
+
+        [TestMethod, Tag(Tags.Services)]
+        public void Can_verify_that_an_object_do_exists()
+        {
+            objectStore.Save(new Airport("LKL", "Lakselv"), "some_file");
+            bool exists = objectStore.FileExists("some_file");
+            objectStore.Delete("some_file");
+            Assert.IsTrue(exists);
+        }
+
         [TestInitialize]
         public void Setup()
         {

@@ -45,5 +45,10 @@ namespace FlightsNorway.Phone.Services
         {
             _isoStore.DeleteFile(RootDirectory + "\\" + fileName);
         }
+
+        public bool FileExists(string fileName)
+        {
+            return _isoStore.FileExists(RootDirectory + "\\" + fileName);
+        }
     }
 }
