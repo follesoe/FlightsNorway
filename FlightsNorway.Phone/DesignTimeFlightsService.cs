@@ -30,23 +30,47 @@ namespace FlightsNorway.Phone
 
         private static IEnumerable<Flight> CreateDepartures()
         {         
-            for(int i = 0; i < 5; ++i)
+            for(int i = 0; i < 6; ++i)
             {
                 var flight = new Flight(GetRandomAirline(), GetRandomAirport());
                 flight.FlightId = flight.Airline.Code + "12" + i;
                 flight.Direction = Direction.Depature;
                 flight.ScheduledTime = new DateTime(2010, 1, 1, 10 + i, 15, 0);
+                flight.FlightStatus = GetRandomDepartureStatus();
                 yield return flight;
             }
 
-            for (int i = 0; i < 5; ++i)
+            for (int i = 0; i < 6; ++i)
             {
                 var flight = new Flight(GetRandomAirline(), GetRandomAirport());
                 flight.FlightId = flight.Airline.Code + "12" + i;
                 flight.Direction = Direction.Arrival;
                 flight.ScheduledTime = new DateTime(2010, 1, 1, 10 + i, 15, 0);
+                flight.FlightStatus = GetRandomArrivalStatus();
                 yield return flight;
             }
+        }
+
+        private static FlightStatus GetRandomDepartureStatus()
+        {
+            var status = new FlightStatus();
+            status.StatusTime = DateTime.Now;
+
+            status.Status.StatusTextNorwegian = 
+                _random.Next(0, 100) > 50 ? "Boarding" : "Gå til gate";
+
+            return status;
+        }
+
+        private static FlightStatus GetRandomArrivalStatus()
+        {
+            var status = new FlightStatus();
+            status.StatusTime = DateTime.Now;
+
+            status.Status.StatusTextNorwegian =
+                _random.Next(0, 100) > 50 ? "Landet" : "Ny tid";
+
+            return status;
         }
 
         private static Airport GetRandomAirport()
