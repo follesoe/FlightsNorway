@@ -1,5 +1,6 @@
 ﻿using System.Linq;
-
+using FlightsNorway.Phone.Model;
+using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.ViewModels;
 using FlightsNorway.Phone.FlightDataServices;
 
@@ -23,6 +24,17 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         public void First_airport_in_list_should_be_option_to_select_nearest()
         {
             Assert.AreEqual("Nærmeste flyplass", viewModel.Airports[0].Name);
+        }
+
+        [TestMethod, Tag(Tags.ViewModel)]
+        public void Saves_selected_airport()
+        {
+            objectStore.Delete("selected_airport");
+            viewModel.SaveCommand.Execute(null);
+
+            var airport = objectStore.Load<Airport>("selected_airport");
+
+            Assert.AreEqual(viewModel.SelectedAirport, airport);
         }
 
         [TestMethod, Tag(Tags.ViewModel)]
@@ -54,11 +66,13 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         [TestInitialize]
         public void Setup()
         {
+            objectStore = new ObjectStore();
             airportsService = new AirportNamesService();
             viewModel = new AirportsViewModel(airportsService);
         }
 
         private AirportNamesService airportsService;
         private AirportsViewModel viewModel;
+        private ObjectStore objectStore;
     }
 }

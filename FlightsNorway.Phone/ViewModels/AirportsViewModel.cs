@@ -1,7 +1,9 @@
 ﻿using System.Windows.Input;
 using System.Collections.ObjectModel;
-using FlightsNorway.Phone.Extensions;
+
 using FlightsNorway.Phone.Model;
+using FlightsNorway.Phone.Services;
+using FlightsNorway.Phone.Extensions;
 using FlightsNorway.Phone.FlightDataServices;
 
 using GalaSoft.MvvmLight;
@@ -37,7 +39,7 @@ namespace FlightsNorway.Phone.ViewModels
         public AirportsViewModel(IGetAirports airportsService)
         {
             Airports = new ObservableCollection<Airport>();
-            Airports.Add(new NearestAirport());
+            Airports.Add(new Airport("NEAREST", "Nærmeste flyplass"));
             Airports.AddRange(airportsService.GetNorwegianAirports());
 
             SaveCommand = new RelayCommand(OnSave);
@@ -45,6 +47,9 @@ namespace FlightsNorway.Phone.ViewModels
 
         private void OnSave()
         {
+            var objectStore = new ObjectStore();
+            objectStore.Save(SelectedAirport, "selected_airport");
+
             Messenger.Default.Send(new AirportSelectedMessage(SelectedAirport));
         }
     }

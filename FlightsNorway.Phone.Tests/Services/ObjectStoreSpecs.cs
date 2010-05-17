@@ -1,4 +1,5 @@
-﻿using FlightsNorway.Phone.Model;
+﻿using System.IO;
+using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.Services;
 
 using Microsoft.Silverlight.Testing;
@@ -20,6 +21,15 @@ namespace FlightsNorway.Phone.Tests.Services
 
             Assert.AreEqual(airport.Code, airportRead.Code);
             Assert.AreEqual(airport.Name, airportRead.Name);
+        }
+
+        [TestMethod, Tag(Tags.Services), ExpectedException(typeof(FileNotFoundException))]
+        public void Can_delete_an_object()
+        {
+            var airport = new Airport("LKL", "Lakselv");
+            objectStore.Save(airport, "selected_airport");
+            objectStore.Delete("selected_airport");
+            objectStore.Load<Airport>("selected_airport");
         }
 
         [TestInitialize]
