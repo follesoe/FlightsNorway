@@ -38,15 +38,14 @@ namespace FlightsNorway.Phone
         }
 
         private object Resolve(Type type)
-        {
-            if (!_typeRegistrations.ContainsKey(type))
-            {
-                if (!_instanceRegistrations.ContainsKey(type))
-                    throw new NotSupportedException("Cannot find registration for type " + type.FullName + ".");
+        {   
+            if(!_typeRegistrations.ContainsKey(type) && 
+               !_instanceRegistrations.ContainsKey(type))
+                throw new NotSupportedException("Cannot find registration for type " + type.FullName + ".");
 
+            if(_instanceRegistrations.ContainsKey(type))
                 return _instanceRegistrations[type];
-            }
-
+     
             var createdType = _typeRegistrations[type];
 
             ConstructorInfo[] constructors = createdType.GetConstructors();
@@ -66,7 +65,10 @@ namespace FlightsNorway.Phone
                 constructorParameters.Add(Resolve(parameter.ParameterType));
             }
 
-            return Activator.CreateInstance(createdType, constructorParameters.ToArray());
+            var instance = Activator.CreateInstance(createdType, constructorParameters.ToArray());
+            _instanceRegistrations.Add(type, instance);
+
+            return instance;
         }
 
         private bool DoesRegistrationExist<T>()

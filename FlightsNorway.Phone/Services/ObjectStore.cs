@@ -6,17 +6,19 @@ namespace FlightsNorway.Phone.Services
 {
     public class ObjectStore
     {
+        private const string RootDirectory = "FlightsNorway";
+
         public void Save<T>(T item, string fileName)
         {
             var isoStore = IsolatedStorageFile.GetUserStoreForApplication();
             
-            if(!isoStore.DirectoryExists("FlightsNorway"))
+            if(!isoStore.DirectoryExists(RootDirectory))
             {
-                isoStore.CreateDirectory("FlightsNorway");
+                isoStore.CreateDirectory(RootDirectory);
             }
 
             var serializer = new DataContractSerializer(typeof(T));
-            using(var stream = new IsolatedStorageFileStream("FlightsNorway\\" + fileName, FileMode.OpenOrCreate, isoStore))
+            using (var stream = new IsolatedStorageFileStream(RootDirectory + "\\" + fileName, FileMode.OpenOrCreate, isoStore))
             {
                 serializer.WriteObject(stream, item);
                 stream.Close();
@@ -27,7 +29,7 @@ namespace FlightsNorway.Phone.Services
         {
             var isoStore = IsolatedStorageFile.GetUserStoreForApplication();
             var serializer = new DataContractSerializer(typeof(T));
-            using (var stream = new IsolatedStorageFileStream("FlightsNorway\\" + fileName, FileMode.Open, isoStore))
+            using (var stream = new IsolatedStorageFileStream(RootDirectory + "\\" + fileName, FileMode.Open, isoStore))
             {
                 return (T)serializer.ReadObject(stream);                
             }               
