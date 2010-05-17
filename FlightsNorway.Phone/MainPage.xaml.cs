@@ -1,4 +1,6 @@
-﻿using Microsoft.Phone.Controls;
+﻿using FlightsNorway.Phone.ViewModels;
+using GalaSoft.MvvmLight.Messaging;
+using Microsoft.Phone.Controls;
 
 namespace FlightsNorway.Phone
 {
@@ -10,12 +12,12 @@ namespace FlightsNorway.Phone
 
             SupportedOrientations = SupportedPageOrientation.Portrait | SupportedPageOrientation.Landscape;
 
-            Loaded += MainPage_Loaded;
+            Messenger.Default.Register<AirportSelectedMessage>(this, OnAirportSelected);
         }
 
-        private void MainPage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void OnAirportSelected(AirportSelectedMessage message)
         {
-            
+            _mainPivot.GoToMenu(0);
         }
     }
 }

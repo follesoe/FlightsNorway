@@ -387,7 +387,7 @@ namespace SmartyPantsPivotLibrary
             return PivotTitleStackPanel.Children[index] as TextBlock;
         }
 
-        private int GetMenuIndex(MenuTitleEntry mte)
+        public int GetMenuIndex(MenuTitleEntry mte)
         {
             int index = 0;
             foreach (TextBlock tb in PivotTitleStackPanel.Children)
@@ -402,7 +402,7 @@ namespace SmartyPantsPivotLibrary
             throw new InvalidProgramException("GetMenuIndex() - Unable to find the menu provided");
         }
 
-        private void GoToMenu(int index)
+        public void GoToMenu(int index)
         {
             // figure out how far from the left we are, and offset that amount (thus moving it to the leftmost position)
             TextBlock selectedMenu = PivotTitleStackPanel.Children[index] as TextBlock;
