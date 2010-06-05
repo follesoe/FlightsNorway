@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using FlightsNorway.Phone.Model;
+using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.FlightDataServices;
 
 using GalaSoft.MvvmLight;
@@ -13,6 +14,7 @@ namespace FlightsNorway.Phone.ViewModels
     public class FlightsViewModel : ViewModelBase
     {
         private readonly IGetFlights _flightsService;
+        private readonly IStoreObjects _objectStore;
 
         private Airport _selectedAirport;
 
@@ -31,17 +33,29 @@ namespace FlightsNorway.Phone.ViewModels
         public ObservableCollection<Flight> Arrivals { get; private set; }
         public ObservableCollection<Flight> Departures { get; private set; }
 
-        public FlightsViewModel(): this(new FlightsService())
+        public FlightsViewModel(): this(new FlightsService(), new ObjectStore())
         {            
         }
 
-        public FlightsViewModel(IGetFlights flightsService)
+        public FlightsViewModel(IGetFlights flightsService, IStoreObjects objectStore)
         {
             Arrivals = new ObservableCollection<Flight>();
             Departures = new ObservableCollection<Flight>();
 
+            _objectStore = objectStore;
             _flightsService = flightsService;
+
             Messenger.Default.Register<AirportSelectedMessage>(this, OnAirportSelected);
+
+            LoadSelectedAirportFromDisk();
+        }
+
+        private void LoadSelectedAirportFromDisk()
+        {
+            if(_objectStore.FileExists(ObjectStore.SelectedAirportFilename))
+            {
+                SelectedAirport = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
+            }
         }
 
         private void OnAirportSelected(AirportSelectedMessage message)

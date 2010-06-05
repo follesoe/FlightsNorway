@@ -4,9 +4,10 @@ using System.Runtime.Serialization;
 
 namespace FlightsNorway.Phone.Services
 {
-    public class ObjectStore
+    public class ObjectStore : IStoreObjects
     {
         private const string RootDirectory = "FlightsNorway";
+        public const string SelectedAirportFilename = "selected_airport";
         private readonly IsolatedStorageFile _isoStore;
 
         public ObjectStore()

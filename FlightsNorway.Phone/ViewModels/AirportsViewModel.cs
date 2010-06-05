@@ -48,7 +48,7 @@ namespace FlightsNorway.Phone.ViewModels
         private void OnSave()
         {
             var objectStore = new ObjectStore();
-            objectStore.Save(SelectedAirport, "selected_airport");
+            objectStore.Save(SelectedAirport, ObjectStore.SelectedAirportFilename);
 
             Messenger.Default.Send(new AirportSelectedMessage(SelectedAirport));
         }

@@ -87,6 +87,7 @@
     <Compile Include="Services\ObjectStoreSpecs.cs" />
     <Compile Include="Stubs\AirportNamesServiceStub.cs" />
     <Compile Include="Stubs\FlightsServiceStub.cs" />
+    <Compile Include="Stubs\ObjectStoreMock.cs" />
     <Compile Include="Tags.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
     <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />

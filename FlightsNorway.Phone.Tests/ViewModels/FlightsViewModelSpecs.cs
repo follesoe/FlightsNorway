@@ -59,6 +59,17 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             EnqueueTestComplete();
         }
 
+        [TestMethod, Tag(Tags.ViewModel)]
+        public void Loads_selected_airport_if_saved_to_disk()
+        {
+            objectStore.FileExistsShouldReturn = true;
+            objectStore.LoadShouldReturn = lakselvAirport;
+
+            viewModel = new FlightsViewModel(flightsService, objectStore);
+            
+            Assert.AreEqual(lakselvAirport.Code, viewModel.SelectedAirport.Code);
+        }
+
         [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.ViewModel)]
         public void Clears_the_lists_if_a_new_airport_is_selected()
         {
@@ -81,12 +92,15 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             lakselvAirport = new Airport("LKL", "Lakselv");
             trondheimAirport = new Airport("TRD", "Trondheim");
             flightsService = new FlightsServiceStub();
-            viewModel = new FlightsViewModel(flightsService);
+            objectStore = new ObjectStoreMock();
+            viewModel = new FlightsViewModel(flightsService, objectStore);
         }
 
         private Airport lakselvAirport;
         private Airport trondheimAirport;
         private FlightsServiceStub flightsService;
         private FlightsViewModel viewModel;
+        private ObjectStoreMock objectStore;
+        
     }
 }
