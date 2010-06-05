@@ -13,6 +13,7 @@ namespace FlightsNorway.Phone
         public LocationService()
         {
             _geoWatcher = new GeoCoordinateWatcher(GeoPositionAccuracy.Low);
+            
             _geoWatcher.StatusChanged += OnStatusChanged;           
         }
 
@@ -38,6 +39,7 @@ namespace FlightsNorway.Phone
                 default:
                     break;
             }
+            _geoWatcher.Stop();
         }
 
         private void OnPositionAvailable(GeoPosition<GeoCoordinate> position)

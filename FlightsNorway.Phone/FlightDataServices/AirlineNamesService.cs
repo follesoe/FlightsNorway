@@ -3,6 +3,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
+
 using FlightsNorway.Phone.Model;
 
 namespace FlightsNorway.Phone.FlightDataServices

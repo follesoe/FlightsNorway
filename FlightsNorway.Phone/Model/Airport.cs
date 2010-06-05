@@ -35,5 +35,12 @@
         {
             return Code.GetHashCode();
         }
+
+        private static readonly Airport _nearest = new Airport("NEAREST", "Nærmeste flyplass");
+
+        public static Airport Nearest
+        {
+            get { return _nearest; }    
+        }
     }
 }

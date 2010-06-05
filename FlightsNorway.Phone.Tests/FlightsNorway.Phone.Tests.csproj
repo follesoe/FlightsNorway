@@ -84,9 +84,12 @@
     <Compile Include="Model\AirportSpec.cs" />
     <Compile Include="Model\FlightSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\NearestAirportServiceSpecs.cs" />
     <Compile Include="Services\ObjectStoreSpecs.cs" />
     <Compile Include="Stubs\AirportNamesServiceStub.cs" />
+    <Compile Include="Stubs\FindNearestCityStub.cs" />
     <Compile Include="Stubs\FlightsServiceStub.cs" />
+    <Compile Include="Stubs\LocationServiceMock.cs" />
     <Compile Include="Stubs\ObjectStoreMock.cs" />
     <Compile Include="Tags.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />

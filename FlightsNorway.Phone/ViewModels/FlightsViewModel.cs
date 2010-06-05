@@ -16,6 +16,9 @@ namespace FlightsNorway.Phone.ViewModels
         private readonly IGetFlights _flightsService;
         private readonly IStoreObjects _objectStore;
 
+        public ObservableCollection<Flight> Arrivals { get; private set; }
+        public ObservableCollection<Flight> Departures { get; private set; }
+
         private Airport _selectedAirport;
 
         public Airport SelectedAirport
@@ -29,9 +32,6 @@ namespace FlightsNorway.Phone.ViewModels
                 AirportSelected(_selectedAirport);
             }
         }
-
-        public ObservableCollection<Flight> Arrivals { get; private set; }
-        public ObservableCollection<Flight> Departures { get; private set; }
 
         public FlightsViewModel(): this(new FlightsService(), new ObjectStore())
         {            

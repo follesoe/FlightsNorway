@@ -39,7 +39,7 @@ namespace FlightsNorway.Phone.ViewModels
         public AirportsViewModel(IGetAirports airportsService)
         {
             Airports = new ObservableCollection<Airport>();
-            Airports.Add(new Airport("NEAREST", "Nærmeste flyplass"));
+            Airports.Add(Airport.Nearest);
             Airports.AddRange(airportsService.GetNorwegianAirports());
 
             SaveCommand = new RelayCommand(OnSave);
