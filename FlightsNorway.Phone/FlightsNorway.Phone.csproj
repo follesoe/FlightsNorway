@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Navigation" />
+    <Reference Include="Microsoft.Phone.Shell" />
     <Reference Include="Ninject">
       <HintPath>..\lib\Ninject\Unsigned\debug\Ninject.dll</HintPath>
     </Reference>
@@ -151,6 +152,15 @@
     </Content>
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\airport.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\arrivals.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Icons\departures.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
