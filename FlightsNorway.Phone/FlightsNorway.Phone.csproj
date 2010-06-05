@@ -53,6 +53,9 @@
     </Reference>
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Navigation" />
+    <Reference Include="Ninject">
+      <HintPath>..\lib\Ninject\Unsigned\debug\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System.Device.Location" />
     <Reference Include="System.Observable" />
     <Reference Include="System.Reactive" />
@@ -76,7 +79,6 @@
     <Compile Include="Extensions\IEnumerableExtesnions.cs" />
     <Compile Include="IGetCurrentLocation.cs" />
     <Compile Include="LocationService.cs" />
-    <Compile Include="MicroContainer.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />
     <Compile Include="Model\AirlineDictionary.cs" />

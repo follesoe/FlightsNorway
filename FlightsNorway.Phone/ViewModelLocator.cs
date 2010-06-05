@@ -1,39 +1,41 @@
-﻿using FlightsNorway.Phone.ViewModels;
+﻿using FlightsNorway.Phone.Services;
+using FlightsNorway.Phone.ViewModels;
 using FlightsNorway.Phone.FlightDataServices;
 
+using Ninject;
 using GalaSoft.MvvmLight;
 
 namespace FlightsNorway.Phone
 {
     public class ViewModelLocator
     {
-        private readonly MicroContainer _container;
+        private readonly StandardKernel _container;
 
         public AirportsViewModel AirportsViewModel
         {
-            get { return _container.Resolve<AirportsViewModel>(); }
+            get { return _container.Get<AirportsViewModel>(); }
         }
 
         public FlightsViewModel FlightsViewModel
         {
-            get { return _container.Resolve<FlightsViewModel>(); }
+            get { return _container.Get<FlightsViewModel>(); }
         }
 
         public ViewModelLocator()
         {
-            _container = new MicroContainer();
-
-            _container.Register<AirportsViewModel, AirportsViewModel>();
-            _container.Register<FlightsViewModel, FlightsViewModel>();
-            _container.Register<IGetAirports, AirportNamesService>();
+            _container = new StandardKernel();
+            _container.Bind<AirportsViewModel>().To<AirportsViewModel>().InSingletonScope();
+            _container.Bind<FlightsViewModel>().To<FlightsViewModel>().InSingletonScope();
+            _container.Bind<IGetAirports>().To<AirportNamesService>().InSingletonScope();
+            _container.Bind<IStoreObjects>().To<ObjectStore>().InSingletonScope();
 
             if(ViewModelBase.IsInDesignModeStatic)
             {
-                _container.Register<IGetFlights, DesignTimeFlightsService>();
+                _container.Bind<IGetFlights>().To<DesignTimeFlightsService>().InSingletonScope();
             }
             else
             {
-                _container.Register<IGetFlights, FlightsService>();
+                _container.Bind<IGetFlights>().To<FlightsService>().InSingletonScope();
             }            
         }
     }
