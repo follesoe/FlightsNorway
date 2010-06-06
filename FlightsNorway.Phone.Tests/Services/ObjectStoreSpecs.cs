@@ -15,10 +15,9 @@ namespace FlightsNorway.Phone.Tests.Services
         {
             var airport = new Airport("LKL", "Lakselv");
 
-            objectStore.Save(airport, "selected_airport");
-            var airportRead = objectStore.Load<Airport>("selected_airport");
+            objectStore.Save(airport, ObjectStore.SelectedAirportFilename);
+            var airportRead = objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
            
-
             Assert.AreEqual(airport.Code, airportRead.Code);
             Assert.AreEqual(airport.Name, airportRead.Name);
         }
@@ -27,9 +26,9 @@ namespace FlightsNorway.Phone.Tests.Services
         public void Can_delete_an_object()
         {
             var airport = new Airport("LKL", "Lakselv");
-            objectStore.Save(airport, "selected_airport");
-            objectStore.Delete("selected_airport");
-            objectStore.Load<Airport>("selected_airport");
+            objectStore.Save(airport, ObjectStore.SelectedAirportFilename);
+            objectStore.Delete(ObjectStore.SelectedAirportFilename);
+            objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
         }
 
         [TestMethod, Tag(Tags.Services)]

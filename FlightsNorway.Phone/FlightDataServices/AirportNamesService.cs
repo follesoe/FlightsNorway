@@ -28,11 +28,7 @@ namespace FlightsNorway.Phone.FlightDataServices
 
             return from airportNames in xml.Elements("airportNames")
                    from airport in airportNames.Elements("airportName")
-                   select new Airport
-                              {
-                                  Code = airport.Attribute("code").Value,
-                                  Name = airport.Attribute("name").Value
-                              };
+                   select new Airport(airport.Attribute("code").Value, airport.Attribute("name").Value);                              
         }
 
         public Airport GetNearestAirport(Location home)

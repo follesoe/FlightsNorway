@@ -13,9 +13,11 @@ using GalaSoft.MvvmLight.Messaging;
 namespace FlightsNorway.Phone.ViewModels
 {
     public class AirportsViewModel : ViewModelBase
-    {
+    {        
         public ObservableCollection<Airport> Airports { get; private set; }
         public ICommand SaveCommand { get; private set; }
+
+        private readonly IStoreObjects _objectStore;
 
         private Airport _selectedAirport;
 
@@ -31,25 +33,26 @@ namespace FlightsNorway.Phone.ViewModels
             }
         }
 
-        public AirportsViewModel() : this(new AirportNamesService())
+        public AirportsViewModel(IGetAirports airportsService, IStoreObjects objectStore)
         {
-            
-        }
-
-        public AirportsViewModel(IGetAirports airportsService)
-        {
+            _objectStore = objectStore;
             Airports = new ObservableCollection<Airport>();
             Airports.Add(Airport.Nearest);
             Airports.AddRange(airportsService.GetNorwegianAirports());
 
             SaveCommand = new RelayCommand(OnSave);
-        }      
+            LoadSelectedAirportFromDisk();
+        }
+
+        private void LoadSelectedAirportFromDisk()
+        {
+            if (!_objectStore.FileExists(ObjectStore.SelectedAirportFilename)) return;
+            SelectedAirport = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
+        }
 
         private void OnSave()
         {
-            var objectStore = new ObjectStore();
-            objectStore.Save(SelectedAirport, ObjectStore.SelectedAirportFilename);
-
+            _objectStore.Save(SelectedAirport, ObjectStore.SelectedAirportFilename);
             Messenger.Default.Send(new AirportSelectedMessage(SelectedAirport));
         }
     }

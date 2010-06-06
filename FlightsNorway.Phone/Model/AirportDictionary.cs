@@ -9,8 +9,7 @@ namespace FlightsNorway.Phone.Model
         {
             get
             {
-                if (ContainsKey(code)) return base[code];
-                return new Airport { Code = code, Name = "Unknown" };
+                return ContainsKey(code) ? base[code] : new Airport(code, "Unknown");
             }
             set { base[code] = value; }
         }

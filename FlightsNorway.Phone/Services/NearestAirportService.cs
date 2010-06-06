@@ -22,7 +22,7 @@ namespace FlightsNorway.Phone.Services
             Messenger.Default.Register(this, (FindNearestAirportMessage m) => FindNearestAirport());
         }
 
-        public void FindNearestAirport()
+        private void FindNearestAirport()
         {
             var positionAsObservable =
                 Observable.FromEvent<GeoPositionChangedEventArgs<GeoCoordinate>>(

@@ -17,7 +17,7 @@ namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
         {
             var flightsList = new List<Flight>();
             
-            EnqueueCallback(() => service.GetFlightsFrom(new Airport { Code = "TRD" }).Subscribe(flightsList.AddRange));
+            EnqueueCallback(() => service.GetFlightsFrom(new Airport("TRD", "Trondheim")).Subscribe(flightsList.AddRange));
             EnqueueConditional(() => flightsList.Count > 0);
             EnqueueCallback(() => AssertFlightsAreLoaded(flightsList));
             EnqueueCallback(() => Assert.IsTrue(service.Airports.Count > 0));

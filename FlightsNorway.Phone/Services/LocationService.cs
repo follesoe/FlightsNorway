@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Device.Location;
 
-namespace FlightsNorway.Phone
+namespace FlightsNorway.Phone.Services
 {
     public class LocationService : IGetCurrentLocation
     {

@@ -9,8 +9,8 @@ namespace FlightsNorway.Phone.UnitTests.Model
         [Test]
         public void Can_determine_that_two_airports_are_equal()
         {
-            var airport1 = new Airport {Code = "LKL", Name = "Lakselv"};
-            var airport2 = new Airport { Code = "LKL", Name = "Lakselv" };
+            var airport1 = new Airport("LKL", "Lakselv");
+            var airport2 = new Airport("LKL", "Lakselv");
 
             Assert.AreEqual(airport1, airport2);       
         }
@@ -18,7 +18,7 @@ namespace FlightsNorway.Phone.UnitTests.Model
         [Test]
         public void Can_display_airport_as_string()
         {
-            var airport = new Airport { Code = "LKL", Name = "Lakselv" };
+            var airport = new Airport("LKL", "Lakselv");
 
             Assert.AreEqual("LKL - Lakselv", airport.ToString());
         }

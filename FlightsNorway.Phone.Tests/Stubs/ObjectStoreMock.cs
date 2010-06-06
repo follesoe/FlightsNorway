@@ -1,31 +1,38 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using FlightsNorway.Phone.Services;
 
 namespace FlightsNorway.Phone.Tests.Stubs
 {
     public class ObjectStoreMock : IStoreObjects
-    {
-        public bool FileExistsShouldReturn;
-        public object LoadShouldReturn;
+    {        
+        private readonly Dictionary<string, object> _savedItems;
+
+        public ObjectStoreMock()
+        {
+            _savedItems = new Dictionary<string, object>();
+        }
 
         public void Save<T>(T item, string fileName)
         {
-            throw new NotImplementedException();
+            if (_savedItems.ContainsKey(fileName))
+                _savedItems[fileName] = item;
+            else
+                _savedItems.Add(fileName, item);
         }
 
         public T Load<T>(string fileName)
         {
-            return (T) LoadShouldReturn;
+            return (T)_savedItems[fileName];
         }
 
         public void Delete(string fileName)
         {
-            throw new NotImplementedException();
+            _savedItems.Remove(fileName);
         }
 
         public bool FileExists(string fileName)
         {
-            return FileExistsShouldReturn;
+            return _savedItems.ContainsKey(fileName);
         }
     }
 }

@@ -52,9 +52,16 @@ namespace FlightsNorway.Phone.ViewModels
 
         private void LoadSelectedAirportFromDisk()
         {
-            if(_objectStore.FileExists(ObjectStore.SelectedAirportFilename))
+            if (!_objectStore.FileExists(ObjectStore.SelectedAirportFilename)) return;
+
+            var airport = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
+            if(airport.Equals(Airport.Nearest))
             {
-                SelectedAirport = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
+                Messenger.Default.Send(new FindNearestAirportMessage());
+            }
+            else
+            {
+                SelectedAirport = airport;    
             }
         }
 

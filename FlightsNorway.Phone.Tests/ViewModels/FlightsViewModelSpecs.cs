@@ -1,4 +1,5 @@
 ﻿using FlightsNorway.Phone.Model;
+using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.ViewModels;
 using FlightsNorway.Phone.Tests.Stubs;
 using FlightsNorway.Phone.Tests.Builders;
@@ -62,12 +63,24 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         [TestMethod, Tag(Tags.ViewModel)]
         public void Loads_selected_airport_if_saved_to_disk()
         {
-            objectStore.FileExistsShouldReturn = true;
-            objectStore.LoadShouldReturn = lakselvAirport;
+            objectStore.Save(lakselvAirport, ObjectStore.SelectedAirportFilename);
 
             viewModel = new FlightsViewModel(flightsService, objectStore);
             
             Assert.AreEqual(lakselvAirport.Code, viewModel.SelectedAirport.Code);
+        }
+
+        [TestMethod, Tag(Tags.ViewModel)]
+        public void Finds_nearest_airport_if_option_is_selected()
+        {
+            objectStore.Save(Airport.Nearest, ObjectStore.SelectedAirportFilename);
+
+            bool findNearestWasPublished = false;
+            Messenger.Default.Register(this, (FindNearestAirportMessage m) => findNearestWasPublished = true);
+
+            viewModel = new FlightsViewModel(flightsService, objectStore);
+
+            Assert.IsTrue(findNearestWasPublished);
         }
 
         [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.ViewModel)]

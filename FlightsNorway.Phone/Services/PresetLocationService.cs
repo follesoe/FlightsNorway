@@ -2,15 +2,19 @@
 using System.Windows;
 using System.Threading;
 using System.Device.Location;
-using FlightsNorway.Phone.Services;
 
-namespace FlightsNorway.Phone.Tests.Stubs
+namespace FlightsNorway.Phone.Services
 {
-    public class LocationServiceMock : IGetCurrentLocation
+    public class PresetLocationService : IGetCurrentLocation
     {
         public event EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>> PositionAvailable;
 
-        public GeoCoordinate GeoCoordinateToReturn;
+        private readonly GeoCoordinate _currentLocation;
+
+        public PresetLocationService(double latitude, double longitude)
+        {
+            _currentLocation = new GeoCoordinate(latitude, longitude);
+        }
 
         public void GetPositionAsync()
         {
@@ -25,7 +29,7 @@ namespace FlightsNorway.Phone.Tests.Stubs
             Deployment.Current.Dispatcher.BeginInvoke(() =>
                 PositionAvailable(this,
                                 new GeoPositionChangedEventArgs<GeoCoordinate>(
-                                    new GeoPosition<GeoCoordinate>(DateTimeOffset.Now, GeoCoordinateToReturn))));
+                                    new GeoPosition<GeoCoordinate>(DateTimeOffset.Now, _currentLocation))));
 
         }
     }

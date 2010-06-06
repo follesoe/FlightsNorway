@@ -79,8 +79,8 @@
     <Compile Include="FlightDataServices\IGetAirports.cs" />
     <Compile Include="FlightDataServices\IGetFlights.cs" />
     <Compile Include="Extensions\IEnumerableExtesnions.cs" />
-    <Compile Include="IGetCurrentLocation.cs" />
-    <Compile Include="LocationService.cs" />
+    <Compile Include="Services\IGetCurrentLocation.cs" />
+    <Compile Include="Services\LocationService.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />
     <Compile Include="Model\AirlineDictionary.cs" />
@@ -104,6 +104,7 @@
     <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\NearestAirportService.cs" />
     <Compile Include="Services\ObjectStore.cs" />
+    <Compile Include="Services\PresetLocationService.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\AirportSelectedMessage.cs" />
     <Compile Include="ViewModels\AirportsViewModel.cs" />

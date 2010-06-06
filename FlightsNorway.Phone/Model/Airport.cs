@@ -1,9 +1,9 @@
-﻿using System;
-
-namespace FlightsNorway.Phone.Model
+﻿namespace FlightsNorway.Phone.Model
 {
     public class Airport
     {
+        public static readonly Airport Nearest = new Airport("NEAREST", "Nærmeste flyplass", -1, -1);
+
         public string Code { get; set; }
         public string Name { get; set; }
         public Location Location { get; set; }
@@ -44,13 +44,6 @@ namespace FlightsNorway.Phone.Model
         public override int GetHashCode()
         {
             return Code.GetHashCode();
-        }
-
-        private static readonly Airport _nearest = new Airport("NEAREST", "Nærmeste flyplass", -1, -1);
-
-        public static Airport Nearest
-        {
-            get { return _nearest; }    
         }
 
         public double DistanceFrom(Location otherLocation)
