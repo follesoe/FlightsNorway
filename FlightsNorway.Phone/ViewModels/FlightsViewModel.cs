@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -13,6 +14,7 @@ namespace FlightsNorway.Phone.ViewModels
 {
     public class FlightsViewModel : ViewModelBase
     {
+        private readonly IOpenCommunicationChannel _notificationService;
         private readonly IGetFlights _flightsService;
         private readonly IStoreObjects _objectStore;
 
@@ -33,21 +35,21 @@ namespace FlightsNorway.Phone.ViewModels
             }
         }
 
-        public FlightsViewModel(): this(new FlightsService(), new ObjectStore())
-        {            
-        }
-
-        public FlightsViewModel(IGetFlights flightsService, IStoreObjects objectStore)
+        public FlightsViewModel(IGetFlights flightsService, IStoreObjects objectStore, IOpenCommunicationChannel notificationService)
         {
             Arrivals = new ObservableCollection<Flight>();
             Departures = new ObservableCollection<Flight>();
 
             _objectStore = objectStore;
             _flightsService = flightsService;
+            _notificationService = notificationService;
+
+            _notificationService.OpenChannel(OnPushChannelOpened);
 
             Messenger.Default.Register<AirportSelectedMessage>(this, OnAirportSelected);
-
+            
             LoadSelectedAirportFromDisk();
+
         }
 
         private void LoadSelectedAirportFromDisk()
@@ -63,6 +65,11 @@ namespace FlightsNorway.Phone.ViewModels
             {
                 SelectedAirport = airport;    
             }
+        }
+
+        private static void OnPushChannelOpened(string url)
+        {
+            Debug.WriteLine("Push channel opened at: " + url);
         }
 
         private void OnAirportSelected(AirportSelectedMessage message)

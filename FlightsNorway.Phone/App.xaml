@@ -9,7 +9,7 @@
     
     <!--RootFrame points to and loads the first page of your application-->
     <Application.RootVisual>
-        <phoneNavigation:PhoneApplicationFrame x:Name="RootFrame" Source="/TravelHub.xaml"/>
+        <phoneNavigation:PhoneApplicationFrame x:Name="RootFrame" Source="/MainPage.xaml"/>
     </Application.RootVisual>
 
     <!-- Resources for following the Windows Phone design guidelines -->
@@ -564,6 +564,13 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <SolidColorBrush x:Key="MetroYellow" Color="#FFFFC425"/>
+        <Style x:Key="TimeTableHeading" TargetType="TextBlock">
+        	<Setter Property="Foreground" Value="{StaticResource MetroYellow}"/>
+        	<Setter Property="FontFamily" Value="Segoe WP Light"/>
+        	<Setter Property="FontSize" Value="24"/>
+        </Style>
+        <Style x:Key="TimeTableContent" TargetType="TextBlock"/>
         <!--****** PHONE TOGGLESWITCH TEMPLATE ******-->
     </Application.Resources>
 

@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.WP7"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
+    d:DesignHeight="600" d:DesignWidth="480">
     
     <UserControl.DataContext>
         <Binding Path="AirportsViewModel" Source="{StaticResource ViewModelLocator}" />
@@ -14,8 +14,8 @@
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="472" />
+            <RowDefinition Height="Auto" MinHeight="128" />
         </Grid.RowDefinitions>
         
         <ListBox 

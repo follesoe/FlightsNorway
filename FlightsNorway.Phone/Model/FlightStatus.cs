@@ -20,8 +20,8 @@ namespace FlightsNorway.Phone.Model
             Empty.Status = new Status();
             Empty.StatusTime = DateTime.Today;
             Empty.Status.Code = "NA";
-            Empty.Status.StatusTextEnglish = "Missing status information";
-            Empty.Status.StatusTextNorwegian = "Mangler status informasjon";
+            Empty.Status.StatusTextEnglish = "";
+            Empty.Status.StatusTextNorwegian = "";
         }
     }
 }

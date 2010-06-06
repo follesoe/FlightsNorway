@@ -65,7 +65,7 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         {
             objectStore.Save(lakselvAirport, ObjectStore.SelectedAirportFilename);
 
-            viewModel = new FlightsViewModel(flightsService, objectStore);
+            viewModel = new FlightsViewModel(flightsService, objectStore, notificationService);
             
             Assert.AreEqual(lakselvAirport.Code, viewModel.SelectedAirport.Code);
         }
@@ -78,7 +78,7 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             bool findNearestWasPublished = false;
             Messenger.Default.Register(this, (FindNearestAirportMessage m) => findNearestWasPublished = true);
 
-            viewModel = new FlightsViewModel(flightsService, objectStore);
+            viewModel = new FlightsViewModel(flightsService, objectStore, notificationService);
 
             Assert.IsTrue(findNearestWasPublished);
         }
@@ -106,7 +106,8 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             trondheimAirport = new Airport("TRD", "Trondheim");
             flightsService = new FlightsServiceStub();
             objectStore = new ObjectStoreMock();
-            viewModel = new FlightsViewModel(flightsService, objectStore);
+            notificationService = new NotificationServiceStub();
+            viewModel = new FlightsViewModel(flightsService, objectStore, notificationService);
         }
 
         private Airport lakselvAirport;
@@ -114,6 +115,6 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         private FlightsServiceStub flightsService;
         private FlightsViewModel viewModel;
         private ObjectStoreMock objectStore;
-        
+        private NotificationServiceStub notificationService;
     }
 }

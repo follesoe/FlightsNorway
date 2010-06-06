@@ -15,28 +15,30 @@
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>        
 
         <phone:PivotControl x:Name="_mainPivot" Grid.Row="0" Title="Flytider">
             <phone:PivotControl.Items>
-                <phone:PivotItem Header="annkomst">
+                <phone:PivotItem Title="flydata fra Avinor" Header="ankomst">
                     <phone:PivotItem.Content>
                         <views:ArrivalsView />
                     </phone:PivotItem.Content>
                 </phone:PivotItem>
-                <phone:PivotItem Header="avgang">
+                <phone:PivotItem Title="flydata fra Avinor" Header="avgang">
                     <phone:PivotItem.Content>
                         <views:DeparturesView />
                     </phone:PivotItem.Content>
                 </phone:PivotItem>
-                <phone:PivotItem Header="velg flyplass">
+                <phone:PivotItem Title="flydata fra Avinor" Header="velg flyplass">
                     <phone:PivotItem.Content>
                         <views:AirportsView />
                     </phone:PivotItem.Content>
                 </phone:PivotItem>
             </phone:PivotControl.Items>
         </phone:PivotControl>
+        
+        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="TRD" VerticalAlignment="Top" Margin="0,54,87,0" FontFamily="Segoe WP Semibold"/>
+        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="20:06" VerticalAlignment="Top" Margin="0,41,8,0" FontFamily="Segoe WP Semibold" Foreground="{StaticResource MetroYellow}" FontSize="32"/>
 
     </Grid>
     

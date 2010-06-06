@@ -78,6 +78,7 @@ namespace FlightsNorway.Phone.FlightDataServices
                        FlightStatus = ReadStatus(flight.Element("status")),
                        UniqueId = flight.AttributeValueOrEmpty("uniqueID"),
                        Gate = flight.ElementValueOrEmpty("gate"),
+                       Belt = flight.ElementValueOrEmpty("belt"),
                        Direction = ConvertToDirection(flight.Element("arr_dep")),
                        LastLeg = ConvertToFlightArea(flight.Element("dom_int")),
                        ScheduledTime = flight.ElementAsDateTime("schedule_time")

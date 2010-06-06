@@ -19,7 +19,7 @@ namespace FlightsNorway.Phone.UnitTests.ViewModels
         [SetUp]
         public void Setup()
         {
-            viewModel = new FlightsViewModel();             
+            
         }
 
         private FlightsViewModel viewModel;

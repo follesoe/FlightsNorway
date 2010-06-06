@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-
 using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.FlightDataServices;
 
-namespace FlightsNorway.Phone
+namespace FlightsNorway.Phone.DesignTimeData
 {
     public class DesignTimeFlightsService : IGetFlights
     {
@@ -36,6 +35,8 @@ namespace FlightsNorway.Phone
                 flight.FlightId = flight.Airline.Code + "12" + i;
                 flight.Direction = Direction.Depature;
                 flight.ScheduledTime = new DateTime(2010, 1, 1, 10 + i, 15, 0);
+                flight.Gate = GetRandomGate();
+                flight.Belt = GetRandomBelt();
                 flight.FlightStatus = GetRandomDepartureStatus();
                 yield return flight;
             }
@@ -46,7 +47,9 @@ namespace FlightsNorway.Phone
                 flight.FlightId = flight.Airline.Code + "12" + i;
                 flight.Direction = Direction.Arrival;
                 flight.ScheduledTime = new DateTime(2010, 1, 1, 10 + i, 15, 0);
-                flight.FlightStatus = GetRandomArrivalStatus();
+                flight.Gate = GetRandomGate();
+                flight.Belt = GetRandomBelt();
+                flight.FlightStatus = GetRandomArrivalStatus();                
                 yield return flight;
             }
         }
@@ -73,11 +76,21 @@ namespace FlightsNorway.Phone
             return status;
         }
 
+        private static string GetRandomGate()
+        {
+            return _random.Next(25, 39).ToString();
+        }
+
+        private static string GetRandomBelt()
+        {
+            return _random.Next(1, 6).ToString();
+        }
+
         private static Airport GetRandomAirport()
         {
             return _random.Next(0, 100) > 50 ? 
                 new Airport("TOS", "Tromsø") : 
-                new Airport("OSL", "Olso");
+                new Airport("OSL", "Oslo");
         }
 
         private static Airline GetRandomAirline()

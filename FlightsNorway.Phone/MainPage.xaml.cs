@@ -18,7 +18,7 @@ namespace FlightsNorway.Phone
         private void InitializeButtons()
         {
             ApplicationBar = new ApplicationBar();
-            ApplicationBar.Opacity = 1.0;
+            ApplicationBar.Opacity = 0.5;
             ApplicationBar.IsVisible = true;
 
             var arrivals = new ApplicationBarIconButton(new Uri("/Icons/arrivals.png", UriKind.Relative));

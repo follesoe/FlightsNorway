@@ -1,17 +1,51 @@
-﻿<UserControl 
-    x:Class="FlightsNorway.Phone.Views.ArrivalsView"
+﻿<UserControl
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:FlightsNorway.Phone.ViewModels" 
+    x:Class="FlightsNorway.Phone.Views.ArrivalsView"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
+    d:DesignHeight="600" d:DesignWidth="480">
+	<UserControl.Resources>
+        <viewModel:StringFormatValueConverter x:Key="StringFormatValueConverter"/>
+		<DataTemplate x:Key="ArrivalItemTemplate">
+			<Grid Height="31" VerticalAlignment="Center">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="78.842"/>
+					<ColumnDefinition Width="67.579"/>
+					<ColumnDefinition Width="36.632"/>
+					<ColumnDefinition Width="119.368"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding FlightId}" Style="{StaticResource TimeTableContent}"/>
+				<TextBlock Grid.Column="1" Margin="0,0,0.25,0" TextWrapping="Wrap" Text="{Binding ScheduledTime, ConverterParameter=HH:mm, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}"/>
+				<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="{Binding Airport.Name, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" />
+				<TextBlock Grid.Column="2" Margin="0" TextWrapping="Wrap" Text="{Binding Belt, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" HorizontalAlignment="Left"/>
+				<TextBlock Grid.Column="4" Margin="0,0,0,1" TextWrapping="Wrap" Text="{Binding FlightStatus.Status.StatusTextNorwegian, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" />
+			</Grid>
+		</DataTemplate>
+	</UserControl.Resources>
 
     <UserControl.DataContext>
         <Binding Path="FlightsViewModel" Source="{StaticResource ViewModelLocator}" />
     </UserControl.DataContext>
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
-        <ListBox ItemsSource="{Binding Path=Arrivals}" />
+        <ListBox ItemsSource="{Binding Arrivals}" FontFamily="Segoe WP SemiLight" FontSize="6" ItemTemplate="{StaticResource ArrivalItemTemplate}" Margin="0,36,0,0" />
+        <Grid Height="36" VerticalAlignment="Top" Margin="14,0,10,0">
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="80.105"/>
+        		<ColumnDefinition Width="47.369"/>
+        		<ColumnDefinition Width="58.737"/>
+        		<ColumnDefinition Width="113.052"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+        	<TextBlock Margin="0" TextWrapping="Wrap" Text="rutenr." Style="{StaticResource TimeTableHeading}"/>
+        	<TextBlock TextWrapping="Wrap" Text="tid" Style="{StaticResource TimeTableHeading}" Grid.Column="1"/>
+        	<TextBlock Margin="0" TextWrapping="Wrap" Text="belte" Style="{StaticResource TimeTableHeading}" Grid.Column="2"/>
+        	<TextBlock Margin="0" TextWrapping="Wrap" Text="fra" Style="{StaticResource TimeTableHeading}" Grid.Column="3"/>
+        	<TextBlock Margin="0" TextWrapping="Wrap" Text="merknader" Style="{StaticResource TimeTableHeading}" Grid.Column="4"/>
+        </Grid>
     </Grid>
 </UserControl>

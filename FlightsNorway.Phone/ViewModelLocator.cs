@@ -1,4 +1,5 @@
-﻿using FlightsNorway.Phone.Services;
+﻿using FlightsNorway.Phone.DesignTimeData;
+using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.ViewModels;
 using FlightsNorway.Phone.FlightDataServices;
 
@@ -26,19 +27,21 @@ namespace FlightsNorway.Phone
             _container = new StandardKernel();
             _container.Bind<AirportsViewModel>().To<AirportsViewModel>().InSingletonScope();
             _container.Bind<FlightsViewModel>().To<FlightsViewModel>().InSingletonScope();
-            _container.Bind<IGetAirports>().To<AirportNamesService>().InSingletonScope();
-            _container.Bind<IStoreObjects>().To<ObjectStore>().InSingletonScope();            
+            _container.Bind<IGetAirports>().To<AirportNamesService>().InSingletonScope();            
+            _container.Bind<IOpenCommunicationChannel>().To<NotificationService>();
 
             _container.Bind<IGetCurrentLocation>().ToConstant(new PresetLocationService(63.433281, 10.419294));
             _container.Bind<NearestAirportService>().ToConstant(
                 new NearestAirportService(_container.Get<IGetCurrentLocation>()));
-
+            
             if(ViewModelBase.IsInDesignModeStatic)
             {
+                _container.Bind<IStoreObjects>().To<DesignTimeObjectStore>().InSingletonScope();
                 _container.Bind<IGetFlights>().To<DesignTimeFlightsService>().InSingletonScope();
             }
             else
             {
+                _container.Bind<IStoreObjects>().To<ObjectStore>().InSingletonScope();
                 _container.Bind<IGetFlights>().To<FlightsService>().InSingletonScope();
             }            
         }
