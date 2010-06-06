@@ -4,7 +4,7 @@ using FlightsNorway.Phone.Services;
 
 namespace FlightsNorway.Phone.Tests.Stubs
 {
-    public class FindNearestCityStub : IFindNearestCity
+    public class DoReverseGeocodingStub : IDoReverseGeocoding
     {
         public string NearestCityToReturn;
 

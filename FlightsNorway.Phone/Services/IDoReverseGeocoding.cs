@@ -2,7 +2,7 @@
 
 namespace FlightsNorway.Phone.Services
 {
-    public interface IFindNearestCity
+    public interface IDoReverseGeocoding
     {
         IObservable<string> GetNearestCity(double latitude, double longitude);
     }

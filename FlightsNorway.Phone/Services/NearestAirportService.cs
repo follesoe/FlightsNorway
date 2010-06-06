@@ -12,13 +12,13 @@ namespace FlightsNorway.Phone.Services
     public class NearestAirportService
     {
         private readonly IGetAirports _airportsService;
-        private readonly IFindNearestCity _findCityService;
+        private readonly IDoReverseGeocoding _geocodeService;
         private readonly IGetCurrentLocation _locationService;
         
-        public NearestAirportService(IGetCurrentLocation locationService, IFindNearestCity findCityService)
+        public NearestAirportService(IGetCurrentLocation locationService, IDoReverseGeocoding geocodeService)
         {
             _locationService = locationService;
-            _findCityService = findCityService;
+            _geocodeService = geocodeService;
             _airportsService = new AirportNamesService();
             Messenger.Default.Register(this, (FindNearestAirportMessage m) => FindNearestAirport());
         }
@@ -34,7 +34,7 @@ namespace FlightsNorway.Phone.Services
                             select e.EventArgs.Position.Location;
 
             var airports = from location in locations
-                           from city in _findCityService.GetNearestCity(location.Latitude, location.Longitude)
+                           from city in _geocodeService.GetNearestCity(location.Latitude, location.Longitude)
                            from airport in _airportsService.GetNorwegianAirports().ToObservable()
                            where airport.Name == city
                            select airport;
