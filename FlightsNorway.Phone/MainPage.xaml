@@ -37,8 +37,8 @@
             </phone:PivotControl.Items>
         </phone:PivotControl>
         
-        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="TRD" VerticalAlignment="Top" Margin="0,54,87,0" FontFamily="Segoe WP Semibold"/>
-        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="20:06" VerticalAlignment="Top" Margin="0,41,8,0" FontFamily="Segoe WP Semibold" Foreground="{StaticResource MetroYellow}" FontSize="32"/>
+        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="TRD" VerticalAlignment="Top" Margin="0,54,61,0" FontFamily="Segoe WP Semibold"/>
+        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="20:06" VerticalAlignment="Top" Margin="0,54,8,0" FontFamily="Segoe WP Semibold" Foreground="{StaticResource MetroYellow}" FontSize="20"/>
 
     </Grid>
     
