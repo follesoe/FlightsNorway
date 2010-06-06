@@ -9,7 +9,7 @@
     
     <!--RootFrame points to and loads the first page of your application-->
     <Application.RootVisual>
-        <phoneNavigation:PhoneApplicationFrame x:Name="RootFrame" Source="/MainPage.xaml"/>
+        <phoneNavigation:PhoneApplicationFrame x:Name="RootFrame" Source="/TravelHub.xaml"/>
     </Application.RootVisual>
 
     <!-- Resources for following the Windows Phone design guidelines -->

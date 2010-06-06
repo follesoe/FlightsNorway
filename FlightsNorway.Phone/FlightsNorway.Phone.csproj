@@ -105,6 +105,9 @@
     <Compile Include="Services\NearestAirportService.cs" />
     <Compile Include="Services\ObjectStore.cs" />
     <Compile Include="Services\PresetLocationService.cs" />
+    <Compile Include="TravelHub.xaml.cs">
+      <DependentUpon>TravelHub.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\AirportSelectedMessage.cs" />
     <Compile Include="ViewModels\AirportsViewModel.cs" />
@@ -127,6 +130,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TravelHub.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

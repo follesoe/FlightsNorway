@@ -1,0 +1,32 @@
+﻿<navigation:PhoneApplicationPage 
+    x:Class="FlightsNorway.Phone.TravelHub"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:navigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Navigation"
+    xmlns:phone="clr-namespace:PhoneControls.Samples;assembly=Phone.Controls.Samples"
+    xmlns:views="clr-namespace:FlightsNorway.Phone.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"
+    mc:Ignorable="d" 
+    d:DesignHeight="800" 
+    d:DesignWidth="480">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+        <phone:PanoramaControl x:Name="_panorama" Title="flytider">
+            <phone:PanoramaItem Header="annkomst">
+                <views:ArrivalsView />
+            </phone:PanoramaItem>
+            <phone:PanoramaItem Header="avgang">
+                <views:DeparturesView />
+            </phone:PanoramaItem>
+            <phone:PanoramaItem Header="flyplasser">
+                <views:AirportsView />
+            </phone:PanoramaItem>
+        </phone:PanoramaControl>
+    </Grid>
+    
+</navigation:PhoneApplicationPage>
