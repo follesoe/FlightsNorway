@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4588418F-8873-4C98-931D-2C04133C0531}</ProjectGuid>
+    <ProjectGuid>{700BA959-2F8B-459F-802A-76836144765B}</ProjectGuid>
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartyPantsPivotLibrary</RootNamespace>
-    <AssemblyName>SmartyPantsPivotLibrary</AssemblyName>
+    <RootNamespace>Phone.Controls.Samples</RootNamespace>
+    <AssemblyName>Phone.Controls.Samples</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
     <TargetFrameworkProfile>WindowsPhone</TargetFrameworkProfile>
@@ -18,13 +18,15 @@
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20310.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <OutputPath>Bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -33,8 +35,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Bin\Release</OutputPath>
-    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <OutputPath>Bin\Release\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -51,25 +53,24 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MenuTitleEntry.cs" />
-    <Compile Include="PivotControl.xaml.cs">
-      <DependentUpon>PivotControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PivotPage.cs" />
+    <Compile Include="Common\ItemCollectionExtensions.cs" />
+    <Compile Include="Common\ManipulationHook.cs" />
+    <Compile Include="Common\ManipulationTracker.cs" />
+    <Compile Include="Common\ScrollCompletedEvent.cs" />
+    <Compile Include="Common\UIElementCollectionExtensions.cs" />
+    <Compile Include="Panorama\PanoramaControl.cs" />
+    <Compile Include="Panorama\PanoramaView.cs" />
+    <Compile Include="Panorama\PanoramaItem.cs" />
+    <Compile Include="Pivot\PivotControl.cs" />
+    <Compile Include="Pivot\PivotItem.cs" />
+    <Compile Include="Pivot\PivotView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransitionStoryboardHelper.cs" />
+    <Compile Include="Common\WriteableBitmapExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="App.xaml">
+    <Page Include="Themes\generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="PivotControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

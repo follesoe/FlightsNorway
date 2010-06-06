@@ -165,13 +165,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SmartyPantsPivotLibrary\SmartyPantsPivotLibrary.csproj">
-      <Project>{4588418F-8873-4C98-931D-2C04133C0531}</Project>
-      <Name>SmartyPantsPivotLibrary</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <ProjectReference Include="..\Phone.Controls.Samples\Phone.Controls.Samples.csproj">
+      <Project>{700BA959-2F8B-459F-802A-76836144765B}</Project>
+      <Name>Phone.Controls.Samples</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

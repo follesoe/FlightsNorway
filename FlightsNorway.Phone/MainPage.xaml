@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:FlightsNorway.Phone.Views"
-    xmlns:phone="clr-namespace:SmartyPantsPivotLibrary;assembly=SmartyPantsPivotLibrary"
+    xmlns:phone="clr-namespace:PhoneControls.Samples;assembly=Phone.Controls.Samples"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -16,39 +16,28 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>        
 
-        <!--TitleGrid is the name of the application and page title-->
-        <Grid x:Name="TitleGrid" Grid.Row="0">
-            <TextBlock Text="FLYTIDER" x:Name="textBlockPageTitle" Style="{StaticResource PhoneTextPageTitle1Style}"/>            
-        </Grid>
+        <phone:PivotControl x:Name="_mainPivot" Grid.Row="0" Title="Flytider">
+            <phone:PivotControl.Items>
+                <phone:PivotItem Header="annkomst">
+                    <phone:PivotItem.Content>
+                        <views:ArrivalsView />
+                    </phone:PivotItem.Content>
+                </phone:PivotItem>
+                <phone:PivotItem Header="avgang">
+                    <phone:PivotItem.Content>
+                        <views:DeparturesView />
+                    </phone:PivotItem.Content>
+                </phone:PivotItem>
+                <phone:PivotItem Header="velg flyplass">
+                    <phone:PivotItem.Content>
+                        <views:AirportsView />
+                    </phone:PivotItem.Content>
+                </phone:PivotItem>
+            </phone:PivotControl.Items>
+        </phone:PivotControl>
 
-        <!--ContentGrid is empty. Place new content here-->
-        <Grid x:Name="ContentGrid" Grid.Row="1">
-            <phone:PivotControl x:Name="_mainPivot">
-                <phone:PivotControl.PivotPages>
-                    
-                    <phone:PivotPage PageTitle="annkomst">
-                        <phone:PivotPage.Content>
-                            <views:ArrivalsView />
-                        </phone:PivotPage.Content>
-                    </phone:PivotPage>
-
-                    <phone:PivotPage PageTitle="avgang">
-                        <phone:PivotPage.Content>
-                            <views:DeparturesView />
-                        </phone:PivotPage.Content>
-                    </phone:PivotPage>
-
-                    <phone:PivotPage PageTitle="velg flyplass">
-                        <phone:PivotPage.Content>
-                            <views:AirportsView />
-                        </phone:PivotPage.Content>
-                    </phone:PivotPage>
-
-                </phone:PivotControl.PivotPages>
-            </phone:PivotControl>
-        </Grid>
     </Grid>
     
 </phoneNavigation:PhoneApplicationPage>
