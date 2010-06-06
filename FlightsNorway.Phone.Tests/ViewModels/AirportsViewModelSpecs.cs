@@ -51,7 +51,7 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         }
         
         [TestMethod, Tag(Tags.ViewModel)]
-        public void Publishes_message_when_user_saves_selected_airport()
+        public void Publishes_message_when_user_selects_an_airport()
         {
             AirportSelectedMessage lastMessage = null;
             Messenger.Default.Register(this, (AirportSelectedMessage message) => lastMessage = message);
@@ -61,6 +61,18 @@ namespace FlightsNorway.Phone.Tests.ViewModels
 
             Assert.IsNotNull(lastMessage);
             Assert.AreEqual(viewModel.SelectedAirport, lastMessage.Content);
+        }
+
+        [TestMethod, Tag(Tags.ViewModel)]
+        public void Publishes_message_when_user_selects_nearest_airport()
+        {
+            FindNearestAirportMessage lastMessage = null;
+            Messenger.Default.Register(this, (FindNearestAirportMessage message) => lastMessage = message);
+
+            viewModel.SelectedAirport = viewModel.Airports.Where(a => a.Code == Airport.Nearest.Code).Single();
+            viewModel.SaveCommand.Execute(null);
+
+            Assert.IsNotNull(lastMessage);
         }
 
         [TestInitialize]
