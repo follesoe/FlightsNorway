@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+
 using FlightsNorway.Phone.Model;
+using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.Tests.Stubs;
 using FlightsNorway.Phone.ViewModels;
 using FlightsNorway.Phone.FlightDataServices;
@@ -29,7 +31,8 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         [TestMethod, Tag(Tags.ViewModel)]
         public void Saves_selected_airport()
         {
-            objectStore.Delete("selected_airport");
+            objectStore.Delete(ObjectStore.SelectedAirportFilename);
+            viewModel.SelectedAirport = viewModel.Airports.Last();
             viewModel.SaveCommand.Execute(null);
 
             var airport = objectStore.Load<Airport>("selected_airport");
@@ -56,7 +59,7 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             AirportSelectedMessage lastMessage = null;
             Messenger.Default.Register(this, (AirportSelectedMessage message) => lastMessage = message);
 
-            viewModel.SelectedAirport = viewModel.Airports.First();
+            viewModel.SelectedAirport = viewModel.Airports.Last();
             viewModel.SaveCommand.Execute(null);
 
             Assert.IsNotNull(lastMessage);
