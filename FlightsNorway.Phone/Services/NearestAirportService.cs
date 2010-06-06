@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Device.Location;
-
+using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.ViewModels;
 using FlightsNorway.Phone.FlightDataServices;
 
@@ -12,13 +12,12 @@ namespace FlightsNorway.Phone.Services
     public class NearestAirportService
     {
         private readonly IGetAirports _airportsService;
-        private readonly IDoReverseGeocoding _geocodeService;
         private readonly IGetCurrentLocation _locationService;
         
-        public NearestAirportService(IGetCurrentLocation locationService, IDoReverseGeocoding geocodeService)
+        public NearestAirportService(IGetCurrentLocation locationService)
         {
             _locationService = locationService;
-            _geocodeService = geocodeService;
+      
             _airportsService = new AirportNamesService();
             Messenger.Default.Register(this, (FindNearestAirportMessage m) => FindNearestAirport());
         }
@@ -31,15 +30,10 @@ namespace FlightsNorway.Phone.Services
                     ev => _locationService.PositionAvailable -= ev);
 
             var locations = from e in positionAsObservable
-                            select e.EventArgs.Position.Location;
+                            select new Location(e.EventArgs.Position.Location.Latitude, 
+                                                e.EventArgs.Position.Location.Longitude);
 
-            var airports = from location in locations
-                           from city in _geocodeService.GetNearestCity(location.Latitude, location.Longitude)
-                           from airport in _airportsService.GetNorwegianAirports().ToObservable()
-                           where airport.Name == city
-                           select airport;
-
-            airports.Subscribe(a => Messenger.Default.Send(new AirportSelectedMessage(a)));
+            locations.Subscribe(l => Messenger.Default.Send(new AirportSelectedMessage(_airportsService.GetNearestAirport(l))));
             
             _locationService.GetPositionAsync();
         }

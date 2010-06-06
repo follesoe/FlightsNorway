@@ -8,5 +8,6 @@ namespace FlightsNorway.Phone.FlightDataServices
     {
         IObservable<IEnumerable<Airport>> GetAirports();
         IEnumerable<Airport> GetNorwegianAirports();
+        Airport GetNearestAirport(Location home);
     }
 }

@@ -23,5 +23,10 @@ namespace FlightsNorway.Phone.UnitTests.Stubs
         {
             return NorwegianAirports;
         }
+
+        public Airport GetNearestAirport(Location home)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

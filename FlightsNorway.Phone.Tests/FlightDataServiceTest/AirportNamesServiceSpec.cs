@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.FlightDataServices;
 
-
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -23,11 +22,20 @@ namespace FlightsNorway.Phone.Tests.FlightDataServiceTest
             EnqueueTestComplete();
         }
 
-        [TestMethod]
+        [TestMethod, Tag(Tags.WebService)]
         public void Should_be_able_to_get_all_Norwegian_airports()
         {
             var airports = service.GetNorwegianAirports();
             Assert.AreEqual(54, airports.Count());
+        }
+
+        [TestMethod, Tag("yo")]
+        public void Should_be_able_to_get_nearest_Norwegian_airport()
+        {
+            var home = new Location(63.433281, 10.419294);
+            Airport airport = service.GetNearestAirport(home);
+
+            Assert.AreEqual("TRD", airport.Code);
         }
 
         [TestInitialize]

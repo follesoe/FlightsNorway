@@ -16,27 +16,24 @@ namespace FlightsNorway.Phone.Tests.Services
         [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.Services)]
         public void Should_find_nearest_airport_if_user_selects_that_option()
         {
-            _doReverseGeocoding.NearestCityToReturn = "Lakselv";
-            locationService.GeoCoordinateToReturn = new GeoCoordinate(70.06, 24.97);
+            var home = new Location(63.433281, 10.419294);
+            locationService.GeoCoordinateToReturn = new GeoCoordinate(home.Latitude, home.Longitude);
 
             Airport nearestAirport = null;
             Messenger.Default.Register(this, (AirportSelectedMessage e) => nearestAirport = e.Content);
             Messenger.Default.Send(new FindNearestAirportMessage());
 
             EnqueueConditional(() => nearestAirport != null);
-            EnqueueCallback(() => Assert.AreEqual("LKL", nearestAirport.Code));
+            EnqueueCallback(() => Assert.AreEqual("TRD", nearestAirport.Code));
             EnqueueTestComplete();
         }
         
         [TestInitialize]
         public void Setup()
         {
-            _doReverseGeocoding = new DoReverseGeocodingStub();
             locationService = new LocationServiceMock();     
-            var service = new NearestAirportService(locationService, _doReverseGeocoding);
+            var service = new NearestAirportService(locationService);
         }
-        
-        private DoReverseGeocodingStub _doReverseGeocoding;
         private LocationServiceMock locationService;
     }
 }
