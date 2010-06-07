@@ -14,6 +14,7 @@
     <AssemblyName>FlightsMonitoringService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
+    <SilverlightApplicationList>{F107E5E2-CEA6-43BD-AB23-5840F55F7502}|..\FlightsNorway.Silverlight.Tests\FlightsNorway.Silverlight.Tests.csproj|ClientBin|False</SilverlightApplicationList>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,9 +76,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientBin\FlightsNorway.Silverlight.Tests.xap" />
+    <Content Include="FlightsNorway.Silverlight.TestsTestPage.aspx" />
+    <Content Include="FlightsNorway.Silverlight.TestsTestPage.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="MonitoringWebService.asmx" />
+    <Content Include="Silverlight.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
