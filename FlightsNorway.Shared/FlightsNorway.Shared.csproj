@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\lib\MVVM Light Silverlight3\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System.CoreEx, Version=1.0.2521.204, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Observable, Version=1.0.0.204, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -74,6 +77,11 @@
     <Compile Include="FlightDataServices\MonitoringService.cs" />
     <Compile Include="FlightDataServices\StatusService.cs" />
     <Compile Include="FlightDataServices\WebRequestFactory.cs" />
+    <Compile Include="Messages\AirportSelectedMessage.cs" />
+    <Compile Include="Messages\FindNearestAirportMessage.cs" />
+    <Compile Include="Messages\FlightSelectedMessage.cs" />
+    <Compile Include="Messages\MonitorFlightMessage.cs" />
+    <Compile Include="Messages\StopMonitorFlightMessage.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="Model\AirlineDictionary.cs" />
     <Compile Include="Model\Airport.cs" />
@@ -90,6 +98,10 @@
     <Compile Include="Services\IOpenCommunicationChannel.cs" />
     <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\ObjectStore.cs" />
+    <Compile Include="ViewModels\AirportsViewModel.cs" />
+    <Compile Include="ViewModels\ClockViewModel.cs" />
+    <Compile Include="ViewModels\FlightsViewModel.cs" />
+    <Compile Include="ViewModels\StringFormatValueConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
