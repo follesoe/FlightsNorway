@@ -13,25 +13,22 @@
     Foreground="{StaticResource PhoneForegroundBrush}">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>        
 
-        <phone:PivotControl x:Name="_mainPivot" Grid.Row="0" Title="Flytider">
+        <phone:PivotControl x:Name="_mainPivot" Title="Flytider">
             <phone:PivotControl.Items>
-                <phone:PivotItem Title="flydata fra Avinor" Header="ankomst">
+                <phone:PivotItem Title="flydata fra Avinor" Header="ankomst" x:Name="_arrivalsPivot">
                     <phone:PivotItem.Content>
-                        <views:ArrivalsView />
+                        <views:ArrivalsView Margin="0, 0, 0, 80" />
                     </phone:PivotItem.Content>
                 </phone:PivotItem>
-                <phone:PivotItem Title="flydata fra Avinor" Header="avgang">
+                <phone:PivotItem Title="flydata fra Avinor" Header="avgang" x:Name="_departuresPivot">
                     <phone:PivotItem.Content>
-                        <views:DeparturesView />
+                        <views:DeparturesView Margin="0, 0, 0, 80" />
                     </phone:PivotItem.Content>
                 </phone:PivotItem>
-                <phone:PivotItem Title="flydata fra Avinor" Header="velg flyplass">
+                <phone:PivotItem Title="flydata fra Avinor" Header="velg flyplass" x:Name="_airportsPivot">
                     <phone:PivotItem.Content>
-                        <views:AirportsView />
+                        <views:AirportsView Margin="0, 0, 0, 80" />
                     </phone:PivotItem.Content>
                 </phone:PivotItem>
             </phone:PivotControl.Items>

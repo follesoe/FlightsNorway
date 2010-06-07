@@ -7,6 +7,7 @@
     x:Class="FlightsNorway.Phone.Views.ArrivalsView"
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="480">
+    
 	<UserControl.Resources>
         <viewModel:StringFormatValueConverter x:Key="StringFormatValueConverter"/>
 		<DataTemplate x:Key="ArrivalItemTemplate">

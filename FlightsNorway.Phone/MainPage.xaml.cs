@@ -18,7 +18,7 @@ namespace FlightsNorway.Phone
         private void InitializeButtons()
         {
             ApplicationBar = new ApplicationBar();
-            ApplicationBar.Opacity = 0.5;
+            ApplicationBar.Opacity = 1.0;
             ApplicationBar.IsVisible = true;
 
             var arrivals = new ApplicationBarIconButton(new Uri("/Icons/arrivals.png", UriKind.Relative));
@@ -28,6 +28,11 @@ namespace FlightsNorway.Phone
             ApplicationBar.Buttons.Add(arrivals);
             ApplicationBar.Buttons.Add(departures);
             ApplicationBar.Buttons.Add(airports);
+
+            arrivals.Click += (o, e) => _mainPivot.SelectedItem = _arrivalsPivot;
+            departures.Click += (o, e) => _mainPivot.SelectedItem = _departuresPivot;
+            airports.Click += (o, e) => _mainPivot.SelectedItem = _airportsPivot;
+
         }
     }
 }
