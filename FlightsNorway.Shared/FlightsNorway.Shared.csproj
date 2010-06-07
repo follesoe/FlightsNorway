@@ -65,9 +65,15 @@
     <Compile Include="Extensions\IEnumerableExtesnions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="FlightDataServices\AirlineNamesService.cs" />
+    <Compile Include="FlightDataServices\AirportNamesService.cs" />
+    <Compile Include="FlightDataServices\FlightsService.cs" />
     <Compile Include="FlightDataServices\IGetAirports.cs" />
     <Compile Include="FlightDataServices\IGetFlights.cs" />
     <Compile Include="FlightDataServices\IMonitorFlights.cs" />
+    <Compile Include="FlightDataServices\MonitoringService.cs" />
+    <Compile Include="FlightDataServices\StatusService.cs" />
+    <Compile Include="FlightDataServices\WebRequestFactory.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="Model\AirlineDictionary.cs" />
     <Compile Include="Model\Airport.cs" />
