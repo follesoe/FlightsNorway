@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="MonitoringWebServiceSoap" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:8888/MonitoringWebService.asmx"
+                binding="basicHttpBinding" bindingConfiguration="MonitoringWebServiceSoap"
+                contract="MonitoringWebService.MonitoringWebServiceSoap" name="MonitoringWebServiceSoap" />
+        </client>
+    </system.serviceModel>
+</configuration>

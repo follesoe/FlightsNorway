@@ -13,7 +13,9 @@ namespace FlightsNorway.Phone.ViewModels
 
         public ClockViewModel()
         {
-            Observable.Interval(new TimeSpan(0, 0, 1)).Subscribe(t => RaisePropertyChanged("CurrentTime"));
+            Observable.Interval(new TimeSpan(0, 0, 1))
+                .SubscribeOnDispatcher()
+                .Subscribe(t => RaisePropertyChanged("CurrentTime"));
         }
     }
 }

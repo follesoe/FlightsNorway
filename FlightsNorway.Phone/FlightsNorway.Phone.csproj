@@ -75,6 +75,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ApplicationBarController.cs" />
     <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
     <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
     <Compile Include="FlightDataServices\FlightsService.cs" />
@@ -85,6 +86,11 @@
     <Compile Include="FlightDataServices\MonitoringService.cs" />
     <Compile Include="Messages\MonitorFlightMessage.cs" />
     <Compile Include="Messages\StopMonitorFlightMessage.cs" />
+    <Compile Include="Service References\MonitoringWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Services\IGetCurrentLocation.cs" />
     <Compile Include="Services\IOpenCommunicationChannel.cs" />
     <Compile Include="Services\LocationService.cs" />
@@ -165,6 +171,14 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
+    <None Include="Service References\MonitoringWebService\FlightsNorway.Phone.MonitoringWebService.MonitorFlightResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MonitoringWebService\FlightsNorway.Phone.MonitoringWebService.StopMonitoringFlightResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MonitoringWebService\MonitoringWebService.wsdl" />
+    <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
@@ -182,6 +196,13 @@
     <Content Include="Icons\departures.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Service References\MonitoringWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MonitoringWebService\configuration.svcinfo" />
+    <None Include="Service References\MonitoringWebService\configuration91.svcinfo" />
+    <None Include="Service References\MonitoringWebService\MonitoringWebService.disco" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -191,6 +212,9 @@
       <Project>{700BA959-2F8B-459F-802A-76836144765B}</Project>
       <Name>Phone.Controls.Samples</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MonitoringWebService\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
