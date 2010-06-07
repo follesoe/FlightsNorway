@@ -51,11 +51,13 @@
     <Reference Include="GalaSoft.MvvmLight.WP7, Version=3.0.0.27833, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Controls.Navigation" />
-    <Reference Include="Microsoft.Silverlight.Testing">
-      <HintPath>..\lib\Silverlight Unit Testing (MIX 2010)\Microsoft.Silverlight.Testing.dll</HintPath>
+    <Reference Include="Microsoft.Silverlight.Testing, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.Silverlight.Testing.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight">
-      <HintPath>..\lib\Silverlight Unit Testing (MIX 2010)\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="System.Device.Location" />
     <Reference Include="System.Observable" />
@@ -97,7 +99,6 @@
     <Compile Include="Tags.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
     <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />
-    <Compile Include="ViewModels\ViewModelLocatorSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
