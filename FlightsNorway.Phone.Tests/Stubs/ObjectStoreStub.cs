@@ -3,11 +3,11 @@ using FlightsNorway.Phone.Services;
 
 namespace FlightsNorway.Phone.Tests.Stubs
 {
-    public class ObjectStoreMock : IStoreObjects
+    public class ObjectStoreStub : IStoreObjects
     {        
         private readonly Dictionary<string, object> _savedItems;
 
-        public ObjectStoreMock()
+        public ObjectStoreStub()
         {
             _savedItems = new Dictionary<string, object>();
         }

@@ -4,7 +4,7 @@
     {
         public DeparturesView()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
     }
 }

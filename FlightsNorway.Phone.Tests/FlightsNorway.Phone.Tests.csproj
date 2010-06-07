@@ -85,13 +85,15 @@
     <Compile Include="Model\FlightSpec.cs" />
     <Compile Include="Model\LocationSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\MonitorServiceClientSpecs.cs" />
     <Compile Include="Services\NearestAirportServiceSpecs.cs" />
     <Compile Include="Services\ObjectStoreSpecs.cs" />
     <Compile Include="Stubs\AirportNamesServiceStub.cs" />
     <Compile Include="Stubs\FlightsServiceStub.cs" />
-    <Compile Include="Stubs\LocationServiceMock.cs" />
+    <Compile Include="Stubs\LocationServiceStub.cs" />
+    <Compile Include="Stubs\MonitorServiceStub.cs" />
     <Compile Include="Stubs\NotificationServiceStub.cs" />
-    <Compile Include="Stubs\ObjectStoreMock.cs" />
+    <Compile Include="Stubs\ObjectStoreStub.cs" />
     <Compile Include="Tags.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
     <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />

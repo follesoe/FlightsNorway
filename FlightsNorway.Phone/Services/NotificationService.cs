@@ -18,7 +18,7 @@ namespace FlightsNorway.Phone.Services
             }
             catch { }
 
-            if (_channel != null)
+            if (_channel != null && _channel.ChannelUri != null)
             {
                 channelCallback(_channel.ChannelUri.ToString());
             }

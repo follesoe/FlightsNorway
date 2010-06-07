@@ -1,7 +1,7 @@
 ﻿using FlightsNorway.Phone.Model;
 using GalaSoft.MvvmLight.Messaging;
 
-namespace FlightsNorway.Phone.ViewModels
+namespace FlightsNorway.Phone.Messages
 {
     public class AirportSelectedMessage : GenericMessage<Airport>
     {

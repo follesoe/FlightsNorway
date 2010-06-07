@@ -1,4 +1,5 @@
-﻿using FlightsNorway.Phone.Model;
+﻿using FlightsNorway.Phone.Messages;
+using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.ViewModels;
 using FlightsNorway.Phone.Tests.Stubs;
@@ -65,7 +66,7 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         {
             objectStore.Save(lakselvAirport, ObjectStore.SelectedAirportFilename);
 
-            viewModel = new FlightsViewModel(flightsService, objectStore, notificationService);
+            viewModel = new FlightsViewModel(flightsService, objectStore);
             
             Assert.AreEqual(lakselvAirport.Code, viewModel.SelectedAirport.Code);
         }
@@ -78,7 +79,7 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             bool findNearestWasPublished = false;
             Messenger.Default.Register(this, (FindNearestAirportMessage m) => findNearestWasPublished = true);
 
-            viewModel = new FlightsViewModel(flightsService, objectStore, notificationService);
+            viewModel = new FlightsViewModel(flightsService, objectStore);
 
             Assert.IsTrue(findNearestWasPublished);
         }
@@ -105,16 +106,14 @@ namespace FlightsNorway.Phone.Tests.ViewModels
             lakselvAirport = new Airport("LKL", "Lakselv");
             trondheimAirport = new Airport("TRD", "Trondheim");
             flightsService = new FlightsServiceStub();
-            objectStore = new ObjectStoreMock();
-            notificationService = new NotificationServiceStub();
-            viewModel = new FlightsViewModel(flightsService, objectStore, notificationService);
+            objectStore = new ObjectStoreStub();
+            viewModel = new FlightsViewModel(flightsService, objectStore);
         }
 
         private Airport lakselvAirport;
         private Airport trondheimAirport;
         private FlightsServiceStub flightsService;
         private FlightsViewModel viewModel;
-        private ObjectStoreMock objectStore;
-        private NotificationServiceStub notificationService;
+        private ObjectStoreStub objectStore;
     }
 }

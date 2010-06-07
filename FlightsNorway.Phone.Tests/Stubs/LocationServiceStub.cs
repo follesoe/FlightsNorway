@@ -6,7 +6,7 @@ using FlightsNorway.Phone.Services;
 
 namespace FlightsNorway.Phone.Tests.Stubs
 {
-    public class LocationServiceMock : IGetCurrentLocation
+    public class LocationServiceStub : IGetCurrentLocation
     {
         public event EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>> PositionAvailable;
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Device.Location;
+using FlightsNorway.Phone.Messages;
 using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.ViewModels;
 using FlightsNorway.Phone.FlightDataServices;

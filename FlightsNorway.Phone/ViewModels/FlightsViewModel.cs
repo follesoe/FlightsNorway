@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using FlightsNorway.Phone.Messages;
 using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.FlightDataServices;
@@ -13,8 +12,7 @@ using GalaSoft.MvvmLight.Messaging;
 namespace FlightsNorway.Phone.ViewModels
 {
     public class FlightsViewModel : ViewModelBase
-    {
-        private readonly IOpenCommunicationChannel _notificationService;
+    {        
         private readonly IGetFlights _flightsService;
         private readonly IStoreObjects _objectStore;
 
@@ -32,19 +30,47 @@ namespace FlightsNorway.Phone.ViewModels
 
                 _selectedAirport = value;
                 AirportSelected(_selectedAirport);
+                RaisePropertyChanged("SelectedAirport");
             }
         }
 
-        public FlightsViewModel(IGetFlights flightsService, IStoreObjects objectStore, IOpenCommunicationChannel notificationService)
+        private Flight _selectedDeparture;
+
+        public Flight SelectedDeparture
+        {
+            get { return _selectedDeparture; }
+            set
+            {
+                if (_selectedDeparture == value) return;
+
+                _selectedDeparture = value;
+                RaisePropertyChanged("SelectedDeparture");
+                Messenger.Default.Send(new FlightSelectedMessage(value));
+            }
+        }
+
+        private Flight _selectedArrival;
+
+        public Flight SelectedArrival
+        {
+            get { return _selectedArrival; }
+            set
+            {
+                if (_selectedDeparture == value) return;
+
+                _selectedArrival = value;
+                RaisePropertyChanged("SelectedArrival");
+                Messenger.Default.Send(new FlightSelectedMessage(value));
+            }
+        }
+
+        public FlightsViewModel(IGetFlights flightsService, IStoreObjects objectStore)
         {
             Arrivals = new ObservableCollection<Flight>();
             Departures = new ObservableCollection<Flight>();
 
             _objectStore = objectStore;
             _flightsService = flightsService;
-            _notificationService = notificationService;
-
-            _notificationService.OpenChannel(OnPushChannelOpened);
 
             Messenger.Default.Register<AirportSelectedMessage>(this, OnAirportSelected);
             
@@ -65,11 +91,6 @@ namespace FlightsNorway.Phone.ViewModels
             {
                 SelectedAirport = airport;    
             }
-        }
-
-        private static void OnPushChannelOpened(string url)
-        {
-            Debug.WriteLine("Push channel opened at: " + url);
         }
 
         private void OnAirportSelected(AirportSelectedMessage message)

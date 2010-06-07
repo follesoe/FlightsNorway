@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
-
+using FlightsNorway.Phone.Messages;
 using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.Extensions;

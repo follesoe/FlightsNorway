@@ -16,14 +16,14 @@
 
         <phone:PivotControl x:Name="_mainPivot" Title="Flytider">
             <phone:PivotControl.Items>
-                <phone:PivotItem Title="flydata fra Avinor" Header="ankomst" x:Name="_arrivalsPivot">
-                    <phone:PivotItem.Content>
-                        <views:ArrivalsView Margin="0, 0, 0, 80" />
-                    </phone:PivotItem.Content>
-                </phone:PivotItem>
                 <phone:PivotItem Title="flydata fra Avinor" Header="avgang" x:Name="_departuresPivot">
                     <phone:PivotItem.Content>
                         <views:DeparturesView Margin="0, 0, 0, 80" />
+                    </phone:PivotItem.Content>
+                </phone:PivotItem>                
+                <phone:PivotItem Title="flydata fra Avinor" Header="ankomst" x:Name="_arrivalsPivot">
+                    <phone:PivotItem.Content>
+                        <views:ArrivalsView Margin="0, 0, 0, 80" />
                     </phone:PivotItem.Content>
                 </phone:PivotItem>
                 <phone:PivotItem Title="flydata fra Avinor" Header="velg flyplass" x:Name="_airportsPivot">
@@ -34,8 +34,15 @@
             </phone:PivotControl.Items>
         </phone:PivotControl>
         
-        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="TRD" VerticalAlignment="Top" Margin="0,54,61,0" FontFamily="Segoe WP Semibold"/>
-        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Text="20:06" VerticalAlignment="Top" Margin="0,54,8,0" FontFamily="Segoe WP Semibold" Foreground="{StaticResource MetroYellow}" FontSize="20"/>
+        <TextBlock 
+            DataContext="{Binding Path=FlightsViewModel, Source={StaticResource ViewModelLocator}}" 
+            Text="{Binding Path=SelectedAirport.Code}"
+            HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,54,61,0" FontFamily="Segoe WP Semibold"/>
+        
+        <TextBlock 
+            DataContext="{Binding Path=ClockViewModel, Source={StaticResource ViewModelLocator}}"
+            Text="{Binding Path=CurrentTime}"
+            HorizontalAlignment="Right" TextWrapping="Wrap"  VerticalAlignment="Top" Margin="0,54,8,0" FontFamily="Segoe WP Semibold" Foreground="{StaticResource MetroYellow}" FontSize="20"/>
 
     </Grid>
     

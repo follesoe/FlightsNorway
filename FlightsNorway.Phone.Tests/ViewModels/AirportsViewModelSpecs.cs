@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-
+using FlightsNorway.Phone.Messages;
 using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.Tests.Stubs;
@@ -81,13 +81,13 @@ namespace FlightsNorway.Phone.Tests.ViewModels
         [TestInitialize]
         public void Setup()
         {
-            objectStore = new ObjectStoreMock();
+            objectStore = new ObjectStoreStub();
             airportsService = new AirportNamesService();
             viewModel = new AirportsViewModel(airportsService, objectStore);
         }
 
         private AirportNamesService airportsService;
         private AirportsViewModel viewModel;
-        private ObjectStoreMock objectStore;
+        private ObjectStoreStub objectStore;
     }
 }

@@ -32,7 +32,10 @@
     </UserControl.DataContext>
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
-        <ListBox ItemsSource="{Binding Departures}" Margin="0,40,0,0" ItemTemplate="{StaticResource DepartureItemTemplate}" />
+        <ListBox ItemsSource="{Binding Departures}" 
+                 SelectedItem="{Binding SelectedDeparture, Mode=TwoWay}"
+                 Margin="0,40,0,0" 
+                 ItemTemplate="{StaticResource DepartureItemTemplate}" />
         <Grid Height="36" VerticalAlignment="Top" Margin="14,0,10,0">
         	<Grid.ColumnDefinitions>
         		<ColumnDefinition Width="80.105"/>

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.IO.IsolatedStorage;
 using System.Runtime.Serialization;
 
@@ -38,7 +39,15 @@ namespace FlightsNorway.Phone.Services
             var serializer = new DataContractSerializer(typeof(T));
             using (var stream = new IsolatedStorageFileStream(RootDirectory + "\\" + fileName, FileMode.Open, _isoStore))
             {
-                return (T)serializer.ReadObject(stream);                
+                try
+                {
+                    return (T)serializer.ReadObject(stream);                
+                }
+                catch (Exception)
+                {
+                    Delete(fileName);
+                    throw;
+                }                
             }               
         }
 

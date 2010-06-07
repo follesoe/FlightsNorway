@@ -1,4 +1,5 @@
 ﻿using System.Device.Location;
+using FlightsNorway.Phone.Messages;
 using FlightsNorway.Phone.Model;
 using FlightsNorway.Phone.Services;
 using FlightsNorway.Phone.ViewModels;
@@ -31,9 +32,9 @@ namespace FlightsNorway.Phone.Tests.Services
         [TestInitialize]
         public void Setup()
         {
-            locationService = new LocationServiceMock();     
+            locationService = new LocationServiceStub();     
             var service = new NearestAirportService(locationService);
         }
-        private LocationServiceMock locationService;
+        private LocationServiceStub locationService;
     }
 }

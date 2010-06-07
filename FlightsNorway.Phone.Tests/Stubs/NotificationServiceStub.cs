@@ -5,9 +5,13 @@ namespace FlightsNorway.Phone.Tests.Stubs
 {
     public class NotificationServiceStub : IOpenCommunicationChannel
     {
+        public bool OpenChannelWasCalled;
+        public string ChannelUrl = "http://push.notifications.com";
+
         public void OpenChannel(Action<string> channelCallback)
         {
-            channelCallback("http://push.notifications.com");
+            OpenChannelWasCalled = true;
+            channelCallback(ChannelUrl);
         }
     }
 }
