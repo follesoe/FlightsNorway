@@ -570,7 +570,11 @@
         	<Setter Property="FontFamily" Value="Segoe WP Light"/>
         	<Setter Property="FontSize" Value="24"/>
         </Style>
-        <Style x:Key="TimeTableContent" TargetType="TextBlock"/>
+        <Style x:Key="TimeTableContent" TargetType="TextBlock">
+        	<Setter Property="FontFamily" Value="Segoe WP SemiLight"/>
+        	<Setter Property="FontSize" Value="24"/>
+        	<Setter Property="Foreground" Value="White"/>
+        </Style>
         <!--****** PHONE TOGGLESWITCH TEMPLATE ******-->
     </Application.Resources>
 

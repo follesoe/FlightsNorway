@@ -7,6 +7,18 @@
     xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.WP7"
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="480">
+	<UserControl.Resources>
+		<DataTemplate x:Key="AirportItemTemplate">
+			<Grid Height="35">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="125"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding Code}" FontFamily="Segoe WP SemiLight" Style="{StaticResource TimeTableContent}"/>
+				<TextBlock TextWrapping="Wrap" Text="{Binding Name}" FontFamily="Segoe WP SemiLight" Style="{StaticResource TimeTableContent}" Grid.Column="1"/>
+			</Grid>
+		</DataTemplate>
+	</UserControl.Resources>
     
     <UserControl.DataContext>
         <Binding Path="AirportsViewModel" Source="{StaticResource ViewModelLocator}" />
@@ -14,21 +26,27 @@
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="472" />
-            <RowDefinition Height="Auto" MinHeight="128" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
         <ListBox 
             Grid.Row="0"
             ItemsSource="{Binding Path=Airports}" 
-            SelectedItem="{Binding Path=SelectedAirport, Mode=TwoWay}"
-            DisplayMemberPath="Name">            
-        </ListBox>
+            SelectedItem="{Binding Path=SelectedAirport, Mode=TwoWay}" Margin="0,40,0,0" ItemTemplate="{StaticResource AirportItemTemplate}"/>
         
         <Button
             Grid.Row="1"
             Content="Lagre"
             cmd:ButtonBaseExtensions.Command="{Binding Path=SaveCommand}"
             />
+        <Grid Height="36" VerticalAlignment="Top" Margin="14,0,10,0">
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="125.667"/>
+        		<ColumnDefinition Width="330.333"/>
+        	</Grid.ColumnDefinitions>
+        	<TextBlock Margin="0,0,0.105,0" TextWrapping="Wrap" Text="kode" Style="{StaticResource TimeTableHeading}"/>
+        	<TextBlock TextWrapping="Wrap" Text="flyplass" Style="{StaticResource TimeTableHeading}" Grid.Column="1" Margin="-0.105,0,0,0"/>
+        </Grid>
     </Grid>
 </UserControl>

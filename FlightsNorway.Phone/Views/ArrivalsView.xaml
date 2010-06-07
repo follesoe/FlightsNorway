@@ -19,7 +19,7 @@
 					<ColumnDefinition Width="119.368"/>
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
-				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding FlightId}" Style="{StaticResource TimeTableContent}"/>
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding FlightId}" Style="{StaticResource TimeTableContent}" FontFamily="Segoe WP"/>
 				<TextBlock Grid.Column="1" Margin="0,0,0.25,0" TextWrapping="Wrap" Text="{Binding ScheduledTime, ConverterParameter=HH:mm, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}"/>
 				<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="{Binding Airport.Name, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" />
 				<TextBlock Grid.Column="2" Margin="0" TextWrapping="Wrap" Text="{Binding Belt, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" HorizontalAlignment="Left"/>
@@ -33,7 +33,7 @@
     </UserControl.DataContext>
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
-        <ListBox ItemsSource="{Binding Arrivals}" FontFamily="Segoe WP SemiLight" FontSize="6" ItemTemplate="{StaticResource ArrivalItemTemplate}" Margin="0,36,0,0" />
+        <ListBox ItemsSource="{Binding Arrivals}" ItemTemplate="{StaticResource ArrivalItemTemplate}" Margin="0,36,0,0" />
         <Grid Height="36" VerticalAlignment="Top" Margin="14,0,10,0">
         	<Grid.ColumnDefinitions>
         		<ColumnDefinition Width="80.105"/>
