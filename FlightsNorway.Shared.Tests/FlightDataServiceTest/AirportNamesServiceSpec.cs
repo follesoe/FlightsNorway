@@ -22,14 +22,14 @@ namespace FlightsNorway.Shared.Tests.FlightDataServiceTest
             EnqueueTestComplete();
         }
 
-        [TestMethod, Tag(Tags.WebService)]
+        [TestMethod, Tag(Tags.Services)]
         public void Should_be_able_to_get_all_Norwegian_airports()
         {
             var airports = service.GetNorwegianAirports();
             Assert.AreEqual(54, airports.Count());
         }
 
-        [TestMethod, Tag("yo")]
+        [TestMethod, Tag(Tags.Services)]
         public void Should_be_able_to_get_nearest_Norwegian_airport()
         {
             var home = new Location(63.433281, 10.419294);

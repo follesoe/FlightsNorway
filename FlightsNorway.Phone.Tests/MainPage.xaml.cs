@@ -12,14 +12,14 @@ namespace FlightsNorway.Phone.Tests
 
             SupportedOrientations = SupportedPageOrientation.Portrait | SupportedPageOrientation.Landscape;
                        
-            var settings = UnitTestSystem.CreateDefaultSettings();            
+            var settings = UnitTestSystem.CreateDefaultSettings();
+            settings.TestAssemblies.Add(typeof(Tags).Assembly);
+
             settings.SampleTags.Clear();
             settings.SampleTags.Add(Tags.Model);
             settings.SampleTags.Add(Tags.ViewModel);
             settings.SampleTags.Add(Tags.WebService);
             settings.ShowTagExpressionEditor = true;
-
-            settings.TestAssemblies.Add(typeof (Tags).Assembly);
 
             Content = UnitTestSystem.CreateTestPage(settings);
 

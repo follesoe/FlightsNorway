@@ -14,7 +14,7 @@
     <AssemblyName>FlightsMonitoringService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <SilverlightApplicationList>{E7468D19-7208-4B01-B84C-06A88454AFB5}|..\FlightsNorway.Shared.Tests\FlightsNorway.Shared.Tests.csproj|ClientBin|False</SilverlightApplicationList>
+    <SilverlightApplicationList>{E7468D19-7208-4B01-B84C-06A88454AFB5}|..\FlightsNorway.Shared.Tests\FlightsNorway.Shared.Tests.csproj|ClientBin|False,{6956CFE3-725F-4FE4-A72D-91685C24D199}|..\FlightsNorway.Desktop.Tests\FlightsNorway.Desktop.Tests.csproj|ClientBin|False</SilverlightApplicationList>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -76,9 +76,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClientBin\FlightsNorway.Desktop.Tests.xap" />
     <Content Include="ClientBin\FlightsNorway.Shared.Tests.xap" />
-    <Content Include="ClientBin\FlightsNorway.Silverlight.Tests.xap" />
-    <Content Include="FlightsNorway.Shared.TestsTestPage.html" />
+    <Content Include="UnitTests.html" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="MonitoringWebService.asmx" />
