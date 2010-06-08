@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
+using System.Windows.Threading;
 using GalaSoft.MvvmLight;
 
 namespace FlightsNorway.Shared.ViewModels
@@ -13,10 +15,9 @@ namespace FlightsNorway.Shared.ViewModels
 
         public ClockViewModel()
         {
-            /*
+
             Observable.Interval(new TimeSpan(0, 0, 1))
-                .SubscribeOnDispatcher()
-                .Subscribe(t => RaisePropertyChanged("CurrentTime"));*/
+                .Subscribe(t => Deployment.Current.Dispatcher.BeginInvoke(() => RaisePropertyChanged("CurrentTime")));
         }
     }
 }
