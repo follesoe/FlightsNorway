@@ -66,6 +66,8 @@
     <Compile Include="Pivot\PivotView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\WriteableBitmapExtensions.cs" />
+    <Compile Include="Tilt\TiltEffect.cs" />
+    <Compile Include="Tilt\VisualTreeHelperExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\generic.xaml">
