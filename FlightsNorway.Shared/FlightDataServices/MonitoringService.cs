@@ -2,27 +2,25 @@
 
 namespace FlightsNorway.Shared.FlightDataServices
 {
-    public class MonitoringService : IMonitorFlights
+    public class MonitoringService : IScheduleFlightsToMonitor
     {
-        //private readonly MonitoringWebServiceSoapClient _service;
+        private readonly IMonitorFlightsService _service;
         
-        public MonitoringService()
+        public MonitoringService(IMonitorFlightsService service)
         {
-            //_service = new MonitoringWebServiceSoapClient();
+            _service = service;
         }
 
         public void MonitorFlight(string callbackUrl, string uniqueId)
         {            
             Debug.WriteLine("Start monitoring " + uniqueId + " - Callback: " + callbackUrl);
-
-            //_service.MonitorFlightAsync(callbackUrl, uniqueId);
+            _service.MonitorFlightAsync(callbackUrl, uniqueId);
         }
 
         public void StopMonitoringFlight(string callbackUrl, string uniqueId)
         {
             Debug.WriteLine("Stop monitoring " + uniqueId + " - Callback: " + callbackUrl);   
-
-            //_service.StopMonitoringFlightAsync(callbackUrl, uniqueId);
+            _service.StopMonitoringFlightAsync(callbackUrl, uniqueId);
         }
     }
 }

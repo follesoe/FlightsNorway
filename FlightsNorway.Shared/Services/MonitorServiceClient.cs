@@ -8,14 +8,14 @@ namespace FlightsNorway.Shared.Services
     public class MonitorServiceClient
     {
         private readonly IOpenCommunicationChannel _notificationService;
-        private readonly IMonitorFlights _monitorService;
+        private readonly IScheduleFlightsToMonitor _monitorService;
 
         private string _callbackUrl;
 
         private readonly Queue<string> _flightsToMonitor;
         private readonly Queue<string> _flightsToStopMonitoring;
 
-        public MonitorServiceClient(IOpenCommunicationChannel notificationService, IMonitorFlights monitorService)
+        public MonitorServiceClient(IOpenCommunicationChannel notificationService, IScheduleFlightsToMonitor monitorService)
         {
             _flightsToMonitor = new Queue<string>();
             _flightsToStopMonitoring = new Queue<string>();

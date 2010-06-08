@@ -78,7 +78,8 @@
     <Compile Include="FlightDataServices\FlightsService.cs" />
     <Compile Include="FlightDataServices\IGetAirports.cs" />
     <Compile Include="FlightDataServices\IGetFlights.cs" />
-    <Compile Include="FlightDataServices\IMonitorFlights.cs" />
+    <Compile Include="FlightDataServices\IMonitorFlightsService.cs" />
+    <Compile Include="FlightDataServices\IScheduleFlightsToMonitor.cs" />
     <Compile Include="FlightDataServices\MonitoringService.cs" />
     <Compile Include="FlightDataServices\StatusService.cs" />
     <Compile Include="FlightDataServices\WebRequestFactory.cs" />

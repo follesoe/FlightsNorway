@@ -2,7 +2,7 @@
 
 namespace FlightsNorway.Shared.Tests.Stubs
 {
-    public class MonitorServiceStub : IMonitorFlights
+    public class MonitorServiceStub : IScheduleFlightsToMonitor
     {
         public string CallbackUrl;
         public string UniqueFlightId;
