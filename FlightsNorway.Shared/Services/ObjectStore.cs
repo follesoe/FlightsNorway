@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Runtime.Serialization;
+using System.Diagnostics;
 
 namespace FlightsNorway.Shared.Services
 {
@@ -53,7 +54,15 @@ namespace FlightsNorway.Shared.Services
 
         public void Delete(string fileName)
         {
-            _isoStore.DeleteFile(RootDirectory + "\\" + fileName);
+            try
+            {
+                _isoStore.DeleteFile(RootDirectory + "\\" + fileName);
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+                throw;
+            }            
         }
 
         public bool FileExists(string fileName)

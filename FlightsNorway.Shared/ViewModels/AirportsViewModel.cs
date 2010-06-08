@@ -48,6 +48,7 @@ namespace FlightsNorway.Shared.ViewModels
         private void LoadSelectedAirportFromDisk()
         {
             if (!_objectStore.FileExists(ObjectStore.SelectedAirportFilename)) return;
+
             var savedAirport = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
             SelectedAirport = Airports.Where(a => a.Code == savedAirport.Code).Single();
         }

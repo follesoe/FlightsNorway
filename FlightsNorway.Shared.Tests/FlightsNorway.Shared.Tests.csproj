@@ -18,10 +18,11 @@
     <SupportedCultures>
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
-    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <GenerateSilverlightManifest>false</GenerateSilverlightManifest>
     <XapFilename>FlightsNorway.Shared.Tests.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>FlightsNorway.Shared.Tests.App</SilverlightAppEntry>
+    <SilverlightAppEntry>
+    </SilverlightAppEntry>
     <TestPageFileName>FlightsNorway.Shared.TestsTestPage.html</TestPageFileName>
     <CreateTestPage>true</CreateTestPage>
     <ValidateXaml>true</ValidateXaml>
@@ -78,9 +79,6 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Builders\FlightBuilder.cs" />
     <Compile Include="FlightDataServiceTest\AirlineNamesServiceSpec.cs" />
     <Compile Include="FlightDataServiceTest\AirportNamesServiceSpec.cs" />
@@ -104,12 +102,6 @@
     <Compile Include="Tags.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
     <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />

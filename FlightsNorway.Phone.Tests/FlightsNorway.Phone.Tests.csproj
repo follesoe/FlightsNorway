@@ -59,7 +59,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Device.Location" />
     <Reference Include="System.Observable" />
     <Reference Include="System.Reactive" />
@@ -74,32 +73,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Builders\FlightBuilder.cs" />
-    <Compile Include="FlightDataServiceTest\AirlineNamesServiceSpec.cs" />
-    <Compile Include="FlightDataServiceTest\AirportNamesServiceSpec.cs" />
-    <Compile Include="FlightDataServiceTest\StatusesServiceSpec.cs" />
-    <Compile Include="FlightDataServiceTest\FlightsServiceSpec.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\AirlineDictionarySpec.cs" />
-    <Compile Include="Model\AirportDictionarySpec.cs" />
-    <Compile Include="Model\AirportSpec.cs" />
-    <Compile Include="Model\FlightSpec.cs" />
-    <Compile Include="Model\LocationSpec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\MonitorServiceClientSpecs.cs" />
-    <Compile Include="Services\NearestAirportServiceSpecs.cs" />
-    <Compile Include="Services\ObjectStoreSpecs.cs" />
-    <Compile Include="Stubs\AirportNamesServiceStub.cs" />
-    <Compile Include="Stubs\FlightsServiceStub.cs" />
-    <Compile Include="Stubs\LocationServiceStub.cs" />
-    <Compile Include="Stubs\MonitorServiceStub.cs" />
-    <Compile Include="Stubs\NotificationServiceStub.cs" />
-    <Compile Include="Stubs\ObjectStoreStub.cs" />
-    <Compile Include="Tags.cs" />
-    <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
-    <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -116,16 +93,6 @@
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FlightsNorway.Phone\FlightsNorway.Phone.csproj">
-      <Project>{0A2B82EF-56FB-43CD-A82D-E8C50C9EFC4A}</Project>
-      <Name>FlightsNorway.Phone</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FlightsNorway.Shared\FlightsNorway.Shared.csproj">
-      <Project>{A6C2B9DB-309D-41E7-A0B5-62C174793EFC}</Project>
-      <Name>FlightsNorway.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -133,7 +100,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FlightsNorway.Shared.Tests\FlightsNorway.Shared.Tests.csproj">
+      <Project>{E7468D19-7208-4B01-B84C-06A88454AFB5}</Project>
+      <Name>FlightsNorway.Shared.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlightsNorway.Shared\FlightsNorway.Shared.csproj">
+      <Project>{A6C2B9DB-309D-41E7-A0B5-62C174793EFC}</Project>
+      <Name>FlightsNorway.Shared</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

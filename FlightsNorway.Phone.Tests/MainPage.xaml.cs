@@ -1,4 +1,5 @@
-﻿using Microsoft.Phone.Controls;
+﻿using FlightsNorway.Shared.Tests;
+using Microsoft.Phone.Controls;
 using Microsoft.Silverlight.Testing;
 
 namespace FlightsNorway.Phone.Tests
@@ -17,6 +18,8 @@ namespace FlightsNorway.Phone.Tests
             settings.SampleTags.Add(Tags.ViewModel);
             settings.SampleTags.Add(Tags.WebService);
             settings.ShowTagExpressionEditor = true;
+
+            settings.TestAssemblies.Add(typeof (Tags).Assembly);
 
             Content = UnitTestSystem.CreateTestPage(settings);
 
