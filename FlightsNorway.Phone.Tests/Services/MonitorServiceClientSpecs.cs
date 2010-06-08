@@ -1,6 +1,6 @@
-﻿using FlightsNorway.Phone.Model;
-using FlightsNorway.Phone.Services;
-using FlightsNorway.Phone.Messages;
+﻿using FlightsNorway.Shared.Model;
+using FlightsNorway.Shared.Messages;
+using FlightsNorway.Shared.Services;
 using FlightsNorway.Phone.Tests.Stubs;
 
 using GalaSoft.MvvmLight.Messaging;

@@ -1,11 +1,10 @@
-﻿using System.Device.Location;
-using FlightsNorway.Phone.Messages;
-using FlightsNorway.Phone.Model;
-using FlightsNorway.Phone.Services;
-using FlightsNorway.Phone.ViewModels;
+﻿using FlightsNorway.Shared.Model;
+using FlightsNorway.Shared.Messages;
+using FlightsNorway.Shared.Services;
 using FlightsNorway.Phone.Tests.Stubs;
 
 using GalaSoft.MvvmLight.Messaging;
+
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -18,7 +17,7 @@ namespace FlightsNorway.Phone.Tests.Services
         public void Should_find_nearest_airport_if_user_selects_that_option()
         {
             var home = new Location(63.433281, 10.419294);
-            locationService.GeoCoordinateToReturn = new GeoCoordinate(home.Latitude, home.Longitude);
+            locationService.LocationToReturn = home;
 
             Airport nearestAirport = null;
             Messenger.Default.Register(this, (AirportSelectedMessage e) => nearestAirport = e.Content);

@@ -1,6 +1,6 @@
-﻿using Microsoft.Silverlight.Testing;
+﻿using FlightsNorway.Shared.Model;
+using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FlightsNorway.Phone.Model;
 
 namespace FlightsNorway.Phone.Tests.Model
 {

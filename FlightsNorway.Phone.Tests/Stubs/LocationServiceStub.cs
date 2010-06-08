@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Windows;
 using System.Threading;
-using System.Device.Location;
-using FlightsNorway.Phone.Services;
+using FlightsNorway.Shared.Model;
+using FlightsNorway.Shared.Services;
 
 namespace FlightsNorway.Phone.Tests.Stubs
 {
     public class LocationServiceStub : IGetCurrentLocation
     {
-        public event EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>> PositionAvailable;
+        public event EventHandler<EventArgs<Location>> PositionAvailable;
 
-        public GeoCoordinate GeoCoordinateToReturn;
+        public Location LocationToReturn;
 
         public void GetPositionAsync()
         {
@@ -23,9 +23,7 @@ namespace FlightsNorway.Phone.Tests.Stubs
             Thread.Sleep(25);
 
             Deployment.Current.Dispatcher.BeginInvoke(() =>
-                PositionAvailable(this,
-                                new GeoPositionChangedEventArgs<GeoCoordinate>(
-                                    new GeoPosition<GeoCoordinate>(DateTimeOffset.Now, GeoCoordinateToReturn))));
+                PositionAvailable(this, new EventArgs<Location>(LocationToReturn)));
 
         }
     }

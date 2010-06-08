@@ -1,4 +1,4 @@
-﻿using FlightsNorway.Phone.FlightDataServices;
+﻿using FlightsNorway.Shared.FlightDataServices;
 
 namespace FlightsNorway.Phone.Tests.Stubs
 {

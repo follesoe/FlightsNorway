@@ -2,13 +2,16 @@
 using System.Windows;
 using System.Device.Location;
 
+using FlightsNorway.Shared.Model;
+using FlightsNorway.Shared.Services;
+
 namespace FlightsNorway.Phone.Services
 {
     public class LocationService : IGetCurrentLocation
     {
         private readonly GeoCoordinateWatcher _geoWatcher;
 
-        public event EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>> PositionAvailable;
+        public event EventHandler<EventArgs<Location>> PositionAvailable;
 
         public LocationService()
         {
@@ -47,7 +50,7 @@ namespace FlightsNorway.Phone.Services
             if (PositionAvailable != null)
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
-                        PositionAvailable(this, new GeoPositionChangedEventArgs<GeoCoordinate>(position)));
+                        PositionAvailable(this, new EventArgs<Location>(new Location(position.Location.Latitude, position.Location.Longitude))));
             }
         }
     }

@@ -1,7 +1,8 @@
 ﻿using FlightsNorway.Phone.Services;
-using FlightsNorway.Phone.ViewModels;
-using FlightsNorway.Phone.DesignTimeData;
-using FlightsNorway.Phone.FlightDataServices;
+using FlightsNorway.Shared.FlightDataServices;
+using FlightsNorway.Shared.Services;
+using FlightsNorway.Shared.ViewModels;
+using FlightsNorway.Shared.DesignTimeData;
 
 using Ninject;
 using GalaSoft.MvvmLight;

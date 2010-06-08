@@ -59,6 +59,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Device.Location" />
     <Reference Include="System.Observable" />
     <Reference Include="System.Reactive" />
@@ -118,6 +119,10 @@
     <ProjectReference Include="..\FlightsNorway.Phone\FlightsNorway.Phone.csproj">
       <Project>{0A2B82EF-56FB-43CD-A82D-E8C50C9EFC4A}</Project>
       <Name>FlightsNorway.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlightsNorway.Shared\FlightsNorway.Shared.csproj">
+      <Project>{A6C2B9DB-309D-41E7-A0B5-62C174793EFC}</Project>
+      <Name>FlightsNorway.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

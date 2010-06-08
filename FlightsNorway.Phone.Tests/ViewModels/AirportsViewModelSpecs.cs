@@ -1,10 +1,11 @@
 ﻿using System.Linq;
-using FlightsNorway.Phone.Messages;
-using FlightsNorway.Phone.Model;
-using FlightsNorway.Phone.Services;
+
+using FlightsNorway.Shared.Messages;
+using FlightsNorway.Shared.Model;
+using FlightsNorway.Shared.Services;
+using FlightsNorway.Shared.ViewModels;
+using FlightsNorway.Shared.FlightDataServices;
 using FlightsNorway.Phone.Tests.Stubs;
-using FlightsNorway.Phone.ViewModels;
-using FlightsNorway.Phone.FlightDataServices;
 
 using GalaSoft.MvvmLight.Messaging;
 

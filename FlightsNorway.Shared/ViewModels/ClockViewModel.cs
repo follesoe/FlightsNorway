@@ -13,9 +13,10 @@ namespace FlightsNorway.Shared.ViewModels
 
         public ClockViewModel()
         {
+            /*
             Observable.Interval(new TimeSpan(0, 0, 1))
                 .SubscribeOnDispatcher()
-                .Subscribe(t => RaisePropertyChanged("CurrentTime"));
+                .Subscribe(t => RaisePropertyChanged("CurrentTime"));*/
         }
     }
 }

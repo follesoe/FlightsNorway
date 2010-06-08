@@ -76,61 +76,21 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ApplicationBarController.cs" />
-    <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
-    <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
-    <Compile Include="FlightDataServices\FlightsService.cs" />
-    <Compile Include="FlightDataServices\IGetAirports.cs" />
-    <Compile Include="FlightDataServices\IGetFlights.cs" />
-    <Compile Include="Extensions\IEnumerableExtesnions.cs" />
-    <Compile Include="FlightDataServices\IMonitorFlights.cs" />
-    <Compile Include="FlightDataServices\MonitoringService.cs" />
-    <Compile Include="Messages\MonitorFlightMessage.cs" />
-    <Compile Include="Messages\StopMonitorFlightMessage.cs" />
     <Compile Include="Service References\MonitoringWebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Services\IGetCurrentLocation.cs" />
-    <Compile Include="Services\IOpenCommunicationChannel.cs" />
     <Compile Include="Services\LocationService.cs" />
-    <Compile Include="Model\Airline.cs" />
-    <Compile Include="FlightDataServices\AirlineNamesService.cs" />
-    <Compile Include="Model\AirlineDictionary.cs" />
-    <Compile Include="Model\Airport.cs" />
-    <Compile Include="FlightDataServices\AirportNamesService.cs" />
-    <Compile Include="Model\AirportDictionary.cs" />
-    <Compile Include="Model\Direction.cs" />
-    <Compile Include="Model\Flight.cs" />
-    <Compile Include="Model\FlightArea.cs" />
-    <Compile Include="Model\FlightStatus.cs" />
-    <Compile Include="Model\Location.cs" />
-    <Compile Include="Model\Status.cs" />
-    <Compile Include="FlightDataServices\StatusService.cs" />
-    <Compile Include="FlightDataServices\WebRequestFactory.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\StatusDictionary.cs" />
-    <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IStoreObjects.cs" />
-    <Compile Include="Services\MonitorServiceClient.cs" />
-    <Compile Include="Services\NearestAirportService.cs" />
     <Compile Include="Services\NotificationService.cs" />
-    <Compile Include="Services\ObjectStore.cs" />
-    <Compile Include="Services\PresetLocationService.cs" />
     <Compile Include="TravelHub.xaml.cs">
       <DependentUpon>TravelHub.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModelLocator.cs" />
-    <Compile Include="Messages\AirportSelectedMessage.cs" />
-    <Compile Include="ViewModels\AirportsViewModel.cs" />
-    <Compile Include="ViewModels\ClockViewModel.cs" />
-    <Compile Include="Messages\FlightSelectedMessage.cs" />
-    <Compile Include="Messages\FindNearestAirportMessage.cs" />
-    <Compile Include="ViewModels\FlightsViewModel.cs" />
-    <Compile Include="ViewModels\StringFormatValueConverter.cs" />
     <Compile Include="Views\AirportsView.xaml.cs">
       <DependentUpon>AirportsView.xaml</DependentUpon>
     </Compile>
@@ -140,7 +100,6 @@
     <Compile Include="Views\DeparturesView.xaml.cs">
       <DependentUpon>DeparturesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Extensions\XmlExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -208,6 +167,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FlightsNorway.Shared\FlightsNorway.Shared.csproj">
+      <Project>{A6C2B9DB-309D-41E7-A0B5-62C174793EFC}</Project>
+      <Name>FlightsNorway.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Phone.Controls.Samples\Phone.Controls.Samples.csproj">
       <Project>{700BA959-2F8B-459F-802A-76836144765B}</Project>
       <Name>Phone.Controls.Samples</Name>

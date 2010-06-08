@@ -1,6 +1,7 @@
 ﻿using System.IO;
-using FlightsNorway.Phone.Model;
-using FlightsNorway.Phone.Services;
+
+using FlightsNorway.Shared.Model;
+using FlightsNorway.Shared.Services;
 
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

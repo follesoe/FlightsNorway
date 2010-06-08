@@ -3,13 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModel="clr-namespace:FlightsNorway.Phone.ViewModels" 
+    xmlns:ViewModels="clr-namespace:FlightsNorway.Shared.ViewModels;assembly=FlightsNorway.Shared" 
     x:Class="FlightsNorway.Phone.Views.ArrivalsView"
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="480">
     
 	<UserControl.Resources>
-        <viewModel:StringFormatValueConverter x:Key="StringFormatValueConverter"/>
+        <ViewModels:StringFormatValueConverter x:Key="StringFormatValueConverter"/>
 		<DataTemplate x:Key="ArrivalItemTemplate">
 			<Grid Height="31" VerticalAlignment="Center">
 				<Grid.ColumnDefinitions>

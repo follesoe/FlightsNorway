@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using FlightsNorway.Shared.Services;
 using Microsoft.Phone.Notification;
 
 namespace FlightsNorway.Phone.Services

@@ -1,5 +1,5 @@
 ﻿using System;
-using FlightsNorway.Phone.Services;
+using FlightsNorway.Shared.Services;
 
 namespace FlightsNorway.Phone.Tests.Stubs
 {

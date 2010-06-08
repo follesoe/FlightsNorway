@@ -1,4 +1,4 @@
-﻿using FlightsNorway.Phone.Model;
+﻿using FlightsNorway.Shared.Model;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

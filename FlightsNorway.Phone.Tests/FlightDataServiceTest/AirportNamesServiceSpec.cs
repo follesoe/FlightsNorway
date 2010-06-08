@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Collections.Generic;
 
-using FlightsNorway.Phone.Model;
-using FlightsNorway.Phone.FlightDataServices;
+using FlightsNorway.Shared.Model;
+using FlightsNorway.Shared.FlightDataServices;
 
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
