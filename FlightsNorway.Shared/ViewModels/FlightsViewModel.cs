@@ -112,13 +112,17 @@ namespace FlightsNorway.Shared.ViewModels
             var now = DateTime.Now.ToUniversalTime().AddHours(1);
             foreach(var flight in flights)
             {
+                double hoursSince = now.Subtract(flight.ScheduledTime).TotalHours;
+                               
                 if(flight.Direction == Direction.Arrival)
                 {
+                    if (hoursSince > 1) continue;
                     Arrivals.Add(flight);
                 }
                 else
                 {
-                    Departures.Add(flight);
+                    if (hoursSince > 0.25) continue;                    
+                    Departures.Add(flight);                        
                 }
             }
         }
