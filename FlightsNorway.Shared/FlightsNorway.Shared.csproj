@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
     <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtesnions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using FlightsNorway.Shared.Extensions;
 using FlightsNorway.Shared.Model;
 
 namespace FlightsNorway.Shared.Tests.Builders
@@ -30,6 +31,12 @@ namespace FlightsNorway.Shared.Tests.Builders
             return this;
         }
 
+        public FlightBuilder At(DateTime time)
+        {
+            flight.ScheduledTime = time;
+            return this;
+        }
+
         public FlightBuilder At(int hours, int minutes)
         {
             flight.ScheduledTime = new DateTime(2010, 1, 1, hours, minutes, 0);
@@ -41,6 +48,7 @@ namespace FlightsNorway.Shared.Tests.Builders
             flight = new Flight();
             flight.Airport = new Airport();
             flight.Airline = new Airline();
+            flight.ScheduledTime = DateTime.Now.InTimeZone(+1);
             flight.FlightStatus = new FlightStatus();
         }
 

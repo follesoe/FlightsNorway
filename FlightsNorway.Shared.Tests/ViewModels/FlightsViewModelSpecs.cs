@@ -1,4 +1,6 @@
-﻿using FlightsNorway.Shared.Model;
+﻿using System;
+using FlightsNorway.Shared.Extensions;
+using FlightsNorway.Shared.Model;
 using FlightsNorway.Shared.Messages;
 using FlightsNorway.Shared.Services;
 using FlightsNorway.Shared.Tests.Builders;
