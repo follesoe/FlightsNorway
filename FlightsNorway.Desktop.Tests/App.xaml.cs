@@ -26,6 +26,7 @@ namespace FlightsNorway.Desktop.Tests
             settings.SampleTags.Add(Tags.ViewModel);
             settings.SampleTags.Add(Tags.WebService);
             settings.ShowTagExpressionEditor = true;
+            settings.TagExpression = "!WebService";
 
             RootVisual = UnitTestSystem.CreateTestPage(settings);
         }
