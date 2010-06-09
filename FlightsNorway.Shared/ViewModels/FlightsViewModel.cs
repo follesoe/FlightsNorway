@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using System.Linq;
 using FlightsNorway.Shared.Model;
 using FlightsNorway.Shared.Messages;
 using FlightsNorway.Shared.Services;
@@ -109,6 +109,7 @@ namespace FlightsNorway.Shared.ViewModels
 
         private void LoadFlights(IEnumerable<Flight> flights)
         {
+            var now = DateTime.Now.ToUniversalTime().AddHours(1);
             foreach(var flight in flights)
             {
                 if(flight.Direction == Direction.Arrival)
