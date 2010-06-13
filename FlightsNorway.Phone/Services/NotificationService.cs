@@ -28,7 +28,7 @@ namespace FlightsNorway.Phone.Services
                 try
                 {
                     _channel = new HttpNotificationChannel(ChannelName);
-                    _channel.ChannelUriUpdated += (o, e) =>channelCallback(e.ChannelUri.ToString());
+                    _channel.ChannelUriUpdated += (o, e) => channelCallback(e.ChannelUri.ToString());
                     _channel.Open();
                     _channel.BindToShellNotification();
                 }
@@ -36,8 +36,7 @@ namespace FlightsNorway.Phone.Services
                 {
                     Debug.WriteLine(ex.ToString());
                 }
-            }
-            
+            }            
         }
     }
 }
