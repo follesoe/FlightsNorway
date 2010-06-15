@@ -88,9 +88,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MonitoringWebService.cs" />
     <Compile Include="Services\NotificationService.cs" />
-    <Compile Include="TravelHub.xaml.cs">
-      <DependentUpon>TravelHub.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="Views\AirportsView.xaml.cs">
       <DependentUpon>AirportsView.xaml</DependentUpon>
@@ -108,10 +105,6 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TravelHub.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

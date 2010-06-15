@@ -38,12 +38,11 @@ namespace FlightsNorway.Phone
             _container.Bind<AirportsViewModel>().ToSelf().InSingletonScope();
             _container.Bind<IGetAirports>().To<AirportNamesService>().InSingletonScope();
             _container.Bind<IOpenCommunicationChannel>().To<NotificationService>().InSingletonScope();
-            _container.Bind<IScheduleFlightsToMonitor>().To<MonitoringService>().InSingletonScope();
             _container.Bind<IMonitorFlightsService>().To<MonitoringWebServiceSoapClient>();
 
             _container.Bind<IGetCurrentLocation>().ToConstant(new PresetLocationService(63.433281, 10.419294));
             _container.Bind<NearestAirportService>().ToConstant(new NearestAirportService(_container.Get<IGetCurrentLocation>()));
-            _container.Bind<MonitorServiceClient>().ToConstant(new MonitorServiceClient(_container.Get<IOpenCommunicationChannel>(), _container.Get<IScheduleFlightsToMonitor>()));
+            _container.Bind<MonitorServiceClient>().ToConstant(new MonitorServiceClient(_container.Get<IOpenCommunicationChannel>(), _container.Get<IMonitorFlightsService>()));
             
             if(ViewModelBase.IsInDesignModeStatic)
             {

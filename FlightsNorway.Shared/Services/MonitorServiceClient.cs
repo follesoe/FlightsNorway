@@ -8,14 +8,14 @@ namespace FlightsNorway.Shared.Services
     public class MonitorServiceClient
     {
         private readonly IOpenCommunicationChannel _notificationService;
-        private readonly IScheduleFlightsToMonitor _monitorService;
+        private readonly IMonitorFlightsService _monitorService;
 
         private string _callbackUrl;
 
         private readonly Queue<string> _flightsToMonitor;
         private readonly Queue<string> _flightsToStopMonitoring;
 
-        public MonitorServiceClient(IOpenCommunicationChannel notificationService, IScheduleFlightsToMonitor monitorService)
+        public MonitorServiceClient(IOpenCommunicationChannel notificationService, IMonitorFlightsService monitorService)
         {
             _flightsToMonitor = new Queue<string>();
             _flightsToStopMonitoring = new Queue<string>();
@@ -52,12 +52,12 @@ namespace FlightsNorway.Shared.Services
 
             while(_flightsToMonitor.Count > 0)
             {
-                _monitorService.MonitorFlight(_callbackUrl, _flightsToMonitor.Dequeue());
+                _monitorService.MonitorFlightAsync(_callbackUrl, _flightsToMonitor.Dequeue());
             }
             
             while(_flightsToStopMonitoring.Count > 0)
             {
-                _monitorService.StopMonitoringFlight(_callbackUrl, _flightsToStopMonitoring.Dequeue());
+                _monitorService.StopMonitoringFlightAsync(_callbackUrl, _flightsToStopMonitoring.Dequeue());
             }
         }
     }
