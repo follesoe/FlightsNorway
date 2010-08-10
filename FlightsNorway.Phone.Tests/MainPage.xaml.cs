@@ -1,8 +1,7 @@
-﻿using FlightsNorway.Shared.Tests;
-using Microsoft.Phone.Controls;
+﻿using Microsoft.Phone.Controls;
 using Microsoft.Silverlight.Testing;
 
-namespace FlightsNorway.Phone.Tests
+namespace FlightsNorway.Tests
 {
     public partial class MainPage
     {

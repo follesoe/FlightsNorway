@@ -1,21 +1,19 @@
 ﻿using System;
+using FlightsNorway.Messages;
+using FlightsNorway.Model;
 using Microsoft.Phone.Shell;
-
-using FlightsNorway.Shared.Model;
-using FlightsNorway.Shared.Messages;
-
 using GalaSoft.MvvmLight.Messaging;
 
-namespace FlightsNorway.Phone
+namespace FlightsNorway
 {
     public class ApplicationBarController
     {        
-        private readonly ApplicationBar _applicationBar;
+        private readonly IApplicationBar _applicationBar;
         private ApplicationBarMenuItem _subscribe;
         private ApplicationBarMenuItem _unsubscribe;
         private Flight _selectedFlight;
 
-        public ApplicationBarController(ApplicationBar applicationBar)
+        public ApplicationBarController(IApplicationBar applicationBar)
         {
             _applicationBar = applicationBar;
             InitializeButtons();
@@ -37,6 +35,10 @@ namespace FlightsNorway.Phone
             var arrivals = new ApplicationBarIconButton(new Uri("/Icons/arrivals.png", UriKind.Relative));
             var departures = new ApplicationBarIconButton(new Uri("/Icons/departures.png", UriKind.Relative));
             var airports = new ApplicationBarIconButton(new Uri("/Icons/airport.png", UriKind.Relative));
+
+            arrivals.Text = "arrivals";
+            departures.Text = "departures";
+            airports.Text = "airports";
 
             _applicationBar.Buttons.Add(arrivals);
             _applicationBar.Buttons.Add(departures);

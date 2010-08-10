@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Media.Imaging;
 
-namespace PhoneControls.Samples
+namespace Phone.Controls.Samples
 {
     internal enum Snapping
     {
@@ -92,6 +92,7 @@ namespace PhoneControls.Samples
                 bitmap.Invalidate();
                 image = new Image();
                 image.Source = bitmap;
+                image.CacheMode = new BitmapCache();
                 panel.Children[0] = image;
                 double offset = bitmap.PixelWidth;
 
@@ -103,6 +104,7 @@ namespace PhoneControls.Samples
                 bitmap.Invalidate();
                 image = new Image();
                 image.Source = bitmap;
+                image.CacheMode = new BitmapCache();
                 panel.Children[2] = image;
 
                 // adjust panel position

@@ -1,4 +1,4 @@
-﻿namespace FlightsNorway.Phone.Views
+﻿namespace FlightsNorway.Views
 {
     public partial class DeparturesView
     {

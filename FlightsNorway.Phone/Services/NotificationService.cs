@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using FlightsNorway.Shared.Services;
 using Microsoft.Phone.Notification;
 
-namespace FlightsNorway.Phone.Services
+namespace FlightsNorway.Services
 {
     public class NotificationService : IOpenCommunicationChannel
     {
@@ -30,7 +29,7 @@ namespace FlightsNorway.Phone.Services
                     _channel = new HttpNotificationChannel(ChannelName);
                     _channel.ChannelUriUpdated += (o, e) => channelCallback(e.ChannelUri.ToString());
                     _channel.Open();
-                    _channel.BindToShellNotification();
+                    _channel.BindToShellToast();
                 }
                 catch (Exception ex)
                 {

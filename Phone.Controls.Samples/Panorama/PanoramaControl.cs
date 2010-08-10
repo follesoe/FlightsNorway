@@ -11,7 +11,7 @@ using System.Windows.Markup;
 using System.Collections.Specialized;
 
 
-namespace PhoneControls.Samples
+namespace Phone.Controls.Samples
 {
     [ContentPropertyAttribute("Items")]
     public class PanoramaControl : ItemsControl
@@ -25,7 +25,11 @@ namespace PhoneControls.Samples
 
         public PanoramaControl()
         {
+            // apply default style
             this.DefaultStyleKey = typeof(PanoramaControl);
+
+            // defaults selected item to none
+            SelectedIndex = -1;
         }
 
         public override void OnApplyTemplate()
@@ -55,32 +59,46 @@ namespace PhoneControls.Samples
             });
         }
 
+        public void Invalidate()
+        {
+            ScrollView.Invalidate();
+        }
+
         #region Navigation
         public void ScrollPrev()
         {
-            // complete current animation
-            ScrollView.ScrollSkip();
+            if (null != ScrollView)
+            {
+                // complete current animation
+                ScrollView.ScrollSkip();
 
-            // move to previous item
-            ScrollView.ScrollTo(this.SelectedIndex - 1);
+                // move to previous item
+                ScrollView.ScrollTo(this.SelectedIndex - 1);
+            }
         }
 
         public void ScrollNext()
         {
-            // complete current animation
-            ScrollView.ScrollSkip();
+            if (null != ScrollView)
+            {
+                // complete current animation
+                ScrollView.ScrollSkip();
 
-            // move to next item
-            ScrollView.ScrollTo(this.SelectedIndex + 1);
+                // move to next item
+                ScrollView.ScrollTo(this.SelectedIndex + 1);
+            }
         }
 
         private void MoveTo(int index)
         {
-            // complete current animation
-            ScrollView.ScrollSkip();
+            if (null != ScrollView)
+            {
+                // complete current animation
+                ScrollView.ScrollSkip();
 
-            // move to item
-            ScrollView.MoveTo(index);
+                // move to item
+                ScrollView.MoveTo(index);
+            }
         }
 
         void ScrollView_ScrollCompleted(object sender, ScrollCompletedEventArgs e)
@@ -118,11 +136,18 @@ namespace PhoneControls.Samples
 
         #region Multitouch events
 #if WINDOWS_PHONE
-        // manipulation tracker
+        ManipulationHook _hook = new ManipulationHook();
         ManipulationTracker _tracker;
         protected override void OnManipulationStarted(ManipulationStartedEventArgs e)
         {
-            e.Handled = true;
+            // manipulation events hook
+            _hook.Hook(e.ManipulationContainer);
+
+            // some controls just swallow the manipulation changes events
+            // this is true with the ScrollViewer inside a ListBox.
+            // register to ManipulationDelta of the source object
+            // so we receive this event regardless of the parent implementation.
+            _hook.HookDeltaHandler(OnManipulationDelta);
 
             // skip current animation (if any)
             ScrollView.ScrollSkip();
@@ -132,29 +157,27 @@ namespace PhoneControls.Samples
             _tracker.StartTracking(new Point(ScrollView.Position, 0.0));
         }
 
-        ManipulationHook _hack = new ManipulationHook();
         protected override void OnManipulationDelta(ManipulationDeltaEventArgs e)
         {
+            // already handled ?
+            if (e.Handled) return;
+
             // manipulation canceled
             if (_tracker.Canceled) return;
 
             if (_tracker.TrackManipulation(e.CumulativeManipulation.Translation))
             {
-                // handle this one
+                // mark as handled to stop
+                // underlying control's manipulations
                 e.Handled = true;
 
-                // cancel capture from current object to disable behaviors
-                // for example, a button will not trigger the Click event
-                // after we've done scrolling
-                UIElement ui = e.ManipulationContainer as UIElement;
-                ui.ReleaseMouseCapture();
-
-                // the above code doesn't seem to work for unknown reasons
-                // let's just hook/override OnManipulationCompleted for now...
-                _hack.Set(e.ManipulationContainer, OnManipulationCompleted);
+                // cancel capture from current object to disable click behavior,
+                // if we've started scrolling. Not sure what the best technique is.
+                // let's just hook/override OnManipulationCompleted
+                // and force e.Handled on it for now...
+                _hook.HookCompletedHandler(OnManipulationCompleted);
 
                 // move to position
-                double position = _tracker.Start.X - e.CumulativeManipulation.Translation.X;
                 ScrollView.Position = _tracker.Position.X;
             }
 
@@ -167,11 +190,9 @@ namespace PhoneControls.Samples
             // manipulation canceled
             if (_tracker.Canceled) return;
 
-            // handle this one
-            e.Handled = true;
-
             // end tracking
-            _tracker.TrackManipulation(e.TotalManipulation.Translation);
+            // BUGBUG : disable due to empty e.TotalManipulation in #6326
+            // _tracker.TrackManipulation(e.TotalManipulation.Translation);
 
             // get direction
             int direction = (int)Math.Sign(-e.FinalVelocities.LinearVelocity.X);
@@ -189,8 +210,6 @@ namespace PhoneControls.Samples
 
             // find out which item is at screen center
             double center = _tracker.Position.X + LayoutRoot.ActualWidth / 2;
-            int index = this.Items.GetIndexOfPosition(center);
-            PanoramaItem item = (PanoramaItem)this.Items.GetItem(index);
 
             // cycle back to last item ?
             if (center < 0)
@@ -207,6 +226,8 @@ namespace PhoneControls.Samples
             }
 
             // item's start position
+            int index = this.Items.GetIndexOfPosition(center);
+            PanoramaItem item = (PanoramaItem)this.Items.GetItem(index);
             double start = this.Items.GetItemPosition(index);
 
             // close to left edge : snap left
@@ -356,23 +377,26 @@ namespace PhoneControls.Samples
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
+                case NotifyCollectionChangedAction.Reset:
+                case NotifyCollectionChangedAction.Replace:
                     // fixup all items default width and height
                     UpdateItemWidthAndHeight();
                     break;
-
                 case NotifyCollectionChangedAction.Remove:
-                    break;
-
-                case NotifyCollectionChangedAction.Reset:
-                    break;
-
-                case NotifyCollectionChangedAction.Replace:
                     break;
             }
 
-            // delay reset the control
+            // invalidate the control
             if (null != ScrollView)
                 ScrollView.Invalidate();
+
+            // first inserted ?
+            if ((SelectedIndex < 0) && (Items.Count > 0))
+                SelectedIndex = 0;
+
+            // invalid selected item ?
+            if (!Items.Contains(SelectedItem) && (Items.Count > 0))
+                SelectedIndex = 0;
         }
 
         private void UpdateItemWidthAndHeight()
@@ -460,6 +484,7 @@ namespace PhoneControls.Samples
 
             // change selection
             ctrl.SelectedIndex = newIndex;
+            ctrl.SelectedItem = (PanoramaItem)ctrl.Items.GetItem(newIndex);
 
             // change visuals
             ctrl.MoveTo(ctrl.SelectedIndex);

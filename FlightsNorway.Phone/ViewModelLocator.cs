@@ -1,15 +1,11 @@
-﻿using FlightsNorway.Phone.Services;
-using FlightsNorway.Phone.MonitoringWebService;
-
-using FlightsNorway.Shared.Services;
-using FlightsNorway.Shared.ViewModels;
-using FlightsNorway.Shared.DesignTimeData;
-using FlightsNorway.Shared.FlightDataServices;
-
+﻿using FlightsNorway.Services;
+using FlightsNorway.ViewModels;
+using FlightsNorway.DesignTimeData;
+using FlightsNorway.FlightDataServices;
 using Ninject;
 using GalaSoft.MvvmLight;
 
-namespace FlightsNorway.Phone
+namespace FlightsNorway
 {
     public class ViewModelLocator
     {
@@ -38,11 +34,9 @@ namespace FlightsNorway.Phone
             _container.Bind<AirportsViewModel>().ToSelf().InSingletonScope();
             _container.Bind<IGetAirports>().To<AirportNamesService>().InSingletonScope();
             _container.Bind<IOpenCommunicationChannel>().To<NotificationService>().InSingletonScope();
-            _container.Bind<IMonitorFlightsService>().To<MonitoringWebServiceSoapClient>();
 
             _container.Bind<IGetCurrentLocation>().ToConstant(new PresetLocationService(63.433281, 10.419294));
             _container.Bind<NearestAirportService>().ToConstant(new NearestAirportService(_container.Get<IGetCurrentLocation>()));
-            _container.Bind<MonitorServiceClient>().ToConstant(new MonitorServiceClient(_container.Get<IOpenCommunicationChannel>(), _container.Get<IMonitorFlightsService>()));
             
             if(ViewModelBase.IsInDesignModeStatic)
             {

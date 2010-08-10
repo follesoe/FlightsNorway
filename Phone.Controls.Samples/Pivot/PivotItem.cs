@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Controls;
 
-namespace PhoneControls.Samples
+namespace Phone.Controls.Samples
 {
     [ContentPropertyAttribute("Content")]
     public class PivotItem : ContentControl

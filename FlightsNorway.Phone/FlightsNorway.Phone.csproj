@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FlightsNorway.Phone</RootNamespace>
+    <RootNamespace>FlightsNorway</RootNamespace>
     <AssemblyName>FlightsNorway.Phone</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -22,7 +22,7 @@
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
     <XapFilename>FlightsNorway.Phone.xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>FlightsNorway.Phone.App</SilverlightAppEntry>
+    <SilverlightAppEntry>FlightsNorway.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
   </PropertyGroup>
@@ -51,16 +51,14 @@
     <Reference Include="GalaSoft.MvvmLight.WP7">
       <HintPath>..\lib\MVVM Light WP7 (v3)\GalaSoft.MvvmLight.WP7.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Phone.Controls" />
-    <Reference Include="Microsoft.Phone.Controls.Navigation" />
-    <Reference Include="Microsoft.Phone.Notification" />
-    <Reference Include="Microsoft.Phone.Shell" />
+    <Reference Include="Microsoft.Devices.Sensors" />
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Reactive" />
     <Reference Include="Ninject">
       <HintPath>..\lib\Ninject\Unsigned\debug\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="System.Device.Location" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Observable" />
-    <Reference Include="System.Reactive" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows" />
@@ -76,19 +74,52 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="ApplicationBarController.cs" />
-    <Compile Include="Service References\MonitoringWebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
+    <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
+    <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtesnions.cs" />
+    <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
+    <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="FlightDataServices\AirlineNamesService.cs" />
+    <Compile Include="FlightDataServices\AirportNamesService.cs" />
+    <Compile Include="FlightDataServices\FlightsService.cs" />
+    <Compile Include="FlightDataServices\IGetAirports.cs" />
+    <Compile Include="FlightDataServices\IGetFlights.cs" />
+    <Compile Include="FlightDataServices\StatusService.cs" />
+    <Compile Include="FlightDataServices\WebRequestFactory.cs" />
+    <Compile Include="Messages\AirportSelectedMessage.cs" />
+    <Compile Include="Messages\FindNearestAirportMessage.cs" />
+    <Compile Include="Messages\FlightSelectedMessage.cs" />
+    <Compile Include="Messages\MonitorFlightMessage.cs" />
+    <Compile Include="Messages\StopMonitorFlightMessage.cs" />
+    <Compile Include="Model\Airline.cs" />
+    <Compile Include="Model\AirlineDictionary.cs" />
+    <Compile Include="Model\Airport.cs" />
+    <Compile Include="Model\AirportDictionary.cs" />
+    <Compile Include="Model\Direction.cs" />
+    <Compile Include="Model\Flight.cs" />
+    <Compile Include="Model\FlightArea.cs" />
+    <Compile Include="Model\FlightStatus.cs" />
+    <Compile Include="Model\Location.cs" />
+    <Compile Include="Model\Status.cs" />
+    <Compile Include="Model\StatusDictionary.cs" />
+    <Compile Include="Services\IGetCurrentLocation.cs" />
+    <Compile Include="Services\IOpenCommunicationChannel.cs" />
+    <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\LocationService.cs" />
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\MonitoringWebService.cs" />
+    <Compile Include="Services\NearestAirportService.cs" />
     <Compile Include="Services\NotificationService.cs" />
+    <Compile Include="Services\ObjectStore.cs" />
+    <Compile Include="Services\PresetLocationService.cs" />
     <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModels\AirportsViewModel.cs" />
+    <Compile Include="ViewModels\ClockViewModel.cs" />
+    <Compile Include="ViewModels\FlightsViewModel.cs" />
+    <Compile Include="ViewModels\StringFormatValueConverter.cs" />
     <Compile Include="Views\AirportsView.xaml.cs">
       <DependentUpon>AirportsView.xaml</DependentUpon>
     </Compile>
@@ -104,7 +135,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="Views\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,14 +155,6 @@
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
-    <None Include="Service References\MonitoringWebService\FlightsNorway.Phone.MonitoringWebService.MonitorFlightResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\MonitoringWebService\FlightsNorway.Phone.MonitoringWebService.StopMonitoringFlightResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\MonitoringWebService\MonitoringWebService.wsdl" />
-    <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
@@ -149,29 +172,15 @@
     <Content Include="Icons\departures.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Service References\MonitoringWebService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\MonitoringWebService\configuration.svcinfo" />
-    <None Include="Service References\MonitoringWebService\configuration91.svcinfo" />
-    <None Include="Service References\MonitoringWebService\MonitoringWebService.disco" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FlightsNorway.Shared\FlightsNorway.Shared.csproj">
-      <Project>{A6C2B9DB-309D-41E7-A0B5-62C174793EFC}</Project>
-      <Name>FlightsNorway.Shared</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Phone.Controls.Samples\Phone.Controls.Samples.csproj">
       <Project>{700BA959-2F8B-459F-802A-76836144765B}</Project>
       <Name>Phone.Controls.Samples</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\MonitoringWebService\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

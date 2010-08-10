@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Device.Location;
+using FlightsNorway.Model;
 
-using FlightsNorway.Shared.Model;
-using FlightsNorway.Shared.Services;
-
-namespace FlightsNorway.Phone.Services
+namespace FlightsNorway.Services
 {
     public class LocationService : IGetCurrentLocation
     {
@@ -15,7 +13,7 @@ namespace FlightsNorway.Phone.Services
 
         public LocationService()
         {
-            _geoWatcher = new GeoCoordinateWatcher(GeoPositionAccuracy.Low);
+            _geoWatcher = new GeoCoordinateWatcher(GeoPositionAccuracy.Default);
             
             _geoWatcher.StatusChanged += OnStatusChanged;           
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace FlightsNorway.Phone.Tests
+namespace FlightsNorway.Tests
 {
     public partial class App
     {

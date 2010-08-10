@@ -1,12 +1,15 @@
 ﻿using System.Windows.Media;
 
-namespace PhoneControls.Samples
+namespace Phone.Controls.Samples
 {
     internal delegate void ScrollCompletedEventHandler(object sender, ScrollCompletedEventArgs e);
 
     internal class ScrollCompletedEventArgs
     {
         public int SelectedIndex;
+        public ScrollCompletedEventArgs()
+        {
+        }
     }
 
     internal struct ScrollHost

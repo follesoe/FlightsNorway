@@ -1,4 +1,4 @@
-﻿using PhoneControls.Samples;
+﻿using Phone.Controls.Samples;
 
 namespace System.Windows.Controls
 {

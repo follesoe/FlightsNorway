@@ -43,8 +43,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Phone.Controls" />
-    <Reference Include="Microsoft.Phone.Controls.Navigation" />
     <Reference Include="mscorlib" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -63,11 +61,28 @@
     <Compile Include="Panorama\PanoramaItem.cs" />
     <Compile Include="Pivot\PivotControl.cs" />
     <Compile Include="Pivot\PivotItem.cs" />
+    <Compile Include="Pivot\PivotItemCollectionAdaptor.cs" />
     <Compile Include="Pivot\PivotView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\WriteableBitmapExtensions.cs" />
-    <Compile Include="Tilt\TiltEffect.cs" />
-    <Compile Include="Tilt\VisualTreeHelperExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <MergeStyle Include="Panorama\PanoramaControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </MergeStyle>
+    <MergeStyle Include="Panorama\PanoramaItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </MergeStyle>
+    <MergeStyle Include="Pivot\PivotControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </MergeStyle>
+    <MergeStyle Include="Pivot\PivotItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </MergeStyle>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Themes\generic.xaml">
@@ -77,6 +92,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <Import Project="$(MSBuildProjectDirectory)\..\Phone.Controls.Samples.Build\bin\Phone.Controls.Samples.Build.targets" />
   <ProjectExtensions />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

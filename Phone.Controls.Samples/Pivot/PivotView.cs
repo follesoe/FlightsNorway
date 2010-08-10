@@ -10,7 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Media.Imaging;
 
-namespace PhoneControls.Samples
+namespace Phone.Controls.Samples
 {
     /// <summary>
     /// Helper class for PivotControl.
@@ -36,6 +36,7 @@ namespace PhoneControls.Samples
         public event ScrollCompletedEventHandler ScrollCompleted;
 
         private bool _ready = false;
+        private int _newindex = -1;
 
         public PivotView(PivotControl parent)
         {
@@ -68,13 +69,9 @@ namespace PhoneControls.Samples
                 HeadersPanelHost.RenderTransform = HeadersHost.Transform;
                 ItemsPanel.RenderTransform = ItemsHost.Transform;
 
-                // reset/initialize layout with dummy values
-                if (HeadersPanelHost.Children.Count == 0)
-                {
-                    HeadersPanelHost.Children.Add(new Rectangle());
-                    HeadersPanelHost.Children.Add(HeadersPanel);
-                    HeadersPanelHost.Children.Add(new Rectangle());
-                }
+                // reset/initialize layout
+                HeadersPanelHost.Children.Clear();
+                HeadersPanelHost.Children.Add(HeadersPanel);
                 HeadersPanelHost.SetValue(Canvas.LeftProperty, 0.0);
 
                 if (Headers.Count > 1)
@@ -94,22 +91,24 @@ namespace PhoneControls.Samples
                     // duplicate left
                     image = new Image();
                     image.Source = bitmap;
-                    HeadersPanelHost.Children[0] = image;
+                    image.CacheMode = new BitmapCache();
+                    HeadersPanelHost.Children.Insert(0, image);
                     double offset = bitmap.PixelWidth;
 
                     // duplicate right
                     image = new Image();
                     image.Source = bitmap;
-                    HeadersPanelHost.Children[2] = image;
+                    image.CacheMode = new BitmapCache();
+                    HeadersPanelHost.Children.Add(image);
 
                     // adjust panel position
                     HeadersPanelHost.SetValue(Canvas.LeftProperty, -offset);
-
-                    // select current header
-                    int index = Parent.SelectedIndex;
-                    UpdateHeadersVisuals(index);
-                    UpdateVisuals(index);
                 }
+
+                // select current header
+                int index = Parent.SelectedIndex;
+                UpdateHeadersVisuals(index);
+                UpdateVisuals(index);
 
                 // done
                 _ready = true;
@@ -134,8 +133,9 @@ namespace PhoneControls.Samples
                 items.Clear();
                 items.Add(item);
 
-                // update item position
+                // update item position and opacity
                 item.SetValue(Canvas.LeftProperty, Items.GetItemPosition(index));
+                item.Opacity = 1.0;
 
                 // update title
                 Parent.Title = item.Title;
@@ -285,8 +285,8 @@ namespace PhoneControls.Samples
             double offsetItems = 0;
 
             // items
-            PivotItem item0 = (PivotItem)Items.GetItem(Parent.SelectedIndex);
-            PivotItem item1 = null;
+            PivotItem item = (PivotItem)Items.GetItem(Parent.SelectedIndex);
+            PivotItem itemX = null;
 
             // item limits
             int index0 = 0;
@@ -298,53 +298,55 @@ namespace PhoneControls.Samples
                 HeaderPosition += HeadersPanel.ActualWidth;
                 offsetHeaders = Headers.GetItemPosition(indexN);
                 offsetItems = Items.GetItemPosition(index0) - Items.GetItemWidth(indexN);
+                offsetItems = Position - Items.GetItemWidth(indexN);
                 UpdateVisuals(indexN, offsetItems);
                 UpdateHeadersVisuals(indexN);
-                item1 = (PivotItem)Items.GetItem(indexN);
+                index = indexN;
+                itemX = (PivotItem)Items.GetItem(indexN);
             }
             // back to first
             else if (index > indexN)
             {
                 HeaderPosition -= HeadersPanel.ActualWidth;
                 offsetHeaders = Headers.GetItemPosition(index0);
-                offsetItems = Items.GetItemPosition(indexN) + Items.GetItemWidth(indexN);
+                //offsetItems = Items.GetItemPosition(indexN) + Items.GetItemWidth(indexN);
+                offsetItems = Position + Items.GetItemWidth(indexN);
                 UpdateVisuals(index0, offsetItems);
                 UpdateHeadersVisuals(index0);
-                item1 = (PivotItem)Items.GetItem(index0);
+                index = index0;
+                itemX = (PivotItem)Items.GetItem(index0);
             }
             // normal scroll
             else
             {
                 offsetHeaders = Headers.GetItemPosition(index);
-                offsetItems = Items.GetItemPosition(index);
+                //offsetItems = Items.GetItemPosition(index);
+                offsetItems = Position - Items.GetItemPosition(Parent.SelectedIndex) + Items.GetItemPosition(index);
                 UpdateVisuals(index, offsetItems);
                 UpdateHeadersVisuals(index);
-                item1 = (PivotItem)Items.GetItem(index);
+                itemX = (PivotItem)Items.GetItem(index);
             }
 
-            // adjust speed
-            double offset = Math.Abs(offsetItems - Position);
-            if (offset < LayoutRoot.ActualWidth)
-            {
-                milliseconds *= offset / LayoutRoot.ActualWidth;
-            }
+            // target index
+            // after animation is completed
+            _newindex = index;
 
             // start a new storyboard
             Storyboard = new Storyboard();
             Storyboard.Completed += new EventHandler(Storyboard_Completed);
             Storyboard.Children.Add(CreateAnimation(HeadersHost.Transform, TranslateTransform.XProperty, -offsetHeaders, milliseconds));
             Storyboard.Children.Add(CreateAnimation(ItemsHost.Transform, TranslateTransform.XProperty, -offsetItems, milliseconds));
-            if (item0 != item1)
+            if (item != itemX)
             {
-                item0.Opacity = 1.0;
-                item1.Opacity = 0.0;
-                Storyboard.Children.Add(CreateAnimation(item0, UIElement.OpacityProperty, 0.0, milliseconds));
-                Storyboard.Children.Add(CreateAnimation(item1, UIElement.OpacityProperty, 1.0, milliseconds, EasingMode.EaseIn));
+                item.Opacity = 1.0;
+                itemX.Opacity = 0.0;
+                Storyboard.Children.Add(CreateAnimation(item, UIElement.OpacityProperty, 0.0, milliseconds));
+                Storyboard.Children.Add(CreateAnimation(itemX, UIElement.OpacityProperty, 1.0, milliseconds));
             }
             Storyboard.Begin();
 
             // update title
-            Parent.Title = item1.Title;
+            Parent.Title = itemX.Title;
         }
 
         public DoubleAnimation CreateAnimation(DependencyObject obj, DependencyProperty prop, double value, double milliseconds, EasingMode easing = EasingMode.EaseOut)
@@ -370,12 +372,9 @@ namespace PhoneControls.Samples
             if (null != sb)
                 sb.Completed -= new EventHandler(Storyboard_Completed);
 
-            // find selected item
-            int index = Items.GetIndexOfPosition(this.Position);
-
             // raise event for any listener out there
             if (null != ScrollCompleted)
-                ScrollCompleted(this, new ScrollCompletedEventArgs() { SelectedIndex = index });
+                ScrollCompleted(this, new ScrollCompletedEventArgs() { SelectedIndex = _newindex });
         }
     }
 }

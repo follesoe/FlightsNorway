@@ -2,9 +2,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:ViewModels="clr-namespace:FlightsNorway.Shared.ViewModels;assembly=FlightsNorway.Shared" 
-    x:Class="FlightsNorway.Phone.Views.ArrivalsView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:ViewModels="clr-namespace:FlightsNorway.ViewModels"
+    x:Class="FlightsNorway.Views.ArrivalsView"
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="480">
     
@@ -32,7 +32,7 @@
         <Binding Path="FlightsViewModel" Source="{StaticResource ViewModelLocator}" />
     </UserControl.DataContext>
 
-    <Grid x:Name="LayoutRoot" Background="{StaticResource PhoneBackgroundBrush}">
+    <Grid x:Name="LayoutRoot">
         <ListBox 
             ItemsSource="{Binding Arrivals}" 
             SelectedItem="{Binding SelectedArrival, Mode=TwoWay}"

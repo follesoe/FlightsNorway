@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Controls;
 
-namespace PhoneControls.Samples
+namespace Phone.Controls.Samples
 {
     [TemplatePart(Name = "PanoramaHeader", Type = typeof(FrameworkElement))]
     [TemplatePart(Name = "PanoramaContent", Type = typeof(ContentControl))]
