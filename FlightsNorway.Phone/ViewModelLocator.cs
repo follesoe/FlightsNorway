@@ -2,6 +2,7 @@
 using FlightsNorway.ViewModels;
 using FlightsNorway.DesignTimeData;
 using FlightsNorway.FlightDataServices;
+
 using Ninject;
 using GalaSoft.MvvmLight;
 
@@ -16,9 +17,9 @@ namespace FlightsNorway
             get { return _container.Get<AirportsViewModel>(); }
         }
 
-        public FlightsViewModel FlightsViewModel
+        public IFlightsViewModel FlightsViewModel
         {
-            get { return _container.Get<FlightsViewModel>(); }
+            get { return _container.Get<IFlightsViewModel>(); }
         }
 
         public ClockViewModel ClockViewModel
@@ -30,7 +31,6 @@ namespace FlightsNorway
         {
             _container = new StandardKernel();
             _container.Bind<ClockViewModel>().ToSelf().InSingletonScope();            
-            _container.Bind<FlightsViewModel>().ToSelf().InSingletonScope();
             _container.Bind<AirportsViewModel>().ToSelf().InSingletonScope();
             _container.Bind<IGetAirports>().To<AirportNamesService>().InSingletonScope();
             _container.Bind<IOpenCommunicationChannel>().To<NotificationService>().InSingletonScope();
@@ -42,11 +42,13 @@ namespace FlightsNorway
             {
                 _container.Bind<IStoreObjects>().To<DesignTimeObjectStore>().InSingletonScope();
                 _container.Bind<IGetFlights>().To<DesignTimeFlightsService>().InSingletonScope();
+                _container.Bind<IFlightsViewModel>().To<FlightsDesignTimeViewModel>().InSingletonScope();                
             }
             else
             {
                 _container.Bind<IStoreObjects>().To<ObjectStore>().InSingletonScope();
                 _container.Bind<IGetFlights>().To<FlightsService>().InSingletonScope();
+                _container.Bind<IFlightsViewModel>().To<FlightsViewModel>().InSingletonScope();
             }            
         }
     }

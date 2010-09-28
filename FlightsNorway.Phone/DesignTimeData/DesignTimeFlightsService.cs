@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using FlightsNorway.Model;
-using Microsoft.Phone.Reactive;
 using FlightsNorway.FlightDataServices;
+
+using Microsoft.Phone.Reactive;
 
 namespace FlightsNorway.DesignTimeData
 {
@@ -23,33 +25,26 @@ namespace FlightsNorway.DesignTimeData
 
         public IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport)
         {
-            var allFlights = new List<IEnumerable<Flight>> { CreateDepartures() };
+            var allFlights = new List<IEnumerable<Flight>>
+                                 {
+                                     CreateFlights(6, Direction.Arrival), 
+                                     CreateFlights(6, Direction.Depature)
+                                 };
             return allFlights.ToObservable();
         }
 
-        private static IEnumerable<Flight> CreateDepartures()
+        public static IEnumerable<Flight> CreateFlights(int number, Direction direction)
         {         
-            for(int i = 0; i < 6; ++i)
+            for(var i = 0; i < number; ++i)
             {
                 var flight = new Flight(GetRandomAirline(), GetRandomAirport());
                 flight.FlightId = flight.Airline.Code + "12" + i;
-                flight.Direction = Direction.Depature;
+                flight.Direction = direction;
                 flight.ScheduledTime = new DateTime(2010, 1, 1, 10 + i, 15, 0);
                 flight.Gate = GetRandomGate();
-                flight.Belt = GetRandomBelt();
-                flight.FlightStatus = GetRandomDepartureStatus();
-                yield return flight;
-            }
-
-            for (int i = 0; i < 6; ++i)
-            {
-                var flight = new Flight(GetRandomAirline(), GetRandomAirport());
-                flight.FlightId = flight.Airline.Code + "12" + i;
-                flight.Direction = Direction.Arrival;
-                flight.ScheduledTime = new DateTime(2010, 1, 1, 10 + i, 15, 0);
-                flight.Gate = GetRandomGate();
-                flight.Belt = GetRandomBelt();
-                flight.FlightStatus = GetRandomArrivalStatus();                
+                flight.Belt = GetRandomBelt();                
+                flight.FlightStatus = direction == Direction.Arrival ? GetRandomArrivalStatus() : GetRandomDepartureStatus();
+                
                 yield return flight;
             }
         }

@@ -17,7 +17,7 @@ namespace FlightsNorway.ViewModels
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException("This converter only supports one-way bindings.");
+            throw new NotImplementedException("This converter only supports one-way binding.");
         }
     }
 }

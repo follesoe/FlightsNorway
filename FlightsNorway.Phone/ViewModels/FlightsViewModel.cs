@@ -11,10 +11,18 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Phone.Reactive;
 
-
 namespace FlightsNorway.ViewModels
 {
-    public class FlightsViewModel : ViewModelBase
+    public interface IFlightsViewModel
+    {
+        ObservableCollection<Flight> Arrivals { get; }
+        ObservableCollection<Flight> Departures { get; }
+        Airport SelectedAirport { get; set; }
+        Flight SelectedDeparture { get; set; }
+        Flight SelectedArrival { get; set; }
+    }
+
+    public class FlightsViewModel : ViewModelBase, IFlightsViewModel
     {        
         private readonly IGetFlights _flightsService;
         private readonly IStoreObjects _objectStore;
@@ -78,7 +86,6 @@ namespace FlightsNorway.ViewModels
             Messenger.Default.Register<AirportSelectedMessage>(this, OnAirportSelected);
             
             LoadSelectedAirportFromDisk();
-
         }
 
         private void LoadSelectedAirportFromDisk()
