@@ -5,31 +5,31 @@
     xmlns:phoneNavigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="clr-namespace:FlightsNorway.Views"
-    xmlns:phone="clr-namespace:Phone.Controls.Samples;assembly=Phone.Controls.Samples"
+    xmlns:views="clr-namespace:FlightsNorway.Views" 
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800">
 
     <Grid x:Name="LayoutRoot">
-
-        <phone:PivotControl x:Name="_mainPivot" Title="Flytider">
-            <phone:PivotControl.Items>
-                <phone:PivotItem Title="flydata fra Avinor" Header="avgang" x:Name="_departuresPivot">
-                    <phone:PivotItem.Content>
+        
+        <controls:Pivot x:Name="_mainPivot" Title="Flytider">
+            <controls:Pivot.Items>
+                <controls:PivotItem Header="avgang" x:Name="_departuresPivot">
+                    <controls:PivotItem.Content>
                         <views:DeparturesView Margin="0, 0, 0, 80" />
-                    </phone:PivotItem.Content>
-                </phone:PivotItem>                
-                <phone:PivotItem Title="flydata fra Avinor" Header="ankomst" x:Name="_arrivalsPivot">
-                    <phone:PivotItem.Content>
+                    </controls:PivotItem.Content>
+                </controls:PivotItem>
+                <controls:PivotItem Header="ankomst" x:Name="_arrivalsPivot">
+                    <controls:PivotItem.Content>
                         <views:ArrivalsView Margin="0, 0, 0, 80" />
-                    </phone:PivotItem.Content>
-                </phone:PivotItem>
-                <phone:PivotItem Title="flydata fra Avinor" Header="velg flyplass" x:Name="_airportsPivot">
-                    <phone:PivotItem.Content>
+                    </controls:PivotItem.Content>
+                </controls:PivotItem>
+                <controls:PivotItem Header="velg flyplass" x:Name="_airportsPivot">
+                    <controls:PivotItem.Content>
                         <views:AirportsView Margin="0, 0, 0, 80" />
-                    </phone:PivotItem.Content>
-                </phone:PivotItem>
-            </phone:PivotControl.Items>
-        </phone:PivotControl>
+                    </controls:PivotItem.Content>
+                </controls:PivotItem>
+            </controls:Pivot.Items>
+        </controls:Pivot>
         
         <TextBlock 
             DataContext="{Binding Path=FlightsViewModel, Source={StaticResource ViewModelLocator}}" 

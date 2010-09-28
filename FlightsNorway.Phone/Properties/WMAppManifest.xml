@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.0">
-  <App xmlns="" ProductID="{1b1cdd17-afb7-428e-a7b8-ee9b4a38b24e}" Title="FlightsNorway.Phone" RuntimeType="SilverLight" Version="1.0.0.0" Genre="NormalApp" Author="" Description="" Publisher="follesoe">
+  <App xmlns="" 
+       ProductID="{1b1cdd17-afb7-428e-a7b8-ee9b4a38b24e}" 
+       Title="FlightsNorway.Phone" 
+       Version="1.0.0.0" 
+       Genre="apps.normal" Author="" 
+       Description="" 
+       RuntimeType="Silverlight"
+       Publisher="follesoe">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -14,7 +21,7 @@
       <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
     </Capabilities>
     <Tasks>
-      <DefaultTask Name="_default" PlaceHolderString="Default task" />
+      <DefaultTask Name="_default" />
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="FlightsNorway.PhoneToken" TaskName="_default">

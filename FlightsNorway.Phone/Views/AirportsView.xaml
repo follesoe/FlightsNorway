@@ -30,17 +30,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-                
-        <ListBox 
-            Grid.Row="0"
-            ItemsSource="{Binding Path=Airports}" 
-            SelectedItem="{Binding Path=SelectedAirport, Mode=TwoWay}" 
-            ItemTemplate="{StaticResource AirportItemTemplate}"
-            Margin="0,40,0,0">
-            <ListBox.Items>
-                <ListBoxItem></ListBoxItem>
-            </ListBox.Items>
-        </ListBox>
         
         <Button
             Grid.Row="1"
@@ -55,6 +44,7 @@
         	<TextBlock Margin="0,0,0.105,0" TextWrapping="Wrap" Text="kode" Style="{StaticResource TimeTableHeading}"/>
         	<TextBlock TextWrapping="Wrap" Text="flyplass" Style="{StaticResource TimeTableHeading}" Grid.Column="1" Margin="-0.105,0,0,0"/>
         </Grid>
+        <ListBox Margin="8,40,8,8" ItemsSource="{Binding Airports}" SelectedItem="{Binding SelectedAirport, Mode=TwoWay}"/>
         
     </Grid>
 </UserControl>
