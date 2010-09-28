@@ -15,17 +15,17 @@
             <controls:Pivot.Items>
                 <controls:PivotItem Header="avgang" x:Name="_departuresPivot">
                     <controls:PivotItem.Content>
-                        <views:DeparturesView Margin="0, 0, 0, 80" />
+                        <views:DeparturesView />
                     </controls:PivotItem.Content>
                 </controls:PivotItem>
                 <controls:PivotItem Header="ankomst" x:Name="_arrivalsPivot">
                     <controls:PivotItem.Content>
-                        <views:ArrivalsView Margin="0, 0, 0, 80" />
+                        <views:ArrivalsView />
                     </controls:PivotItem.Content>
                 </controls:PivotItem>
                 <controls:PivotItem Header="velg flyplass" x:Name="_airportsPivot">
                     <controls:PivotItem.Content>
-                        <views:AirportsView Margin="0, 0, 0, 80" />
+                        <views:AirportsView />
                     </controls:PivotItem.Content>
                 </controls:PivotItem>
             </controls:Pivot.Items>
@@ -34,13 +34,13 @@
         <TextBlock 
             DataContext="{Binding Path=FlightsViewModel, Source={StaticResource ViewModelLocator}}" 
             Text="{Binding Path=SelectedAirport.Code}"
-            HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,54,61,0" 
+            HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,18,62,0" 
             FontFamily="Segoe WP Semibold"/>
         
         <TextBlock 
             DataContext="{Binding Path=ClockViewModel, Source={StaticResource ViewModelLocator}}"
             Text="{Binding Path=CurrentTime}"
-            HorizontalAlignment="Right" TextWrapping="Wrap"  VerticalAlignment="Top" Margin="0,54,8,0" 
+            HorizontalAlignment="Right" TextWrapping="Wrap"  VerticalAlignment="Top" Margin="0,8,7,0" 
             FontFamily="Segoe WP Semibold" 
             Foreground="{StaticResource MetroYellow}" FontSize="20"/>
 

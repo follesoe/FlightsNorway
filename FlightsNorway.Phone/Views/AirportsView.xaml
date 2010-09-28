@@ -15,8 +15,8 @@
 					<ColumnDefinition Width="125"/>
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
-				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding Code}" FontFamily="Segoe WP SemiLight" Style="{StaticResource TimeTableContent}"/>
-				<TextBlock TextWrapping="Wrap" Text="{Binding Name}" FontFamily="Segoe WP SemiLight" Style="{StaticResource TimeTableContent}" Grid.Column="1"/>
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding Code}" FontFamily="Segoe WP SemiLight" />
+				<TextBlock TextWrapping="Wrap" Text="{Binding Name}" FontFamily="Segoe WP SemiLight" Grid.Column="1"/>
 			</Grid>
 		</DataTemplate>
 	</UserControl.Resources>
@@ -41,10 +41,10 @@
         		<ColumnDefinition Width="125.667"/>
         		<ColumnDefinition Width="330.333"/>
         	</Grid.ColumnDefinitions>
-        	<TextBlock Margin="0,0,0.105,0" TextWrapping="Wrap" Text="kode" Style="{StaticResource TimeTableHeading}"/>
-        	<TextBlock TextWrapping="Wrap" Text="flyplass" Style="{StaticResource TimeTableHeading}" Grid.Column="1" Margin="-0.105,0,0,0"/>
+        	<TextBlock Margin="0,0,0.105,0" TextWrapping="Wrap" Text="kode" Style="{StaticResource TimeTableHeading}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
+        	<TextBlock TextWrapping="Wrap" Text="flyplass" Style="{StaticResource TimeTableHeading}" Grid.Column="1" Margin="-0.105,0,0,0" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
         </Grid>
-        <ListBox Margin="8,40,8,8" ItemsSource="{Binding Airports}" SelectedItem="{Binding SelectedAirport, Mode=TwoWay}"/>
+        <ListBox Margin="14,40,8,8" ItemsSource="{Binding Airports}" SelectedItem="{Binding SelectedAirport, Mode=TwoWay}" ItemTemplate="{StaticResource AirportItemTemplate}"/>
         
     </Grid>
 </UserControl>

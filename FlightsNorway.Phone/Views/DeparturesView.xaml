@@ -45,11 +45,11 @@
         		<ColumnDefinition Width="118.263"/>
         		<ColumnDefinition/>
         	</Grid.ColumnDefinitions>
-        	<TextBlock Margin="0" TextWrapping="Wrap" Text="rutenr." Style="{StaticResource TimeTableHeading}"/>
-        	<TextBlock TextWrapping="Wrap" Text="tid" Style="{StaticResource TimeTableHeading}" Grid.Column="1"/>
-        	<TextBlock Margin="0" TextWrapping="Wrap" Text="utg." Style="{StaticResource TimeTableHeading}" Grid.Column="2"/>
-        	<TextBlock Margin="0" TextWrapping="Wrap" Text="reisemål" Style="{StaticResource TimeTableHeading}" Grid.Column="3"/>
-        	<TextBlock Margin="0" TextWrapping="Wrap" Text="merknader" Style="{StaticResource TimeTableHeading}" Grid.Column="4"/>
+        	<TextBlock Margin="0" TextWrapping="Wrap" Text="rutenr." Style="{StaticResource TimeTableHeading}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
+        	<TextBlock TextWrapping="Wrap" Text="tid" Style="{StaticResource TimeTableHeading}" Grid.Column="1" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
+        	<TextBlock Margin="0" TextWrapping="Wrap" Text="utg." Style="{StaticResource TimeTableHeading}" Grid.Column="2" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
+        	<TextBlock Margin="0" TextWrapping="Wrap" Text="reisemål" Style="{StaticResource TimeTableHeading}" Grid.Column="3" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
+        	<TextBlock Margin="0" TextWrapping="Wrap" Text="merknader" Style="{StaticResource TimeTableHeading}" Grid.Column="4" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
         </Grid>
     </Grid>
 </UserControl>
