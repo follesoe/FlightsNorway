@@ -11,8 +11,9 @@ namespace FlightsNorway.Views
            
             SupportedOrientations = SupportedPageOrientation.Portrait | SupportedPageOrientation.Landscape;
 
-            ApplicationBar = new ApplicationBar();
-            new ApplicationBarController(ApplicationBar);
+            // Not sure if an application bar is needed in this ui.
+            //ApplicationBar = new ApplicationBar();
+            //new ApplicationBarController(ApplicationBar);
         }        
     }
 }

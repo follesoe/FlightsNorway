@@ -10,13 +10,13 @@
     d:DesignWidth="480">
 	<UserControl.Resources>
 		<DataTemplate x:Key="AirportItemTemplate">
-			<Grid Height="35">
+			<Grid Height="44">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="125"/>
 					<ColumnDefinition/>
 				</Grid.ColumnDefinitions>
-				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding Code}" FontFamily="Segoe WP SemiLight" />
-				<TextBlock TextWrapping="Wrap" Text="{Binding Name}" FontFamily="Segoe WP SemiLight" Grid.Column="1"/>
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding Code}" FontFamily="{StaticResource PhoneFontFamilyLight}" FontSize="{StaticResource PhoneFontSizeMedium}" VerticalAlignment="Center" />
+				<TextBlock TextWrapping="Wrap" Text="{Binding Name}" FontFamily="{StaticResource PhoneFontFamilyLight}" Grid.Column="1" FontSize="{StaticResource PhoneFontSizeMedium}" VerticalAlignment="Center"/>
 			</Grid>
 		</DataTemplate>
 	</UserControl.Resources>

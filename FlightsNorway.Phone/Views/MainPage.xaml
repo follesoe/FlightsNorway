@@ -34,15 +34,15 @@
         <TextBlock 
             DataContext="{Binding Path=FlightsViewModel, Source={StaticResource ViewModelLocator}}" 
             Text="{Binding Path=SelectedAirport.Code}"
-            HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,18,62,0" 
-            FontFamily="Segoe WP Semibold"/>
+            HorizontalAlignment="Right" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,17,55,0" 
+            FontFamily="{StaticResource PhoneFontFamilySemiBold}" FontSize="{StaticResource PhoneFontSizeSmall}"/>
         
         <TextBlock 
             DataContext="{Binding Path=ClockViewModel, Source={StaticResource ViewModelLocator}}"
             Text="{Binding Path=CurrentTime}"
-            HorizontalAlignment="Right" TextWrapping="Wrap"  VerticalAlignment="Top" Margin="0,8,7,0" 
-            FontFamily="Segoe WP Semibold" 
-            Foreground="{StaticResource MetroYellow}" FontSize="20"/>
+            HorizontalAlignment="Right" TextWrapping="Wrap"  VerticalAlignment="Top" Margin="0,17,7,0" 
+            FontFamily="{StaticResource PhoneFontFamilySemiBold}" 
+            Foreground="{StaticResource MetroYellow}" FontSize="{StaticResource PhoneFontSizeSmall}"/>
 
     </Grid>
     
