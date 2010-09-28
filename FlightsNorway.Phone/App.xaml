@@ -26,95 +26,26 @@
         	<Setter Property="Foreground" Value="White"/>
         </Style>
 
-        <!--
-        <Style x:Key="PhoneListBoxItemLayout" TargetType="mpc:ListViewItem">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="ImageStretch" Value="UniformToFill" />
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="Height" Value="82"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="mpc:ListViewItem">
-                        <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" Margin="{TemplateBinding Padding}" Height="{TemplateBinding Height}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" x:Name="ItemText" Text="{TemplateBinding Text}" Style="{StaticResource PhoneTextExtraLargeStyle}" VerticalAlignment="Center" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Margin="-3,-4,0,0"/>
-                            <ContentPresenter Grid.Column="1" x:Name="SecondaryContent" Content="{TemplateBinding SecondaryContent}" VerticalAlignment="Center" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="TextWithIconTemplate">
-                <Setter.Value>
-                    <ControlTemplate TargetType="mpc:ListViewItem">
-                        <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" Margin="{TemplateBinding Padding}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="43"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding ImageStretch}" Width="43" Height="43"/>
-                            <TextBlock Grid.Column="1" Margin="9,-4,0,0" x:Name="ItemText" Text="{TemplateBinding Text}" Style="{StaticResource PhoneTextExtraLargeStyle}" VerticalAlignment="Center" />
-                            <ContentPresenter Grid.Column="2" x:Name="SecondaryContent" Content="{TemplateBinding SecondaryContent}" VerticalAlignment="Center" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="TextAndDetailsTemplate">
-                <Setter.Value>
-                    <ControlTemplate TargetType="mpc:ListViewItem">
-                        <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" Margin="{TemplateBinding Padding}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" VerticalAlignment="Center" >
-                                <TextBlock x:Name="ItemText" Text="{TemplateBinding Text}" Style="{StaticResource PhoneTextExtraLargeStyle}" HorizontalAlignment="Left" Margin="-3,-13,0,0" />
-                                <TextBlock x:Name="DetailsText" Text="{TemplateBinding Details}" Style="{StaticResource PhoneTextSubtleStyle}" HorizontalAlignment="Left" Margin="-1,-6,0,0" />
-                            </StackPanel>
-                            <ContentPresenter Grid.Column="1" x:Name="SecondaryContent" Content="{TemplateBinding SecondaryContent}" VerticalAlignment="Center" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="TextAndDetailsWithIconTemplate">
-                <Setter.Value>
-                    <ControlTemplate TargetType="mpc:ListViewItem">
-                        <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" Margin="{TemplateBinding Padding}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="43"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding ImageStretch}" Width="43" Height="43" VerticalAlignment="Top"/>
-                            <StackPanel Grid.Column="1" Margin="12,0,0,0" VerticalAlignment="Center">
-                                <TextBlock x:Name="ItemText" Text="{TemplateBinding Text}" Style="{StaticResource PhoneTextExtraLargeStyle}" HorizontalAlignment="Left" Margin="-3,-13,0,0"/>
-                                <TextBlock x:Name="DetailsText" Text="{TemplateBinding Details}" Style="{StaticResource PhoneTextSubtleStyle}" HorizontalAlignment="Left" Margin="-1,-6,0,0" />
-                            </StackPanel>
-                            <ContentPresenter Grid.Column="2" x:Name="SecondaryContent" Content="{TemplateBinding SecondaryContent}" VerticalAlignment="Center" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="CustomTemplate">
-                <Setter.Value>
-                    <ControlTemplate TargetType="mpc:ListViewItem">
-                        <Grid x:Name="LayoutRoot" Background="{TemplateBinding Background}" Margin="{TemplateBinding Padding}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Margin="12,0,0,0" x:Name="ItemText" Text="{TemplateBinding Text}" Style="{StaticResource PhoneTextExtraLargeStyle}" VerticalAlignment="Center" />
-                            <ContentPresenter Grid.Column="1" x:Name="SecondaryContent" Content="{TemplateBinding SecondaryContent}" VerticalAlignment="Center" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>        
-        -->
+      <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
+           <Setter Property="Background" Value="Transparent"/>
+           <Setter Property="BorderThickness" Value="0"/>
+           <Setter Property="BorderBrush" Value="Transparent"/>
+           <Setter Property="Padding" Value="0"/>
+           <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+           <Setter Property="HorizontalAlignment" Value="Stretch" />
+           <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+           <Setter Property="Template">
+               <Setter.Value>
+                   <ControlTemplate TargetType="ListBoxItem">
+                       <Border x:Name="LayoutRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                           <ContentControl x:Name="ContentContainer" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                       </Border>
+                   </ControlTemplate>
+               </Setter.Value>
+           </Setter>
+       </Style>  
+	  
+	  
     </Application.Resources>
     
     <Application.RootVisual>

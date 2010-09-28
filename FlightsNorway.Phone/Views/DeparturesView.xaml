@@ -6,24 +6,24 @@
     xmlns:ViewModels="clr-namespace:FlightsNorway.ViewModels" 
     x:Class="FlightsNorway.Views.DeparturesView"
     mc:Ignorable="d"
-    d:DesignHeight="600" 
-    d:DesignWidth="480">
+    d:DesignHeight="510.124" 
+    d:DesignWidth="480.398">
 	<UserControl.Resources>
         <ViewModels:StringFormatValueConverter x:Key="StringFormatValueConverter"/>
 		<DataTemplate x:Key="DepartureItemTemplate">
-			<Grid Height="31">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="84"/>
-					<ColumnDefinition Width="57"/>
-					<ColumnDefinition Width="33"/>
-					<ColumnDefinition Width="107.166"/>
-					<ColumnDefinition/>
-				</Grid.ColumnDefinitions>
-				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding FlightId}" Style="{StaticResource TimeTableContent}"/>
-				<TextBlock Grid.Column="1" Margin="0,0,2,0" TextWrapping="Wrap" Text="{Binding ScheduledTime, ConverterParameter=HH:mm, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" Grid.ColumnSpan="2"/>
-				<TextBlock Grid.Column="3" Margin="5,0,-20.834,0" TextWrapping="Wrap" Text="{Binding Airport.Name, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" />
-				<TextBlock Grid.Column="4" Margin="20.834,0,0,1" TextWrapping="Wrap" Text="{Binding FlightStatus.Status.StatusTextNorwegian, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" />
-				<TextBlock Grid.Column="2" Margin="0.5,0,-0.834,0" TextWrapping="Wrap" Text="{Binding Gate, ConverterParameter=HH:mm}" Style="{StaticResource TimeTableContent}" Grid.ColumnSpan="2"/>
+			<Grid Height="55">
+	        	<Grid.ColumnDefinitions>
+	        		<ColumnDefinition Width="87.08"/>
+	        		<ColumnDefinition Width="75.398"/>
+	        		<ColumnDefinition Width="58.407"/>
+	        		<ColumnDefinition Width="136.991"/>
+	        		<ColumnDefinition/>
+	        	</Grid.ColumnDefinitions>
+				<TextBlock Margin="0" TextWrapping="Wrap" Text="{Binding FlightId}" Style="{StaticResource TimeTableContent}" VerticalAlignment="Center" FontFamily="{StaticResource PhoneFontFamilyLight}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+				<TextBlock Grid.Column="1" Margin="0" TextWrapping="Wrap" Text="{Binding ScheduledTime, ConverterParameter=HH:mm, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" VerticalAlignment="Center" FontFamily="{StaticResource PhoneFontFamilyLight}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+				<TextBlock Grid.Column="2" Margin="0" TextWrapping="Wrap" Text="{Binding Gate, ConverterParameter=HH:mm}" Style="{StaticResource TimeTableContent}" VerticalAlignment="Center" FontFamily="{StaticResource PhoneFontFamilyLight}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+				<TextBlock Grid.Column="3" Margin="0" TextWrapping="Wrap" Text="{Binding Airport.Name, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" VerticalAlignment="Center" FontFamily="{StaticResource PhoneFontFamilyLight}" FontSize="{StaticResource PhoneFontSizeMedium}" />
+				<TextBlock Grid.Column="5" Margin="0" TextWrapping="Wrap" Text="{Binding FlightStatus.Status.StatusTextNorwegian, Converter={StaticResource StringFormatValueConverter}}" Style="{StaticResource TimeTableContent}" VerticalAlignment="Center" FontFamily="{StaticResource PhoneFontFamilyLight}" FontSize="{StaticResource PhoneFontSizeMedium}" HorizontalAlignment="Left" />
 			</Grid>
 		</DataTemplate>		
 	</UserControl.Resources>
@@ -33,23 +33,25 @@
     </UserControl.DataContext>
 
     <Grid x:Name="LayoutRoot">
-        <ListBox ItemsSource="{Binding Departures}" 
-                 SelectedItem="{Binding SelectedDeparture, Mode=TwoWay}"
-                 Margin="0,40,0,0" 
-                 ItemTemplate="{StaticResource DepartureItemTemplate}" />
-        <Grid Height="36" VerticalAlignment="Top" Margin="14,0,10,0">
+        <ListBox
+		       	ItemContainerStyle="{StaticResource ListBoxItemStyle}"
+				ItemTemplate="{StaticResource DepartureItemTemplate}" 
+				ItemsSource="{Binding Departures}" 
+                SelectedItem="{Binding SelectedDeparture, Mode=TwoWay}"
+                Margin="0,40,0,0"/>
+        <Grid Height="36" VerticalAlignment="Top" Margin="0">
         	<Grid.ColumnDefinitions>
-        		<ColumnDefinition Width="80.105"/>
-        		<ColumnDefinition Width="47.369"/>
-        		<ColumnDefinition Width="53.526"/>
-        		<ColumnDefinition Width="118.263"/>
+        		<ColumnDefinition Width="87.08"/>
+        		<ColumnDefinition Width="75.398"/>
+        		<ColumnDefinition Width="58.407"/>
+        		<ColumnDefinition Width="138.053"/>
         		<ColumnDefinition/>
         	</Grid.ColumnDefinitions>
         	<TextBlock Margin="0" TextWrapping="Wrap" Text="rutenr." Style="{StaticResource TimeTableHeading}" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
         	<TextBlock TextWrapping="Wrap" Text="tid" Style="{StaticResource TimeTableHeading}" Grid.Column="1" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
         	<TextBlock Margin="0" TextWrapping="Wrap" Text="utg." Style="{StaticResource TimeTableHeading}" Grid.Column="2" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
         	<TextBlock Margin="0" TextWrapping="Wrap" Text="reisemål" Style="{StaticResource TimeTableHeading}" Grid.Column="3" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
-        	<TextBlock Margin="0" TextWrapping="Wrap" Text="merknader" Style="{StaticResource TimeTableHeading}" Grid.Column="4" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
+        	<TextBlock Margin="0" TextWrapping="Wrap" Text="mrk." Style="{StaticResource TimeTableHeading}" Grid.Column="4" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
         </Grid>
     </Grid>
 </UserControl>
