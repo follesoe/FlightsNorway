@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 
@@ -56,16 +57,21 @@ namespace FlightsNorway.ViewModels
 
         private void OnSave()
         {
-            _objectStore.Save(SelectedAirport, ObjectStore.SelectedAirportFilename);
-
-            if(SelectedAirport.Equals(Airport.Nearest))
-            {
-                Messenger.Default.Send(new FindNearestAirportMessage());    
-            }
+            if (SelectedAirport == null)
+                MessageBox.Show("Please select an airport", "Whoops", MessageBoxButton.OK);
             else
             {
-                Messenger.Default.Send(new AirportSelectedMessage(SelectedAirport));    
-            }            
+                _objectStore.Save(SelectedAirport, ObjectStore.SelectedAirportFilename);
+
+                if (SelectedAirport.Equals(Airport.Nearest))
+                {
+                    Messenger.Default.Send(new FindNearestAirportMessage());
+                }
+                else
+                {
+                    Messenger.Default.Send(new AirportSelectedMessage(SelectedAirport));
+                }     
+            }         
         }
     }
 }
