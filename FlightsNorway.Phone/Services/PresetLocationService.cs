@@ -28,7 +28,6 @@ namespace FlightsNorway.Services
 
             Deployment.Current.Dispatcher.BeginInvoke(() =>
                 PositionAvailable(this, new EventArgs<Location>(_currentLocation)));
-
         }
     }
 }

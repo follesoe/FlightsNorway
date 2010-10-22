@@ -13,14 +13,14 @@ namespace FlightsNorway.Services
 
         public LocationService()
         {
-            _geoWatcher = new GeoCoordinateWatcher(GeoPositionAccuracy.Default);
-            
+            _geoWatcher = new GeoCoordinateWatcher(GeoPositionAccuracy.Default);            
             _geoWatcher.StatusChanged += OnStatusChanged;           
         }
 
         public void GetPositionAsync()
         {
-            if(_geoWatcher.Status == GeoPositionStatus.Disabled)
+            if(_geoWatcher.Status == GeoPositionStatus.Disabled ||
+               _geoWatcher.Status == GeoPositionStatus.NoData)
             {
                 _geoWatcher.Start();
             }
@@ -31,16 +31,18 @@ namespace FlightsNorway.Services
             switch(e.Status)
             {
                 case GeoPositionStatus.NoData:
+                case GeoPositionStatus.Disabled:
                     OnPositionAvailable(new GeoPosition<GeoCoordinate>(DateTime.Now, GeoCoordinate.Unknown));
                     _geoWatcher.Stop();
                     break;
                 case GeoPositionStatus.Ready:
                     OnPositionAvailable(_geoWatcher.Position);
+                    _geoWatcher.Stop();
                     break;
                 default:
+                    
                     break;
-            }
-            _geoWatcher.Stop();
+            }           
         }
 
         private void OnPositionAvailable(GeoPosition<GeoCoordinate> position)
