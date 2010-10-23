@@ -35,9 +35,11 @@
 
     <Grid x:Name="LayoutRoot">
         <ListBox 
+            Margin="0,36,0,0"
             ItemsSource="{Binding Arrivals}" 
-            SelectedItem="{Binding SelectedArrival, Mode=TwoWay}"
-            ItemTemplate="{StaticResource ArrivalItemTemplate}" Margin="0,36,0,0" DataContext="{Binding}" ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
+            ItemTemplate="{StaticResource ArrivalItemTemplate}" 
+            DataContext="{Binding}" 
+            ItemContainerStyle="{StaticResource ListBoxItemStyle}" />
         <Grid Height="36" VerticalAlignment="Top" Margin="0">
         	<Grid.ColumnDefinitions>
         		<ColumnDefinition Width="87"/>

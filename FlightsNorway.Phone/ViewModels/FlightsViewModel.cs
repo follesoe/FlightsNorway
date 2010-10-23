@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using System.Windows;
 using FlightsNorway.Model;
 using FlightsNorway.Services;
 using FlightsNorway.Messages;
@@ -18,8 +18,6 @@ namespace FlightsNorway.ViewModels
         ObservableCollection<Flight> Arrivals { get; }
         ObservableCollection<Flight> Departures { get; }
         Airport SelectedAirport { get; set; }
-        Flight SelectedDeparture { get; set; }
-        Flight SelectedArrival { get; set; }
     }
 
     public class FlightsViewModel : ViewModelBase, IFlightsViewModel
@@ -45,35 +43,7 @@ namespace FlightsNorway.ViewModels
             }
         }
 
-        private Flight _selectedDeparture;
-
-        public Flight SelectedDeparture
-        {
-            get { return _selectedDeparture; }
-            set
-            {
-                if (_selectedDeparture == value) return;
-
-                _selectedDeparture = value;
-                RaisePropertyChanged("SelectedDeparture");
-                Messenger.Default.Send(new FlightSelectedMessage(value));
-            }
-        }
-
-        private Flight _selectedArrival;
-
-        public Flight SelectedArrival
-        {
-            get { return _selectedArrival; }
-            set
-            {
-                if (_selectedDeparture == value) return;
-
-                _selectedArrival = value;
-                RaisePropertyChanged("SelectedArrival");
-                Messenger.Default.Send(new FlightSelectedMessage(value));
-            }
-        }
+        public string ErrorMessage { get; set; }
 
         public FlightsViewModel(IGetFlights flightsService, IStoreObjects objectStore)
         {
@@ -113,27 +83,33 @@ namespace FlightsNorway.ViewModels
             Arrivals.Clear();
             Departures.Clear();
 
-            _flightsService.GetFlightsFrom(_selectedAirport).Subscribe(LoadFlights);            
+            var flights = _flightsService.GetFlightsFrom(_selectedAirport);
+      
+            flights.Subscribe(LoadFlights, HandleException);            
         }
 
         private void LoadFlights(IEnumerable<Flight> flights)
         {
-            var now = DateTime.Now.ToUniversalTime().AddHours(1);
             foreach(var flight in flights)
             {
-                double hoursSince = now.Subtract(flight.ScheduledTime).TotalHours;
+                double hoursSince = DateTime.Now.Subtract(flight.ScheduledTime).TotalHours;
                                
                 if(flight.Direction == Direction.Arrival)
                 {
-                    if (hoursSince > 1) continue;
+                    //if (hoursSince > 1) continue;
                     Arrivals.Add(flight);
                 }
                 else
                 {
-                    if (hoursSince > 0.25) continue;                    
+                    //if (hoursSince > 0.25) continue;                    
                     Departures.Add(flight);                        
                 }
             }
+        }
+
+        private void HandleException(Exception ex)
+        {
+            ErrorMessage = ex.Message;
         }
     }
 }

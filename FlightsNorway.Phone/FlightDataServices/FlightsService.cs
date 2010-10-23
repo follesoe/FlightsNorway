@@ -51,7 +51,7 @@ namespace FlightsNorway.FlightDataServices
                                         return new Unit();
                                     });
 
-            string url = string.Format(_serviceUrl, 1, 5, fromAirport.Code);
+            string url = string.Format(_serviceUrl, 1, 12, fromAirport.Code);
 
             var flights = from data in referenceData
                           from flight in GetFlightsFrom(url)

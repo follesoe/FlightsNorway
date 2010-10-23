@@ -1,4 +1,5 @@
-﻿using FlightsNorway.Messages;
+﻿using System;
+using FlightsNorway.Messages;
 using FlightsNorway.Model;
 using FlightsNorway.Services;
 using FlightsNorway.Tests.Builders;
@@ -20,6 +21,18 @@ namespace FlightsNorway.Tests.ViewModels
             
             EnqueueConditional(() => flightsService.GetFlightsFromWasCalled);
             EnqueueCallback(() => Assert.AreEqual(lakselvAirport, flightsService.FromAirport));
+            EnqueueTestComplete();
+        }
+
+        [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.ViewModel)]
+        public void Expose_exception_as_error_message()
+        {
+            flightsService.ExceptionToBeThrown = new Exception("Some error.");
+
+            Messenger.Default.Send(new AirportSelectedMessage(lakselvAirport));
+
+            EnqueueConditional(() => flightsService.GetFlightsFromWasCalled);
+            EnqueueCallback(() => Assert.AreEqual("Some error.", viewModel.ErrorMessage));
             EnqueueTestComplete();
         }
 

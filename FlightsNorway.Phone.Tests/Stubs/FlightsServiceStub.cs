@@ -17,6 +17,8 @@ namespace FlightsNorway.Tests.Stubs
         public bool GetFlightsFromWasCalled;
         public Airport FromAirport;
 
+        public Exception ExceptionToBeThrown;
+
         public FlightsServiceStub()
         {
             FlightsToReturn = new List<Flight>();
@@ -27,8 +29,16 @@ namespace FlightsNorway.Tests.Stubs
             FromAirport = fromAirport;
             GetFlightsFromWasCalled = true;
 
-            var allFlights = new List<IEnumerable<Flight>> { FlightsToReturn };
-            return allFlights.ToObservable();
+            var allFlights = new List<IEnumerable<Flight>> { GetFlights() };
+
+            return ExceptionToBeThrown != null ? 
+                Observable.Throw<IEnumerable<Flight>>(ExceptionToBeThrown) : 
+                allFlights.ToObservable();
+        }
+
+        private IEnumerable<Flight> GetFlights()
+        {
+            return FlightsToReturn;
         }
     }
 }

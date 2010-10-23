@@ -8,6 +8,7 @@
     mc:Ignorable="d"
     d:DesignHeight="510.124" 
     d:DesignWidth="480.398">
+    
 	<UserControl.Resources>
         <ViewModels:StringFormatValueConverter x:Key="StringFormatValueConverter"/>
 		<DataTemplate x:Key="DepartureItemTemplate">
@@ -37,7 +38,6 @@
 		       	ItemContainerStyle="{StaticResource ListBoxItemStyle}"
 				ItemTemplate="{StaticResource DepartureItemTemplate}" 
 				ItemsSource="{Binding Departures}" 
-                SelectedItem="{Binding SelectedDeparture, Mode=TwoWay}"
                 Margin="0,40,0,0"/>
         <Grid Height="36" VerticalAlignment="Top" Margin="0">
         	<Grid.ColumnDefinitions>
@@ -54,4 +54,5 @@
         	<TextBlock Margin="0" TextWrapping="Wrap" Text="mrk." Style="{StaticResource TimeTableHeading}" Grid.Column="4" FontSize="{StaticResource PhoneFontSizeMediumLarge}" FontFamily="{StaticResource PhoneFontFamilyNormal}"/>
         </Grid>
     </Grid>
+    
 </UserControl>

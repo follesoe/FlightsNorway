@@ -40,15 +40,7 @@ namespace FlightsNorway.Services
             var serializer = new DataContractSerializer(typeof(T));
             using (var stream = new IsolatedStorageFileStream(RootDirectory + "\\" + fileName, FileMode.Open, _isoStore))
             {
-                try
-                {
-                    return (T)serializer.ReadObject(stream);                
-                }
-                catch (Exception)
-                {
-                    Delete(fileName);
-                    throw;
-                }                
+                return (T)serializer.ReadObject(stream);               
             }               
         }
 
