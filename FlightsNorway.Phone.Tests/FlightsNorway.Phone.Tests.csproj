@@ -62,6 +62,7 @@
       <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="System.Observable" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />
     <Reference Include="system" />
@@ -94,6 +95,7 @@
     <Compile Include="Stubs\LocationServiceStub.cs" />
     <Compile Include="Stubs\NotificationServiceStub.cs" />
     <Compile Include="Stubs\ObjectStoreStub.cs" />
+    <Compile Include="Stubs\PhoneApplicationServiceStub.cs" />
     <Compile Include="Tags.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
     <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />

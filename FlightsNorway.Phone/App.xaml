@@ -6,8 +6,16 @@
     xmlns:phoneNavigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" 
+    xmlns:Shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" mc:Ignorable="d" 
     x:Class="FlightsNorway.App">
+    
+    <Application.ApplicationLifetimeObjects>
+        <Shell:PhoneApplicationService 
+                Closing="Current_Closing"
+                Launching="Current_Launching"
+                Deactivated="Current_Deactivated"
+                Activated="Current_Activated" />
+    </Application.ApplicationLifetimeObjects>
 
     <Application.Resources>
         <local:ViewModelLocator x:Key="ViewModelLocator" />
@@ -43,9 +51,7 @@
                    </ControlTemplate>
                </Setter.Value>
            </Setter>
-       </Style>  
-	  
-	  
+       </Style>  	 	  
     </Application.Resources>
     
     <Application.RootVisual>

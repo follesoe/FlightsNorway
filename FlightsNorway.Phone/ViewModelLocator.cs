@@ -2,14 +2,13 @@
 using FlightsNorway.ViewModels;
 using FlightsNorway.DesignTimeData;
 using FlightsNorway.FlightDataServices;
-
 using Ninject;
 using GalaSoft.MvvmLight;
 
 namespace FlightsNorway
 {
     public class ViewModelLocator
-    {
+    {       
         private readonly StandardKernel _container;
 
         public AirportsViewModel AirportsViewModel
@@ -19,7 +18,10 @@ namespace FlightsNorway
 
         public IFlightsViewModel FlightsViewModel
         {
-            get { return _container.Get<IFlightsViewModel>(); }
+            get
+            {
+                return _container.Get<IFlightsViewModel>();
+            }
         }
 
         public ClockViewModel ClockViewModel
@@ -34,6 +36,7 @@ namespace FlightsNorway
             _container.Bind<AirportsViewModel>().ToSelf().InSingletonScope();
             _container.Bind<IGetAirports>().To<AirportNamesService>().InSingletonScope();
             _container.Bind<IOpenCommunicationChannel>().To<NotificationService>().InSingletonScope();
+            _container.Bind<IPhoneApplicationService>().ToConstant(new PhoneApplicationServiceAdapter());
 
 #if DEBUG
             _container.Bind<IGetCurrentLocation>().ToConstant(new PresetLocationService(63.433281, 10.419294));
@@ -53,7 +56,7 @@ namespace FlightsNorway
                 _container.Bind<IStoreObjects>().To<ObjectStore>().InSingletonScope();
                 _container.Bind<IGetFlights>().To<FlightsService>().InSingletonScope();
                 _container.Bind<IFlightsViewModel>().To<FlightsViewModel>().InSingletonScope();
-            }            
+            }
         }
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
     <Compile Include="DesignTimeData\FlightsDesignTimeViewModel.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtesnions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Services\IOpenCommunicationChannel.cs" />
     <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\LocationService.cs" />
+    <Compile Include="Services\PhoneApplicationServiceAdapter.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

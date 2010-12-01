@@ -35,6 +35,7 @@
 
     <Grid x:Name="LayoutRoot">
         <ListBox
+                x:Name="_departuresView"
 		       	ItemContainerStyle="{StaticResource ListBoxItemStyle}"
 				ItemTemplate="{StaticResource DepartureItemTemplate}" 
 				ItemsSource="{Binding Departures}" 

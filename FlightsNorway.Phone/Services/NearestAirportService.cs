@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using FlightsNorway.Messages;
+﻿using FlightsNorway.Messages;
 using FlightsNorway.Model;
 using FlightsNorway.FlightDataServices;
 using GalaSoft.MvvmLight.Messaging;

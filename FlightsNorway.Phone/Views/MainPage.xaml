@@ -15,17 +15,17 @@
             <controls:Pivot.Items>
                 <controls:PivotItem Header="avgang" x:Name="_departuresPivot">
                     <controls:PivotItem.Content>
-                        <views:DeparturesView />
+                        <views:DeparturesView x:Name="_departuresView" />
                     </controls:PivotItem.Content>
                 </controls:PivotItem>
                 <controls:PivotItem Header="ankomst" x:Name="_arrivalsPivot">
                     <controls:PivotItem.Content>
-                        <views:ArrivalsView />
+                        <views:ArrivalsView  x:Name="_arrivalsView" />
                     </controls:PivotItem.Content>
                 </controls:PivotItem>
                 <controls:PivotItem Header="velg flyplass" x:Name="_airportsPivot">
                     <controls:PivotItem.Content>
-                        <views:AirportsView />
+                        <views:AirportsView x:Name="_airportsView" />
                     </controls:PivotItem.Content>
                 </controls:PivotItem>
             </controls:Pivot.Items>

@@ -5,6 +5,7 @@ using FlightsNorway.Services;
 using FlightsNorway.Tests.Builders;
 using FlightsNorway.Tests.Stubs;
 using FlightsNorway.ViewModels;
+
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,6 +15,32 @@ namespace FlightsNorway.Tests.ViewModels
     [TestClass]
     public class FlightsViewModelSpecs : SilverlightTest
     {
+        [TestMethod, Tag("a")]
+        public void Stores_state_when_app_is_deactivated()
+        {
+            appService.TriggerDeactivated();
+
+            Assert.IsTrue(appService.State.ContainsKey("Arrivals"));
+            Assert.IsTrue(appService.State.ContainsKey("Departures"));
+            Assert.IsTrue(appService.State.ContainsKey("SelectedAirport"));
+        }
+
+        [TestMethod, Tag(Tags.ViewModel)]
+        public void Loads_selected_airport_if_reactivated()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestMethod, Tag(Tags.ViewModel)]
+        public void Loads_selected_airport_if_saved_to_disk()
+        {
+            objectStore.Save(lakselvAirport, ObjectStore.SelectedAirportFilename);
+
+            viewModel = new FlightsViewModel(flightsService, objectStore, appService);
+
+            Assert.AreEqual(lakselvAirport.Code, viewModel.SelectedAirport.Code);
+        }
+
         [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.ViewModel)]
         public void Loads_flights_when_airport_is_selected()
         {           
@@ -73,16 +100,6 @@ namespace FlightsNorway.Tests.ViewModels
         }
 
         [TestMethod, Tag(Tags.ViewModel)]
-        public void Loads_selected_airport_if_saved_to_disk()
-        {
-            objectStore.Save(lakselvAirport, ObjectStore.SelectedAirportFilename);
-
-            viewModel = new FlightsViewModel(flightsService, objectStore);
-            
-            Assert.AreEqual(lakselvAirport.Code, viewModel.SelectedAirport.Code);
-        }
-
-        [TestMethod, Tag(Tags.ViewModel)]
         public void Finds_nearest_airport_if_option_is_selected()
         {
             objectStore.Save(Airport.Nearest, ObjectStore.SelectedAirportFilename);
@@ -90,7 +107,7 @@ namespace FlightsNorway.Tests.ViewModels
             bool findNearestWasPublished = false;
             Messenger.Default.Register(this, (FindNearestAirportMessage m) => findNearestWasPublished = true);
 
-            viewModel = new FlightsViewModel(flightsService, objectStore);
+            viewModel = new FlightsViewModel(flightsService, objectStore, appService);
 
             Assert.IsTrue(findNearestWasPublished);
         }
@@ -118,7 +135,8 @@ namespace FlightsNorway.Tests.ViewModels
             trondheimAirport = new Airport("TRD", "Trondheim");
             flightsService = new FlightsServiceStub();
             objectStore = new ObjectStoreStub();
-            viewModel = new FlightsViewModel(flightsService, objectStore);
+            appService = new PhoneApplicationServiceStub();
+            viewModel = new FlightsViewModel(flightsService, objectStore, appService);
         }
 
         private Airport lakselvAirport;
@@ -126,5 +144,6 @@ namespace FlightsNorway.Tests.ViewModels
         private FlightsServiceStub flightsService;
         private FlightsViewModel viewModel;
         private ObjectStoreStub objectStore;
+        private PhoneApplicationServiceStub appService;
     }
 }
