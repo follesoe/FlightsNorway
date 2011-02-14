@@ -17,36 +17,36 @@ namespace FlightsNorway.Tests.ViewModels
         [TestMethod, Tag(Tags.ViewModel)]
         public void Should_load_airports_when_viewmodel_is_created()
         {
-            Assert.IsTrue(viewModel.Airports.Count > 0);
+            Assert.IsTrue(_viewModel.Airports.Count > 0);
         }
 
         [TestMethod, Tag(Tags.ViewModel)]
         public void First_airport_in_list_should_be_option_to_select_nearest()
         {
-            Assert.AreEqual("Nærmeste flyplass", viewModel.Airports[0].Name);
+            Assert.AreEqual("Nærmeste flyplass", _viewModel.Airports[0].Name);
         }
 
         [TestMethod, Tag(Tags.ViewModel)]
         public void Saves_selected_airport()
         {
-            objectStore.Delete(ObjectStore.SelectedAirportFilename);
-            viewModel.SelectedAirport = viewModel.Airports.Last();
-            viewModel.SaveCommand.Execute(null);
+            _objectStore.Delete(ObjectStore.SelectedAirportFilename);
+            _viewModel.SelectedAirport = _viewModel.Airports.Last();
+            _viewModel.SaveCommand.Execute(null);
 
-            var airport = objectStore.Load<Airport>("selected_airport");
+            var airport = _objectStore.Load<Airport>("selected_airport");
 
-            Assert.AreEqual(viewModel.SelectedAirport, airport);
+            Assert.AreEqual(_viewModel.SelectedAirport, airport);
         }
 
         [TestMethod, Tag(Tags.ViewModel)]
         public void Fires_change_notification_when_selecting_airport()
         {
-            var airport = viewModel.Airports.Last();
+            var airport = _viewModel.Airports.Last();
 
             string propertyName = string.Empty;
-            viewModel.PropertyChanged += (o, e) => propertyName = e.PropertyName;
+            _viewModel.PropertyChanged += (o, e) => propertyName = e.PropertyName;
 
-            viewModel.SelectedAirport = airport;
+            _viewModel.SelectedAirport = airport;
 
             Assert.AreEqual("SelectedAirport", propertyName);
         }
@@ -57,11 +57,11 @@ namespace FlightsNorway.Tests.ViewModels
             AirportSelectedMessage lastMessage = null;
             Messenger.Default.Register(this, (AirportSelectedMessage message) => lastMessage = message);
 
-            viewModel.SelectedAirport = viewModel.Airports.Last();
-            viewModel.SaveCommand.Execute(null);
+            _viewModel.SelectedAirport = _viewModel.Airports.Last();
+            _viewModel.SaveCommand.Execute(null);
 
             Assert.IsNotNull(lastMessage);
-            Assert.AreEqual(viewModel.SelectedAirport, lastMessage.Content);
+            Assert.AreEqual(_viewModel.SelectedAirport, lastMessage.Content);
         }
 
         [TestMethod, Tag(Tags.ViewModel)]
@@ -70,8 +70,8 @@ namespace FlightsNorway.Tests.ViewModels
             FindNearestAirportMessage lastMessage = null;
             Messenger.Default.Register(this, (FindNearestAirportMessage message) => lastMessage = message);
 
-            viewModel.SelectedAirport = viewModel.Airports.Where(a => a.Code == Airport.Nearest.Code).Single();
-            viewModel.SaveCommand.Execute(null);
+            _viewModel.SelectedAirport = _viewModel.Airports.Where(a => a.Code == Airport.Nearest.Code).Single();
+            _viewModel.SaveCommand.Execute(null);
 
             Assert.IsNotNull(lastMessage);
         }
@@ -79,13 +79,13 @@ namespace FlightsNorway.Tests.ViewModels
         [TestInitialize]
         public void Setup()
         {
-            objectStore = new ObjectStoreStub();
-            airportsService = new AirportNamesService();
-            viewModel = new AirportsViewModel(airportsService, objectStore);
+            _objectStore = new ObjectStoreStub();
+            _airportsService = new AirportNamesService();
+            _viewModel = new AirportsViewModel(_airportsService, _objectStore);
         }
 
-        private AirportNamesService airportsService;
-        private AirportsViewModel viewModel;
-        private ObjectStoreStub objectStore;
+        private AirportNamesService _airportsService;
+        private AirportsViewModel _viewModel;
+        private ObjectStoreStub _objectStore;
     }
 }
