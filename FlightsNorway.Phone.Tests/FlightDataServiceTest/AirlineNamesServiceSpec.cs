@@ -14,7 +14,7 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
         public void Should_be_able_to_get_airline_names()
         {
             var airlineList = new List<Airline>();
-            service.GetAirlines().Subscribe(airlineList.AddRange);
+            _service.GetAirlines().Subscribe(airlineList.AddRange);
             EnqueueConditional(() => airlineList.Count > 0);
             EnqueueTestComplete();
         }
@@ -22,9 +22,9 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
         [TestInitialize]
         public void Setup()
         {
-            service = new AirlineNamesService();            
+            _service = new AirlineNamesService();            
         }
 
-        private AirlineNamesService service;
+        private AirlineNamesService _service;
     }
 }

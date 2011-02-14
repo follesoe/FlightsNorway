@@ -11,40 +11,40 @@ namespace FlightsNorway.Tests.Model
         [TestMethod, Tag(Tags.Model)]
         public void Can_format_a_departure_as_string()
         {
-            flight.FlightId = "KL1127";            
-            flight.Gate = "46";
-            flight.Direction = Direction.Depature;
-            flight.Airport = new Airport("AMS", "Amsterdam");
-            flight.FlightStatus = new FlightStatus();
-            flight.FlightStatus.Status = new Status();
-            flight.FlightStatus.Status.StatusTextNorwegian = "Boarding";
-            flight.ScheduledTime = new DateTime(2010, 1, 1, 23, 30, 0);
+            _flight.FlightId = "KL1127";            
+            _flight.Gate = "46";
+            _flight.Direction = Direction.Depature;
+            _flight.Airport = new Airport("AMS", "Amsterdam");
+            _flight.FlightStatus = new FlightStatus();
+            _flight.FlightStatus.Status = new Status();
+            _flight.FlightStatus.Status.StatusTextNorwegian = "Boarding";
+            _flight.ScheduledTime = new DateTime(2010, 1, 1, 23, 30, 0);
             
-            Assert.AreEqual("KL1127 23:30 46 Amsterdam Boarding", flight.ToString());
+            Assert.AreEqual("KL1127 23:30 46 Amsterdam Boarding", _flight.ToString());
         }
 
         [TestMethod, Tag(Tags.Model)]
         public void Can_format_a_arrivals_as_string()
         {
-            flight.FlightId = "DY1257";
-            flight.Belt = "8";
-            flight.Direction = Direction.Arrival;
-            flight.Airport = new Airport("AMS", "Amsterdam");            
-            flight.FlightStatus = new FlightStatus();
-            flight.FlightStatus.Status = new Status();
-            flight.FlightStatus.Status.StatusTextNorwegian = "Landet";
-            flight.FlightStatus.StatusTime = new DateTime(2010, 1, 1, 23, 8, 0);
-            flight.ScheduledTime = new DateTime(2010, 1, 1, 23, 15, 0);
+            _flight.FlightId = "DY1257";
+            _flight.Belt = "8";
+            _flight.Direction = Direction.Arrival;
+            _flight.Airport = new Airport("AMS", "Amsterdam");            
+            _flight.FlightStatus = new FlightStatus();
+            _flight.FlightStatus.Status = new Status();
+            _flight.FlightStatus.Status.StatusTextNorwegian = "Landet";
+            _flight.FlightStatus.StatusTime = new DateTime(2010, 1, 1, 23, 8, 0);
+            _flight.ScheduledTime = new DateTime(2010, 1, 1, 23, 15, 0);
 
-            Assert.AreEqual("DY1257 23:15 8 Amsterdam Landet 23:08", flight.ToString());
+            Assert.AreEqual("DY1257 23:15 8 Amsterdam Landet 23:08", _flight.ToString());
         }
 
         [TestInitialize]
         public void Setup()
         {
-            flight = new Flight();
+            _flight = new Flight();
         }
 
-        private Flight flight;
+        private Flight _flight;
     }
 }

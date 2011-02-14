@@ -35,14 +35,13 @@ namespace FlightsNorway
             _container.Bind<ClockViewModel>().ToSelf().InSingletonScope();            
             _container.Bind<AirportsViewModel>().ToSelf().InSingletonScope();
             _container.Bind<IGetAirports>().To<AirportNamesService>().InSingletonScope();
-            _container.Bind<IOpenCommunicationChannel>().To<NotificationService>().InSingletonScope();
             _container.Bind<IPhoneApplicationService>().ToConstant(new PhoneApplicationServiceAdapter());
 
-#if DEBUG
+            #if DEBUG
             _container.Bind<IGetCurrentLocation>().ToConstant(new PresetLocationService(63.433281, 10.419294));
-#else
+            #else
             _container.Bind<IGetCurrentLocation>().To<LocationService>();
-#endif
+            #endif
             _container.Bind<NearestAirportService>().ToConstant(new NearestAirportService(_container.Get<IGetCurrentLocation>()));
             
             if(ViewModelBase.IsInDesignModeStatic)

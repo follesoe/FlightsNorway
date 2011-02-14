@@ -16,12 +16,12 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
         {
             var flightsList = new List<Flight>();
             
-            EnqueueCallback(() => service.GetFlightsFrom(new Airport("OSL", "Oslo")).Subscribe(flightsList.AddRange));
+            EnqueueCallback(() => _service.GetFlightsFrom(new Airport("OSL", "Oslo")).Subscribe(flightsList.AddRange));
             EnqueueConditional(() => flightsList.Count > 0);
             EnqueueCallback(() => AssertFlightsAreLoaded(flightsList));
-            EnqueueCallback(() => Assert.IsTrue(service.Airports.Count > 0));
-            EnqueueCallback(() => Assert.IsTrue(service.Airlines.Count > 0));
-            EnqueueCallback(() => Assert.IsTrue(service.Statuses.Count > 0));
+            EnqueueCallback(() => Assert.IsTrue(_service.Airports.Count > 0));
+            EnqueueCallback(() => Assert.IsTrue(_service.Airlines.Count > 0));
+            EnqueueCallback(() => Assert.IsTrue(_service.Statuses.Count > 0));
 
             EnqueueTestComplete();
         }
@@ -41,9 +41,9 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
         [TestInitialize]
         public void Setup()
         {
-            service = new FlightsService();
+            _service = new FlightsService();
         }
 
-        private FlightsService service;
+        private FlightsService _service;
     }
 }

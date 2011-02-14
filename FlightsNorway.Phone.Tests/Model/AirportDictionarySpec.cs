@@ -10,7 +10,7 @@ namespace FlightsNorway.Tests.Model
         [TestMethod, Tag(Tags.Model)]
         public void Returns_airport_even_if_not_found_in_dictionary()
         {
-            var airport = airports["UNK"];
+            var airport = _airports["UNK"];
 
             Assert.AreEqual("UNK", airport.Code);
             Assert.AreEqual("Unknown", airport.Name);
@@ -19,9 +19,9 @@ namespace FlightsNorway.Tests.Model
         [TestInitialize]
         public void Setup()
         {
-            airports = new AirportDictionary();
+            _airports = new AirportDictionary();
         }
 
-        private AirportDictionary airports;
+        private AirportDictionary _airports;
     }
 }

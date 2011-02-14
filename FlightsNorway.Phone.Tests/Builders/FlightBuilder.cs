@@ -6,7 +6,7 @@ namespace FlightsNorway.Tests.Builders
 {
     public class FlightBuilder
     {
-        private static Flight flight;
+        private static readonly Flight flight;
 
         public static FlightBuilder Create
         {

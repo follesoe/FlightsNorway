@@ -15,7 +15,7 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
         public void Should_be_able_to_get_airport_names()
         {
             var statusList = new List<Status>();
-            service.GetStautses().Subscribe(statusList.AddRange);
+            _service.GetStautses().Subscribe(statusList.AddRange);
             EnqueueConditional(() => statusList.Count > 0);
             EnqueueTestComplete();
         }
@@ -23,9 +23,9 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
         [TestInitialize]
         public void Setup()
         {
-            service = new StatusService();
+            _service = new StatusService();
         }
 
-        private StatusService service;
+        private StatusService _service;
     }
 }

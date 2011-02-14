@@ -15,7 +15,7 @@ namespace FlightsNorway.Tests.Services
         public void Should_find_nearest_airport_if_user_selects_that_option()
         {
             var home = new Location(63.433281, 10.419294);
-            locationService.LocationToReturn = home;
+            _locationService.LocationToReturn = home;
 
             Airport nearestAirport = null;
             Messenger.Default.Register(this, (AirportSelectedMessage e) => nearestAirport = e.Content);
@@ -29,9 +29,9 @@ namespace FlightsNorway.Tests.Services
         [TestInitialize]
         public void Setup()
         {
-            locationService = new LocationServiceStub();     
-            var service = new NearestAirportService(locationService);
+            _locationService = new LocationServiceStub();     
+            var service = new NearestAirportService(_locationService);
         }
-        private LocationServiceStub locationService;
+        private LocationServiceStub _locationService;
     }
 }
