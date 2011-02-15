@@ -8,17 +8,17 @@ using FlightsNorway.Model;
 namespace FlightsNorway.FlightDataServices
 {
     public class AirportNamesService : IGetAirports
-    {        
-        private readonly Uri _serviceUrl;
+    {
+        private readonly RestHelper _rest;
 
         public AirportNamesService()
         {
-            _serviceUrl = new Uri("http://flydata.avinor.no/airportNames.asp");    
+            _rest = new RestHelper();
         }
 
-        public IObservable<IEnumerable<Airport>> GetAirports()
+        public void GetAirports(Action<Result<IEnumerable<Airport>>> callback)
         {
-            return WebRequestFactory.GetData(_serviceUrl, ParseAirportXml);
+            _rest.Get("airportNames.asp", callback, ParseAirportXml);
         }
 
         private static IEnumerable<Airport> ParseAirportXml(XmlReader reader)

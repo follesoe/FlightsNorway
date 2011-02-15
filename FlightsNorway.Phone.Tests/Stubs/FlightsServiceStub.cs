@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using FlightsNorway.Model;
-using Microsoft.Phone.Reactive;
 using FlightsNorway.FlightDataServices;
 
 namespace FlightsNorway.Tests.Stubs
@@ -24,16 +23,14 @@ namespace FlightsNorway.Tests.Stubs
             FlightsToReturn = new List<Flight>();
         }
 
-        public IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport)
+        public void GetFlightsFrom(Action<Result<IEnumerable<Flight>>> callback, Airport fromAirport)
         {
             FromAirport = fromAirport;
             GetFlightsFromWasCalled = true;
 
-            var allFlights = new List<IEnumerable<Flight>> { GetFlights() };
-
-            return ExceptionToBeThrown != null ? 
-                Observable.Throw<IEnumerable<Flight>>(ExceptionToBeThrown) : 
-                allFlights.ToObservable();
+            callback(ExceptionToBeThrown == null
+                         ? new Result<IEnumerable<Flight>>(GetFlights())
+                         : new Result<IEnumerable<Flight>>(ExceptionToBeThrown));
         }
 
         private IEnumerable<Flight> GetFlights()

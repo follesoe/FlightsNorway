@@ -9,6 +9,6 @@ namespace FlightsNorway.FlightDataServices
         AirlineDictionary Airlines { get; }
         AirportDictionary Airports { get; }
         StatusDictionary Statuses { get; }
-        IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport);
+        void GetFlightsFrom(Action<Result<IEnumerable<Flight>>> callback, Airport fromAirport);
     }
 }

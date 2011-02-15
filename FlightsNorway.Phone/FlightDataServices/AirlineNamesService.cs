@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml;
-using System.Xml.Linq;
 using System.Linq;
+using System.Xml.Linq;
 using System.Collections.Generic;
 using FlightsNorway.Model;
 
@@ -9,16 +9,16 @@ namespace FlightsNorway.FlightDataServices
 {
     public class AirlineNamesService
     {
-        private readonly Uri _serviceUrl;
-
+        private readonly RestHelper _rest;
+        
         public AirlineNamesService()
         {
-            _serviceUrl = new Uri("http://flydata.avinor.no/airlineNames.asp");
-        }        
+            _rest = new RestHelper();
+        }
 
-        public IObservable<IEnumerable<Airline>> GetAirlines()
+        public void GetAirlines(Action<Result<IEnumerable<Airline>>> callback)
         {
-            return WebRequestFactory.GetData(_serviceUrl, ParseAirlineXml);
+            _rest.Get("airlineNames.asp", callback, ParseAirlineXml);
         }
 
         private static IEnumerable<Airline> ParseAirlineXml(XmlReader reader)

@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Xml;
+using System.Linq;
 using System.Xml.Linq;
 using System.Collections.Generic;
-using System.Linq;
 using FlightsNorway.Model;
 
 namespace FlightsNorway.FlightDataServices
 {
     public class StatusService
     {
-        private readonly Uri _serviceUri;
+        private readonly RestHelper _rest;
 
         public StatusService()
         {
-            _serviceUri = new Uri("http://flydata.avinor.no/flightStatuses.asp");
+            _rest = new RestHelper();
         }
 
-        public IObservable<IEnumerable<Status>> GetStautses()
+        public void GetStautses(Action<Result<IEnumerable<Status>>> callback)
         {
-            return WebRequestFactory.GetData(_serviceUri, ParseStatusXml);
+            _rest.Get("flightStatuses.asp", callback, ParseStatusXml);
         }
 
         private static IEnumerable<Status> ParseStatusXml(XmlReader reader)

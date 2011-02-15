@@ -5,20 +5,24 @@ using System.Xml.Linq;
 using System.Collections.Generic;
 using FlightsNorway.Extensions;
 using FlightsNorway.Model;
-using Microsoft.Phone.Reactive;
-
 
 namespace FlightsNorway.FlightDataServices
 {
     public class FlightsService : IGetFlights
     {
-        private readonly string _serviceUrl;
+        private readonly string _resourceUrl;
         private readonly string _direction;
         private readonly string _lastUpdate;
+
+        private readonly AirportNamesService _airportService;
+        private readonly AirlineNamesService _airlineService;
+        private readonly StatusService _statusService;
 
         public AirlineDictionary Airlines { get; private set; }
         public AirportDictionary Airports { get; private set; }
         public StatusDictionary Statuses { get; private set; }
+
+        private readonly RestHelper _rest;
         
         public FlightsService()
         {
@@ -26,43 +30,55 @@ namespace FlightsNorway.FlightDataServices
             Airports = new AirportDictionary();
             Statuses = new StatusDictionary();
 
-            _serviceUrl = "http://flydata.avinor.no/XmlFeed.asp?TimeFrom={0}&TimeTo={1}&airport={2}";
+            _airlineService = new AirlineNamesService();
+            _airportService = new AirportNamesService();
+            _statusService = new StatusService();
+
+            _rest = new RestHelper();
+            _resourceUrl = "XmlFeed.asp?TimeFrom={0}&TimeTo={1}&airport={2}";                       
             _lastUpdate = "&lastUpdate=2009-03-10T15:03:00";
             _direction = "&direction={0}";
         }
 
-        public IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport)
+        public void GetFlightsFrom(Action<Result<IEnumerable<Flight>>> callback, Airport fromAirport)
         {
-            var airports = new AirportNamesService().GetAirports();
-            var airlines = new AirlineNamesService().GetAirlines();
-            var statuses = new StatusService().GetStautses();
+            if(Airports.Count == 0)
+            {
+                _airportService.GetAirports(r => {
+                    if(r.HasError()) callback(new Result<IEnumerable<Flight>>(r.Error));
+                    Airports.AddRange(r.Value);
+                    GetFlightsIfAllDone(callback, fromAirport);
+                });
+            }
 
+            if(Airlines.Count == 0)
+            {
+                _airlineService.GetAirlines(r =>
+                {
+                    if (r.HasError()) callback(new Result<IEnumerable<Flight>>(r.Error));
+                    Airlines.AddRange(r.Value);
+                    GetFlightsIfAllDone(callback, fromAirport);
+                });                
+            }
 
-            var referenceData = airports
-                .ForkJoin(airlines, (allAirports, allAirlines) =>
-                                    {
-                                        Airports.AddRange(allAirports);
-                                        Airlines.AddRange(allAirlines);
-                                        return new Unit();
-                                    })
-                .ForkJoin(statuses, (nothing, allStatuses) =>
-                                    {
-                                        Statuses.AddRange(allStatuses);
-                                        return new Unit();
-                                    });
-
-            string url = string.Format(_serviceUrl, 1, 12, fromAirport.Code);
-
-            var flights = from data in referenceData
-                          from flight in GetFlightsFrom(url)
-                          select flight;
-          
-            return flights;
+            if (Statuses.Count == 0)
+            {
+                _statusService.GetStautses(r =>
+                {
+                    if (r.HasError()) callback(new Result<IEnumerable<Flight>>(r.Error));
+                    Statuses.AddRange(r.Value);
+                    GetFlightsIfAllDone(callback, fromAirport);
+                });
+            }
         }
 
-        private IObservable<IEnumerable<Flight>> GetFlightsFrom(string url)
+        private void GetFlightsIfAllDone(Action<Result<IEnumerable<Flight>>> callback, Airport fromAirport)
         {
-            return WebRequestFactory.GetData(new Uri(url), ParseFlightsXml);
+            if(Airports.Count > 0 && Airlines.Count > 0 && Statuses.Count > 0)
+            {
+                var resource = string.Format(_resourceUrl, 1, 12, fromAirport.Code);
+                _rest.Get(resource, callback, ParseFlightsXml);   
+            }
         }
 
         private IEnumerable<Flight> ParseFlightsXml(XmlReader reader)

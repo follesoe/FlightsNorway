@@ -6,7 +6,7 @@ namespace FlightsNorway.FlightDataServices
 {
     public interface IGetAirports
     {
-        IObservable<IEnumerable<Airport>> GetAirports();
+        void GetAirports(Action<Result<IEnumerable<Airport>>> callback);
         IEnumerable<Airport> GetNorwegianAirports();
         Airport GetNearestAirport(Location home);
     }

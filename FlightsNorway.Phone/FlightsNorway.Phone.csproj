@@ -60,6 +60,9 @@
     <Reference Include="Ninject">
       <HintPath>..\lib\Ninject\Unsigned\debug\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp.WindowsPhone">
+      <HintPath>..\lib\RestSharp\RestSharp.WindowsPhone.dll</HintPath>
+    </Reference>
     <Reference Include="System.Device" />
     <Reference Include="System.Observable" />
     <Reference Include="System.Runtime.Serialization" />
@@ -90,6 +93,8 @@
     <Compile Include="FlightDataServices\FlightsService.cs" />
     <Compile Include="FlightDataServices\IGetAirports.cs" />
     <Compile Include="FlightDataServices\IGetFlights.cs" />
+    <Compile Include="FlightDataServices\RestHelper.cs" />
+    <Compile Include="FlightDataServices\Result.cs" />
     <Compile Include="FlightDataServices\StatusService.cs" />
     <Compile Include="FlightDataServices\WebRequestFactory.cs" />
     <Compile Include="Messages\AirportSelectedMessage.cs" />

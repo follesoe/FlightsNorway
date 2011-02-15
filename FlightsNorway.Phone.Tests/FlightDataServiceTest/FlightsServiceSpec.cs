@@ -2,7 +2,6 @@
 
 using FlightsNorway.Model;
 using FlightsNorway.FlightDataServices;
-using Microsoft.Phone.Reactive;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,10 +14,11 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
         public void Can_get_flights_from_Oslo_airport()
         {
             var flightsList = new List<Flight>();
-            
-            EnqueueCallback(() => _service.GetFlightsFrom(new Airport("OSL", "Oslo")).Subscribe(flightsList.AddRange));
+            var osl = new Airport("OSL", "Oslo");
+
+            EnqueueCallback(() => _service.GetFlightsFrom(r => flightsList.AddRange(r.Value), osl));
             EnqueueConditional(() => flightsList.Count > 0);
-            EnqueueCallback(() => AssertFlightsAreLoaded(flightsList));
+            EnqueueCallback(() => AssertThatFlightsAreLoaded(flightsList));
             EnqueueCallback(() => Assert.IsTrue(_service.Airports.Count > 0));
             EnqueueCallback(() => Assert.IsTrue(_service.Airlines.Count > 0));
             EnqueueCallback(() => Assert.IsTrue(_service.Statuses.Count > 0));
@@ -26,7 +26,7 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
             EnqueueTestComplete();
         }
 
-        private static void AssertFlightsAreLoaded(List<Flight> flights)
+        private static void AssertThatFlightsAreLoaded(List<Flight> flights)
         {
             Assert.IsTrue(flights.Count > 0);
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using FlightsNorway.Model;
-using Microsoft.Phone.Reactive;
 using FlightsNorway.FlightDataServices;
 
 namespace FlightsNorway.Tests.Stubs
@@ -10,11 +9,10 @@ namespace FlightsNorway.Tests.Stubs
     {
         public IEnumerable<Airport> Airports { get; set; }
         public IEnumerable<Airport> NorwegianAirports { get; set; }
-
-        public IObservable<IEnumerable<Airport>> GetAirports()
+        
+        public void GetAirports(Action<Result<IEnumerable<Airport>>> callback)
         {
-            var allAirports = new List<IEnumerable<Airport>> {Airports};
-            return allAirports.ToObservable();
+            callback(new Result<IEnumerable<Airport>>(Airports));
         }
 
         public IEnumerable<Airport> GetNorwegianAirports()

@@ -13,7 +13,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 
 using Microsoft.Phone.Shell;
-using Microsoft.Phone.Reactive;
 
 namespace FlightsNorway.ViewModels
 {
@@ -114,8 +113,15 @@ namespace FlightsNorway.ViewModels
             Arrivals.Clear();
             Departures.Clear();
 
-            var flights = _flightsService.GetFlightsFrom(_selectedAirport);      
-            flights.Subscribe(LoadFlights, HandleException);            
+            _flightsService.GetFlightsFrom(FlightsLoaded, _selectedAirport);      
+        }
+
+        private void FlightsLoaded(Result<IEnumerable<Flight>> result)
+        {
+            if(result.HasError())
+                HandleException(result.Error);
+            else
+                LoadFlights(result.Value);
         }
 
         private void LoadFlights(IEnumerable<Flight> flights)

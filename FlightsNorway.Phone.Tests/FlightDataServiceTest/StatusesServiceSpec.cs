@@ -2,7 +2,6 @@
 
 using FlightsNorway.Model;
 using FlightsNorway.FlightDataServices;
-using Microsoft.Phone.Reactive;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,7 +14,7 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
         public void Should_be_able_to_get_airport_names()
         {
             var statusList = new List<Status>();
-            _service.GetStautses().Subscribe(statusList.AddRange);
+            EnqueueCallback(() => _service.GetStautses(r => statusList.AddRange(r.Value)));
             EnqueueConditional(() => statusList.Count > 0);
             EnqueueTestComplete();
         }

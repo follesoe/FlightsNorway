@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using FlightsNorway.Model;
 using FlightsNorway.FlightDataServices;
-using Microsoft.Phone.Reactive;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -14,7 +13,8 @@ namespace FlightsNorway.Tests.FlightDataServiceTest
         public void Should_be_able_to_get_airline_names()
         {
             var airlineList = new List<Airline>();
-            _service.GetAirlines().Subscribe(airlineList.AddRange);
+
+            EnqueueCallback(() => _service.GetAirlines(r => airlineList.AddRange(r.Value)));
             EnqueueConditional(() => airlineList.Count > 0);
             EnqueueTestComplete();
         }

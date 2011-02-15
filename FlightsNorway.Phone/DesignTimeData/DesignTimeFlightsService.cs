@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using FlightsNorway.Model;
 using FlightsNorway.FlightDataServices;
 
-using Microsoft.Phone.Reactive;
-
 namespace FlightsNorway.DesignTimeData
 {
     public class DesignTimeFlightsService : IGetFlights
@@ -23,14 +21,12 @@ namespace FlightsNorway.DesignTimeData
             Statuses = new StatusDictionary();
         }
 
-        public IObservable<IEnumerable<Flight>> GetFlightsFrom(Airport fromAirport)
+        public void GetFlightsFrom(Action<Result<IEnumerable<Flight>>> callback, Airport fromAirport)
         {
-            var allFlights = new List<IEnumerable<Flight>>
-                                 {
-                                     CreateFlights(6, Direction.Arrival), 
-                                     CreateFlights(6, Direction.Depature)
-                                 };
-            return allFlights.ToObservable();
+            var flights = new List<Flight>();
+            flights.AddRange(CreateFlights(6, Direction.Arrival));
+            flights.AddRange(CreateFlights(6, Direction.Depature));
+            callback(new Result<IEnumerable<Flight>>(flights));            
         }
 
         public static IEnumerable<Flight> CreateFlights(int number, Direction direction)
