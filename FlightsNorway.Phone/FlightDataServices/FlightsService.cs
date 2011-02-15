@@ -70,6 +70,8 @@ namespace FlightsNorway.FlightDataServices
                     GetFlightsIfAllDone(callback, fromAirport);
                 });
             }
+
+            GetFlightsIfAllDone(callback, fromAirport);
         }
 
         private void GetFlightsIfAllDone(Action<Result<IEnumerable<Flight>>> callback, Airport fromAirport)

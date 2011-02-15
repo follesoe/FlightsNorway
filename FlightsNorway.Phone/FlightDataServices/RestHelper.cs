@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Xml;
 using System.Collections.Generic;
 using RestSharp;
@@ -32,8 +33,10 @@ namespace FlightsNorway.FlightDataServices
         }
 
         private static IEnumerable<T> ParseResult<T>(RestResponse response, Func<XmlReader, IEnumerable<T>> generator)
-        {
-            using (var sr = new StringReader(response.Content))
+        {                        
+            var encoding = Encoding.GetEncoding("iso-8859-1");            
+            using (var ms = new MemoryStream(response.RawBytes))
+            using (var sr = new StreamReader(ms, encoding))
             using (var xmlReader = XmlReader.Create(sr))
             {
                 return generator(xmlReader);
