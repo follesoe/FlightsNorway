@@ -94,7 +94,6 @@
     <Compile Include="FlightDataServices\RestHelper.cs" />
     <Compile Include="FlightDataServices\Result.cs" />
     <Compile Include="FlightDataServices\StatusService.cs" />
-    <Compile Include="FlightDataServices\WebRequestFactory.cs" />
     <Compile Include="Messages\AirportSelectedMessage.cs" />
     <Compile Include="Messages\FindNearestAirportMessage.cs" />
     <Compile Include="Messages\FlightSelectedMessage.cs" />
