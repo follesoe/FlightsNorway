@@ -52,7 +52,6 @@
       <HintPath>..\lib\MVVM Light WP7 (v3)\GalaSoft.MvvmLight.WP7.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
-    <Reference Include="Microsoft.Phone.Reactive" />
     <Reference Include="Microsoft.Silverlight.Testing, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.Silverlight.Testing.dll</HintPath>
@@ -62,7 +61,6 @@
       <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp.WindowsPhone, Version=100.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="System.Observable" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />

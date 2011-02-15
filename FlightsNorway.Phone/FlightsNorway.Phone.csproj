@@ -56,7 +56,6 @@
     <Reference Include="Microsoft.Devices.Sensors" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Phone.Reactive" />
     <Reference Include="Ninject">
       <HintPath>..\lib\Ninject\Unsigned\debug\Ninject.dll</HintPath>
     </Reference>
@@ -64,7 +63,6 @@
       <HintPath>..\lib\RestSharp\RestSharp.WindowsPhone.dll</HintPath>
     </Reference>
     <Reference Include="System.Device" />
-    <Reference Include="System.Observable" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows" />
