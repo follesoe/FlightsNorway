@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Microsoft.Phone.Shell;
 
 namespace FlightsNorway.Services
@@ -41,7 +40,7 @@ namespace FlightsNorway.Services
 
         public PhoneApplicationServiceAdapter()
         {
-            Debug.WriteLine("PhoneApplicationServiceAdapter Constructor");
+            if(PhoneApplicationService.Current == null) return;
 
             PhoneApplicationService.Current.Launching += (o, e) => { if (Launching != null) Launching(o, e); };
             PhoneApplicationService.Current.Closing += (o, e) => { if (Closing != null) Closing(o, e); };

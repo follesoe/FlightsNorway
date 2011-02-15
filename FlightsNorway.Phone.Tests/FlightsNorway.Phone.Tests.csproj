@@ -77,7 +77,6 @@
     <Compile Include="FlightDataServiceTest\AirlineNamesServiceSpec.cs" />
     <Compile Include="FlightDataServiceTest\AirportNamesServiceSpec.cs" />
     <Compile Include="FlightDataServiceTest\FlightsServiceSpec.cs" />
-    <Compile Include="FlightDataServiceTest\SomeTest.cs" />
     <Compile Include="FlightDataServiceTest\StatusesServiceSpec.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
