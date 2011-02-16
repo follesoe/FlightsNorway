@@ -8,8 +8,7 @@ namespace FlightsNorway.Tests
         public MainPage()
         {
             InitializeComponent();
-
-            SupportedOrientations = SupportedPageOrientation.Portrait | SupportedPageOrientation.Landscape;
+            SupportedOrientations = SupportedPageOrientation.Portrait;
                        
             var settings = UnitTestSystem.CreateDefaultSettings();
                         
