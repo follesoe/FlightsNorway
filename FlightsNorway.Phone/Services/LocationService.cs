@@ -39,8 +39,7 @@ namespace FlightsNorway.Services
                     OnPositionAvailable(_geoWatcher.Position);
                     _geoWatcher.Stop();
                     break;
-                default:
-                    
+                default:                    
                     break;
             }           
         }
@@ -50,7 +49,10 @@ namespace FlightsNorway.Services
             if (PositionAvailable != null)
             {
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
-                        PositionAvailable(this, new EventArgs<Location>(new Location(position.Location.Latitude, position.Location.Longitude))));
+                        PositionAvailable(this, 
+                            new EventArgs<Location>(
+                                   new Location(position.Location.Latitude, 
+                                                position.Location.Longitude))));
             }
         }
     }
