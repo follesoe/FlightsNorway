@@ -17,8 +17,12 @@
                 Activated="Current_Activated" />
     </Application.ApplicationLifetimeObjects>
 
+    <Application.RootVisual>
+        <phoneNavigation:PhoneApplicationFrame x:Name="RootFrame" Source="/Views/MainPage.xaml"/>
+    </Application.RootVisual>
+
     <Application.Resources>
-        <local:ViewModelLocator x:Key="ViewModelLocator" />
+        <local:ViewModelLocator x:Key="ViewModelLocator" />             
         
         <SolidColorBrush x:Key="MetroYellow" Color="#FFFFC425"/>
         
@@ -54,8 +58,4 @@
        </Style>  	 	  
     </Application.Resources>
     
-    <Application.RootVisual>
-        <phoneNavigation:PhoneApplicationFrame x:Name="RootFrame" Source="/Views/MainPage.xaml"/>
-    </Application.RootVisual>
-
 </Application>

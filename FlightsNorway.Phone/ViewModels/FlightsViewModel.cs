@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-
 using FlightsNorway.Model;
 using FlightsNorway.Services;
 using FlightsNorway.Messages;
@@ -16,13 +14,6 @@ using Microsoft.Phone.Shell;
 
 namespace FlightsNorway.ViewModels
 {
-    public interface IFlightsViewModel
-    {
-        ObservableCollection<Flight> Arrivals { get; }
-        ObservableCollection<Flight> Departures { get; }
-        Airport SelectedAirport { get; set; }
-    }
-
     public class FlightsViewModel : ViewModelBase, IFlightsViewModel
     {
         private readonly IPhoneApplicationService _appService;
@@ -49,9 +40,7 @@ namespace FlightsNorway.ViewModels
         }       
 
         public FlightsViewModel(IGetFlights flightsService, IStoreObjects objectStore, IPhoneApplicationService appService)
-        {
-            Debug.WriteLine("FlightsViewModel Constructor");
-
+        {            
             Arrivals = new ObservableCollection<Flight>();
             Departures = new ObservableCollection<Flight>();
 
@@ -127,17 +116,13 @@ namespace FlightsNorway.ViewModels
         private void LoadFlights(IEnumerable<Flight> flights)
         {
             foreach(var flight in flights)
-            {
-                double hoursSince = DateTime.Now.Subtract(flight.ScheduledTime).TotalHours;
-                               
+            {                               
                 if(flight.Direction == Direction.Arrival)
                 {
-                    //if (hoursSince > 1) continue;
                     Arrivals.Add(flight);
                 }
                 else
                 {
-                    //if (hoursSince > 0.25) continue;                    
                     Departures.Add(flight);                        
                 }
             }

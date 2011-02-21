@@ -113,8 +113,10 @@
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Status.cs" />
     <Compile Include="Model\StatusDictionary.cs" />
+    <Compile Include="Services\EventArgs.cs" />
     <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\PhoneApplicationServiceAdapter.cs" />
+    <Compile Include="ViewModels\IFlightsViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -183,9 +185,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SampleData\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
