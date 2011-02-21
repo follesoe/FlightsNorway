@@ -2,6 +2,7 @@
 using FlightsNorway.ViewModels;
 using FlightsNorway.DesignTimeData;
 using FlightsNorway.FlightDataServices;
+using MonoMobile.Extensions;
 using Ninject;
 using GalaSoft.MvvmLight;
 
@@ -38,11 +39,11 @@ namespace FlightsNorway
             _container.Bind<IPhoneApplicationService>().ToConstant(new PhoneApplicationServiceAdapter());
 
             #if DEBUG
-            _container.Bind<IGetCurrentLocation>().ToConstant(new PresetLocationService(63.433281, 10.419294));
+            _container.Bind<IGeolocation>().ToConstant(new PresetLocationService(63.433281, 10.419294));
             #else
-            _container.Bind<IGetCurrentLocation>().To<LocationService>();
+            _container.Bind<IGeolocation>().To<MonoMobile.Extensions.Geolocation>();
             #endif
-            _container.Bind<NearestAirportService>().ToConstant(new NearestAirportService(_container.Get<IGetCurrentLocation>()));
+            _container.Bind<NearestAirportService>().ToConstant(new NearestAirportService(_container.Get<IGeolocation>()));
             
             if(ViewModelBase.IsInDesignModeStatic)
             {

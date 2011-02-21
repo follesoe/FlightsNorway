@@ -60,6 +60,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
+    <Reference Include="MonoMobile.Extensions">
+      <HintPath>..\lib\MonoMobile.Extensions\MonoMobile.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp.WindowsPhone, Version=100.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
