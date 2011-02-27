@@ -3,6 +3,7 @@ bin
 Bin
 TestResults
 _ReSharper.*
+.DS_Store
 *.csproj.user
 *.resharper.user
 *.ReSharper.user
