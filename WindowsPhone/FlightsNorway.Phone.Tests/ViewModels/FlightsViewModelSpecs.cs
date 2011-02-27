@@ -1,6 +1,6 @@
 ﻿using System;
+using FlightsNorway.Lib.Model;
 using FlightsNorway.Messages;
-using FlightsNorway.Model;
 using FlightsNorway.Services;
 using FlightsNorway.Tests.Builders;
 using FlightsNorway.Tests.Stubs;

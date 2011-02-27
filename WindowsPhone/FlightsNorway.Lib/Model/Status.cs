@@ -1,4 +1,4 @@
-﻿namespace FlightsNorway.Model
+﻿namespace FlightsNorway.Lib.Model
 {
     public class Status
     {

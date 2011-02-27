@@ -1,4 +1,4 @@
-﻿using FlightsNorway.Model;
+﻿using FlightsNorway.Lib.Model;
 using FlightsNorway.ViewModels;
 using System.Collections.ObjectModel;
 

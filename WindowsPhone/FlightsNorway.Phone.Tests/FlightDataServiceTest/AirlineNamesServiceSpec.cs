@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using FlightsNorway.Model;
 using FlightsNorway.FlightDataServices;
+using FlightsNorway.Lib.Model;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -86,7 +86,6 @@
     <Compile Include="DesignTimeData\FlightsDesignTimeViewModel.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\IDictionaryExtensions.cs" />
-    <Compile Include="Extensions\IEnumerableExtesnions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />
@@ -102,17 +101,6 @@
     <Compile Include="Messages\FlightSelectedMessage.cs" />
     <Compile Include="Messages\MonitorFlightMessage.cs" />
     <Compile Include="Messages\StopMonitorFlightMessage.cs" />
-    <Compile Include="Model\Airline.cs" />
-    <Compile Include="Model\AirlineDictionary.cs" />
-    <Compile Include="Model\Airport.cs" />
-    <Compile Include="Model\AirportDictionary.cs" />
-    <Compile Include="Model\Direction.cs" />
-    <Compile Include="Model\Flight.cs" />
-    <Compile Include="Model\FlightArea.cs" />
-    <Compile Include="Model\FlightStatus.cs" />
-    <Compile Include="Model\Location.cs" />
-    <Compile Include="Model\Status.cs" />
-    <Compile Include="Model\StatusDictionary.cs" />
     <Compile Include="Services\EventArgs.cs" />
     <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\PhoneApplicationServiceAdapter.cs" />
@@ -185,7 +173,12 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FlightsNorway.Lib\FlightsNorway.Lib.csproj">
+      <Project>{6843FC52-C218-4C86-9210-2DA400ED2351}</Project>
+      <Name>FlightsNorway.Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

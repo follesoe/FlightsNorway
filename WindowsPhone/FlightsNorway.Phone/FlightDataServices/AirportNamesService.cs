@@ -3,7 +3,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
-using FlightsNorway.Model;
+using FlightsNorway.Lib.Model;
 
 namespace FlightsNorway.FlightDataServices
 {

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using FlightsNorway.Lib.Extensions;
 
 namespace FlightsNorway.Extensions
 {

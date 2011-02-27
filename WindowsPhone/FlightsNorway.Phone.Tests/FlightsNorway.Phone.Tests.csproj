@@ -124,6 +124,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FlightsNorway.Lib\FlightsNorway.Lib.csproj">
+      <Project>{6843FC52-C218-4C86-9210-2DA400ED2351}</Project>
+      <Name>FlightsNorway.Lib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FlightsNorway.Phone\FlightsNorway.Phone.csproj">
       <Project>{0A2B82EF-56FB-43CD-A82D-E8C50C9EFC4A}</Project>
       <Name>FlightsNorway.Phone</Name>

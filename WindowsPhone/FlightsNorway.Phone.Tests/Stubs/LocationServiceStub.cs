@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Threading;
-using FlightsNorway.Model;
+using FlightsNorway.Lib.Model;
 using MonoMobile.Extensions;
 
 namespace FlightsNorway.Tests.Stubs

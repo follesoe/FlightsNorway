@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using FlightsNorway.Model;
 using FlightsNorway.FlightDataServices;
+using FlightsNorway.Lib.Model;
 
 namespace FlightsNorway.Tests.Stubs
 {

@@ -1,4 +1,4 @@
-﻿using FlightsNorway.Model;
+﻿using FlightsNorway.Lib.Model;
 using GalaSoft.MvvmLight.Messaging;
 
 namespace FlightsNorway.Messages

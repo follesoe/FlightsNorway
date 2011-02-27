@@ -1,6 +1,6 @@
 ﻿using System;
+using FlightsNorway.Lib.Model;
 using FlightsNorway.Messages;
-using FlightsNorway.Model;
 using Microsoft.Phone.Shell;
 using GalaSoft.MvvmLight.Messaging;
 

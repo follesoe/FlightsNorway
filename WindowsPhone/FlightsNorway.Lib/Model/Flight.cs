@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlightsNorway.Model
+namespace FlightsNorway.Lib.Model
 {
     public class Flight
     {

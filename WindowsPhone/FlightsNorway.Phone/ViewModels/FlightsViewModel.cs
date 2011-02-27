@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using FlightsNorway.Model;
+using FlightsNorway.Lib.Model;
 using FlightsNorway.Services;
 using FlightsNorway.Messages;
 using FlightsNorway.Extensions;

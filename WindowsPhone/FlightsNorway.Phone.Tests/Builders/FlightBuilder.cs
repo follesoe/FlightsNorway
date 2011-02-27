@@ -1,6 +1,6 @@
 ﻿using System;
 using FlightsNorway.Extensions;
-using FlightsNorway.Model;
+using FlightsNorway.Lib.Model;
 
 namespace FlightsNorway.Tests.Builders
 {

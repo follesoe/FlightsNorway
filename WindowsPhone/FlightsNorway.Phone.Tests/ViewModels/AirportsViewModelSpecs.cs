@@ -1,6 +1,6 @@
 ﻿using System.Linq;
+using FlightsNorway.Lib.Model;
 using FlightsNorway.Messages;
-using FlightsNorway.Model;
 using FlightsNorway.Services;
 using FlightsNorway.Tests.Stubs;
 using FlightsNorway.ViewModels;

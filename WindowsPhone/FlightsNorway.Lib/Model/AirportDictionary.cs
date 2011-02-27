@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using FlightsNorway.Extensions;
+using FlightsNorway.Lib.Extensions;
 
-namespace FlightsNorway.Model
+namespace FlightsNorway.Lib.Model
 {
     public class AirportDictionary : Dictionary<string, Airport>
     {

@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using FlightsNorway.Model;
+using FlightsNorway.Lib.Model;
 
 namespace FlightsNorway.ViewModels
 {
