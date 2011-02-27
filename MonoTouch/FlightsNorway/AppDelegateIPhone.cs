@@ -19,6 +19,7 @@ namespace FlightsNorway
 			
 			window.MakeKeyAndVisible ();
 			
+			
 			return true;
 		}
 	}

@@ -5,14 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{98C2CB5B-2948-429A-8052-0DE535DD4318}</ProjectGuid>
+    <ProjectGuid>{567394A2-886F-4AC9-BC60-89533165FDF7}</ProjectGuid>
     <ProjectTypeGuids>{E613F3A2-FE9C-494F-B74E-F63BCB86FEA6};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>FlightsNorway</RootNamespace>
-    <SupportedDevices>IPhoneAndIPad</SupportedDevices>
-    <MainNibFileIPad>MainWindowIPad.xib</MainNibFileIPad>
-    <MainNibFile>MainWindowIPhone.xib</MainNibFile>
-    <AssemblyName>FlightsNorway</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FlightsNorway.Lib</RootNamespace>
+    <AssemblyName>FlightsNorwayLib</AssemblyName>
     <MtouchMinimumOS>3.0</MtouchMinimumOS>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -66,24 +63,6 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Info.plist" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="MainWindowIPhone.xib.designer.cs">
-      <DependentUpon>MainWindowIPhone.xib</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindowIPad.xib.designer.cs">
-      <DependentUpon>MainWindowIPad.xib</DependentUpon>
-    </Compile>
-    <Compile Include="Main.cs" />
-    <Compile Include="AppDelegateIPhone.cs" />
-    <Compile Include="AppDelegateIPad.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="MainWindowIPhone.xib" />
-    <Page Include="MainWindowIPad.xib" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>
@@ -91,9 +70,45 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <ProjectReference Include="..\FlightsNorway.Lib\FlightsNorway.Lib.csproj">
-      <Project>{567394A2-886F-4AC9-BC60-89533165FDF7}</Project>
-      <Name>FlightsNorway.Lib</Name>
-    </ProjectReference>
+    <Folder Include="Model\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Airline.cs">
+      <Link>Model\Airline.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\AirlineDictionary.cs">
+      <Link>Model\AirlineDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Airport.cs">
+      <Link>Model\Airport.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\AirportDictionary.cs">
+      <Link>Model\AirportDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Direction.cs">
+      <Link>Model\Direction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Flight.cs">
+      <Link>Model\Flight.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\FlightArea.cs">
+      <Link>Model\FlightArea.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\FlightStatus.cs">
+      <Link>Model\FlightStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Location.cs">
+      <Link>Model\Location.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Status.cs">
+      <Link>Model\Status.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\StatusDictionary.cs">
+      <Link>Model\StatusDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Extensions\IEnumerableExtesnions.cs">
+      <Link>Extensions\IEnumerableExtesnions.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>
