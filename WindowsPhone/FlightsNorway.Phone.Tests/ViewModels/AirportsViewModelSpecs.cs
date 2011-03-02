@@ -1,10 +1,10 @@
 ﻿using System.Linq;
+using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Messages;
 using FlightsNorway.Services;
 using FlightsNorway.Tests.Stubs;
 using FlightsNorway.ViewModels;
-using FlightsNorway.FlightDataServices;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

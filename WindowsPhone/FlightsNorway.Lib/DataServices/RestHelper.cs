@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml;
-using System.Collections.Generic;
 using RestSharp;
 
-namespace FlightsNorway.FlightDataServices
+namespace FlightsNorway.Lib.DataServices
 {
     public class RestHelper
     {

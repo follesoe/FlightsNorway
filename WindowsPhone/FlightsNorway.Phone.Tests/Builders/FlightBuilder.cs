@@ -1,5 +1,5 @@
 ﻿using System;
-using FlightsNorway.Extensions;
+using FlightsNorway.Lib.Extensions;
 using FlightsNorway.Lib.Model;
 
 namespace FlightsNorway.Tests.Builders

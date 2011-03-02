@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FlightsNorway.Extensions
+namespace FlightsNorway.Lib.Extensions
 {
     public static class IDictionaryExtensions
     {

@@ -1,6 +1,6 @@
-﻿using FlightsNorway.Lib.Model;
+﻿using FlightsNorway.Lib.DataServices;
+using FlightsNorway.Lib.Model;
 using FlightsNorway.Messages;
-using FlightsNorway.FlightDataServices;
 using GalaSoft.MvvmLight.Messaging;
 using MonoMobile.Extensions;
 

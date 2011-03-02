@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using FlightsNorway.Lib.Model;
 
-namespace FlightsNorway.FlightDataServices
+namespace FlightsNorway.Lib.DataServices
 {
     public interface IGetAirports
     {
