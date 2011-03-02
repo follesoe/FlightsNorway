@@ -73,6 +73,7 @@
     <Compile Include="Model\StatusDictionary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EventArgs.cs" />
+    <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\PresetLocationService.cs" />
   </ItemGroup>
   <ItemGroup />

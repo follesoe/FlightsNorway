@@ -90,7 +90,6 @@
     <Compile Include="DataServices\StatusService.cs" />
     <Compile Include="Messages\AirportSelectedMessage.cs" />
     <Compile Include="Messages\FindNearestAirportMessage.cs" />
-    <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\PhoneApplicationServiceAdapter.cs" />
     <Compile Include="ViewModels\IFlightsViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">

@@ -1,4 +1,4 @@
-namespace FlightsNorway.Services
+﻿namespace FlightsNorway.Lib.Services
 {
     public interface IStoreObjects
     {

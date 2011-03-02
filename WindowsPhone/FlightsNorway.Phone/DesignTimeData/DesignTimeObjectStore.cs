@@ -1,5 +1,6 @@
 ﻿using System;
 using FlightsNorway.Lib.Model;
+using FlightsNorway.Lib.Services;
 using FlightsNorway.Services;
 
 namespace FlightsNorway.DesignTimeData

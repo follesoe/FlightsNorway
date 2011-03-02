@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using FlightsNorway.Services;
+using FlightsNorway.Lib.Services;
 
 namespace FlightsNorway.Tests.Stubs
 {
