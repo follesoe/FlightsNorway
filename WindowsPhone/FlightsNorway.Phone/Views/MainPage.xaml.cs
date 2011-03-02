@@ -1,5 +1,5 @@
 ﻿using System.Windows.Navigation;
-using FlightsNorway.Extensions;
+using FlightsNorway.Lib.Extensions;
 using Microsoft.Phone.Controls;
 
 namespace FlightsNorway.Views

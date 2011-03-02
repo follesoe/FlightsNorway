@@ -80,14 +80,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ApplicationBarController.cs" />
     <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
     <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
     <Compile Include="DesignTimeData\FlightsDesignTimeViewModel.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\IDictionaryExtensions.cs" />
-    <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
-    <Compile Include="Extensions\XmlExtensions.cs" />
     <Compile Include="FlightDataServices\AirlineNamesService.cs" />
     <Compile Include="FlightDataServices\AirportNamesService.cs" />
     <Compile Include="FlightDataServices\FlightsService.cs" />
@@ -98,9 +93,6 @@
     <Compile Include="FlightDataServices\StatusService.cs" />
     <Compile Include="Messages\AirportSelectedMessage.cs" />
     <Compile Include="Messages\FindNearestAirportMessage.cs" />
-    <Compile Include="Messages\FlightSelectedMessage.cs" />
-    <Compile Include="Messages\MonitorFlightMessage.cs" />
-    <Compile Include="Messages\StopMonitorFlightMessage.cs" />
     <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\PhoneApplicationServiceAdapter.cs" />
     <Compile Include="ViewModels\IFlightsViewModel.cs" />
