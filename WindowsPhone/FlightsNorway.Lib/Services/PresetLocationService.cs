@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Threading;
-using System.Windows;
 using FlightsNorway.Lib.Model;
 using MonoMobile.Extensions;
+
+#if MONOTOUCH
+using MonoTouch.Foundation;
+#else
+using System.Windows;
+#endif
 
 namespace FlightsNorway.Lib.Services
 {
@@ -24,15 +29,25 @@ namespace FlightsNorway.Lib.Services
         private void FireEvent(Action<Position> callback)
         {
             Thread.Sleep(25);
+			
 
-            Deployment.Current.Dispatcher.BeginInvoke(() =>
-                                                          {
-                                                              var position = new Position();
-                                                              position.Coords.Latitude = _currentLocation.Latitude;
-                                                              position.Coords.Longitude = _currentLocation.Longitude;
-                                                              callback(position);
-                                                          });
+            InvokeOnUIThread(() =>
+                          {
+                              var position = new Position();
+                              position.Coords.Latitude = _currentLocation.Latitude;
+                              position.Coords.Longitude = _currentLocation.Longitude;
+                              callback(position);
+                          });
         }
+		
+		private void InvokeOnUIThread(Action action)
+		{
+			#if MONOTOUCH			 
+			InvokeOnMainThread(action);
+			#else
+			Deployment.Current.Dispatcher.BeginInvoke(action);
+			#endif
+		}
 
         public void GetCurrentPosition(Action<Position> success)
         {
