@@ -1,27 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using System.Linq;
+using System.Collections.Generic;
 using FlightsNorway.Lib.Model;
 
 namespace FlightsNorway.Lib.DataServices
 {
-    public class AirlineNamesService
-    {
-        private readonly RestHelper _rest;
-        
-        public AirlineNamesService()
-        {
-            _rest = new RestHelper();
-        }
-
+    public class AirlineNamesService : RestService<Airline>
+    {       
         public void GetAirlines(Action<Result<IEnumerable<Airline>>> callback)
         {
-            _rest.Get("airlineNames.asp", callback, ParseAirlineXml);
+            Get("airlineNames.asp", callback);
         }
 
-        private static IEnumerable<Airline> ParseAirlineXml(XmlReader reader)
+        public override IEnumerable<Airline> ParseXml(XmlReader reader)
         {
             var xml = XDocument.Load(reader);
 

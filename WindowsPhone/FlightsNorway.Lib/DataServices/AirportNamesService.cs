@@ -1,33 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
+using System.Linq;
+using System.Collections.Generic;
 using FlightsNorway.Lib.Model;
 
 namespace FlightsNorway.Lib.DataServices
 {
-    public class AirportNamesService : IGetAirports
-    {
-        private readonly RestHelper _rest;
-
-        public AirportNamesService()
-        {
-            _rest = new RestHelper();
-        }
-
+    public class AirportNamesService : RestService<Airport>, IGetAirports
+    {        
         public void GetAirports(Action<Result<IEnumerable<Airport>>> callback)
         {
-            _rest.Get("airportNames.asp", callback, ParseAirportXml);
+            Get("airportNames.asp", callback);
         }
 
-        private static IEnumerable<Airport> ParseAirportXml(XmlReader reader)
+        public override IEnumerable<Airport> ParseXml(XmlReader reader)
         {
             var xml = XDocument.Load(reader);
 
             return from airportNames in xml.Elements("airportNames")
                    from airport in airportNames.Elements("airportName")
-                   select new Airport(airport.Attribute("code").Value, airport.Attribute("name").Value);                              
+                   select new Airport(airport.Attribute("code").Value, airport.Attribute("name").Value);                                       
         }
 
         public Airport GetNearestAirport(Location home)

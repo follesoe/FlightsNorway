@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using FlightsNorway.Lib.Extensions;
+using System.Collections.Generic;
+
 using FlightsNorway.Lib.Model;
+using FlightsNorway.Lib.Extensions;
 
 namespace FlightsNorway.Lib.DataServices
 {
-    public class FlightsService : IGetFlights
+    public class FlightsService : RestService<Flight>, IGetFlights
     {
         private readonly string _resourceUrl;
         private readonly string _direction;
@@ -21,9 +22,7 @@ namespace FlightsNorway.Lib.DataServices
         public AirlineDictionary Airlines { get; private set; }
         public AirportDictionary Airports { get; private set; }
         public StatusDictionary Statuses { get; private set; }
-
-        private readonly RestHelper _rest;
-        
+       
         public FlightsService()
         {
             Airlines = new AirlineDictionary();
@@ -34,7 +33,6 @@ namespace FlightsNorway.Lib.DataServices
             _airportService = new AirportNamesService();
             _statusService = new StatusService();
 
-            _rest = new RestHelper();
             _resourceUrl = "XmlFeed.asp?TimeFrom={0}&TimeTo={1}&airport={2}";                       
             _lastUpdate = "&lastUpdate=2009-03-10T15:03:00";
             _direction = "&direction={0}";
@@ -79,11 +77,11 @@ namespace FlightsNorway.Lib.DataServices
             if(Airports.Count > 0 && Airlines.Count > 0 && Statuses.Count > 0)
             {
                 var resource = string.Format(_resourceUrl, 1, 12, fromAirport.Code);
-                _rest.Get(resource, callback, ParseFlightsXml);   
+                Get(resource, callback);   
             }
         }
 
-        private IEnumerable<Flight> ParseFlightsXml(XmlReader reader)
+        public override IEnumerable<Flight> ParseXml(XmlReader reader)
         {
             var xml = XDocument.Load(reader);
 
