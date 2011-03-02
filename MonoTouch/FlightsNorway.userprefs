@@ -1,9 +1,32 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FlightsNorway/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FlightsNorway/AppDelegateIPhone.cs">
     <Files>
       <File FileName="FlightsNorway/Main.cs" Line="1" Column="1" />
+      <File FileName="../WindowsPhone/FlightsNorway.Lib/Extensions/IEnumerableExtesnions.cs" Line="1" Column="1" />
+      <File FileName="FlightsNorway/AppDelegateIPhone.cs" Line="11" Column="18" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="FlightsNorway" expanded="True">
+            <Node name="AppDelegateIPhone.cs" selected="True" />
+          </Node>
+          <Node name="FlightsNorway.Lib" expanded="True">
+            <Node name="Model" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="ConnectionManagerPad">
+        <State selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
