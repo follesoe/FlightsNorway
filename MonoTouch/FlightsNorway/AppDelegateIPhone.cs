@@ -21,7 +21,7 @@ namespace FlightsNorway
 			
 			
 			return true;
-		}
+		}			
 	}
 }
 

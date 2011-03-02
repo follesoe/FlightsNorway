@@ -163,5 +163,14 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\RestService.cs">
       <Link>DataServices\RestService.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\AirlineNamesService.cs">
+      <Link>DataServices\AirlineNamesService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\AirportNamesService.cs">
+      <Link>DataServices\AirportNamesService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\FlightsService.cs">
+      <Link>DataServices\FlightsService.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>
