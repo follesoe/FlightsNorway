@@ -25,14 +25,14 @@ namespace FlightsNorway.Lib.DataServices
         {
             var xml = XDocument.Load(reader);
 
-            return from flightStatuses in xml.Elements("flightStatuses")
-                   from status in flightStatuses.Elements("flightStatus")
-                   select new Status
-                              {
-                                  Code = status.Attribute("code").Value,
-                                  StatusTextEnglish = status.Attribute("statusTextEn").Value,
-                                  StatusTextNorwegian = status.Attribute("statusTextNo").Value
-                              };
+            return xml.Elements("flightStatuses")
+                .SelectMany(flightStatuses => flightStatuses.Elements("flightStatus"),
+                           (flightStatuses, status) => new Status
+                                                        {
+                                                            Code = status.Attribute("code").Value,
+                                                            StatusTextEnglish = status.Attribute("statusTextEn").Value,
+                                                            StatusTextNorwegian = status.Attribute("statusTextNo").Value
+                                                        });
         }
     }
 }
