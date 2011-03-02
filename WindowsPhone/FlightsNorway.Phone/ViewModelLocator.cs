@@ -1,4 +1,5 @@
-﻿using FlightsNorway.Services;
+﻿using FlightsNorway.Lib.Services;
+using FlightsNorway.Services;
 using FlightsNorway.ViewModels;
 using FlightsNorway.DesignTimeData;
 using FlightsNorway.FlightDataServices;

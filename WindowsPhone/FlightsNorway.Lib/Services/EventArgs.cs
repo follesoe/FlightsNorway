@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlightsNorway.Services
+namespace FlightsNorway.Lib.Services
 {
     public class EventArgs<T> : EventArgs
     {

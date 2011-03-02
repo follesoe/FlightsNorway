@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Windows;
 using System.Threading;
+using System.Windows;
 using FlightsNorway.Lib.Model;
 using MonoMobile.Extensions;
 
-namespace FlightsNorway.Services
+namespace FlightsNorway.Lib.Services
 {
     public class PresetLocationService : IGeolocation
     {
