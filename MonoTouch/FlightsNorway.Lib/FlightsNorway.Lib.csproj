@@ -67,6 +67,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\MonoMobile.Extensions\MonoMobileExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\RestSharp\RestSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -79,6 +83,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="MissingStuff\" />
     <Folder Include="Services\" />
+    <Folder Include="DataServices\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Airline.cs">
@@ -142,6 +147,21 @@
     </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Services\PresetLocationService.cs">
       <Link>Services\PresetLocationService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\IGetAirports.cs">
+      <Link>DataServices\IGetAirports.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\IGetFlights.cs">
+      <Link>DataServices\IGetFlights.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\Result.cs">
+      <Link>DataServices\Result.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\StatusService.cs">
+      <Link>DataServices\StatusService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\RestService.cs">
+      <Link>DataServices\RestService.cs</Link>
     </Compile>
   </ItemGroup>
 </Project>
