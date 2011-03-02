@@ -3,9 +3,10 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Collections.Generic;
+using FlightsNorway.Lib.DataServices;
 using RestSharp;
 
-namespace FlightsNorway.FlightDataServices
+namespace FlightsNorway.DataServices
 {
     public class RestHelper
     {

@@ -1,8 +1,9 @@
-﻿using FlightsNorway.Lib.Services;
+﻿using FlightsNorway.DataServices;
+using FlightsNorway.Lib.DataServices;
+using FlightsNorway.Lib.Services;
 using FlightsNorway.Services;
 using FlightsNorway.ViewModels;
 using FlightsNorway.DesignTimeData;
-using FlightsNorway.FlightDataServices;
 using MonoMobile.Extensions;
 using Ninject;
 using GalaSoft.MvvmLight;

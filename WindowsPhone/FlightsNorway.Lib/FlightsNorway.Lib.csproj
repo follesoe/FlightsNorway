@@ -52,6 +52,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataServices\IGetAirports.cs" />
+    <Compile Include="DataServices\IGetFlights.cs" />
+    <Compile Include="DataServices\Result.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtesnions.cs" />

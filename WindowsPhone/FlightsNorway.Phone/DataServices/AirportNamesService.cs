@@ -3,9 +3,10 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
+using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Model;
 
-namespace FlightsNorway.FlightDataServices
+namespace FlightsNorway.DataServices
 {
     public class AirportNamesService : IGetAirports
     {

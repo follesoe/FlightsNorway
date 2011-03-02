@@ -1,12 +1,12 @@
 ﻿using System.Linq;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using FlightsNorway.DataServices;
+using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Extensions;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Services;
 using FlightsNorway.Messages;
-using FlightsNorway.FlightDataServices;
-
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;

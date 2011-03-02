@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlightsNorway.FlightDataServices
+namespace FlightsNorway.Lib.DataServices
 {
     public class Result<T>
     {
