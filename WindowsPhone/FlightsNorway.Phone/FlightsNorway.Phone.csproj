@@ -83,11 +83,6 @@
     <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
     <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
     <Compile Include="DesignTimeData\FlightsDesignTimeViewModel.cs" />
-    <Compile Include="DataServices\AirlineNamesService.cs" />
-    <Compile Include="DataServices\AirportNamesService.cs" />
-    <Compile Include="DataServices\FlightsService.cs" />
-    <Compile Include="DataServices\RestHelper.cs" />
-    <Compile Include="DataServices\StatusService.cs" />
     <Compile Include="Messages\AirportSelectedMessage.cs" />
     <Compile Include="Messages\FindNearestAirportMessage.cs" />
     <Compile Include="Services\PhoneApplicationServiceAdapter.cs" />
@@ -164,6 +159,9 @@
       <Project>{6843FC52-C218-4C86-9210-2DA400ED2351}</Project>
       <Name>FlightsNorway.Lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataServices\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />

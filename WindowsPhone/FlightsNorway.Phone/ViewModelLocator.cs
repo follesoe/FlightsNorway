@@ -1,5 +1,4 @@
-﻿using FlightsNorway.DataServices;
-using FlightsNorway.Lib.DataServices;
+﻿using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Services;
 using FlightsNorway.ViewModels;

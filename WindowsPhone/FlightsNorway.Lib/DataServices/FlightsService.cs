@@ -1,13 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using System.Collections.Generic;
-using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Extensions;
 using FlightsNorway.Lib.Model;
 
-namespace FlightsNorway.DataServices
+namespace FlightsNorway.Lib.DataServices
 {
     public class FlightsService : IGetFlights
     {

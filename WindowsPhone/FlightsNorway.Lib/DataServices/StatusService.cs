@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Xml;
-using System.Linq;
-using System.Xml.Linq;
 using System.Collections.Generic;
-using FlightsNorway.Lib.DataServices;
+using System.Linq;
+using System.Xml;
+using System.Xml.Linq;
 using FlightsNorway.Lib.Model;
 
-namespace FlightsNorway.DataServices
+namespace FlightsNorway.Lib.DataServices
 {
     public class StatusService
     {
