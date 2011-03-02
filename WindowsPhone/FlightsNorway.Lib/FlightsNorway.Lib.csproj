@@ -61,6 +61,7 @@
     <Compile Include="DataServices\IGetAirports.cs" />
     <Compile Include="DataServices\IGetFlights.cs" />
     <Compile Include="DataServices\RestHelper.cs" />
+    <Compile Include="DataServices\RestService.cs" />
     <Compile Include="DataServices\Result.cs" />
     <Compile Include="DataServices\StatusService.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
