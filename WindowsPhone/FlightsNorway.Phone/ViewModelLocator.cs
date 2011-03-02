@@ -1,4 +1,5 @@
-﻿using FlightsNorway.Lib.DataServices;
+﻿using System.Windows;
+using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Services;
 using FlightsNorway.ViewModels;
@@ -40,7 +41,7 @@ namespace FlightsNorway
             _container.Bind<IPhoneApplicationService>().ToConstant(new PhoneApplicationServiceAdapter());
 
             #if DEBUG
-            _container.Bind<IGeolocation>().ToConstant(new PresetLocationService(63.433281, 10.419294));
+            _container.Bind<IGeolocation>().ToConstant(new PresetLocationService(63.433281, 10.419294, action => Deployment.Current.Dispatcher.BeginInvoke(action)));
             #else
             _container.Bind<IGeolocation>().To<MonoMobile.Extensions.Geolocation>();
             #endif

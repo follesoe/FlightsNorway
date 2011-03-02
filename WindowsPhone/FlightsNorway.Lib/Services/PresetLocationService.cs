@@ -3,20 +3,16 @@ using System.Threading;
 using FlightsNorway.Lib.Model;
 using MonoMobile.Extensions;
 
-#if MONOTOUCH
-using MonoTouch.Foundation;
-#else
-using System.Windows;
-#endif
-
 namespace FlightsNorway.Lib.Services
 {
     public class PresetLocationService : IGeolocation
     {
+        private readonly Action<Action> _invokeOnMainThread;
         private readonly Location _currentLocation;
 
-        public PresetLocationService(double latitude, double longitude)
+        public PresetLocationService(double latitude, double longitude, Action<Action> invokeOnMainThread)
         {
+            _invokeOnMainThread = invokeOnMainThread;
             _currentLocation = new Location(latitude, longitude);
         }
 
@@ -29,9 +25,9 @@ namespace FlightsNorway.Lib.Services
         private void FireEvent(Action<Position> callback)
         {
             Thread.Sleep(25);
-			
 
-            InvokeOnUIThread(() =>
+
+            _invokeOnMainThread(() =>
                           {
                               var position = new Position();
                               position.Coords.Latitude = _currentLocation.Latitude;
@@ -40,15 +36,6 @@ namespace FlightsNorway.Lib.Services
                           });
         }
 		
-		private void InvokeOnUIThread(Action action)
-		{
-			#if MONOTOUCH			 
-			InvokeOnMainThread(action);
-			#else
-			Deployment.Current.Dispatcher.BeginInvoke(action);
-			#endif
-		}
-
         public void GetCurrentPosition(Action<Position> success)
         {
             GetPositionAsync(success);
