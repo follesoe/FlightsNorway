@@ -79,6 +79,8 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegateIPhone.cs" />
     <Compile Include="AppDelegateIPad.cs" />
+    <Compile Include="MainTabBarController.cs" />
+    <Compile Include="AirportsTableViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />
