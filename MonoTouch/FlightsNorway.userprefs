@@ -1,17 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FlightsNorway/AppDelegateIPhone.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FlightsNorway/AirportsTableViewController.cs">
     <Files>
-      <File FileName="FlightsNorway/AppDelegateIPhone.cs" Line="13" Column="3" />
+      <File FileName="FlightsNorway/AppDelegateIPhone.cs" Line="21" Column="4" />
+      <File FileName="FlightsNorway/Main.cs" Line="1" Column="1" />
+      <File FileName="FlightsNorway/MainTabBarController.cs" Line="19" Column="27" />
+      <File FileName="FlightsNorway/AirportsTableViewController.cs" Line="15" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="FlightsNorway" expanded="True">
-            <Node name="References" selected="True" />
+            <Node name="AirportsTableViewController.cs" selected="True" />
           </Node>
           <Node name="FlightsNorway.Lib" expanded="True">
-            <Node name="References" expanded="True" />
             <Node name="DataServices" expanded="True" />
             <Node name="Extensions" expanded="True" />
             <Node name="Services" expanded="True" />
