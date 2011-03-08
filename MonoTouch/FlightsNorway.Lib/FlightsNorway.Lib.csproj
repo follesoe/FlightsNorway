@@ -84,6 +84,7 @@
     <Folder Include="MissingStuff\" />
     <Folder Include="Services\" />
     <Folder Include="DataServices\" />
+    <Folder Include="MVVM\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Airline.cs">
@@ -172,5 +173,42 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\FlightsService.cs">
       <Link>DataServices\FlightsService.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\GenericMessage.cs">
+      <Link>MVVM\GenericMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\ICleanup.cs">
+      <Link>MVVM\ICleanup.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\IExecuteWithObject.cs">
+      <Link>MVVM\IExecuteWithObject.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\IMessenger.cs">
+      <Link>MVVM\IMessenger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\MessageBase.cs">
+      <Link>MVVM\MessageBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\Messenger.cs">
+      <Link>MVVM\Messenger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\PropertyChangedMessage.cs">
+      <Link>MVVM\PropertyChangedMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\PropertyChangedMessageBase.cs">
+      <Link>MVVM\PropertyChangedMessageBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\RelayCommand.cs">
+      <Link>MVVM\RelayCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\ViewModelBase.cs">
+      <Link>MVVM\ViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\WeakAction.cs">
+      <Link>MVVM\WeakAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\WeakActionGeneric.cs">
+      <Link>MVVM\WeakActionGeneric.cs</Link>
+    </Compile>
+    <Compile Include="MissingStuff\ICommand.cs" />
   </ItemGroup>
 </Project>
