@@ -80,8 +80,6 @@
     <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
     <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
     <Compile Include="DesignTimeData\FlightsDesignTimeViewModel.cs" />
-    <Compile Include="Messages\AirportSelectedMessage.cs" />
-    <Compile Include="Messages\FindNearestAirportMessage.cs" />
     <Compile Include="Services\PhoneApplicationServiceAdapter.cs" />
     <Compile Include="ViewModels\IFlightsViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
@@ -89,7 +87,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NearestAirportService.cs" />
-    <Compile Include="Services\ObjectStore.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\AirportsViewModel.cs" />
     <Compile Include="ViewModels\ClockViewModel.cs" />

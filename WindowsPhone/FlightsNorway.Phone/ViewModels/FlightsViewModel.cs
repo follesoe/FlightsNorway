@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Extensions;
+using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.MVVM;
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Services;
-using FlightsNorway.Messages;
 using Microsoft.Phone.Shell;
 
 namespace FlightsNorway.ViewModels
