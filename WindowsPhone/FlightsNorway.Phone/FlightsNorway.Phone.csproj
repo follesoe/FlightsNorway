@@ -56,9 +56,6 @@
     <Reference Include="MonoMobile.Extensions">
       <HintPath>..\lib\MonoMobile.Extensions\MonoMobile.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\lib\Ninject\Unsigned\debug\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp.WindowsPhone">
       <HintPath>..\lib\RestSharp\RestSharp.WindowsPhone.dll</HintPath>
     </Reference>
@@ -88,7 +85,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NearestAirportService.cs" />
     <Compile Include="ViewModelLocator.cs" />
-    <Compile Include="ViewModels\AirportsViewModel.cs" />
     <Compile Include="ViewModels\ClockViewModel.cs" />
     <Compile Include="ViewModels\FlightsViewModel.cs" />
     <Compile Include="ViewModels\StringFormatValueConverter.cs" />
