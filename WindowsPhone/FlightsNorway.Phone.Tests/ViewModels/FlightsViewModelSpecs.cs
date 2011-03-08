@@ -1,8 +1,8 @@
 ﻿using System;
+using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.MVVM;
 using FlightsNorway.Lib.Services;
-using FlightsNorway.Messages;
 using FlightsNorway.Services;
 using FlightsNorway.Tests.Builders;
 using FlightsNorway.Tests.Stubs;

@@ -69,6 +69,8 @@
     <Compile Include="Extensions\IEnumerableExtesnions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Messages\AirportSelectedMessage.cs" />
+    <Compile Include="Messages\FindNearestAirportMessage.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="Model\AirlineDictionary.cs" />
     <Compile Include="Model\Airport.cs" />

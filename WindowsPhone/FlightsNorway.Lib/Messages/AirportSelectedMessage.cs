@@ -1,7 +1,7 @@
 ﻿using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.MVVM;
 
-namespace FlightsNorway.Messages
+namespace FlightsNorway.Lib.Messages
 {
     public class AirportSelectedMessage : GenericMessage<Airport>
     {

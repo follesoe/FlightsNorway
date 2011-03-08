@@ -1,6 +1,6 @@
 ﻿using FlightsNorway.Lib.MVVM;
 
-namespace FlightsNorway.Messages
+namespace FlightsNorway.Lib.Messages
 {
     public class FindNearestAirportMessage : MessageBase
     {
