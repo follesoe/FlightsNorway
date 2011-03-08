@@ -1,11 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
 using System.IO.IsolatedStorage;
 using System.Runtime.Serialization;
-using FlightsNorway.Lib.Services;
 
-namespace FlightsNorway.Services
+namespace FlightsNorway.Lib.Services
 {
     public class ObjectStore : IStoreObjects
     {

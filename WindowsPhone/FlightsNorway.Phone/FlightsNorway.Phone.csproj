@@ -89,7 +89,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\NearestAirportService.cs" />
-    <Compile Include="Services\ObjectStore.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\AirportsViewModel.cs" />
     <Compile Include="ViewModels\ClockViewModel.cs" />

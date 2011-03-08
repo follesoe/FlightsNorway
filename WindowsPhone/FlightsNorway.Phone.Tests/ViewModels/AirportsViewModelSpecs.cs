@@ -2,8 +2,8 @@
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.MVVM;
+using FlightsNorway.Lib.Services;
 using FlightsNorway.Messages;
-using FlightsNorway.Services;
 using FlightsNorway.Tests.Stubs;
 using FlightsNorway.ViewModels;
 using Microsoft.Silverlight.Testing;
