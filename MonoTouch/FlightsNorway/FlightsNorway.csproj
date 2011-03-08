@@ -81,6 +81,7 @@
     <Compile Include="AppDelegateIPad.cs" />
     <Compile Include="MainTabBarController.cs" />
     <Compile Include="AirportsTableViewController.cs" />
+    <Compile Include="Services\MonoObjectStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />
@@ -97,5 +98,8 @@
       <Project>{567394A2-886F-4AC9-BC60-89533165FDF7}</Project>
       <Name>FlightsNorway.Lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

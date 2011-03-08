@@ -87,6 +87,7 @@
     <Folder Include="DataServices\" />
     <Folder Include="MVVM\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Messages\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Airline.cs">
@@ -218,6 +219,12 @@
     <Compile Include="Extensions\IsolatedStorageFileExtensions.cs" />
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\AirportsViewModel.cs">
       <Link>ViewModels\AirportsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Messages\AirportSelectedMessage.cs">
+      <Link>Messages\AirportSelectedMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Messages\FindNearestAirportMessage.cs">
+      <Link>Messages\FindNearestAirportMessage.cs</Link>
     </Compile>
   </ItemGroup>
 </Project>
