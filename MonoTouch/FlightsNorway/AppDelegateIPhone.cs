@@ -15,8 +15,7 @@ namespace FlightsNorway
 			// If you have defined a view, add it here:
 			// window.AddSubview (navigationController.View);
 			
-			_controller = new MainTabBarController();
-			
+			_controller = new MainTabBarController();			
 			window.AddSubview(_controller.View);
 			
 			window.MakeKeyAndVisible ();
