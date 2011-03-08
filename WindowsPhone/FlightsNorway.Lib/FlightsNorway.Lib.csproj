@@ -93,6 +93,7 @@
     <Compile Include="MVVM\PropertyChangedMessage.cs" />
     <Compile Include="MVVM\PropertyChangedMessageBase.cs" />
     <Compile Include="MVVM\RelayCommand.cs" />
+    <Compile Include="MVVM\TinyIoC.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="MVVM\WeakAction.cs" />
     <Compile Include="MVVM\WeakActionGeneric.cs" />
@@ -101,10 +102,9 @@
     <Compile Include="Services\IStoreObjects.cs" />
     <Compile Include="Services\ObjectStore.cs" />
     <Compile Include="Services\PresetLocationService.cs" />
+    <Compile Include="ViewModels\AirportsViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <ProjectExtensions />
