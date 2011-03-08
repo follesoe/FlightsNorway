@@ -1,12 +1,12 @@
 ﻿using System.Windows;
 using FlightsNorway.Lib.DataServices;
+using FlightsNorway.Lib.MVVM;
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Services;
 using FlightsNorway.ViewModels;
 using FlightsNorway.DesignTimeData;
 using MonoMobile.Extensions;
 using Ninject;
-using GalaSoft.MvvmLight;
 
 namespace FlightsNorway
 {

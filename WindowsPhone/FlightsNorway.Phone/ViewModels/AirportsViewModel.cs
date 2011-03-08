@@ -4,12 +4,10 @@ using System.Collections.ObjectModel;
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Extensions;
 using FlightsNorway.Lib.Model;
+using FlightsNorway.Lib.MVVM;
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Services;
 using FlightsNorway.Messages;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 
 namespace FlightsNorway.ViewModels
 {

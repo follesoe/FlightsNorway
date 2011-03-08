@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Threading;
-using GalaSoft.MvvmLight;
+using FlightsNorway.Lib.MVVM;
 
 namespace FlightsNorway.ViewModels
 {
