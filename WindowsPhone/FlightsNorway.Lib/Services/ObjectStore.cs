@@ -3,6 +3,9 @@ using System.Diagnostics;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Runtime.Serialization;
+#if !SILVERLIGHT
+using FlightsNorway.Lib.Extensions;
+#endif
 
 namespace FlightsNorway.Lib.Services
 {
