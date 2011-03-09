@@ -6,17 +6,21 @@ using FlightsNorway.Tables;
 namespace FlightsNorway
 {
 	public class MainTabBarController : UITabBarController
-	{
+	{			
 		public MainTabBarController()
 		{
 		}
 						
 		public override void ViewDidLoad()
 		{
-			base.ViewDidLoad ();
+			base.ViewDidLoad ();	
 			
-			var tabs = new UIViewController[1];
-			tabs[0] = TinyIoCContainer.Current.Resolve<AirportsTableViewController>();
+			var container = TinyIoCContainer.Current;
+			
+			var tabs = new UIViewController[3];
+			tabs[0] = container.Resolve<ArrivalsTableViewController>();
+			tabs[1] = container.Resolve<DeparturesTableViewController>();
+			tabs[2] = container.Resolve<AirportsTableViewController>();
 			
 			ViewControllers = tabs;
 		}

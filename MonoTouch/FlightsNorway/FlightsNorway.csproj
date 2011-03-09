@@ -83,6 +83,8 @@
     <Compile Include="Services\MonoObjectStore.cs" />
     <Compile Include="Tables\AirportsDataSource.cs" />
     <Compile Include="Tables\AirportsTableViewController.cs" />
+    <Compile Include="Tables\ArrivalsTableViewController.cs" />
+    <Compile Include="Tables\DeparturesTableViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />

@@ -2,18 +2,26 @@ using System;
 using System.Collections.Generic;
 
 using MonoTouch.UIKit;
-
 using MonoTouch.Foundation;
-using TinyIoC;
+
+using FlightsNorway.Lib.Model;
+using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.ViewModels;
+
+using TinyIoC;
+using TinyMessenger;
 
 namespace FlightsNorway.Tables
 {
 	public class AirportsTableViewController : UITableViewController
-	{				
-		public AirportsTableViewController()
+	{	
+		private readonly ITinyMessengerHub _messenger;
+		private readonly AirportsDataSource _dataSource;
+		
+		public AirportsTableViewController(ITinyMessengerHub messenger, AirportsDataSource dataSource)
 		{		
-			
+			_messenger = messenger;
+			_dataSource = dataSource;
 		}	
 
 		private class AirportsDelegate : UITableViewDelegate
@@ -36,11 +44,15 @@ namespace FlightsNorway.Tables
 		{
 			base.ViewDidLoad();		
 			
-			var dataSource = TinyIoCContainer.Current.Resolve<AirportsDataSource>();
-			dataSource.Controller = this;
-			
-			TableView.DataSource = dataSource;
-			TableView.Delegate = new AirportsDelegate(dataSource.ViewModel);
+			_dataSource.Controller = this;
+			TableView.DataSource = _dataSource;
+			TableView.Delegate = new AirportsDelegate(_dataSource.ViewModel);
+		}
+		
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear(animated);				
+			_dataSource.ViewModel.SaveCommand.Execute(null);			
 		}
 	}
 }
