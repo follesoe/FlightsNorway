@@ -78,7 +78,6 @@
     <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
     <Compile Include="DesignTimeData\FlightsDesignTimeViewModel.cs" />
     <Compile Include="Services\PhoneApplicationServiceAdapter.cs" />
-    <Compile Include="ViewModels\IFlightsViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -86,7 +85,6 @@
     <Compile Include="Services\NearestAirportService.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\ClockViewModel.cs" />
-    <Compile Include="ViewModels\FlightsViewModel.cs" />
     <Compile Include="ViewModels\StringFormatValueConverter.cs" />
     <Compile Include="Views\AirportsView.xaml.cs">
       <DependentUpon>AirportsView.xaml</DependentUpon>
