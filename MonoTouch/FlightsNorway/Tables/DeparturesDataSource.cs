@@ -5,26 +5,28 @@ using MonoTouch.Foundation;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.ViewModels;
 
+using TinyIoC;
+
 namespace FlightsNorway
 {
-	public class ArrivalsDataSource : UITableViewDataSource
+	public class DeparturesDataSource : UITableViewDataSource
 	{
-		static NSString CellID = new NSString ("ArrivalCell");		
+		static NSString CellID = new NSString ("DepartureCell");		
 		
 		public FlightsViewModel ViewModel { get; private set; }
 				
-		private ArrivalsTableViewController _controller;
+		private DeparturesTableViewController _controller;
 		
-		public ArrivalsTableViewController Controller
+		public DeparturesTableViewController Controller
 		{
 			set 
 			{
 				_controller = value;
-				ViewModel.Arrivals.CollectionChanged += (o, e) => _controller.TableView.ReloadData();
+				ViewModel.Departures.CollectionChanged += (o, e) => _controller.TableView.ReloadData();
 			}
 		}
-		
-		public ArrivalsDataSource(FlightsViewModel viewModel)
+				
+		public DeparturesDataSource(FlightsViewModel viewModel)
 		{
 			ViewModel = viewModel;
 		}
@@ -42,8 +44,9 @@ namespace FlightsNorway
                 cell = new UITableViewCell(UITableViewCellStyle.Default, CellID);
             }
         				
-            cell.TextLabel.Text = ViewModel.Arrivals[indexPath.Row].ToString();				
+            cell.TextLabel.Text = ViewModel.Departures[indexPath.Row].ToString();				
             return cell;
         }
 	}
 }
+

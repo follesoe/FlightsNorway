@@ -47,6 +47,12 @@ namespace FlightsNorway.Tables
 			TableView.Delegate = new AirportsDelegate(_dataSource.ViewModel);
 		}
 		
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			_dataSource.SetSelectedRow();
+		}
+		
 		public override void ViewWillDisappear (bool animated)
 		{
 			base.ViewWillDisappear(animated);				

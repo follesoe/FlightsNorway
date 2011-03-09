@@ -28,8 +28,17 @@ namespace FlightsNorway
 			ViewModel = viewModel;			
 		}
 		
-		public override int RowsInSection(UITableView tableView, int section)
+		public void SetSelectedRow()
 		{
+			if(ViewModel.SelectedAirport != null)
+			{
+				int index = ViewModel.Airports.IndexOf(ViewModel.SelectedAirport);
+				_controller.TableView.SelectRow(NSIndexPath.FromRowSection(index, 0), false, UITableViewScrollPosition.None);
+			}
+		}
+		
+		public override int RowsInSection(UITableView tableView, int section)
+		{			
 			return ViewModel.Airports.Count;
 		}	
 		  
@@ -43,6 +52,6 @@ namespace FlightsNorway
         				
             cell.TextLabel.Text = ViewModel.Airports[indexPath.Row].ToString();				
             return cell;
-        }
+        }		
 	}
 }
