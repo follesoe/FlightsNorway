@@ -7,6 +7,7 @@ using MonoTouch.Foundation;
 
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Lib.DataServices;
+using FlightsNorway.Lib.ViewModels;
 
 namespace FlightsNorway
 {
@@ -15,8 +16,9 @@ namespace FlightsNorway
 		static void Main (string[] args)
 		{	
 			var container = TinyIoC.TinyIoCContainer.Current;
-			container.Register<IStoreObjects, MonoObjectStore>();
-			container.Register<IGetAirports, AirportNamesService>();			
+			container.Register<AirportsViewModel>().AsSingleton();
+			container.Register<IStoreObjects, MonoObjectStore>().AsSingleton();
+			container.Register<IGetAirports, AirportNamesService>().AsSingleton();			
 								
 			UIApplication.Main(args);
 		}
