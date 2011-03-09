@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using FlightsNorway.Lib.Model;
 
-namespace FlightsNorway.ViewModels
+namespace FlightsNorway.Lib.ViewModels
 {
     public interface IFlightsViewModel
     {

@@ -96,6 +96,8 @@
     <Compile Include="Services\ObjectStore.cs" />
     <Compile Include="Services\PresetLocationService.cs" />
     <Compile Include="ViewModels\AirportsViewModel.cs" />
+    <Compile Include="ViewModels\FlightsViewModel.cs" />
+    <Compile Include="ViewModels\IFlightsViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
