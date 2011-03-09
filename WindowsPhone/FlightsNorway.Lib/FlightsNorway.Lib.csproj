@@ -94,6 +94,7 @@
     <Compile Include="MVVM\PropertyChangedMessageBase.cs" />
     <Compile Include="MVVM\RelayCommand.cs" />
     <Compile Include="MVVM\TinyIoC.cs" />
+    <Compile Include="MVVM\TinyMessenger.cs" />
     <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="MVVM\WeakAction.cs" />
     <Compile Include="MVVM\WeakActionGeneric.cs" />
