@@ -42,7 +42,7 @@ namespace FlightsNorway.Tables
 		{
 			base.ViewDidLoad();		
 			
-			_dataSource.Controller = this;
+			_dataSource.TableView = this.TableView;
 			TableView.DataSource = _dataSource;
 			TableView.Delegate = new AirportsDelegate(_dataSource.ViewModel);
 		}

@@ -4,46 +4,20 @@ using MonoTouch.Foundation;
 
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace FlightsNorway
 {
-	public class ArrivalsDataSource : UITableViewDataSource
+	public class ArrivalsDataSource : ViewModelDataSource<FlightsViewModel, Flight>
 	{
-		static NSString CellID = new NSString ("ArrivalCell");		
+		private NSString _cellID = new NSString("ArrivalCell");
 		
-		public FlightsViewModel ViewModel { get; private set; }
+		public override NSString CellID { get { return _cellID; } }
 				
-		private ArrivalsTableViewController _controller;
+		public override ObservableCollection<Flight> List { get { return ViewModel.Arrivals; } }				
 		
-		public ArrivalsTableViewController Controller
+		public ArrivalsDataSource(FlightsViewModel viewModel) : base(viewModel)
 		{
-			set 
-			{
-				_controller = value;
-				ViewModel.Arrivals.CollectionChanged += (o, e) => _controller.TableView.ReloadData();
-			}
 		}
-		
-		public ArrivalsDataSource(FlightsViewModel viewModel)
-		{
-			ViewModel = viewModel;
-		}
-		
-		public override int RowsInSection (UITableView tableView, int section)
-		{
-			return ViewModel.Arrivals.Count;
-		}
-		
-		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
-        {
-			var cell = tableView.DequeueReusableCell(CellID);
-            if (cell == null)
-            {					
-                cell = new UITableViewCell(UITableViewCellStyle.Default, CellID);
-            }
-        				
-            cell.TextLabel.Text = ViewModel.Arrivals[indexPath.Row].ToString();				
-            return cell;
-        }
 	}
 }

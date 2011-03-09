@@ -1,57 +1,33 @@
 using System;
 using MonoTouch.UIKit;
-using FlightsNorway.Lib.DataServices;
-using FlightsNorway.Lib.ViewModels;
 using MonoTouch.Foundation;
+
+using FlightsNorway.Lib.Model;
+using FlightsNorway.Lib.ViewModels;
+using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Tables;
+using System.Collections.ObjectModel;
 
 namespace FlightsNorway
 {
-	public class AirportsDataSource : UITableViewDataSource
+	public class AirportsDataSource : ViewModelDataSource<AirportsViewModel, Airport>
 	{	
-		static NSString CellID = new NSString ("AirportCell");		
-		private AirportsTableViewController _controller;
+		private NSString _cellID = new NSString("AirportCell");
 		
-		public AirportsViewModel ViewModel { get; private set; }
+		public override NSString CellID { get { return _cellID; } }			
+		public override ObservableCollection<Airport> List { get { return ViewModel.Airports; } }		
 		
-		public AirportsTableViewController Controller
+		public AirportsDataSource(AirportsViewModel viewModel) : base(viewModel)
 		{
-			set 
-			{
-				_controller = value;
-				ViewModel.Airports.CollectionChanged += (o, e) => _controller.TableView.ReloadData();
-			}
 		}
 							
-		public AirportsDataSource(AirportsViewModel viewModel)
-		{
-			ViewModel = viewModel;			
-		}
-		
 		public void SetSelectedRow()
 		{
 			if(ViewModel.SelectedAirport != null)
 			{
 				int index = ViewModel.Airports.IndexOf(ViewModel.SelectedAirport);
-				_controller.TableView.SelectRow(NSIndexPath.FromRowSection(index, 0), false, UITableViewScrollPosition.None);
+				TableView.SelectRow(NSIndexPath.FromRowSection(index, 0), false, UITableViewScrollPosition.None);
 			}
-		}
-		
-		public override int RowsInSection(UITableView tableView, int section)
-		{			
-			return ViewModel.Airports.Count;
-		}	
-		  
-		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
-        {
-			var cell = tableView.DequeueReusableCell(CellID);
-            if (cell == null)
-            {					
-                cell = new UITableViewCell(UITableViewCellStyle.Default, CellID);
-            }
-        				
-            cell.TextLabel.Text = ViewModel.Airports[indexPath.Row].ToString();				
-            return cell;
-        }		
+		}					
 	}
 }

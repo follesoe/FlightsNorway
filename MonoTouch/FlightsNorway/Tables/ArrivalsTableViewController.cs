@@ -16,7 +16,7 @@ namespace FlightsNorway
 		{
 			base.ViewDidLoad();		
 			
-			_dataSource.Controller = this;
+			_dataSource.TableView = this.TableView;
 			TableView.DataSource = _dataSource;
 		}
 	}

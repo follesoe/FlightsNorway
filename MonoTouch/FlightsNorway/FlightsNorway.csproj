@@ -87,6 +87,7 @@
     <Compile Include="Tables\DeparturesTableViewController.cs" />
     <Compile Include="Tables\ArrivalsDataSource.cs" />
     <Compile Include="Tables\DeparturesDataSource.cs" />
+    <Compile Include="Tables\ViewModelDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />

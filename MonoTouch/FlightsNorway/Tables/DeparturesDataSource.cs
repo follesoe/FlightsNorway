@@ -1,4 +1,6 @@
 using System;
+using System.Collections.ObjectModel;
+
 using MonoTouch.UIKit;
 using MonoTouch.Foundation;
 
@@ -9,44 +11,17 @@ using TinyIoC;
 
 namespace FlightsNorway
 {
-	public class DeparturesDataSource : UITableViewDataSource
+	public class DeparturesDataSource : ViewModelDataSource<FlightsViewModel, Flight>
 	{
-		static NSString CellID = new NSString ("DepartureCell");		
+		private NSString _cellID = new NSString("DepartureCell");
 		
-		public FlightsViewModel ViewModel { get; private set; }
+		public override NSString CellID { get { return _cellID; } }
 				
-		private DeparturesTableViewController _controller;
+		public override ObservableCollection<Flight> List { get { return ViewModel.Departures; } }				
 		
-		public DeparturesTableViewController Controller
+		public DeparturesDataSource(FlightsViewModel viewModel) : base(viewModel)
 		{
-			set 
-			{
-				_controller = value;
-				ViewModel.Departures.CollectionChanged += (o, e) => _controller.TableView.ReloadData();
-			}
 		}
-				
-		public DeparturesDataSource(FlightsViewModel viewModel)
-		{
-			ViewModel = viewModel;
-		}
-		
-		public override int RowsInSection (UITableView tableView, int section)
-		{
-			return ViewModel.Arrivals.Count;
-		}
-		
-		public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
-        {
-			var cell = tableView.DequeueReusableCell(CellID);
-            if (cell == null)
-            {					
-                cell = new UITableViewCell(UITableViewCellStyle.Default, CellID);
-            }
-        				
-            cell.TextLabel.Text = ViewModel.Departures[indexPath.Row].ToString();				
-            return cell;
-        }
 	}
 }
 
