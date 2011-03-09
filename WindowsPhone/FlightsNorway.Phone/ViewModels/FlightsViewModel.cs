@@ -9,6 +9,7 @@ using FlightsNorway.Lib.MVVM;
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Services;
 using Microsoft.Phone.Shell;
+using TinyMessenger;
 
 namespace FlightsNorway.ViewModels
 {
@@ -17,6 +18,7 @@ namespace FlightsNorway.ViewModels
         private readonly IPhoneApplicationService _appService;
         private readonly IGetFlights _flightsService;
         private readonly IStoreObjects _objectStore;
+        private readonly ITinyMessengerHub _messenger;
 
         public ObservableCollection<Flight> Arrivals { get; private set; }
         public ObservableCollection<Flight> Departures { get; private set; }
@@ -37,18 +39,22 @@ namespace FlightsNorway.ViewModels
             }
         }       
 
-        public FlightsViewModel(IGetFlights flightsService, IStoreObjects objectStore, IPhoneApplicationService appService)
+        public FlightsViewModel(IGetFlights flightsService, 
+                                IStoreObjects objectStore, 
+                                IPhoneApplicationService appService,
+                                ITinyMessengerHub messenger)
         {            
             Arrivals = new ObservableCollection<Flight>();
             Departures = new ObservableCollection<Flight>();
 
             _objectStore = objectStore;
             _flightsService = flightsService;
+            _messenger = messenger;
             
             _appService = appService;
             _appService.Deactivated += OnDeactivated;
 
-            Messenger.Default.Register<AirportSelectedMessage>(this, OnAirportSelected);
+            _messenger.Subscribe<AirportSelectedMessage>(OnAirportSelected);
 
             LoadSelectedAirport();
             LoadFlightsFromAppState();
@@ -81,7 +87,7 @@ namespace FlightsNorway.ViewModels
                 var airport = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
                 if (airport.Equals(Airport.Nearest))
                 {
-                    Messenger.Default.Send(new FindNearestAirportMessage());
+                    _messenger.Publish(new FindNearestAirportMessage(this));
                 }
                 else
                 {

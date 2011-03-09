@@ -16,7 +16,7 @@
 #region Preprocessor Directives
 // Uncomment this line if you want the container to automatically
 // register the TinyMessenger messenger/event aggregator
-//#define TINYMESSENGER
+#define TINYMESSENGER
 
 // Preprocessor directives for enabling/disabling functionality
 // depending on platform features. If the platform has an appropriate

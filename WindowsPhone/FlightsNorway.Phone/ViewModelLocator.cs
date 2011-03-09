@@ -8,6 +8,7 @@ using FlightsNorway.ViewModels;
 using FlightsNorway.DesignTimeData;
 using MonoMobile.Extensions;
 using TinyIoC;
+using TinyMessenger;
 
 namespace FlightsNorway
 {
@@ -47,7 +48,7 @@ namespace FlightsNorway
             #else
             _container.Register<IGeolocation, MonoMobile.Extensions.Geolocation>();
             #endif
-            _container.Register(new NearestAirportService(_container.Resolve<IGeolocation>()));
+            _container.Register(new NearestAirportService(_container.Resolve<IGeolocation>(), _container.Resolve<ITinyMessengerHub>()));
             
             if(ViewModelBase.IsInDesignModeStatic)
             {

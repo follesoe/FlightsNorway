@@ -7,6 +7,7 @@ using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.MVVM;
 using FlightsNorway.Lib.Services;
+using TinyMessenger;
 
 namespace FlightsNorway.Lib.ViewModels
 {
@@ -16,6 +17,7 @@ namespace FlightsNorway.Lib.ViewModels
         public ICommand SaveCommand { get; private set; }
 
         private readonly IStoreObjects _objectStore;
+        private readonly ITinyMessengerHub _messenger;
 
         private Airport _selectedAirport;
 
@@ -31,9 +33,10 @@ namespace FlightsNorway.Lib.ViewModels
             }
         }
 
-        public AirportsViewModel(IGetAirports airportsService, IStoreObjects objectStore)
+        public AirportsViewModel(IGetAirports airportsService, IStoreObjects objectStore, ITinyMessengerHub messenger)
         {
             _objectStore = objectStore;
+            _messenger = messenger;
             Airports = new ObservableCollection<Airport>();
             Airports.Add(Airport.Nearest);
             Airports.AddRange(airportsService.GetNorwegianAirports());
@@ -58,11 +61,11 @@ namespace FlightsNorway.Lib.ViewModels
 
             if (SelectedAirport.Equals(Airport.Nearest))
             {
-                Messenger.Default.Send(new FindNearestAirportMessage());
+                _messenger.Publish(new FindNearestAirportMessage(this));
             }
             else
             {
-                Messenger.Default.Send(new AirportSelectedMessage(SelectedAirport));
+                _messenger.Publish(new AirportSelectedMessage(this, SelectedAirport));
             }
         }
     }

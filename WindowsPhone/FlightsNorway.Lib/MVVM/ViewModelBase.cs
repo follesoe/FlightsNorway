@@ -37,30 +37,9 @@ namespace FlightsNorway.Lib.MVVM
     ////  Description = "A base class for the ViewModel classes in the MVVM pattern.",
     ////  UrlContacts = "http://www.galasoft.ch/contact_en.html",
     ////  Email = "laurent@galasoft.ch")]
-    public abstract class ViewModelBase : INotifyPropertyChanged, ICleanup, IDisposable
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
         private static bool? _isInDesignMode;
-        private IMessenger _messengerInstance;
-
-        /// <summary>
-        /// Initializes a new instance of the ViewModelBase class.
-        /// </summary>
-        public ViewModelBase()
-            : this(null)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the ViewModelBase class.
-        /// </summary>
-        /// <param name="messenger">An instance of a <see cref="Messenger" />
-        /// used to broadcast messages to other objects. If null, this class
-        /// will attempt to broadcast using the Messenger's default
-        /// instance.</param>
-        public ViewModelBase(IMessenger messenger)
-        {
-            MessengerInstance = messenger;
-        }
 
         #if SILVERLIGHT
         /// <summary>
@@ -83,42 +62,6 @@ namespace FlightsNorway.Lib.MVVM
             }
         }
         #endif
-
-        /// <summary>
-        /// Gets or sets an instance of a <see cref="IMessenger" /> used to
-        /// broadcast messages to other objects. If null, this class will
-        /// attempt to broadcast using the Messenger's default instance.
-        /// </summary>
-        protected IMessenger MessengerInstance
-        {
-            get
-            {
-                return _messengerInstance ?? Messenger.Default;
-            }
-            set
-            {
-                _messengerInstance = value;
-            }
-        }
-
-        /// <summary>
-        /// Unregisters this instance from the Messenger class.
-        /// <para>To cleanup additional resources, override this method, clean
-        /// up and then call base.Cleanup().</para>
-        /// </summary>
-        public virtual void Cleanup()
-        {
-            Messenger.Default.Unregister(this);
-        }
-
-        /// <summary>
-        /// Do not use this method anymore, it will be removed in a future
-        /// version. Use ICleanup.Cleanup() instead.
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-        }
 
         /// <summary>
         /// Occurs when a property value changes.
@@ -145,39 +88,6 @@ namespace FlightsNorway.Lib.MVVM
         }
 
         /// <summary>
-        /// Broadcasts a PropertyChangedMessage using either the instance of
-        /// the Messenger that was passed to this class (if available) 
-        /// or the Messenger's default instance.
-        /// </summary>
-        /// <typeparam name="T">The type of the property that
-        /// changed.</typeparam>
-        /// <param name="oldValue">The value of the property before it
-        /// changed.</param>
-        /// <param name="newValue">The value of the property after it
-        /// changed.</param>
-        /// <param name="propertyName">The name of the property that
-        /// changed.</param>
-        protected virtual void Broadcast<T>(T oldValue, T newValue, string propertyName)
-        {
-            var message = new PropertyChangedMessage<T>(this, oldValue, newValue, propertyName);
-            MessengerInstance.Send(message);
-        }
-
-        /// <summary>
-        /// Do not use this method anymore, it will be removed in a future
-        /// version. Use ICleanup.Cleanup() instead.
-        /// </summary>
-        [Obsolete("This interface will be removed from ViewModelBase in a future version, use ICleanup.Cleanup instead."
-            )]
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                Cleanup();
-            }
-        }
-
-        /// <summary>
         /// Raises the PropertyChanged event if needed, and broadcasts a
         /// PropertyChangedMessage using the Messenger instance (or the
         /// static default instance if no Messenger instance is available).
@@ -197,11 +107,6 @@ namespace FlightsNorway.Lib.MVVM
         protected virtual void RaisePropertyChanged<T>(string propertyName, T oldValue, T newValue, bool broadcast)
         {
             RaisePropertyChanged(propertyName);
-
-            if (broadcast)
-            {
-                Broadcast(oldValue, newValue, propertyName);
-            }
         }
 
         /// <summary>
@@ -258,11 +163,6 @@ namespace FlightsNorway.Lib.MVVM
                 if (handler != null)
                 {
                     handler(expression.Value, new PropertyChangedEventArgs(body.Member.Name));
-                }
-
-                if (broadcast)
-                {
-                    Broadcast(oldValue, newValue, body.Member.Name);
                 }
             }
         }
