@@ -1,17 +1,24 @@
-
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using MonoTouch.Foundation;
+using System.Collections.Generic;
+
 using MonoTouch.UIKit;
+using MonoTouch.Foundation;
+
+using FlightsNorway.Lib.Services;
+using FlightsNorway.Lib.DataServices;
 
 namespace FlightsNorway
 {
 	public class Application
 	{
 		static void Main (string[] args)
-		{
-			UIApplication.Main (args);
+		{	
+			var container = TinyIoC.TinyIoCContainer.Current;
+			container.Register<IStoreObjects, MonoObjectStore>();
+			container.Register<IGetAirports, AirportNamesService>();			
+								
+			UIApplication.Main(args);
 		}
 	}
 }

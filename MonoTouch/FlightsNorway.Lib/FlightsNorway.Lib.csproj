@@ -226,5 +226,8 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Messages\FindNearestAirportMessage.cs">
       <Link>Messages\FindNearestAirportMessage.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\TinyIoC.cs">
+      <Link>MVVM\TinyIoC.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>

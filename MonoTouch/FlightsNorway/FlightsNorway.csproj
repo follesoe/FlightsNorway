@@ -80,8 +80,9 @@
     <Compile Include="AppDelegateIPhone.cs" />
     <Compile Include="AppDelegateIPad.cs" />
     <Compile Include="MainTabBarController.cs" />
-    <Compile Include="AirportsTableViewController.cs" />
     <Compile Include="Services\MonoObjectStore.cs" />
+    <Compile Include="Tables\AirportsDataSource.cs" />
+    <Compile Include="Tables\AirportsTableViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />
@@ -101,5 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Tables\" />
   </ItemGroup>
 </Project>
