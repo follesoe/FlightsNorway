@@ -21,7 +21,6 @@ namespace FlightsNorway
 		
 		public DeparturesDataSource(FlightsViewModel viewModel) : base(viewModel)
 		{
-		}
+		}	
 	}
 }
-

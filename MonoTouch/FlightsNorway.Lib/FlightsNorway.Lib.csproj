@@ -176,12 +176,6 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\FlightsService.cs">
       <Link>DataServices\FlightsService.cs</Link>
     </Compile>
-    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\IExecuteWithObject.cs">
-      <Link>MVVM\IExecuteWithObject.cs</Link>
-    </Compile>
-    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\IMessenger.cs">
-      <Link>MVVM\IMessenger.cs</Link>
-    </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\RelayCommand.cs">
       <Link>MVVM\RelayCommand.cs</Link>
     </Compile>

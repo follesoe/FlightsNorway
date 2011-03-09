@@ -18,6 +18,6 @@ namespace FlightsNorway
 			
 			_dataSource.TableView = this.TableView;
 			TableView.DataSource = _dataSource;
-		}
+		}		
 	}
 }
