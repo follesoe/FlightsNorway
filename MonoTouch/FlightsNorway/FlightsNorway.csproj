@@ -85,6 +85,7 @@
     <Compile Include="Tables\AirportsTableViewController.cs" />
     <Compile Include="Tables\ArrivalsTableViewController.cs" />
     <Compile Include="Tables\DeparturesTableViewController.cs" />
+    <Compile Include="Tables\ArrivalsDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />

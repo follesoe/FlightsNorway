@@ -15,12 +15,10 @@ namespace FlightsNorway.Tables
 {
 	public class AirportsTableViewController : UITableViewController
 	{	
-		private readonly ITinyMessengerHub _messenger;
 		private readonly AirportsDataSource _dataSource;
 		
-		public AirportsTableViewController(ITinyMessengerHub messenger, AirportsDataSource dataSource)
+		public AirportsTableViewController(AirportsDataSource dataSource)
 		{		
-			_messenger = messenger;
 			_dataSource = dataSource;
 		}	
 
