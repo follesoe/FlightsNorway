@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using TinyIoC;
 
 namespace FlightsNorway
 {
@@ -13,15 +14,9 @@ namespace FlightsNorway
 		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			// If you have defined a view, add it here:
-			// window.AddSubview (navigationController.View);
-			
-			_controller = new MainTabBarController();			
-			window.AddSubview(_controller.View);
-			
-			
-			window.MakeKeyAndVisible ();
-			
+			_controller = TinyIoCContainer.Current.Resolve<MainTabBarController>();		
+			window.AddSubview(_controller.View);					
+			window.MakeKeyAndVisible ();			
 			return true;
 		}
 	}

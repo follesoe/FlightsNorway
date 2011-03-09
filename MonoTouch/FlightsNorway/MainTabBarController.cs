@@ -1,5 +1,7 @@
 using System;
 using MonoTouch.UIKit;
+using TinyIoC;
+using FlightsNorway.Tables;
 
 namespace FlightsNorway
 {
@@ -14,7 +16,7 @@ namespace FlightsNorway
 			base.ViewDidLoad ();
 			
 			var tabs = new UIViewController[1];
-			tabs[0] = new AirportsTableViewController();
+			tabs[0] = TinyIoCContainer.Current.Resolve<AirportsTableViewController>();
 			
 			ViewControllers = tabs;
 		}
