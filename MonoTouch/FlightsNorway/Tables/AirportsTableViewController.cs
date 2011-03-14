@@ -37,7 +37,7 @@ namespace FlightsNorway.Tables
 				Console.WriteLine("{0} was selected...", _viewModel.SelectedAirport);
 			}
 		}		
-				
+					
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();		

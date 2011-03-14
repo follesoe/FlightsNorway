@@ -17,14 +17,12 @@ namespace FlightsNorway
 			base.ViewDidLoad ();	
 			
 			var container = TinyIoCContainer.Current;
-			
+					
 			var tabs = new UIViewController[3];
-			tabs[0] = container.Resolve<ArrivalsTableViewController>();
-			tabs[1] = container.Resolve<DeparturesTableViewController>();
-			tabs[2] = container.Resolve<AirportsTableViewController>();
-			
-			
-			
+			tabs[0] = new UINavigationController(container.Resolve<ArrivalsTableViewController>());
+			tabs[1] = new UINavigationController(container.Resolve<DeparturesTableViewController>());
+			tabs[2] = new UINavigationController(container.Resolve<AirportsTableViewController>());
+						
 			ViewControllers = tabs;			
 		}
 	}
