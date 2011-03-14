@@ -41,10 +41,17 @@ namespace FlightsNorway.Tables
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();		
+				
+			Title = "Airports";
 			
 			_dataSource.TableView = this.TableView;
 			TableView.DataSource = _dataSource;
 			TableView.Delegate = new AirportsDelegate(_dataSource.ViewModel);
+			
+			var item = new UITabBarItem();
+			item.Title = Title;
+			item.Image = UIImage.FromBundle("Images/Airports.png");
+			TabBarItem = item;
 		}
 		
 		public override void ViewWillAppear (bool animated)

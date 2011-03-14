@@ -16,8 +16,17 @@ namespace FlightsNorway
 		{
 			base.ViewDidLoad ();
 			
+			Title = "Departures";
+			
+			NavigationItem.Title = Title;
+			
 			_dataSource.TableView = this.TableView;
 			TableView.DataSource = _dataSource;
+
+			var item = new UITabBarItem();
+			item.Title = Title;
+			item.Image = UIImage.FromBundle("Images/Departures.png");
+			TabBarItem = item;
 		}
 	}
 }

@@ -10,15 +10,18 @@ namespace FlightsNorway
 	public partial class AppDelegateIPhone : UIApplicationDelegate
 	{
 		private MainTabBarController _controller;
+		private UINavigationController _navigationController;		
 		
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+			_navigationController = new UINavigationController();					
+			window.AddSubview(_navigationController.View);
+			window.MakeKeyAndVisible();			
+			
 			_controller = TinyIoCContainer.Current.Resolve<MainTabBarController>();		
-			window.AddSubview(_controller.View);					
-			window.MakeKeyAndVisible ();			
+			_navigationController.PushViewController(_controller, false);					
+			
 			return true;
-
 		}			
 	}
 }
-

@@ -23,7 +23,9 @@ namespace FlightsNorway
 			tabs[1] = container.Resolve<DeparturesTableViewController>();
 			tabs[2] = container.Resolve<AirportsTableViewController>();
 			
-			ViewControllers = tabs;
+			
+			
+			ViewControllers = tabs;			
 		}
 	}
 }
