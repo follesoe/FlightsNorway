@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using FlightsNorway.Lib.Model;
+using FlightsNorway.Lib.Services;
 using FlightsNorway.Services;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

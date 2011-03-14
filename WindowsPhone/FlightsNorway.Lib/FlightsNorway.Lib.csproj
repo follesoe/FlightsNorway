@@ -47,6 +47,7 @@
     <Reference Include="RestSharp.WindowsPhone">
       <HintPath>..\lib\RestSharp\RestSharp.WindowsPhone.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -68,6 +69,8 @@
     <Compile Include="Extensions\IEnumerableExtesnions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
+    <Compile Include="Messages\AirportSelectedMessage.cs" />
+    <Compile Include="Messages\FindNearestAirportMessage.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="Model\AirlineDictionary.cs" />
     <Compile Include="Model\Airport.cs" />
@@ -79,10 +82,22 @@
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Status.cs" />
     <Compile Include="Model\StatusDictionary.cs" />
+    <Compile Include="MVVM\ButtonBaseExtensions.cs" />
+    <Compile Include="MVVM\CommandToButtonsMap.cs" />
+    <Compile Include="MVVM\IExecuteWithObject.cs" />
+    <Compile Include="MVVM\IMessenger.cs" />
+    <Compile Include="MVVM\RelayCommand.cs" />
+    <Compile Include="MVVM\TinyIoC.cs" />
+    <Compile Include="MVVM\TinyMessenger.cs" />
+    <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EventArgs.cs" />
     <Compile Include="Services\IStoreObjects.cs" />
+    <Compile Include="Services\ObjectStore.cs" />
     <Compile Include="Services\PresetLocationService.cs" />
+    <Compile Include="ViewModels\AirportsViewModel.cs" />
+    <Compile Include="ViewModels\FlightsViewModel.cs" />
+    <Compile Include="ViewModels\IFlightsViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

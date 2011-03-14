@@ -79,6 +79,15 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegateIPhone.cs" />
     <Compile Include="AppDelegateIPad.cs" />
+    <Compile Include="MainTabBarController.cs" />
+    <Compile Include="Services\MonoObjectStore.cs" />
+    <Compile Include="Tables\AirportsDataSource.cs" />
+    <Compile Include="Tables\AirportsTableViewController.cs" />
+    <Compile Include="Tables\ArrivalsTableViewController.cs" />
+    <Compile Include="Tables\DeparturesTableViewController.cs" />
+    <Compile Include="Tables\ArrivalsDataSource.cs" />
+    <Compile Include="Tables\DeparturesDataSource.cs" />
+    <Compile Include="Tables\ViewModelDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />
@@ -95,5 +104,9 @@
       <Project>{567394A2-886F-4AC9-BC60-89533165FDF7}</Project>
       <Name>FlightsNorway.Lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Tables\" />
   </ItemGroup>
 </Project>

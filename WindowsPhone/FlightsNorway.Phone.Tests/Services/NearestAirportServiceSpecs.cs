@@ -1,10 +1,10 @@
-﻿using FlightsNorway.Lib.Model;
-using FlightsNorway.Messages;
+﻿using FlightsNorway.Lib.Messages;
+using FlightsNorway.Lib.Model;
 using FlightsNorway.Services;
 using FlightsNorway.Tests.Stubs;
-using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TinyMessenger;
 
 namespace FlightsNorway.Tests.Services
 {
@@ -18,9 +18,9 @@ namespace FlightsNorway.Tests.Services
             _locationService.LocationToReturn = home;
 
             Airport nearestAirport = null;
-            Messenger.Default.Register(this, (AirportSelectedMessage e) => nearestAirport = e.Content);
-            Messenger.Default.Send(new FindNearestAirportMessage());
-
+            _messenger.Subscribe<AirportSelectedMessage>(m => nearestAirport = m.Content);            
+            _messenger.Publish(new FindNearestAirportMessage(this));
+            
             EnqueueConditional(() => nearestAirport != null);
             EnqueueCallback(() => Assert.AreEqual("TRD", nearestAirport.Code));
             EnqueueTestComplete();
@@ -29,9 +29,12 @@ namespace FlightsNorway.Tests.Services
         [TestInitialize]
         public void Setup()
         {
-            _locationService = new LocationServiceStub();     
-            var service = new NearestAirportService(_locationService);
+            _locationService = new LocationServiceStub();
+            _messenger = new TinyMessengerHub();
+            var service = new NearestAirportService(_locationService, _messenger);
         }
+        
         private LocationServiceStub _locationService;
+        private TinyMessengerHub _messenger;
     }
 }

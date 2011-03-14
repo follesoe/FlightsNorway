@@ -71,6 +71,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\RestSharp\RestSharp.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -84,6 +85,9 @@
     <Folder Include="MissingStuff\" />
     <Folder Include="Services\" />
     <Folder Include="DataServices\" />
+    <Folder Include="MVVM\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Messages\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Airline.cs">
@@ -171,6 +175,38 @@
     </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\FlightsService.cs">
       <Link>DataServices\FlightsService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\RelayCommand.cs">
+      <Link>MVVM\RelayCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\ViewModelBase.cs">
+      <Link>MVVM\ViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="MissingStuff\ICommand.cs" />
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Services\ObjectStore.cs">
+      <Link>Services\ObjectStore.cs</Link>
+    </Compile>
+    <Compile Include="Extensions\IsolatedStorageFileExtensions.cs" />
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\AirportsViewModel.cs">
+      <Link>ViewModels\AirportsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Messages\AirportSelectedMessage.cs">
+      <Link>Messages\AirportSelectedMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Messages\FindNearestAirportMessage.cs">
+      <Link>Messages\FindNearestAirportMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\TinyIoC.cs">
+      <Link>MVVM\TinyIoC.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\MVVM\TinyMessenger.cs">
+      <Link>MVVM\TinyMessenger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\FlightsViewModel.cs">
+      <Link>ViewModels\FlightsViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\IFlightsViewModel.cs">
+      <Link>ViewModels\IFlightsViewModel.cs</Link>
     </Compile>
   </ItemGroup>
 </Project>

@@ -1,14 +1,13 @@
 ﻿using System;
+using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
-using FlightsNorway.Messages;
-using FlightsNorway.Services;
+using FlightsNorway.Lib.Services;
+using FlightsNorway.Lib.ViewModels;
 using FlightsNorway.Tests.Builders;
 using FlightsNorway.Tests.Stubs;
-using FlightsNorway.ViewModels;
-
-using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TinyMessenger;
 
 namespace FlightsNorway.Tests.ViewModels
 {
@@ -36,7 +35,7 @@ namespace FlightsNorway.Tests.ViewModels
         {
             _objectStore.Save(_lakselvAirport, ObjectStore.SelectedAirportFilename);
 
-            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _appService);
+            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger);
 
             Assert.AreEqual(_lakselvAirport.Code, _viewModel.SelectedAirport.Code);
         }
@@ -44,7 +43,7 @@ namespace FlightsNorway.Tests.ViewModels
         [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.ViewModel)]
         public void Loads_flights_when_airport_is_selected()
         {           
-            Messenger.Default.Send(new AirportSelectedMessage(_lakselvAirport));
+            _messenger.Publish(new AirportSelectedMessage(this, _lakselvAirport));
             
             EnqueueConditional(() => _flightsService.GetFlightsFromWasCalled);
             EnqueueCallback(() => Assert.AreEqual(_lakselvAirport, _flightsService.FromAirport));
@@ -56,7 +55,7 @@ namespace FlightsNorway.Tests.ViewModels
         {
             _flightsService.ExceptionToBeThrown = new Exception("Some error.");
 
-            Messenger.Default.Send(new AirportSelectedMessage(_lakselvAirport));
+            _messenger.Publish(new AirportSelectedMessage(this, _lakselvAirport));
 
             EnqueueConditional(() => _flightsService.GetFlightsFromWasCalled);
             EnqueueCallback(() => Assert.AreEqual("Some error.", _viewModel.ErrorMessage));
@@ -72,7 +71,7 @@ namespace FlightsNorway.Tests.ViewModels
             Flight flight = FlightBuilder.Create.Flight("SK123").Arriving();
             _flightsService.FlightsToReturn.Add(flight);
 
-            Messenger.Default.Send(new AirportSelectedMessage(_lakselvAirport));
+            _messenger.Publish(new AirportSelectedMessage(this, _lakselvAirport));
 
             EnqueueConditional(() => collectionChanged);                        
             EnqueueCallback(() => Assert.AreEqual(0, _viewModel.Departures.Count));
@@ -90,7 +89,7 @@ namespace FlightsNorway.Tests.ViewModels
             Flight flight = FlightBuilder.Create.Flight("SK123").Departing();
             _flightsService.FlightsToReturn.Add(flight);
 
-            Messenger.Default.Send(new AirportSelectedMessage(_lakselvAirport));
+            _messenger.Publish(new AirportSelectedMessage(this, _lakselvAirport));
 
             EnqueueConditional(() => collectionChanged);
             EnqueueCallback(() => Assert.AreEqual(0, _viewModel.Arrivals.Count));
@@ -105,9 +104,9 @@ namespace FlightsNorway.Tests.ViewModels
             _objectStore.Save(Airport.Nearest, ObjectStore.SelectedAirportFilename);
 
             bool findNearestWasPublished = false;
-            Messenger.Default.Register(this, (FindNearestAirportMessage m) => findNearestWasPublished = true);
+            _messenger.Subscribe<FindNearestAirportMessage>(m => findNearestWasPublished = true);
 
-            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _appService);
+            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger);
 
             Assert.IsTrue(findNearestWasPublished);
         }
@@ -118,12 +117,12 @@ namespace FlightsNorway.Tests.ViewModels
             Flight flight = FlightBuilder.Create.Flight("SK123").Departing();
             _flightsService.FlightsToReturn.Add(flight);
 
-            Messenger.Default.Send(new AirportSelectedMessage(_lakselvAirport));
+            _messenger.Publish(new AirportSelectedMessage(this, _lakselvAirport));
 
-            EnqueueCallback(() => Messenger.Default.Send(new AirportSelectedMessage(_lakselvAirport)));
+            EnqueueCallback(() => _messenger.Publish(new AirportSelectedMessage(this, _lakselvAirport)));
             EnqueueConditional(() => _viewModel.Departures.Count > 0);
             EnqueueCallback(() => _flightsService.FlightsToReturn.Clear());
-            EnqueueCallback(() => Messenger.Default.Send(new AirportSelectedMessage(_trondheimAirport)));
+            EnqueueCallback(() => _messenger.Publish(new AirportSelectedMessage(this, _trondheimAirport)));
             EnqueueCallback(() => Assert.AreEqual(0, _viewModel.Departures.Count));
             EnqueueTestComplete();
         }
@@ -136,7 +135,8 @@ namespace FlightsNorway.Tests.ViewModels
             _flightsService = new FlightsServiceStub();
             _objectStore = new ObjectStoreStub();
             _appService = new PhoneApplicationServiceStub();
-            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _appService);
+            _messenger = new TinyMessengerHub();
+            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger);
         }
 
         private Airport _lakselvAirport;
@@ -145,5 +145,6 @@ namespace FlightsNorway.Tests.ViewModels
         private FlightsViewModel _viewModel;
         private ObjectStoreStub _objectStore;
         private PhoneApplicationServiceStub _appService;
+        private TinyMessengerHub _messenger;        
     }
 }

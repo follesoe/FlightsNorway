@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using FlightsNorway.Lib.DataServices;
+using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
-using FlightsNorway.Messages;
-using FlightsNorway.Services;
+using FlightsNorway.Lib.Services;
+using FlightsNorway.Lib.ViewModels;
 using FlightsNorway.Tests.Stubs;
-using FlightsNorway.ViewModels;
-using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TinyMessenger;
 
 namespace FlightsNorway.Tests.ViewModels
 {
@@ -55,7 +55,7 @@ namespace FlightsNorway.Tests.ViewModels
         public void Publishes_message_when_user_selects_an_airport()
         {
             AirportSelectedMessage lastMessage = null;
-            Messenger.Default.Register(this, (AirportSelectedMessage message) => lastMessage = message);
+            _messenger.Subscribe<AirportSelectedMessage>(m => lastMessage = m);
 
             _viewModel.SelectedAirport = _viewModel.Airports.Last();
             _viewModel.SaveCommand.Execute(null);
@@ -68,7 +68,7 @@ namespace FlightsNorway.Tests.ViewModels
         public void Publishes_message_when_user_selects_nearest_airport()
         {
             FindNearestAirportMessage lastMessage = null;
-            Messenger.Default.Register(this, (FindNearestAirportMessage message) => lastMessage = message);
+            _messenger.Subscribe<FindNearestAirportMessage>(m => lastMessage = m);
 
             _viewModel.SelectedAirport = _viewModel.Airports.Where(a => a.Code == Airport.Nearest.Code).Single();
             _viewModel.SaveCommand.Execute(null);
@@ -81,9 +81,11 @@ namespace FlightsNorway.Tests.ViewModels
         {
             _objectStore = new ObjectStoreStub();
             _airportsService = new AirportNamesService();
-            _viewModel = new AirportsViewModel(_airportsService, _objectStore);
+            _messenger = new TinyMessengerHub();
+            _viewModel = new AirportsViewModel(_airportsService, _objectStore, _messenger);
         }
 
+        private TinyMessengerHub _messenger;
         private AirportNamesService _airportsService;
         private AirportsViewModel _viewModel;
         private ObjectStoreStub _objectStore;
