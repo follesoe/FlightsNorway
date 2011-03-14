@@ -2,6 +2,7 @@ using System;
 using MonoTouch.UIKit;
 using TinyMessenger;
 using FlightsNorway.Lib.Messages;
+using System.Drawing;
 
 namespace FlightsNorway
 {
@@ -25,6 +26,14 @@ namespace FlightsNorway
 			
 			_dataSource.TableView = this.TableView;
 			TableView.DataSource = _dataSource;
+			
+			var backView = new UIView(RectangleF.Empty);
+			backView.BackgroundColor = UIColor.Clear;
+			
+			var table = (UITableView)View;
+			table.BackgroundView = backView;
+			table.SeparatorColor = UIColor.Clear;
+			table.SeparatorStyle = UITableViewCellSeparatorStyle.None;
 		}
 	}
 }
