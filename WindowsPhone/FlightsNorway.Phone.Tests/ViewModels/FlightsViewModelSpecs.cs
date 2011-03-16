@@ -13,22 +13,6 @@ namespace FlightsNorway.Tests.ViewModels
     [TestClass]
     public class FlightsViewModelSpecs : SilverlightTest
     {
-        [TestMethod, Tag("a")]
-        public void Stores_state_when_app_is_deactivated()
-        {
-            _appService.TriggerDeactivated();
-
-            Assert.IsTrue(_appService.State.ContainsKey("Arrivals"));
-            Assert.IsTrue(_appService.State.ContainsKey("Departures"));
-            Assert.IsTrue(_appService.State.ContainsKey("SelectedAirport"));
-        }
-
-        [TestMethod, Tag(Tags.ViewModel)]
-        public void Loads_selected_airport_if_reactivated()
-        {
-            //Assert.Inconclusive();
-        }
-
         [TestMethod, Tag(Tags.ViewModel)]
         public void Loads_selected_airport_if_saved_to_disk()
         {
@@ -133,7 +117,6 @@ namespace FlightsNorway.Tests.ViewModels
             _trondheimAirport = new Airport("TRD", "Trondheim");
             _flightsService = new FlightsServiceStub();
             _objectStore = new ObjectStoreStub();
-            _appService = new PhoneApplicationServiceStub();
             _messenger = new TinyMessengerHub();
             _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger);
         }
@@ -143,7 +126,6 @@ namespace FlightsNorway.Tests.ViewModels
         private FlightsServiceStub _flightsService;
         private FlightsViewModel _viewModel;
         private ObjectStoreStub _objectStore;
-        private PhoneApplicationServiceStub _appService;
         private TinyMessengerHub _messenger;        
     }
 }

@@ -93,7 +93,6 @@
     <Compile Include="Stubs\FlightsServiceStub.cs" />
     <Compile Include="Stubs\LocationServiceStub.cs" />
     <Compile Include="Stubs\ObjectStoreStub.cs" />
-    <Compile Include="Stubs\PhoneApplicationServiceStub.cs" />
     <Compile Include="Tags.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
     <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />

@@ -1,14 +1,15 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using FlightsNorway.Lib.DataServices;
+﻿using System.Windows;
+using System.ComponentModel;
+
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Lib.ViewModels;
-using FlightsNorway.Services;
+using FlightsNorway.Lib.DataServices;
 using FlightsNorway.ViewModels;
 using FlightsNorway.DesignTimeData;
-using MonoMobile.Extensions;
+
 using TinyIoC;
 using TinyMessenger;
+using MonoMobile.Extensions;
 
 namespace FlightsNorway
 {
@@ -41,8 +42,7 @@ namespace FlightsNorway
             _container.Register<ClockViewModel>().AsSingleton();
             _container.Register<AirportsViewModel>().AsSingleton();
             _container.Register<IGetAirports, AirportNamesService>().AsSingleton();
-            _container.Register<IPhoneApplicationService>(new PhoneApplicationServiceAdapter());
-
+            
             #if DEBUG
             _container.Register<IGeolocation>(new PresetLocationService(63.433281, 10.419294, action => Deployment.Current.Dispatcher.BeginInvoke(action)));
             #else

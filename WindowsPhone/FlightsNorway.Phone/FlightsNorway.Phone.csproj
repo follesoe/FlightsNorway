@@ -77,7 +77,6 @@
     <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
     <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
     <Compile Include="DesignTimeData\FlightsDesignTimeViewModel.cs" />
-    <Compile Include="Services\PhoneApplicationServiceAdapter.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
