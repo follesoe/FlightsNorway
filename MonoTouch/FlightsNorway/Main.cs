@@ -15,15 +15,6 @@ namespace FlightsNorway
 	{
 		static void Main (string[] args)
 		{	
-			var container = TinyIoC.TinyIoCContainer.Current;
-			
-			container.Register<AirportsViewModel>().AsSingleton();
-			container.Register<FlightsViewModel>().AsSingleton();
-			
-			container.Register<IStoreObjects, MonoObjectStore>().AsSingleton();
-			container.Register<IGetFlights, FlightsService>().AsSingleton();
-			container.Register<IGetAirports, AirportNamesService>().AsSingleton();			
-								
 			UIApplication.Main(args);
 		}
 	}

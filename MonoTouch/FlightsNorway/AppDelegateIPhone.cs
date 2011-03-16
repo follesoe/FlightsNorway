@@ -13,9 +13,11 @@ namespace FlightsNorway
 				
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+			ContainerConfiguration.Configure(this);
+			
 			_controller = TinyIoCContainer.Current.Resolve<MainTabBarController>();		
 			window.AddSubview(_controller.View);
-			window.MakeKeyAndVisible();			
+			window.MakeKeyAndVisible();					
 			return true;
 		}		
 	}

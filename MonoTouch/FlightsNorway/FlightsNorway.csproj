@@ -82,6 +82,10 @@
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="MonoMobileExtensions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MonoMobile.Extensions\MonoMobileExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -105,6 +109,7 @@
     <Compile Include="Tables\ArrivalsDataSource.cs" />
     <Compile Include="Tables\DeparturesDataSource.cs" />
     <Compile Include="Tables\ViewModelDataSource.cs" />
+    <Compile Include="ContainerConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />
