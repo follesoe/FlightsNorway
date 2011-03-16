@@ -12,8 +12,6 @@ namespace FlightsNorway.Lib.DataServices
     public class FlightsService : RestService<Flight>, IGetFlights
     {
         private readonly string _resourceUrl;
-        private readonly string _direction;
-        private readonly string _lastUpdate;
 
         private readonly AirportNamesService _airportService;
         private readonly AirlineNamesService _airlineService;
@@ -33,9 +31,7 @@ namespace FlightsNorway.Lib.DataServices
             _airportService = new AirportNamesService();
             _statusService = new StatusService();
 
-            _resourceUrl = "XmlFeed.asp?TimeFrom={0}&TimeTo={1}&airport={2}";                       
-            _lastUpdate = "&lastUpdate=2009-03-10T15:03:00";
-            _direction = "&direction={0}";
+            _resourceUrl = "XmlFeed.asp?TimeFrom={0}&TimeTo={1}&airport={2}";
         }
 
         public void GetFlightsFrom(Action<Result<IEnumerable<Flight>>> callback, Airport fromAirport)
