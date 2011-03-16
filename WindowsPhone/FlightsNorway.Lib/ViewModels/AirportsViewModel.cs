@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Linq;
-=======
 ﻿using System.Linq;
->>>>>>> 692247ba52c51741946bd0e9bd6500c8796859f1
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 
@@ -56,13 +53,8 @@ namespace FlightsNorway.Lib.ViewModels
         {
             if (!_objectStore.FileExists(Airport.SelectedAirportFilename)) return;
 
-<<<<<<< HEAD
-            var savedAirport = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
-			SelectedAirport = Airports.Where(a => a.Code == savedAirport.Code).Single();
-=======
             var savedAirport = _objectStore.Load<Airport>(Airport.SelectedAirportFilename);
             SelectedAirport = Airports.Where(a => a.Code == savedAirport.Code).Single();
->>>>>>> 692247ba52c51741946bd0e9bd6500c8796859f1
         }
 
         private void OnSave()
