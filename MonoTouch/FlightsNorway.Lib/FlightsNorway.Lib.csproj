@@ -221,5 +221,8 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\IFlightsViewModel.cs">
       <Link>ViewModels\IFlightsViewModel.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Services\NearestAirportService.cs">
+      <Link>Services\NearestAirportService.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>

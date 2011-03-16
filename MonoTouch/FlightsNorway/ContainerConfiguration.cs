@@ -3,6 +3,8 @@ using FlightsNorway.Lib.Services;
 using FlightsNorway.Lib.ViewModels;
 using FlightsNorway.Lib.DataServices;
 using MonoTouch.Foundation;
+using MonoMobile.Extensions;
+using TinyMessenger;
 
 namespace FlightsNorway
 {
@@ -20,7 +22,7 @@ namespace FlightsNorway
 			container.Register<IGetAirports, AirportNamesService>().AsSingleton();
 			
 					
-			container.Register<MonoMobile.Extensions.IGeolocation>(
+			container.Register<IGeolocation>(
                        new PresetLocationService(63.433281, 10.419294, action => owner.InvokeOnMainThread(new NSAction(action))));												
 			
 			container.Register(new NearestAirportService(container.Resolve<IGeolocation>(), container.Resolve<ITinyMessengerHub>()));			
