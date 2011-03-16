@@ -50,15 +50,16 @@ namespace FlightsNorway
             #endif
             _container.Register(new NearestAirportService(_container.Resolve<IGeolocation>(), _container.Resolve<ITinyMessengerHub>()));
 
+            _container.Register<IStoreObjects, ObjectStore>().AsSingleton();
+                
             if (DesignerProperties.IsInDesignTool)
             {
-                _container.Register<IStoreObjects, DesignTimeObjectStore>().AsSingleton();
+                //_container.Register<IStoreObjects, DesignTimeObjectStore>().AsSingleton();
                 _container.Register<IGetFlights, DesignTimeFlightsService>().AsSingleton();
                 _container.Register<IFlightsViewModel, FlightsDesignTimeViewModel>().AsSingleton();                
             }
             else
             {
-                _container.Register<IStoreObjects, ObjectStore>().AsSingleton();
                 _container.Register<IGetFlights, FlightsService>().AsSingleton();
                 _container.Register<IFlightsViewModel, FlightsViewModel>().AsSingleton();
             }
