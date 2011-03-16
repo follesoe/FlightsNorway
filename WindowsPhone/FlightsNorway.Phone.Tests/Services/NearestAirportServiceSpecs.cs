@@ -1,6 +1,6 @@
 ﻿using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
-using FlightsNorway.Services;
+using FlightsNorway.Lib.Services;
 using FlightsNorway.Tests.Stubs;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

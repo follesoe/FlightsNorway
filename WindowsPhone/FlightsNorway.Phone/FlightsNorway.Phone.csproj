@@ -82,7 +82,6 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\NearestAirportService.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\ClockViewModel.cs" />
     <Compile Include="ViewModels\StringFormatValueConverter.cs" />

@@ -4,7 +4,7 @@ using FlightsNorway.Lib.Model;
 using MonoMobile.Extensions;
 using TinyMessenger;
 
-namespace FlightsNorway.Services
+namespace FlightsNorway.Lib.Services
 {
     public class NearestAirportService
     {
