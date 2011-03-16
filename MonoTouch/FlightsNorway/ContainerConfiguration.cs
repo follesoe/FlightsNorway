@@ -37,7 +37,7 @@ namespace FlightsNorway
 		}
 		
 		public void Invoke (Action action)
-		{
+		{			
 			_owner.BeginInvokeOnMainThread(new NSAction(action));
 		}		
 	}
