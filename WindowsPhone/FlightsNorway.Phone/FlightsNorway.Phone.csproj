@@ -75,7 +75,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
-    <Compile Include="DesignTimeData\DesignTimeObjectStore.cs" />
     <Compile Include="DesignTimeData\FlightsDesignTimeViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
