@@ -44,9 +44,6 @@
     <Reference Include="MonoMobile.Extensions">
       <HintPath>..\lib\MonoMobile.Extensions\MonoMobile.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp.WindowsPhone">
-      <HintPath>..\lib\RestSharp\RestSharp.WindowsPhone.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -65,7 +62,6 @@
     <Compile Include="DataServices\Result.cs" />
     <Compile Include="DataServices\StatusService.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\IDictionaryExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtesnions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\XmlExtensions.cs" />
