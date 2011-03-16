@@ -54,9 +54,9 @@ namespace FlightsNorway.Lib.ViewModels
 
         private void LoadSelectedAirport()
         {
-            if (_objectStore.FileExists(ObjectStore.SelectedAirportFilename))
+            if (_objectStore.FileExists("SelectedAirport"))
             {
-                var airport = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
+                var airport = _objectStore.Load<Airport>("SelectedAirport");
                 if (airport.Equals(Airport.Nearest))
                 {
                     _messenger.Publish(new FindNearestAirportMessage(this));

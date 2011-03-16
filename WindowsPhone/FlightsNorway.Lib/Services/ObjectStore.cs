@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
+using System.Diagnostics;
 using System.IO.IsolatedStorage;
 using System.Runtime.Serialization;
-#if !SILVERLIGHT
-using FlightsNorway.Lib.Extensions;
-#endif
 
 namespace FlightsNorway.Lib.Services
 {
     public class ObjectStore : IStoreObjects
     {
         private const string RootDirectory = "FlightsNorway";
-        public const string SelectedAirportFilename = "selected_airport";
         private readonly IsolatedStorageFile _isoStore;
 
         public ObjectStore()

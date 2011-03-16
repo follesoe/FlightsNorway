@@ -84,8 +84,6 @@
     <Compile Include="Model\StatusDictionary.cs" />
     <Compile Include="MVVM\ButtonBaseExtensions.cs" />
     <Compile Include="MVVM\CommandToButtonsMap.cs" />
-    <Compile Include="MVVM\IExecuteWithObject.cs" />
-    <Compile Include="MVVM\IMessenger.cs" />
     <Compile Include="MVVM\RelayCommand.cs" />
     <Compile Include="MVVM\TinyIoC.cs" />
     <Compile Include="MVVM\TinyMessenger.cs" />

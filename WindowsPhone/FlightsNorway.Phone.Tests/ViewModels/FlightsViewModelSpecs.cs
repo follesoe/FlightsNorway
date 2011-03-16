@@ -1,7 +1,6 @@
 ﻿using System;
 using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
-using FlightsNorway.Lib.Services;
 using FlightsNorway.Lib.ViewModels;
 using FlightsNorway.Tests.Builders;
 using FlightsNorway.Tests.Stubs;
@@ -33,7 +32,7 @@ namespace FlightsNorway.Tests.ViewModels
         [TestMethod, Tag(Tags.ViewModel)]
         public void Loads_selected_airport_if_saved_to_disk()
         {
-            _objectStore.Save(_lakselvAirport, ObjectStore.SelectedAirportFilename);
+            _objectStore.Save(_lakselvAirport, Airport.SelectedAirportFilename);
 
             _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger);
 
@@ -101,7 +100,7 @@ namespace FlightsNorway.Tests.ViewModels
         [TestMethod, Tag(Tags.ViewModel)]
         public void Finds_nearest_airport_if_option_is_selected()
         {
-            _objectStore.Save(Airport.Nearest, ObjectStore.SelectedAirportFilename);
+            _objectStore.Save(Airport.Nearest, Airport.SelectedAirportFilename);
 
             bool findNearestWasPublished = false;
             _messenger.Subscribe<FindNearestAirportMessage>(m => findNearestWasPublished = true);

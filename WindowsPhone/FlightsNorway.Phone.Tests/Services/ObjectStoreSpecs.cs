@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.Services;
-using FlightsNorway.Services;
 using Microsoft.Silverlight.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -15,8 +14,8 @@ namespace FlightsNorway.Tests.Services
         {
             var airport = new Airport("LKL", "Lakselv");
 
-            _objectStore.Save(airport, ObjectStore.SelectedAirportFilename);
-            var airportRead = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
+            _objectStore.Save(airport, Airport.SelectedAirportFilename);
+            var airportRead = _objectStore.Load<Airport>(Airport.SelectedAirportFilename);
            
             Assert.AreEqual(airport.Code, airportRead.Code);
             Assert.AreEqual(airport.Name, airportRead.Name);
@@ -26,9 +25,9 @@ namespace FlightsNorway.Tests.Services
         public void Can_delete_an_object()
         {
             var airport = new Airport("LKL", "Lakselv");
-            _objectStore.Save(airport, ObjectStore.SelectedAirportFilename);
-            _objectStore.Delete(ObjectStore.SelectedAirportFilename);
-            _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
+            _objectStore.Save(airport, Airport.SelectedAirportFilename);
+            _objectStore.Delete(Airport.SelectedAirportFilename);
+            _objectStore.Load<Airport>(Airport.SelectedAirportFilename);
         }
 
         [TestMethod, Tag(Tags.Services)]
