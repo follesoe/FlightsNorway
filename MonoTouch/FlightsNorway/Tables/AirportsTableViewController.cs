@@ -33,14 +33,15 @@ namespace FlightsNorway.Tables
 			
 			public override void RowSelected (UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 			{
-				_viewModel.SelectedAirport = _viewModel.Airports[indexPath.Row];			
-				Console.WriteLine("{0} was selected...", _viewModel.SelectedAirport);
+				_viewModel.SelectedAirport = _viewModel.Airports[indexPath.Row];
 			}
 		}		
-				
+					
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();		
+				
+			Title = "Airports";
 			
 			_dataSource.TableView = this.TableView;
 			TableView.DataSource = _dataSource;

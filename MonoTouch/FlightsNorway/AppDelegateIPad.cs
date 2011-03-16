@@ -16,9 +16,8 @@ namespace FlightsNorway
 		{
 			_controller = TinyIoCContainer.Current.Resolve<MainTabBarController>();		
 			window.AddSubview(_controller.View);					
-			window.MakeKeyAndVisible ();			
+			window.MakeKeyAndVisible();			
 			return true;
 		}
 	}
 }
-

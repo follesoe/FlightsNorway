@@ -26,17 +26,51 @@ namespace FlightsNorway.Lib.Model
             Airport = airport;
             FlightStatus = new FlightStatus();            
         }
+		
+		public string Line1()
+		{
+			if(Direction == Direction.Depature)
+			{
+                return string.Format("{0} {1:HH:mm} {2}", 
+				                     	FlightId.PadRight(8), 
+                    		 			ScheduledTime, 
+                     					Gate);
+			}
+			return string.Format("{0} {1:HH:mm} {2}", 
+			                     	FlightId.PadRight(8), 
+                		 			ScheduledTime, 
+                 					Belt);
+		}
+		
+		public string Line2()
+		{
+			if(Direction == Direction.Depature)
+			{
+				return string.Format("{0} {1}", Airport.Name, FlightStatus.Status.StatusTextNorwegian);
+			}
+			
+			return string.Format("{0} {1} {3:HH:mm}", Airport.Name, FlightStatus.Status.StatusTextNorwegian, FlightStatus.StatusTime);
+		}
 
         public override string ToString()
         {
             if(Direction == Direction.Depature)
             {
-                return string.Format("{0} {1:HH:mm} {2} {3} {4}", FlightId, ScheduledTime, Gate, Airport.Name, FlightStatus.Status.StatusTextNorwegian);
+                return string.Format("{0} {1:HH:mm} {2} {3} {4}", 
+				                     FlightId.PadRight(8), 
+				                     ScheduledTime, 
+				                     Gate, 
+				                     Airport.Name, 
+				                     FlightStatus.Status.StatusTextNorwegian);
             }
 
             return string.Format("{0} {1:HH:mm} {2} {3} {4} {5:HH:mm}",                     
-                                 FlightId, ScheduledTime, Belt, Airport.Name,
-                                 FlightStatus.Status.StatusTextNorwegian, FlightStatus.StatusTime);
+                                 FlightId.PadRight(8), 
+			                     ScheduledTime, 
+			                     Belt, 
+			                     Airport.Name,
+                                 FlightStatus.Status.StatusTextNorwegian, 
+			                     FlightStatus.StatusTime);
         }
     }
 }
