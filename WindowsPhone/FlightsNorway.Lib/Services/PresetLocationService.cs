@@ -7,12 +7,12 @@ namespace FlightsNorway.Lib.Services
 {
     public class PresetLocationService : IGeolocation
     {
-        private readonly Action<Action> _invokeOnMainThread;
+        private readonly IDispatchOnUIThread _dispatcher;
         private readonly Location _currentLocation;
 
-        public PresetLocationService(double latitude, double longitude, Action<Action> invokeOnMainThread)
+        public PresetLocationService(double latitude, double longitude, IDispatchOnUIThread dispatcher)
         {
-            _invokeOnMainThread = invokeOnMainThread;
+            _dispatcher = dispatcher;
             _currentLocation = new Location(latitude, longitude);
         }
 
@@ -27,7 +27,7 @@ namespace FlightsNorway.Lib.Services
             Thread.Sleep(25);
 
 
-            _invokeOnMainThread(() =>
+            _dispatcher.Invoke(() =>
                           {
                               var position = new Position();
                               position.Coords.Latitude = _currentLocation.Latitude;

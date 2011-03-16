@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Lib.ViewModels;
@@ -42,15 +41,16 @@ namespace FlightsNorway
             _container.Register<ClockViewModel>().AsSingleton();
             _container.Register<AirportsViewModel>().AsSingleton();
             _container.Register<IGetAirports, AirportNamesService>().AsSingleton();
+            _container.Register<IDispatchOnUIThread, DispatchAdapter>().AsSingleton();
+            _container.Register<IStoreObjects, ObjectStore>().AsSingleton();
             
             #if DEBUG
-            _container.Register<IGeolocation>(new PresetLocationService(63.433281, 10.419294, action => Deployment.Current.Dispatcher.BeginInvoke(action)));
+            _container.Register<IGeolocation>(new PresetLocationService(63.433281, 10.419294, _container.Resolve<IDispatchOnUIThread>()));
             #else
             _container.Register<IGeolocation, MonoMobile.Extensions.Geolocation>();
             #endif
             _container.Register(new NearestAirportService(_container.Resolve<IGeolocation>(), _container.Resolve<ITinyMessengerHub>()));
 
-            _container.Register<IStoreObjects, ObjectStore>().AsSingleton();
                 
             if (DesignerProperties.IsInDesignTool)
             {

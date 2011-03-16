@@ -15,6 +15,7 @@ namespace FlightsNorway.Lib.ViewModels
         private readonly IGetFlights _flightsService;
         private readonly IStoreObjects _objectStore;
         private readonly ITinyMessengerHub _messenger;
+        private readonly IDispatchOnUIThread _dispatcher;
 
         public ObservableCollection<Flight> Arrivals { get; private set; }
         public ObservableCollection<Flight> Departures { get; private set; }
@@ -37,7 +38,8 @@ namespace FlightsNorway.Lib.ViewModels
 
         public FlightsViewModel(IGetFlights flightsService, 
                                 IStoreObjects objectStore, 
-                                ITinyMessengerHub messenger)
+                                ITinyMessengerHub messenger, 
+                                IDispatchOnUIThread dispatcher)
         {            
             Arrivals = new ObservableCollection<Flight>();
             Departures = new ObservableCollection<Flight>();
@@ -45,7 +47,8 @@ namespace FlightsNorway.Lib.ViewModels
             _objectStore = objectStore;
             _flightsService = flightsService;
             _messenger = messenger;
-            
+            _dispatcher = dispatcher;
+
             _messenger.Subscribe<AirportSelectedMessage>(OnAirportSelected);
 
             LoadSelectedAirport();
@@ -86,7 +89,7 @@ namespace FlightsNorway.Lib.ViewModels
             if(result.HasError())
                 HandleException(result.Error);
             else
-                LoadFlights(result.Value);
+                _dispatcher.Invoke(() => LoadFlights(result.Value));
         }
 
         private void LoadFlights(IEnumerable<Flight> flights)

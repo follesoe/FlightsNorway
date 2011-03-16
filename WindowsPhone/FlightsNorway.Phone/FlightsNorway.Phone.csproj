@@ -56,9 +56,6 @@
     <Reference Include="MonoMobile.Extensions">
       <HintPath>..\lib\MonoMobile.Extensions\MonoMobile.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp.WindowsPhone">
-      <HintPath>..\lib\RestSharp\RestSharp.WindowsPhone.dll</HintPath>
-    </Reference>
     <Reference Include="System.Device" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -76,6 +73,7 @@
     </Compile>
     <Compile Include="DesignTimeData\DesignTimeFlightsService.cs" />
     <Compile Include="DesignTimeData\FlightsDesignTimeViewModel.cs" />
+    <Compile Include="DispatchAdapter.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

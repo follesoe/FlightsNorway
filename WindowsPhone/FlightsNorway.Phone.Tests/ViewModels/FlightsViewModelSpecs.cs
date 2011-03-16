@@ -18,7 +18,7 @@ namespace FlightsNorway.Tests.ViewModels
         {
             _objectStore.Save(_lakselvAirport, Airport.SelectedAirportFilename);
 
-            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger);
+            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger, _dispatcher);
 
             Assert.AreEqual(_lakselvAirport.Code, _viewModel.SelectedAirport.Code);
         }
@@ -89,7 +89,7 @@ namespace FlightsNorway.Tests.ViewModels
             bool findNearestWasPublished = false;
             _messenger.Subscribe<FindNearestAirportMessage>(m => findNearestWasPublished = true);
 
-            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger);
+            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger, _dispatcher);
 
             Assert.IsTrue(findNearestWasPublished);
         }
@@ -118,7 +118,8 @@ namespace FlightsNorway.Tests.ViewModels
             _flightsService = new FlightsServiceStub();
             _objectStore = new ObjectStoreStub();
             _messenger = new TinyMessengerHub();
-            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger);
+            _dispatcher = new DispatchAdapter();
+            _viewModel = new FlightsViewModel(_flightsService, _objectStore, _messenger, _dispatcher);
         }
 
         private Airport _lakselvAirport;
@@ -126,6 +127,7 @@ namespace FlightsNorway.Tests.ViewModels
         private FlightsServiceStub _flightsService;
         private FlightsViewModel _viewModel;
         private ObjectStoreStub _objectStore;
-        private TinyMessengerHub _messenger;        
+        private TinyMessengerHub _messenger;
+        private DispatchAdapter _dispatcher;
     }
 }

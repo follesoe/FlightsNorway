@@ -16,24 +16,23 @@ namespace FlightsNorway.Lib.DataServices
             var webRequest = (HttpWebRequest)WebRequest.Create(_baseUrl + resource);
 
             webRequest.BeginGetResponse(responseResult =>
-                                            {
-                                                try
-                                                {
-                                                    var response = webRequest.EndGetResponse(responseResult);
-                                                    if (response != null)
-                                                    {
-                                                        var result = ParseResult(response);
-                                                        response.Close();
-                                                        callback(new Result<IEnumerable<T>>(result));
-                                                    }
-                                                }
-                                                catch (Exception ex)
-                                                {
-                                                    callback(new Result<IEnumerable<T>>(ex));
-                                                    throw;
-                                                }
+            {
+                try
+                {
+                    var response = webRequest.EndGetResponse(responseResult);
+                    if (response != null)
+                    {
+                        var result = ParseResult(response);
+                        response.Close();
+                        callback(new Result<IEnumerable<T>>(result));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    callback(new Result<IEnumerable<T>>(ex));
+                }
      
-                                            }, webRequest);
+            }, webRequest);
         }
 
         public abstract IEnumerable<T> ParseXml(XmlReader reader);
