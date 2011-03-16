@@ -13,7 +13,7 @@ namespace FlightsNorway.Lib.DataServices
 
         protected void Get(string resource, Action<Result<IEnumerable<T>>> callback)
         {
-            HttpWebRequest webRequest = WebRequest.CreateHttp(_baseUrl + resource);
+            var webRequest = (HttpWebRequest)WebRequest.Create(_baseUrl + resource);
 
             webRequest.BeginGetResponse(responseResult =>
                                             {
