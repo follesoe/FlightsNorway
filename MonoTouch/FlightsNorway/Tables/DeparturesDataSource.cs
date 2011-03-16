@@ -29,10 +29,8 @@ namespace FlightsNorway
             if (cell == null)
             {					
                 cell = new UITableViewCell(UITableViewCellStyle.Subtitle, CellID);
-				cell.ContentView.BackgroundColor = UIColor.Black;
-				cell.TextLabel.BackgroundColor = UIColor.Black;
-				cell.TextLabel.TextColor = UIColor.Yellow;
-				cell.TextLabel.Font = UIFont.FromName("Georgia", 18f);
+				cell.TextLabel.Font = UIFont.FromName("Georgia", 16f);
+				cell.DetailTextLabel.Font = UIFont.FromName("Georgia", 12f);
             }
         				
 			var flight = List[indexPath.Row];

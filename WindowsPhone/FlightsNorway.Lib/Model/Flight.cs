@@ -31,25 +31,20 @@ namespace FlightsNorway.Lib.Model
 		{
 			if(Direction == Direction.Depature)
 			{
-                return string.Format("{0} {1:HH:mm} {2}", 
-				                     	FlightId.PadRight(8), 
-                    		 			ScheduledTime, 
-                     					Gate);
+                return string.Format("{0} to {1} at {2:HH:mm}", FlightId, Airport.Name, ScheduledTime);
 			}
-			return string.Format("{0} {1:HH:mm} {2}", 
-			                     	FlightId.PadRight(8), 
-                		 			ScheduledTime, 
-                 					Belt);
+			
+			return string.Format("{0} from {1} at {2:HH:mm}", FlightId, Airport.Name, ScheduledTime);
 		}
 		
 		public string Line2()
 		{
 			if(Direction == Direction.Depature)
 			{
-				return string.Format("{0} {1}", Airport.Name, FlightStatus.Status.StatusTextNorwegian);
+				return string.Format("Gate {0} - Status: {1}", Gate, FlightStatus.Status.StatusTextNorwegian);
 			}
 			
-			return string.Format("{0} {1} {3:HH:mm}", Airport.Name, FlightStatus.Status.StatusTextNorwegian, FlightStatus.StatusTime);
+			return string.Format("Status: {0} - Belt: {1}", FlightStatus.Status.StatusTextNorwegian, Belt);
 		}
 
         public override string ToString()
@@ -57,7 +52,7 @@ namespace FlightsNorway.Lib.Model
             if(Direction == Direction.Depature)
             {
                 return string.Format("{0} {1:HH:mm} {2} {3} {4}", 
-				                     FlightId.PadRight(8), 
+				                     FlightId, 
 				                     ScheduledTime, 
 				                     Gate, 
 				                     Airport.Name, 
@@ -65,7 +60,7 @@ namespace FlightsNorway.Lib.Model
             }
 
             return string.Format("{0} {1:HH:mm} {2} {3} {4} {5:HH:mm}",                     
-                                 FlightId.PadRight(8), 
+                                 FlightId, 
 			                     ScheduledTime, 
 			                     Belt, 
 			                     Airport.Name,

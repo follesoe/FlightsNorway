@@ -40,6 +40,7 @@ namespace FlightsNorway
             if (cell == null)
             {					
                 cell = new UITableViewCell(UITableViewCellStyle.Default, CellID);
+				cell.TextLabel.Font = UIFont.FromName("Georgia", 16f);
             }
         				
             cell.TextLabel.Text = List[indexPath.Row].ToString();				
