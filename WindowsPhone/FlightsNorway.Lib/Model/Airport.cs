@@ -2,6 +2,7 @@
 {
     public class Airport
     {
+        public static readonly string SelectedAirportFilename = "SelectedAirport";
         public static readonly Airport Nearest = new Airport("NEAREST", "Nærmeste flyplass", -1, -1);
 
         public string Code { get; set; }

@@ -2,7 +2,6 @@
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
-using FlightsNorway.Lib.Services;
 using FlightsNorway.Lib.ViewModels;
 using FlightsNorway.Tests.Stubs;
 using Microsoft.Silverlight.Testing;
@@ -29,7 +28,7 @@ namespace FlightsNorway.Tests.ViewModels
         [TestMethod, Tag(Tags.ViewModel)]
         public void Saves_selected_airport()
         {
-            _objectStore.Delete(ObjectStore.SelectedAirportFilename);
+            _objectStore.Delete(Airport.SelectedAirportFilename);
             _viewModel.SelectedAirport = _viewModel.Airports.Last();
             _viewModel.SaveCommand.Execute(null);
 

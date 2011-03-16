@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using FlightsNorway.Lib.DataServices;
-using FlightsNorway.Lib.MVVM;
 using FlightsNorway.Lib.Services;
 using FlightsNorway.Lib.ViewModels;
 using FlightsNorway.Services;
@@ -49,8 +49,8 @@ namespace FlightsNorway
             _container.Register<IGeolocation, MonoMobile.Extensions.Geolocation>();
             #endif
             _container.Register(new NearestAirportService(_container.Resolve<IGeolocation>(), _container.Resolve<ITinyMessengerHub>()));
-            
-            if(ViewModelBase.IsInDesignModeStatic)
+
+            if (DesignerProperties.IsInDesignTool)
             {
                 _container.Register<IStoreObjects, DesignTimeObjectStore>().AsSingleton();
                 _container.Register<IGetFlights, DesignTimeFlightsService>().AsSingleton();

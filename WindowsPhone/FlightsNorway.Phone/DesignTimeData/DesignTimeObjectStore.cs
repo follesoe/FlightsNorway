@@ -1,7 +1,6 @@
 ﻿using System;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.Services;
-using FlightsNorway.Services;
 
 namespace FlightsNorway.DesignTimeData
 {
@@ -14,7 +13,7 @@ namespace FlightsNorway.DesignTimeData
 
         public T Load<T>(string fileName)
         {
-            if(fileName == ObjectStore.SelectedAirportFilename)
+            if(fileName == Airport.SelectedAirportFilename)
             {
                 return (T) (object) new Airport("LKL", "Lakselv");
             } 
@@ -28,7 +27,7 @@ namespace FlightsNorway.DesignTimeData
 
         public bool FileExists(string fileName)
         {
-            if (fileName == ObjectStore.SelectedAirportFilename)
+            if (fileName == Airport.SelectedAirportFilename)
                 return true;
 
             throw new NotImplementedException();

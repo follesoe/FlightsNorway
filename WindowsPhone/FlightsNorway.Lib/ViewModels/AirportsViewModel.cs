@@ -1,12 +1,14 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
+
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Extensions;
 using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.MVVM;
 using FlightsNorway.Lib.Services;
+
 using TinyMessenger;
 
 namespace FlightsNorway.Lib.ViewModels
@@ -28,7 +30,7 @@ namespace FlightsNorway.Lib.ViewModels
             {
                 if (_selectedAirport == value) return;
                 
-                _selectedAirport = value;               
+                _selectedAirport = value;
                 RaisePropertyChanged("SelectedAirport");                 
             }
         }
@@ -47,9 +49,9 @@ namespace FlightsNorway.Lib.ViewModels
 
         private void LoadSelectedAirportFromDisk()
         {
-            if (!_objectStore.FileExists(ObjectStore.SelectedAirportFilename)) return;
+            if (!_objectStore.FileExists(Airport.SelectedAirportFilename)) return;
 
-            var savedAirport = _objectStore.Load<Airport>(ObjectStore.SelectedAirportFilename);
+            var savedAirport = _objectStore.Load<Airport>(Airport.SelectedAirportFilename);
             SelectedAirport = Airports.Where(a => a.Code == savedAirport.Code).Single();
         }
 
@@ -57,7 +59,7 @@ namespace FlightsNorway.Lib.ViewModels
         {
             if (SelectedAirport == null) return;
             
-            _objectStore.Save(SelectedAirport, ObjectStore.SelectedAirportFilename);
+            _objectStore.Save(SelectedAirport, Airport.SelectedAirportFilename);
 
             if (SelectedAirport.Equals(Airport.Nearest))
             {
