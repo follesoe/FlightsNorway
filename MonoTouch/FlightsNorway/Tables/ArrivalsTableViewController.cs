@@ -15,7 +15,7 @@ namespace FlightsNorway
 			_dataSource = dataSource;
 			
 			_messenger = messenger;
-			_messenger.Subscribe<AirportSelectedMessage>(msg => Title = string.Format("Arrivals at {0}", msg.Content.Code));
+			_messenger.Subscribe<AirportSelectedMessage>(msg => NavigationItem.Title = string.Format("Arrivals at {0}", msg.Content.Code));
 		}
 		
 		public override void ViewDidLoad()
