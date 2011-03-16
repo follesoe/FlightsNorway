@@ -95,7 +95,7 @@ namespace FlightsNorway.Lib.ViewModels
         private void LoadFlights(IEnumerable<Flight> flights)
         {
             foreach(var flight in flights)
-            {                               
+            {       
                 if(flight.Direction == Direction.Arrival)
                 {
                     Arrivals.Add(flight);

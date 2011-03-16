@@ -1,14 +1,12 @@
 ﻿using System.Linq;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
-
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Extensions;
 using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.MVVM;
 using FlightsNorway.Lib.Services;
-
 using TinyMessenger;
 
 namespace FlightsNorway.Lib.ViewModels
