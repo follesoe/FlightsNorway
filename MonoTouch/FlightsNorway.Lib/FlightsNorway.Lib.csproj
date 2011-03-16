@@ -145,9 +145,6 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Extensions\DateTimeExtensions.cs">
       <Link>Extensions\DateTimeExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Extensions\IDictionaryExtensions.cs">
-      <Link>Extensions\IDictionaryExtensions.cs</Link>
-    </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Extensions\ObservableCollectionExtensions.cs">
       <Link>Extensions\ObservableCollectionExtensions.cs</Link>
     </Compile>
@@ -223,6 +220,9 @@
     </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Services\NearestAirportService.cs">
       <Link>Services\NearestAirportService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Services\IDispatchOnUIThread.cs">
+      <Link>Services\IDispatchOnUIThread.cs</Link>
     </Compile>
   </ItemGroup>
 </Project>
