@@ -14,6 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <AndroidSupportedAbis>armeabi%3barmeabi-v7a</AndroidSupportedAbis>
+    <AndroidStoreUncompressedFileExtensions />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\FlightsAdapter.cs" />
     <Compile Include="Adapters\ObservableAdapter.cs" />
     <Compile Include="AirportsActivity.cs" />
     <Compile Include="DeparturesActivity.cs" />
@@ -97,6 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\list_item.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Layout\list_flight.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

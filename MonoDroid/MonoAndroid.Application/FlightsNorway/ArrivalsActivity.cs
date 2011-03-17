@@ -13,13 +13,8 @@ namespace FlightsNorway
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
             viewModel = TinyIoC.TinyIoCContainer.Current.Resolve<FlightsViewModel>();
-
-            ListAdapter = new Adapters.ObservableAdapter<Flight>(this, viewModel.Arrivals);
-
-            
-            ListView.TextFilterEnabled = true;
+            ListAdapter = new Adapters.FlightsAdapter(this, viewModel.Arrivals);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace FlightsNorway
 
         private void InitContainer()
         {
+            Android.Util.Log.Info("MainActivity.cs", "Initializing");
             var container = TinyIoC.TinyIoCContainer.Current;
             container.Register<IDispatchOnUIThread>(new Dispatcher(this));
             container.Register<AirportsViewModel>().AsSingleton();

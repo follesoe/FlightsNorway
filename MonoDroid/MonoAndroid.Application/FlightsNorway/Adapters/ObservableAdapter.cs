@@ -7,14 +7,13 @@ namespace FlightsNorway.Adapters
 {
     public class ObservableAdapter<T> : BaseAdapter
     {
-        private readonly Activity _context;
-        private readonly ObservableCollection<T> _items;
+        protected readonly Activity _context;
+        protected readonly ObservableCollection<T> _items;
 
         public ObservableAdapter(Activity context, ObservableCollection<T> items)
         {
             _context = context;
             _items = items;
-
             _items.CollectionChanged += (o,e) => NotifyDataSetChanged();
         }
 
@@ -36,17 +35,16 @@ namespace FlightsNorway.Adapters
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             var item = _items[position];
+            var view = (convertView ?? _context.LayoutInflater.Inflate(Resource.Layout.list_item, parent, false)) as LinearLayout;
 
-            var view = (convertView ??
-                        _context.LayoutInflater.Inflate(
-                            Resource.Layout.list_item,
-                            parent,
-                            false)) as LinearLayout;
-
-            var text = view.FindViewById(Resource.Id.text) as TextView;
-            text.SetText(item.ToString(), TextView.BufferType.Normal);
-
+            SetTextView(view, Resource.Id.text, item.ToString());
             return view;
+        }
+
+        protected void SetTextView(LinearLayout view, int id, string text)
+        {
+            var textView = (TextView)view.FindViewById(id);
+            textView.SetText(text, TextView.BufferType.Normal);
         }
     }
 }
