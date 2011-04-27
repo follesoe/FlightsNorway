@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightsNorway", "FlightsNorway\FlightsNorway.csproj", "{9F64EB50-E79C-4AF1-90AE-589703850D9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightsNorway.Lib", "FlightsNorway.Lib\FlightsNorway.Lib.csproj", "{1AE63FA8-906C-4F90-81A7-4E24A5C9370E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1AE63FA8-906C-4F90-81A7-4E24A5C9370E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE63FA8-906C-4F90-81A7-4E24A5C9370E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE63FA8-906C-4F90-81A7-4E24A5C9370E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE63FA8-906C-4F90-81A7-4E24A5C9370E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F64EB50-E79C-4AF1-90AE-589703850D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F64EB50-E79C-4AF1-90AE-589703850D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F64EB50-E79C-4AF1-90AE-589703850D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F64EB50-E79C-4AF1-90AE-589703850D9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = FlightsNorway\FlightsNorway.csproj
+	EndGlobalSection
+EndGlobal
