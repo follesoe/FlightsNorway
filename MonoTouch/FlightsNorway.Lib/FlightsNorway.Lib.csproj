@@ -11,7 +11,7 @@
     <RootNamespace>FlightsNorway.Lib</RootNamespace>
     <AssemblyName>FlightsNorwayLib</AssemblyName>
     <MtouchMinimumOS>3.0</MtouchMinimumOS>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +28,7 @@
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <MtouchUseThumb>false</MtouchUseThumb>
     <MtouchUseSGen>false</MtouchUseSGen>
+    <MtouchArch>ARMv6</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -42,6 +43,7 @@
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <MtouchUseThumb>false</MtouchUseThumb>
     <MtouchUseSGen>false</MtouchUseSGen>
+    <MtouchArch>ARMv6</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +60,7 @@
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <MtouchUseThumb>false</MtouchUseThumb>
     <MtouchUseSGen>false</MtouchUseSGen>
+    <MtouchArch>ARMv6</MtouchArch>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -72,29 +75,9 @@
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <MtouchUseThumb>false</MtouchUseThumb>
     <MtouchUseSGen>false</MtouchUseSGen>
+    <MtouchArch>ARMv6</MtouchArch>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="monotouch" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="MonoMobileExtensions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\MonoMobile.Extensions\MonoMobileExtensions.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\RestSharp\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties InternalTargetFrameworkVersion="IPhone" />
-    </MonoDevelop>
-  </ProjectExtensions>
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="Extensions\" />
@@ -151,11 +134,6 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Extensions\XmlExtensions.cs">
       <Link>Extensions\XmlExtensions.cs</Link>
     </Compile>
-    <Compile Include="MissingStuff\ObservableCollection.cs" />
-    <Compile Include="MissingStuff\INotifyCollectionChanged.cs" />
-    <Compile Include="MissingStuff\NotifyCollectionChangedEventHandler.cs" />
-    <Compile Include="MissingStuff\NotifyCollectionChangedEventArgs.cs" />
-    <Compile Include="MissingStuff\NotifyCollectionChangedAction.cs" />
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Services\EventArgs.cs">
       <Link>Services\EventArgs.cs</Link>
     </Compile>
@@ -196,7 +174,6 @@
       <Link>MVVM\ViewModelBase.cs</Link>
     </Compile>
     <Compile Include="MissingStuff\ICommand.cs" />
-    <Compile Include="Extensions\IsolatedStorageFileExtensions.cs" />
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\AirportsViewModel.cs">
       <Link>ViewModels\AirportsViewModel.cs</Link>
     </Compile>
@@ -224,5 +201,17 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Services\IDispatchOnUIThread.cs">
       <Link>Services\IDispatchOnUIThread.cs</Link>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="monotouch" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="MonoMobileExtensions, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\MonoMobile.Extensions\MonoMobileExtensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
