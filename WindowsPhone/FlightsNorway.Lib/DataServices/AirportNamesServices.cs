@@ -1,6 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Net;
+#if MONODROID || MONOTOUCH
+using System.Web;
+#endif
 using System.Xml.Linq;
 using System.Collections.Generic;
 
@@ -17,8 +21,8 @@ namespace FlightsNorway.Lib.DataServices
             return (from a in xml.Root.Descendants("Airport")
                     select new Airport
                     {
-                        Code = a.Attribute("Code").Value,
-                        Name = a.Attribute("Name").Value,
+                        Code = HttpUtility.UrlDecode(a.Attribute("Code").Value),
+                        Name = HttpUtility.UrlDecode(a.Attribute("Name").Value),
                         Location = new Location
                         {
                             Latitude = Convert.ToDouble(a.Attribute("Lat").Value),
