@@ -11,30 +11,36 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightsNorway", "WindowsPho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightsNorway.Lib", "MonoDroid\FlightsNorway.Lib\FlightsNorway.Lib.csproj", "{C205AA96-EDBF-4EC8-99CB-1A47DFAF5A60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightsNorway", "MonoDroid\FlightsNorway\FlightsNorway.csproj", "{13D38F3F-2D94-468D-8F27-D7731B2EC4E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightsNorwayDroid", "MonoDroid\FlightsNorway\FlightsNorwayDroid.csproj", "{13D38F3F-2D94-468D-8F27-D7731B2EC4E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		MonoDroid|Any CPU = MonoDroid|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4A11BDB9-4667-4A70-875F-2AB0AF1FBC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4A11BDB9-4667-4A70-875F-2AB0AF1FBC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A11BDB9-4667-4A70-875F-2AB0AF1FBC34}.MonoDroid|Any CPU.ActiveCfg = MonoDroid|Any CPU
 		{4A11BDB9-4667-4A70-875F-2AB0AF1FBC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A11BDB9-4667-4A70-875F-2AB0AF1FBC34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1FD54A3-7979-4EBA-9C29-8B255A475623}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B1FD54A3-7979-4EBA-9C29-8B255A475623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1FD54A3-7979-4EBA-9C29-8B255A475623}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B1FD54A3-7979-4EBA-9C29-8B255A475623}.MonoDroid|Any CPU.ActiveCfg = MonoDroid|Any CPU
 		{B1FD54A3-7979-4EBA-9C29-8B255A475623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1FD54A3-7979-4EBA-9C29-8B255A475623}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B1FD54A3-7979-4EBA-9C29-8B255A475623}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{C205AA96-EDBF-4EC8-99CB-1A47DFAF5A60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C205AA96-EDBF-4EC8-99CB-1A47DFAF5A60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C205AA96-EDBF-4EC8-99CB-1A47DFAF5A60}.MonoDroid|Any CPU.ActiveCfg = MonoDroid|Any CPU
+		{C205AA96-EDBF-4EC8-99CB-1A47DFAF5A60}.MonoDroid|Any CPU.Build.0 = MonoDroid|Any CPU
 		{C205AA96-EDBF-4EC8-99CB-1A47DFAF5A60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C205AA96-EDBF-4EC8-99CB-1A47DFAF5A60}.Release|Any CPU.Build.0 = Release|Any CPU
 		{13D38F3F-2D94-468D-8F27-D7731B2EC4E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13D38F3F-2D94-468D-8F27-D7731B2EC4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13D38F3F-2D94-468D-8F27-D7731B2EC4E7}.MonoDroid|Any CPU.ActiveCfg = MonoDroid|Any CPU
+		{13D38F3F-2D94-468D-8F27-D7731B2EC4E7}.MonoDroid|Any CPU.Build.0 = MonoDroid|Any CPU
+		{13D38F3F-2D94-468D-8F27-D7731B2EC4E7}.MonoDroid|Any CPU.Deploy.0 = MonoDroid|Any CPU
 		{13D38F3F-2D94-468D-8F27-D7731B2EC4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13D38F3F-2D94-468D-8F27-D7731B2EC4E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
