@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using FlightsNorway.Lib.DataServices;
+using FlightsNorway.Lib.Model;
 using Microsoft.Phone.Controls;
 
 namespace FlightsNorway
@@ -16,15 +17,13 @@ namespace FlightsNorway
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            var service = new AirportNamesService();
-
-            var fileUri = new Uri("FlightsNorway;component/Content/Airports.xml",
-                                    UriKind.Relative);
-
-            using (var stream = Application.GetResourceStream(fileUri).Stream)
+            var flightsService = new FlightsService();
+            flightsService.GetFlightsFrom(flights =>
             {
-                _airports.ItemsSource = service.GetNorwegianAirports(stream);
-            }
+                Deployment.Current.Dispatcher.BeginInvoke(
+                    () => _airports.ItemsSource = flights.Value);
+            }, new Airport { Code = "OSL" });
+
         }
     }
 }

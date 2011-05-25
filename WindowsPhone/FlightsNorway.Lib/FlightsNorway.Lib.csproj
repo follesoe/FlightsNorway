@@ -65,9 +65,21 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataServices\AirlineNamesService.cs" />
     <Compile Include="DataServices\AirportNamesServices.cs" />
+    <Compile Include="DataServices\FlightsService.cs" />
+    <Compile Include="DataServices\RestService.cs" />
+    <Compile Include="DataServices\Result.cs" />
+    <Compile Include="DataServices\StatusService.cs" />
+    <Compile Include="DataServices\XmlExtensions.cs" />
+    <Compile Include="Model\Airline.cs" />
     <Compile Include="Model\Airport.cs" />
+    <Compile Include="Model\CodeName.cs" />
+    <Compile Include="Model\CodeNameDictionary.cs" />
+    <Compile Include="Model\Flights.cs" />
+    <Compile Include="Model\FlightStatus.cs" />
     <Compile Include="Model\Location.cs" />
+    <Compile Include="Model\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

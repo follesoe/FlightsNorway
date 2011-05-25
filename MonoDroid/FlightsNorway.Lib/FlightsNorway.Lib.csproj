@@ -57,18 +57,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\AirlineNamesService.cs">
+      <Link>DataServices\AirlineNamesService.cs</Link>
+    </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\AirportNamesServices.cs">
       <Link>DataServices\AirportNamesServices.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\FlightsService.cs">
+      <Link>DataServices\FlightsService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\RestService.cs">
+      <Link>DataServices\RestService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\Result.cs">
+      <Link>DataServices\Result.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\StatusService.cs">
+      <Link>DataServices\StatusService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\XmlExtensions.cs">
+      <Link>DataServices\XmlExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Airline.cs">
+      <Link>Model\Airline.cs</Link>
     </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Airport.cs">
       <Link>Model\Airport.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\CodeName.cs">
+      <Link>Model\CodeName.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\CodeNameDictionary.cs">
+      <Link>Model\CodeNameDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Flights.cs">
+      <Link>Model\Flights.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\FlightStatus.cs">
+      <Link>Model\FlightStatus.cs</Link>
+    </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Location.cs">
       <Link>Model\Location.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Status.cs">
+      <Link>Model\Status.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties ProjectLinkReference="4a11bdb9-4667-4a70-875f-2ab0af1fbc34" ProjectLinkerExcludeFilter="\\?desktop(\\.*)?$;\\?silverlight(\\.*)?$;\.desktop;\.silverlight;\.xaml;^service references(\\.*)?$;\.clientconfig;^web references(\\.*)?$" />
+    </VisualStudio>
+  </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
