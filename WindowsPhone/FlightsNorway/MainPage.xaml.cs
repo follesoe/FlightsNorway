@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using FlightsNorway.Lib;
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Model;
 using Microsoft.Phone.Controls;
@@ -12,6 +13,7 @@ namespace FlightsNorway
         public MainPage()
         {
             InitializeComponent();
+            ServiceLocator.Dispatcher = new DispatchAdapter();
             Loaded += MainPage_Loaded;
         }
 

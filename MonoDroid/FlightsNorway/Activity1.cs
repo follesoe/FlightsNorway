@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using FlightsNorway.Lib;
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Model;
 
@@ -17,6 +18,8 @@ namespace FlightsNorway
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            ServiceLocator.Dispatcher = new DispatchAdapter(this);
+
             SetContentView(Resource.Layout.Main);
 
             TabHost.AddTab(GetTab("airports",
