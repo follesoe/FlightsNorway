@@ -27,20 +27,27 @@ namespace FlightsNorway
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int Airports = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Arrivals = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int Departures = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int ic_tab_airports = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int ic_tab_arrivals = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int ic_tab_departures = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int Icon = 2130837510;
 			
 			private Drawable()
-			{
-			}
-		}
-		
-		public partial class Id
-		{
-			
-			// aapt resource value: 0x7f050000
-			public const int MyButton = 2131034112;
-			
-			private Id()
 			{
 			}
 		}

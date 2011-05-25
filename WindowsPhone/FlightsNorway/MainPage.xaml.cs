@@ -18,12 +18,12 @@ namespace FlightsNorway
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             var flightsService = new FlightsService();
-            flightsService.GetFlightsFrom(flights =>
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(
-                    () => _airports.ItemsSource = flights.Value);
-            }, new Airport { Code = "OSL" });
-
+            flightsService.GetFlightsFrom(flights => Deployment.Current.Dispatcher.BeginInvoke(
+                () =>
+                {
+                    _arrivals.ItemsSource = flights.Value;
+                    _departures.ItemsSource = flights.Value;
+                }), new Airport { Code = "OSL" });
         }
     }
 }

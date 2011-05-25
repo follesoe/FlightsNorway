@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity1.cs" />
+    <Compile Include="AirportsActivity.cs" />
+    <Compile Include="ArrivalsActivity.cs" />
+    <Compile Include="DeparturesActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -90,6 +93,12 @@
     <Content Include="..\..\WindowsPhone\FlightsNorway\Content\Airports.xml">
       <Link>Assets\Airports.xml</Link>
     </Content>
+    <AndroidResource Include="Resources\Drawable\Airports.png" />
+    <AndroidResource Include="Resources\Drawable\Departures.png" />
+    <AndroidResource Include="Resources\Drawable\Arrivals.png" />
+    <AndroidResource Include="Resources\Drawable\ic_tab_airports.xml" />
+    <AndroidResource Include="Resources\Drawable\ic_tab_arrivals.xml" />
+    <AndroidResource Include="Resources\Drawable\ic_tab_departures.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
