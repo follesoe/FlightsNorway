@@ -3,7 +3,7 @@ The workshop-branch of the repository contains an end-to-end tutorial for
 building a cross-platform mobile app using C#, MonoTouch, Mono for Android 
 and Windows Phone 7. The tutorial consists of a [PDF document giving you a 
 step-by-step guide from scratch to a complete app](https://github.com/follesoe/FlightsNorway/raw/workshop/Docs/Workshop%20Material.pdf).
-There is also a [PowerPoint presentation supporting the tutorial], 
+There is also a [PowerPoint presentation supporting the tutorial](http://dl.dropbox.com/u/7788914/Workshop%20Material.pptx), 
 but not all slides are translated to English yet.
 
 The branch also has a set of tags defining completed sections for the 
