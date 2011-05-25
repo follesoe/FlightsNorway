@@ -120,5 +120,8 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\IDispatchOnUIThread.cs">
       <Link>IDispatchOnUIThread.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\FlightsViewModel.cs">
+      <Link>ViewModels\FlightsViewModel.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>

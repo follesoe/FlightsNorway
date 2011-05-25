@@ -1,5 +1,6 @@
 using System;
 using MonoTouch.UIKit;
+using FlightsNorway.Lib.ViewModels;
 
 namespace FlightsNorway
 {
@@ -15,8 +16,9 @@ namespace FlightsNorway
 					
 			var tabs = new UIViewController[3];
 					
-			tabs[0] = new UINavigationController(new ArrivalsTableViewController());
-			tabs[1] = new UINavigationController(new DeparturesTableViewController());
+			var viewModel = new FlightsViewModel();
+			tabs[0] = new UINavigationController(new ArrivalsTableViewController(viewModel));
+			tabs[1] = new UINavigationController(new DeparturesTableViewController(viewModel));
 			tabs[2] = new UINavigationController(new AirportsTableViewController());
 					
 			tabs[0].TabBarItem = new UITabBarItem("Arrivals", UIImage.FromBundle("Content/Arrivals.png"), 1);			
