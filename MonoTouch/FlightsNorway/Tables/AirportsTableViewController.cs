@@ -5,6 +5,7 @@ using FlightsNorway.Lib.Model;
 using MonoTouch.Foundation;
 using FlightsNorway.Lib.DataServices;
 using System.IO;
+using FlightsNorway.Lib.ViewModels;
 
 namespace FlightsNorway
 {
@@ -14,46 +15,39 @@ namespace FlightsNorway
 		{
 		}
 			
+		private static AirportsViewModel _viewModel;
+						
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
 					
-			TableView.DataSource = new AirportsDataSource();
+			Title = "Airports";		
+			using(var stream = new FileStream("Content/Airports.xml", FileMode.Open))
+			{
+				_viewModel = new AirportsViewModel(stream);
+			}			
+			TableView.DataSource = new AirportsDataSource(TableView);
+			TableView.Delegate = new AirportsDelegate();
 		}
 
-			
-		private class AirportsDataSource : UITableViewDataSource		
-		{	
-			private NSString CellID = new NSString("Airports");
-			private List<Airport> _airports;
-			
-			public AirportsDataSource()
+		private class AirportsDelegate : UITableViewDelegate
+		{
+			public override void RowSelected (UITableView tableView, NSIndexPath indexPath)
 			{
-				var service = new AirportNamesService();
-				using(var stream = new FileStream("Content/Airports.xml", FileMode.Open))
-				{
-					_airports = service.GetNorwegianAirports(stream);
-				}
+				_viewModel.SelectedAirport = _viewModel.Airports[indexPath.Row];
 			}
-						
-			public override int RowsInSection (UITableView tableView, int section)
-			{
-				return _airports.Count;
-			}
+		}
 			
-			public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
-			{
-				var cell = tableView.DequeueReusableCell(CellID);
-				if (cell == null)
-				{					
-				    cell = new UITableViewCell(UITableViewCellStyle.Default, CellID);
-				}
-				        				
-				cell.TextLabel.Text = _airports[indexPath.Row].ToString();				
-				return cell;
+		private class AirportsDataSource : ObservableDataSource<Airport>		
+		{
+			private NSString _cellID = new NSString("Airports");			
+			public override NSString CellID { get { return _cellID; } }
+								
+			public AirportsDataSource(UITableView tableView) : 
+				base(_viewModel.Airports, tableView)
+			{				
 			}
-			
-		}		
+		}
 	}
 }
 
