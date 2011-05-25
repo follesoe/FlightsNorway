@@ -101,6 +101,7 @@
     <Compile Include="Tables\DeparturesTableViewController.cs" />
     <Compile Include="MainTabBarController.cs" />
     <Compile Include="Tables\ObservableDataSource.cs" />
+    <Compile Include="DispatchAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />

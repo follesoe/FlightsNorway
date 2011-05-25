@@ -117,5 +117,8 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ServiceLocator.cs">
       <Link>ServiceLocator.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\IDispatchOnUIThread.cs">
+      <Link>IDispatchOnUIThread.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>
