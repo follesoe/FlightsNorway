@@ -33,5 +33,10 @@ namespace FlightsNorway
             _viewModel.SelectedAirport = _viewModel.Airports[e.Position];
 
         }
+
+        public void SaveSelection()
+        {
+            _viewModel.SaveSelection();
+        }
     }
 }

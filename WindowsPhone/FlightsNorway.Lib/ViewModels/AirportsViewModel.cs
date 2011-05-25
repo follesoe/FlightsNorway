@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
 using FlightsNorway.Lib.DataServices;
+using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
 
 namespace FlightsNorway.Lib.ViewModels
@@ -32,6 +33,12 @@ namespace FlightsNorway.Lib.ViewModels
             {
                 Airports.Add(airport);
             }
+        }
+
+        public void SaveSelection()
+        {
+            ServiceLocator.Messenger.Publish
+                (new AirportSelectedMessage(this, SelectedAirport));
         }
     }
 }

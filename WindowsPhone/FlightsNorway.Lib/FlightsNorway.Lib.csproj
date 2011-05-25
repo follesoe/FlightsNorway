@@ -72,6 +72,8 @@
     <Compile Include="DataServices\Result.cs" />
     <Compile Include="DataServices\StatusService.cs" />
     <Compile Include="DataServices\XmlExtensions.cs" />
+    <Compile Include="Messages\AirportSelectedMessage.cs" />
+    <Compile Include="Messages\TinyMessenger.cs" />
     <Compile Include="Model\Airline.cs" />
     <Compile Include="Model\Airport.cs" />
     <Compile Include="Model\CodeName.cs" />
@@ -81,6 +83,7 @@
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLocator.cs" />
     <Compile Include="ViewModels\AirportsViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>

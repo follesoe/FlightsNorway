@@ -33,6 +33,21 @@ namespace FlightsNorway
                                     "Departures",
                                     typeof(DeparturesActivity),
                                     Resource.Drawable.ic_tab_departures));
+
+            TabHost.TabChanged += OnTabChanged;
+        }
+
+        private string currentTabId;
+
+        private void OnTabChanged(object sender, TabHost.TabChangeEventArgs e)
+        {
+            if (string.IsNullOrEmpty(currentTabId) || currentTabId == "airports")
+            {
+                var airportsActivity = (AirportsActivity)LocalActivityManager.GetActivity("airports");
+
+                airportsActivity.SaveSelection();
+            }
+            currentTabId = e.TabId;
         }
 
         private TabHost.TabSpec GetTab(string name, string title, Type type, int iconId)

@@ -25,5 +25,9 @@ namespace FlightsNorway.Views
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((AirportsViewModel)DataContext).SaveSelection();
+        }
     }
 }
