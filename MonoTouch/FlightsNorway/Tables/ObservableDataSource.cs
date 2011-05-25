@@ -9,6 +9,7 @@ namespace FlightsNorway
 	{
 		private ObservableCollection<T> _collection;
 		private UITableView _tableView;
+		protected UITableView TableView { get { return _tableView; } }
 			
 		public ObservableDataSource (ObservableCollection<T> collection, UITableView tableView)
 		{

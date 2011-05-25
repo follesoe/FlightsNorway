@@ -29,6 +29,19 @@ namespace FlightsNorway
 			TableView.DataSource = new AirportsDataSource(TableView);
 			TableView.Delegate = new AirportsDelegate();
 		}
+		
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+			_viewModel.SaveSelection();
+		}
+		
+		public override void ViewWillAppear (bool animated)
+		{
+			base.ViewWillAppear (animated);
+			((AirportsDataSource)TableView.DataSource).SetSelectedRow();
+		}
+		
 
 		private class AirportsDelegate : UITableViewDelegate
 		{
@@ -47,6 +60,16 @@ namespace FlightsNorway
 				base(_viewModel.Airports, tableView)
 			{				
 			}
+
+			public void SetSelectedRow()
+			{				
+				if(_viewModel.SelectedAirport != null)
+				{
+					int index = _viewModel.Airports.IndexOf(_viewModel.SelectedAirport);
+					TableView.SelectRow(NSIndexPath.FromRowSection(index, 0), false, UITableViewScrollPosition.None);
+				}
+			}
+
 		}
 	}
 }

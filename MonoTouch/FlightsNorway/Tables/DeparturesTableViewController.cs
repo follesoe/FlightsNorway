@@ -1,5 +1,7 @@
 using System;
 using MonoTouch.UIKit;
+using FlightsNorway.Lib;
+using FlightsNorway.Lib.Messages;
 
 namespace FlightsNorway
 {
@@ -7,6 +9,9 @@ namespace FlightsNorway
 	{
 		public DeparturesTableViewController ()
 		{
+			ServiceLocator.Messenger.Subscribe<AirportSelectedMessage>(message => {
+				Title = "Departures from " + message.Content.Code;
+			});
 		}
 	}
 }
