@@ -117,6 +117,9 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\AirportsViewModel.cs">
       <Link>ViewModels\AirportsViewModel.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\FlightsViewModel.cs">
+      <Link>ViewModels\FlightsViewModel.cs</Link>
+    </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\ViewModels\ViewModelBase.cs">
       <Link>ViewModels\ViewModelBase.cs</Link>
     </Compile>

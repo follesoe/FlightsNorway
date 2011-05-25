@@ -9,17 +9,19 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using FlightsNorway.Lib.Model;
 
 namespace FlightsNorway
 {
     [Activity(Label = "FlightsNorway")]
-    public class DeparturesActivity : Activity
+    public class DeparturesActivity : ListActivity
     {
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
-
-            // Create your application here
+            base.OnCreate(savedInstanceState);
+            ListAdapter = new ObservableAdapter<Flight>
+                (this, Activity1.FlightsViewModel.Departures);
         }
     }
+
 }

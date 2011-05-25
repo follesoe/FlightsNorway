@@ -3,6 +3,7 @@ using System.Windows;
 using FlightsNorway.Lib;
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Model;
+using FlightsNorway.Lib.ViewModels;
 using Microsoft.Phone.Controls;
 
 namespace FlightsNorway
@@ -19,13 +20,9 @@ namespace FlightsNorway
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
-            var flightsService = new FlightsService();
-            flightsService.GetFlightsFrom(flights => Deployment.Current.Dispatcher.BeginInvoke(
-                () =>
-                {
-                    _arrivals.ItemsSource = flights.Value;
-                    _departures.ItemsSource = flights.Value;
-                }), new Airport { Code = "OSL" });
+            var viewModel = new FlightsViewModel();
+            _arrivalsView.DataContext = viewModel;
+            _departuresView.DataContext = viewModel;
         }
     }
 }

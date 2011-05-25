@@ -19,11 +19,11 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot Title="FLIGHTS NORWAY">
             <controls:PivotItem Header="departures">
-                <ListBox Name="_departures" Margin="0,0,-12,0" />
+                <Views:DeparturesView x:Name="_departuresView" />
             </controls:PivotItem>
 
             <controls:PivotItem Header="arrivals">
-                <ListBox Name="_arrivals" Margin="0,0,-12,0" />
+                <Views:ArrivalsView x:Name="_arrivalsView" />
             </controls:PivotItem>
 
             <controls:PivotItem Header="airports">

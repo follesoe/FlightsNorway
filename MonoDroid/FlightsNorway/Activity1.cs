@@ -9,16 +9,20 @@ using Android.OS;
 using FlightsNorway.Lib;
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Model;
+using FlightsNorway.Lib.ViewModels;
 
 namespace FlightsNorway
 {
     [Activity(Label = "FlightsNorway", MainLauncher = true, Icon = "@drawable/icon")]
     public class Activity1 : TabActivity
     {
+        public static FlightsViewModel FlightsViewModel { get; private set; }
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             ServiceLocator.Dispatcher = new DispatchAdapter(this);
+            FlightsViewModel = new FlightsViewModel();
 
             SetContentView(Resource.Layout.Main);
 

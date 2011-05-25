@@ -26,9 +26,20 @@ namespace FlightsNorway.Lib.Model
 
         public override string ToString()
         {
-            return string.Format("{0} from/to {1} at {2}",
-                FlightId, Airport.Name, ScheduledTime.ToShortTimeString());
+            if (Direction == Direction.Arrival)
+            {
+                return
+                    string.Format("{0} from {1} arriving at {2}", FlightId, Airport.Name,
+                                        ScheduledTime.ToShortTimeString());
+            }
+            else
+            {
+                return
+                    string.Format("{0} to {1} departing at {2}", FlightId, Airport.Name,
+                                        ScheduledTime.ToShortTimeString());
+            }
         }
+
     }
 
     public enum Direction
