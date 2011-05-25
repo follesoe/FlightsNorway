@@ -97,6 +97,9 @@
     <Compile Include="AppDelegateIPhone.cs" />
     <Compile Include="AppDelegateIPad.cs" />
     <Compile Include="Tables\AirportsTableViewController.cs" />
+    <Compile Include="Tables\ArrivalsTableViewController.cs" />
+    <Compile Include="Tables\DeparturesTableViewController.cs" />
+    <Compile Include="MainTabBarController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainWindowIPhone.xib" />
@@ -117,5 +120,11 @@
     <Content Include="..\..\WindowsPhone\FlightsNorway\Content\Airports.xml">
       <Link>Content\Airports.xml</Link>
     </Content>
+    <Content Include="Content\Airports.png" />
+    <Content Include="Content\Departures%402x.png" />
+    <Content Include="Content\Departures.png" />
+    <Content Include="Content\Arrivals%402x.png" />
+    <Content Include="Content\Arrivals.png" />
+    <Content Include="Content\Airports%402x.png" />
   </ItemGroup>
 </Project>

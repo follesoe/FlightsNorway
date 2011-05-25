@@ -8,15 +8,15 @@ namespace FlightsNorway
 {
 	public partial class AppDelegateIPhone : UIApplicationDelegate
 	{
-		private AirportsTableViewController _airportsTvc;
-			
+		private MainTabBarController _mainTabs;
+				
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
-			_airportsTvc = new AirportsTableViewController();
-				
-			window.AddSubview(_airportsTvc.View);
+			_mainTabs = new MainTabBarController();
+					
+			window.AddSubview(_mainTabs.View);
 			window.MakeKeyAndVisible ();
-	
+		
 			return true;
 		}
 	}
