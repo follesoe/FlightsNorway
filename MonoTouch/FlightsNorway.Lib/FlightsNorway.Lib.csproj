@@ -64,5 +64,41 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\AirportNamesServices.cs">
       <Link>DataServices\AirportNamesServices.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\XmlExtensions.cs">
+      <Link>DataServices\XmlExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\StatusService.cs">
+      <Link>DataServices\StatusService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\Result.cs">
+      <Link>DataServices\Result.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\RestService.cs">
+      <Link>DataServices\RestService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\FlightsService.cs">
+      <Link>DataServices\FlightsService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\AirlineNamesService.cs">
+      <Link>DataServices\AirlineNamesService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Status.cs">
+      <Link>Model\Status.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\FlightStatus.cs">
+      <Link>Model\FlightStatus.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Flights.cs">
+      <Link>Model\Flights.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\CodeNameDictionary.cs">
+      <Link>Model\CodeNameDictionary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\CodeName.cs">
+      <Link>Model\CodeName.cs</Link>
+    </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Model\Airline.cs">
+      <Link>Model\Airline.cs</Link>
+    </Compile>
   </ItemGroup>
 </Project>
