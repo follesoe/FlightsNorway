@@ -78,6 +78,9 @@
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\DataServices\XmlExtensions.cs">
       <Link>DataServices\XmlExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\IDispatchOnUIThread.cs">
+      <Link>IDispatchOnUIThread.cs</Link>
+    </Compile>
     <Compile Include="..\..\WindowsPhone\FlightsNorway.Lib\Messages\AirportSelectedMessage.cs">
       <Link>Messages\AirportSelectedMessage.cs</Link>
     </Compile>

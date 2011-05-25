@@ -67,6 +67,7 @@
     <Compile Include="AirportsActivity.cs" />
     <Compile Include="ArrivalsActivity.cs" />
     <Compile Include="DeparturesActivity.cs" />
+    <Compile Include="DispatchAdapter.cs" />
     <Compile Include="ObservableAdapter.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

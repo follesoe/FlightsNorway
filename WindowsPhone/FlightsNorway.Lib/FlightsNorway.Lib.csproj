@@ -72,6 +72,7 @@
     <Compile Include="DataServices\Result.cs" />
     <Compile Include="DataServices\StatusService.cs" />
     <Compile Include="DataServices\XmlExtensions.cs" />
+    <Compile Include="IDispatchOnUIThread.cs" />
     <Compile Include="Messages\AirportSelectedMessage.cs" />
     <Compile Include="Messages\TinyMessenger.cs" />
     <Compile Include="Model\Airline.cs" />
