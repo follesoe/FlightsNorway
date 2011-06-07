@@ -1,7 +1,6 @@
 # Flights Norway
 Flights Norway is a simple mobile app showing you
-arrivals and departures information from all Norwegian airports.
-
+arrivals and departures information from all Norwegian airports. 
 The app is availble for Android (Mono for Android), iOS (MonoTouch)
 and Windows Phone 7.
 
