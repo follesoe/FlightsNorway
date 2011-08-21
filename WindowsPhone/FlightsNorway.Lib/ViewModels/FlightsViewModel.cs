@@ -22,6 +22,7 @@ namespace FlightsNorway.Lib.ViewModels
         public string ErrorMessage { get; private set; }
 
         private Airport _selectedAirport;
+        private bool _isBusy;
 
         public Airport SelectedAirport
         {
@@ -34,7 +35,17 @@ namespace FlightsNorway.Lib.ViewModels
                 LoadFlightsFromAirport(_selectedAirport);
                 RaisePropertyChanged("SelectedAirport");
             }
-        }       
+        }
+
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set 
+            {
+                _isBusy = value;
+                RaisePropertyChanged("IsBusy");
+            }
+        }
 
         public FlightsViewModel(IGetFlights flightsService, 
                                 IStoreObjects objectStore, 
@@ -78,6 +89,7 @@ namespace FlightsNorway.Lib.ViewModels
 
         public void LoadFlightsFromAirport(Airport airport)
         {
+            IsBusy = true;
             Arrivals.Clear();
             Departures.Clear();
 
@@ -85,11 +97,13 @@ namespace FlightsNorway.Lib.ViewModels
         }
 
         private void FlightsLoaded(Result<IEnumerable<Flight>> result)
-        {
+        {            
             if(result.HasError())
                 HandleException(result.Error);
             else
                 _dispatcher.Invoke(() => LoadFlights(result.Value));
+            
+            _dispatcher.Invoke(() => IsBusy = false);
         }
 
         private void LoadFlights(IEnumerable<Flight> flights)

@@ -34,6 +34,17 @@ namespace FlightsNorway.Tests.ViewModels
         }
 
         [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.ViewModel)]
+        public void Signals_to_the_user_that_a_service_call_is_happening()
+        {            
+            EnqueueCallback(() =>
+            {
+                _messenger.Publish(new AirportSelectedMessage(this, _lakselvAirport));
+                Assert.IsTrue(_viewModel.IsBusy);
+            });            
+            EnqueueTestComplete();
+        }
+
+        [TestMethod, Asynchronous, Timeout(5000), Tag(Tags.ViewModel)]
         public void Expose_exception_as_error_message()
         {
             _flightsService.ExceptionToBeThrown = new Exception("Some error.");
