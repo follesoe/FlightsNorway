@@ -32,7 +32,7 @@ namespace FlightsNorway.Tests.ViewModels
             _viewModel.SelectedAirport = _viewModel.Airports.Last();
             _viewModel.SaveCommand.Execute(null);
 
-            var airport = _objectStore.Load<Airport>("selected_airport");
+            var airport = _objectStore.Load<Airport>(Airport.SelectedAirportFilename);
 
             Assert.AreEqual(_viewModel.SelectedAirport, airport);
         }
