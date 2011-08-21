@@ -40,9 +40,8 @@
             Foreground="{StaticResource MetroYellow}" FontSize="{StaticResource PhoneFontSizeSmall}"/>
 
     	<toolkit:PerformanceProgressBar 
-            DataContext="{Binding FlightsViewModel, Source={StaticResource ViewModelLocator}}"
-            IsIndeterminate="{Binding IsBusy}"
-            ActualIsIndeterminate="{Binding IsBusy}"
+            x:Name="_progressBar"
+            IsIndeterminate="True"
             Height="13" VerticalAlignment="Top" d:LayoutOverrides="Width" Background="{StaticResource MetroYellow}" Foreground="{StaticResource MetroYellow}"/>
 
     </Grid>

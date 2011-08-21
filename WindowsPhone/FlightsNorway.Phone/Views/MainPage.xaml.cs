@@ -15,6 +15,13 @@ namespace FlightsNorway.Views
             InitializeComponent();
            
             SupportedOrientations = SupportedPageOrientation.Portrait | SupportedPageOrientation.Landscape;
+
+            Locator.FlightsViewModel.PropertyChanged += (o, e) => {
+                if(e.PropertyName.Equals("IsBusy"))
+                {
+                    _progressBar.IsIndeterminate = Locator.FlightsViewModel.IsBusy;
+                }
+            };
         }
     }
 }

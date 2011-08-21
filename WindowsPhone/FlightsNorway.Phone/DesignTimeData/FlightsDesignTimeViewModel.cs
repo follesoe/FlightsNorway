@@ -1,12 +1,14 @@
-﻿using FlightsNorway.Lib.Model;
+﻿using System.ComponentModel;
+using FlightsNorway.Lib.Model;
 using FlightsNorway.Lib.ViewModels;
-using FlightsNorway.ViewModels;
 using System.Collections.ObjectModel;
 
 namespace FlightsNorway.DesignTimeData
 {
     public class FlightsDesignTimeViewModel : IFlightsViewModel
     {
+        public bool IsBusy { get; set; }
+
         public ObservableCollection<Flight> Arrivals { get; set; }
         public ObservableCollection<Flight> Departures { get; set; }
         public Airport SelectedAirport { get; set; }
@@ -24,5 +26,7 @@ namespace FlightsNorway.DesignTimeData
             foreach(var departure in DesignTimeFlightsService.CreateFlights(6, Direction.Depature))
                 Departures.Add(departure);
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
