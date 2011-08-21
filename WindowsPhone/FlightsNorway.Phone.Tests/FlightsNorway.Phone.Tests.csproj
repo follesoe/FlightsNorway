@@ -118,7 +118,6 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FlightsNorway.Lib\FlightsNorway.Lib.csproj">
@@ -141,6 +140,7 @@
   -->
   <ProjectExtensions />
   <PropertyGroup>
-    <PreBuildEvent>"$(SolutionDir)Tools\nuget" install "$(ProjectDir)packages.config" -o "$(SolutionDir)Packages"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

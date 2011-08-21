@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using FlightsNorway.Lib.DataServices;
 using FlightsNorway.Lib.Messages;
 using FlightsNorway.Lib.Model;
@@ -40,8 +41,9 @@ namespace FlightsNorway.Lib.ViewModels
         public bool IsBusy
         {
             get { return _isBusy; }
-            set 
+            set
             {
+                Debug.WriteLine("IsBusy: " + value.ToString());
                 _isBusy = value;
                 RaisePropertyChanged("IsBusy");
             }
@@ -101,9 +103,7 @@ namespace FlightsNorway.Lib.ViewModels
             if(result.HasError())
                 HandleException(result.Error);
             else
-                _dispatcher.Invoke(() => LoadFlights(result.Value));
-            
-            _dispatcher.Invoke(() => IsBusy = false);
+                _dispatcher.Invoke(() => LoadFlights(result.Value));            
         }
 
         private void LoadFlights(IEnumerable<Flight> flights)
@@ -119,6 +119,7 @@ namespace FlightsNorway.Lib.ViewModels
                     Departures.Add(flight);                        
                 }
             }
+            IsBusy = false;
         }
 
         private void HandleException(Exception ex)
