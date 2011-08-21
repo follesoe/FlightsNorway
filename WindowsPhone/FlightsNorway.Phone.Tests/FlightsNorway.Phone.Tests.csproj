@@ -13,7 +13,7 @@
     <AssemblyName>FlightsNorway.Phone.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
-    <TargetFrameworkProfile>WindowsPhone</TargetFrameworkProfile>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
     <SupportedCultures>
@@ -50,17 +50,14 @@
   <ItemGroup>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Silverlight.Testing, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.Silverlight.Testing.dll</HintPath>
+      <HintPath>..\packages\silverlight.unittest.wp7.3.0.31115.2022\lib\Silverlight 3.0\Microsoft.Silverlight.Testing.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Silverlight Unit Testing (May 2010)\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
+      <HintPath>..\packages\silverlight.unittest.wp7.3.0.31115.2022\lib\Silverlight 3.0\Microsoft.VisualStudio.QualityTools.UnitTesting.Silverlight.dll</HintPath>
     </Reference>
     <Reference Include="MonoMobile.Extensions">
       <HintPath>..\lib\MonoMobile.Extensions\MonoMobile.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp.WindowsPhone, Version=100.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />
@@ -81,6 +78,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainWindowExtensions.cs" />
     <Compile Include="Model\AirlineDictionarySpec.cs" />
     <Compile Include="Model\AirportDictionarySpec.cs" />
     <Compile Include="Model\AirportSpec.cs" />
@@ -94,6 +92,7 @@
     <Compile Include="Stubs\LocationServiceStub.cs" />
     <Compile Include="Stubs\ObjectStoreStub.cs" />
     <Compile Include="Tags.cs" />
+    <Compile Include="TypeNameConverter.cs" />
     <Compile Include="ViewModels\AirportsViewModelSpecs.cs" />
     <Compile Include="ViewModels\FlightsViewModelSpecs.cs" />
   </ItemGroup>
@@ -108,6 +107,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
   </ItemGroup>
@@ -118,6 +118,7 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FlightsNorway.Lib\FlightsNorway.Lib.csproj">
@@ -139,4 +140,7 @@
   </Target>
   -->
   <ProjectExtensions />
+  <PropertyGroup>
+    <PreBuildEvent>"$(SolutionDir)Tools\nuget" install "$(ProjectDir)packages.config" -o "$(SolutionDir)Packages"</PreBuildEvent>
+  </PropertyGroup>
 </Project>

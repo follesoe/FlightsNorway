@@ -1,8 +1,15 @@
 ﻿<Application 
     x:Class="FlightsNorway.Tests.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:phoneNavigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone">
-    
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:phoneNavigation="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:testing="clr-namespace:Microsoft.Silverlight.Testing.Client;assembly=Microsoft.Silverlight.Testing"
+    xmlns:Utils="clr-namespace:FlightsNorway.Tests">
+
+    <Application.Resources>
+        <Utils:TypeNameConverter x:Name="typeNameConverter" />
+        <testing:FontWeightConverter x:Name="fontWeightConverter" />
+    </Application.Resources>
+
     <Application.RootVisual>
         <phoneNavigation:PhoneApplicationFrame x:Name="RootFrame" Source="/MainPage.xaml"/>
     </Application.RootVisual>
